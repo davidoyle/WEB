@@ -1,0 +1,22 @@
+import BeforeYouDoAnything from '../components/BeforeYouDoAnything';
+import { whySilentPoints } from '../data/content';
+
+const WhySilent = () => (
+  <div className="max-w-4xl mx-auto">
+    <BeforeYouDoAnything />
+    <div className="text-center mb-8">
+      <h1 className="text-3xl font-bold text-gray-900 mb-4">Why People Stay Silent</h1>
+      <p className="text-gray-600">Silence is rational. It's also exactly what the system counts on.</p>
+    </div>
+    <div className="space-y-6">
+      {whySilentPoints.map((point, index) => (
+        <div key={index} className="bg-white rounded-xl shadow-md p-6 border-l-4 border-red-500">
+          <h2 className="text-xl font-bold text-gray-900 mb-2">{point.title}</h2>
+          <p className="text-gray-700">{point.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+export default WhySilent;
