@@ -1,5 +1,9 @@
 # Worker's Toolkit Web
 
+This repository hosts the Worker's Toolkit site as a Next.js application with Tailwind CSS styling. The current structure replaces the original static/Vite layout, so you won't see files like `index.html` or `vite.config.js` at the project root. Next.js manages the HTML shell and build configuration internally, while `vercel.json` documents the deploy commands Vercel should run.
+
+## Development
+- Configure the git remote (if missing): `git remote add origin https://github.com/davidoyle/WEB.git`
 This repository hosts the Worker's Toolkit site as a Next.js application with Tailwind CSS styling. The current structure replaces the original static/Vite layout, so you won't see files like `index.html`, `vite.config.js`, or `vercel.json` at the project root. Next.js manages the HTML shell and build configuration internally.
 
 ## Development
