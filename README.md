@@ -4,6 +4,9 @@ This repository hosts the Worker's Toolkit site as a Next.js application with Ta
 
 ## Development
 - Configure the git remote (if missing): `git remote add origin https://github.com/davidoyle/WEB.git`
+This repository hosts the Worker's Toolkit site as a Next.js application with Tailwind CSS styling. The current structure replaces the original static/Vite layout, so you won't see files like `index.html`, `vite.config.js`, or `vercel.json` at the project root. Next.js manages the HTML shell and build configuration internally.
+
+## Development
 - Install dependencies: `npm install`
 - Start a dev server: `npm run dev`
 - Build for production: `npm run build`
