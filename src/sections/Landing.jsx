@@ -1,24 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Shield } from 'lucide-react';
 import StoryForm from '../components/StoryForm';
 
 const Landing = ({ onStart }) => {
   const [showStoryForm, setShowStoryForm] = useState(false);
-  const formRef = useRef(null);
-
-  const handleStoryButtonClick = () => {
-    setShowStoryForm((open) => {
-      const nextState = !open;
-
-      if (!open) {
-        requestAnimationFrame(() => {
-          formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-      }
-
-      return nextState;
-    });
-  };
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
@@ -64,12 +49,11 @@ const Landing = ({ onStart }) => {
         </button>
       </div>
 
-      <div className="border-t pt-8" ref={formRef}>
+      <div className="border-t pt-8">
         <h3 className="font-bold mb-2">Want to help build this?</h3>
         <p className="mb-4">Share your anonymous story to help expose patterns.</p>
         <button
-          type="button"
-          onClick={handleStoryButtonClick}
+          onClick={() => setShowStoryForm((open) => !open)}
           className="bg-gray-800 text-white px-6 py-2 rounded"
         >
           {showStoryForm ? 'Hide Story Form' : 'Upload Your Story (Secure)'}
