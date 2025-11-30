@@ -118,8 +118,6 @@ const Home = ({ onNavigate }) => (
           </div>
         </div>
       </section>
-        </p>
-      </div>
     </div>
   </div>
 );
