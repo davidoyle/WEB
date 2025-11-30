@@ -325,293 +325,397 @@ export const engagementPoints = [
   }
 ];
 
+
 export const wcatCategories = [
   {
-    title: "Work-relatedness & Causation",
-    cases: [
-      {
-        caseNumber: "A1603646",
-        year: "2017",
-        title: "Slip on icy stairs while working → compensable",
-        description: "Worker fell on icy stairs while leaving work; WCAT found the stairs were part of the work environment, so the injury arose out of and in the course of employment.",
-        strategyMoves: [
-          "Tie the mechanism of injury directly to the work environment",
-          "Use photos/maintenance logs to show risk was workplace-created",
-          "Show there was no true 'personal errand' break between work and the fall"
-        ],
-        portableStrategy: "When injury happens on employer property (stairs, parking lot, walkways), argue it's still within course of employment if you're doing ordinary things related to work (leaving shift, retrieving gear)."
-      },
-      {
-        caseNumber: "2003-00254",
-        year: "2003",
-        title: "Wasp sting at work",
-        description: "Worker stung grabbing wood; WCAT applied s.5(4) presumption and found it compensable because the work activity exposed the worker to that risk.",
-        strategyMoves: [
-          "Invoke the statutory presumption (s.5(4))",
-          "Emphasize work-specific exposure that increased risk beyond everyday life"
-        ],
-        portableStrategy: "For 'freak event' injuries (stings, slips, random objects), lead with where + while the worker was working, and how job duties exposed them to that risk in a way ordinary life doesn't."
-      }
-    ]
-  },
-  {
-    title: "Pre-existing Conditions & Cumulative Trauma",
-    cases: [
-      {
-        caseNumber: "2004-02912",
-        year: "2004",
-        title: "No apportionment when causes operate together",
-        description: "Medical Review Panel found non-work causes didn't independently produce a portion of disability; they acted together with the work injury. WCAT held the Board couldn't apportion out a non-work share under s.5(1).",
-        strategyMoves: [
-          "Attack apportionment at the 'independent cause' level",
-          "Show that non-work and work factors operated together",
-          "Argue that you can't carve out a clean slice of disability caused solely by non-work factors"
-        ],
-        portableStrategy: "When they try to apportion, force medical witnesses to answer: 'Can you safely say X% of this disability would exist without the work injury?' If the honest answer is 'no,' argue that apportionment is legally improper."
-      },
-      {
-        caseNumber: "A2101129",
-        year: "2021",
-        title: "Repeated minor incidents = compensable injury",
-        description: "Aggravation of a pre-existing condition from a series of incidents over time can still be treated as a personal injury under s.134(1), even if you can't point to one specific moment.",
-        strategyMoves: [
-          "Frame a series of micro-traumas as one 'personal injury' under s.134(1)",
-          "Use detailed chronology + consistent symptom progression",
-          "Show each small event nudged the condition along"
-        ],
-        portableStrategy: "Teach workers to build incident diaries: repeated twinges, minor pulls, etc., that lead up to 'the day it finally went.' Then frame it as cumulative injury from repeated tasks, not just 'degeneration.'"
-      }
-    ]
-  },
-  {
-    title: "Mental Disorder & Bullying Claims",
-    cases: [
-      {
-        caseNumber: "A1900037",
-        year: "2019",
-        title: "Mental disorder from series of stressors; refusal to accommodate",
-        description: "Sets out the subjective + objective test for mental-disorder claims and says that when an employer refuses to accommodate a condition by denying it exists, that can be a significant workplace stressor.",
-        strategyMoves: [
-          "Meet the two-part mental-disorder test head-on",
-          "Reframe 'refusal to accommodate' as a stressor, not just an 'employment decision'",
-          "Argue that outright denial of the worker's condition is abusive and harmful"
-        ],
-        portableStrategy: "When an employer stonewalls accommodation requests, build a narrative of ongoing, targeted invalidation and its psychological impact, and argue it falls outside the s.5.1(1)(c) exclusion."
-      },
-      {
-        caseNumber: "2014-02791",
-        year: "2014",
-        title: "Bullying & harassment vs 'just rudeness'",
-        description: "Explains that bullying/harassment is a type of interpersonal conflict that must have an element of abusive or threatening behaviour; mere rudeness or thoughtlessness is not enough.",
-        strategyMoves: [
-          "Define the threshold clearly using OHS and Board guidance",
-          "Sort facts into 'real bullying/harassment events' vs 'mere rudeness'",
-          "Show the worker's condition tracks the serious events"
-        ],
-        portableStrategy: "Curate your evidence: highlight repeated, targeted acts (threats, put-downs, undermining) and downplay 'boss is kind of a jerk' noise."
-      }
-    ]
-  },
-  {
-    title: "Challenging Board Medical Advisors",
-    cases: [
-      {
-        caseNumber: "2006-03608",
-        year: "2006",
-        title: "Limits on Board Medical Advisors & internal guidelines",
-        description: "A Board Medical Advisor's job is to give medical expertise – not interpret and apply policy. The Board can't rely on internal guidelines if that means ignoring binding Board policy.",
-        strategyMoves: [
-          "Challenge when Board Medical Advisors interpret policy instead of providing medical expertise",
-          "Point out when internal guidelines contradict binding Board policy",
-          "Focus on the medical advisor's proper role"
-        ],
-        portableStrategy: "When they're ignoring your specialist and just quoting their own doctor, cite this case to show that their medical advisor overstepped their role by making policy decisions instead of providing medical expertise."
-      }
-    ]
-  },
-  {
-    title: "Reopenings & New Diagnoses",
-    cases: [
-      {
-        caseNumber: "2004-06682",
-        year: "2004",
-        title: "New imaging clarifies same condition → reopening allowed",
-        description: "CT scan gave a new label, but WCAT held the underlying condition was the same, so the worker was entitled to reopening under s.96(2).",
-        strategyMoves: [
-          "Label new tests as clarifying, not transforming",
-          "Argue the CT/MRI didn't create a new condition, it just gave better detail of the same compensable problem",
-          "Tie the significant change to the originally accepted condition"
-        ],
-        portableStrategy: "Use the decision tree – 'Did the Board already decide this specific condition or entitlement? If yes → reopening. If no → new matter.'"
-  {
-    title: "Acceptability & Causation",
+    title: "Is my injury covered? – Acceptability & causation",
     cases: [
       {
         caseNumber: "2004-06686",
         year: "2004",
         title: "Injury with no clear diagnosis still compensable",
-        description: "Claim accepted as personal injury under s.5(1) despite no definitive diagnosis; WCAT focused on mechanism and medical evidence.",
+        description: "Shows how a claim can be accepted as a personal injury under s.5(1) even without a definitive medical diagnosis by focusing on mechanism and evidence.",
         strategyMoves: [
-          "Provide a coherent medical theory, not just symptoms",
-          "Get explicit medical opinion tying cause to work",
-          "Anchor your argument in mechanism rather than label"
+          "Don’t rely on 'it happened at work and I felt awful' — build a coherent medical theory of the condition",
+          "Get a doctor to explicitly tie cause to work, not just document symptoms",
+          "Focus arguments on mechanism and evidence rather than a perfect label"
         ],
-        portableStrategy: "Even without a diagnosis, a well-documented mechanism + doctor’s causal link can ground acceptability under s.5(1)."
+        portableStrategy: "Even without a clean diagnosis, combine a clear mechanism with a medical opinion linking work to causation to ground acceptability under s.5(1)."
       },
       {
         caseNumber: "2004-05173",
         year: "2004",
-        title: "Injury during Functional Capacity Evaluation",
-        description: "Worker injured during FCE done as a condition for promotion; WCAT held it was in course of employment.",
+        title: "Injury during Functional Capacity Evaluation (FCE)",
+        description: "Worker injured during an employer-required FCE for a promotion; WCAT held it occurred in the course of employment and was compensable.",
         strategyMoves: [
           "Recharacterize the FCE as part of employment, not treatment",
-          "Use analogies to required inoculations or employer-mandated activities",
-          "Show wages, travel, and participation were employer-required"
+          "Show the employer required attendance (wages, travel, job contingent on participation)",
+          "Use RSCM I items #19.40 and #19.41 analogies (like required inoculations) to frame the FCE as work-related"
         ],
-        portableStrategy: "Frame employer-required assessments as work tasks, not medical treatment."
+        portableStrategy: "Always frame tests or assessments required for employment or promotion as work tasks, not medical treatment."
       },
       {
         caseNumber: "2004-04737",
         year: "2004",
         title: "Teacher assaulted; physical + mental injury",
-        description: "WCAT found mental stress tied to physical assault compensable under s.5(1).",
+        description: "Teacher assaulted by a student developed acute stress; WCAT compensated the psychological injury under s.5(1) as consequential to the physical injury.",
         strategyMoves: [
-          "Argue mixed physical/psych injuries under s.5(1)",
-          "Highlight multiple causation and material contribution",
-          "Use Board psychologist admissions as corroboration"
+          "Reframe mixed physical/psych injuries under s.5(1) instead of the narrower s.5.1 mental-stress route",
+          "Lean into multiple causation and show work was a significant contributing factor",
+          "Use supportive parts of the Board psychologist’s report to corroborate work-related anxiety/depression"
         ],
-        portableStrategy: "If mental injury flows from a physical event, file under s.5(1) rather than s.5.1 for broader coverage."
+        portableStrategy: "When mental health issues flow from a physical injury, argue them under s.5(1) as consequential injuries for broader coverage."
+      },
+      {
+        caseNumber: "2003-00254",
+        year: "2003",
+        title: "Wasp sting at work",
+        description: "Worker stung grabbing wood; WCAT applied the s.5(4) presumption and found it compensable because the work activity exposed the worker to that risk.",
+        strategyMoves: [
+          "Invoke the statutory presumption (s.5(4)) once course of employment is shown",
+          "Emphasize how job duties increased exposure to wasps beyond everyday life"
+        ],
+        portableStrategy: "For 'freak event' injuries, lead with where/while the worker was working and how duties created a higher-than-normal exposure to the risk."
       },
       {
         caseNumber: "2007-02958",
         year: "2007",
-        title: "Work-related heart attack",
-        description: "Heart attack arose in course of employment due to work stress/exertion despite underlying disease.",
+        title: "Work-related heart attack (natural causes vs work causes)",
+        description: "Detailed analysis of whether a heart attack arose out of and in the course of employment, weighing pre-existing disease against work factors.",
         strategyMoves: [
-          "Frame work as a trigger, not creator, of disease",
-          "Use expert evidence separating baseline vs. acute work factors",
-          "Prove material aggravation, not causation from scratch"
+          "Frame work as the trigger or significant accelerator of a vulnerable system",
+          "Use expert evidence to separate baseline cardiac risk from acute work factors (heat, exertion, stress, overtime)",
+          "Argue material contribution, not creation of the disease"
         ],
-        portableStrategy: "For internal conditions, argue that work was the triggering or accelerating factor."
+        portableStrategy: "For internal condition cases, argue work triggered or materially worsened an already vulnerable system — backed by cardiology/IME evidence."
       }
     ]
   },
-
   {
-    title: "Pre-existing & Degenerative Conditions",
+    title: "Pre-existing conditions, degenerative findings & cumulative trauma",
     cases: [
       {
         caseNumber: "2006-01779",
         year: "2006",
-        title: "Cumulative effects & jurisdiction",
-        description: "Board must adjudicate cumulative effects of prior injuries, not isolate episodes.",
+        title: "Cumulative effects & Board jurisdiction",
+        description: "Confirms the Board must adjudicate entitlement based on cumulative effects of prior injuries, not just single incidents, and can’t ignore relevant court cases.",
         strategyMoves: [
-          "Frame injury as cumulative and indivisible",
-          "Force Review/WCAT to take jurisdiction over combined effects"
+          "Force decision-makers to take jurisdiction over cumulative injuries instead of slicing issues into isolated episodes",
+          "Map issues tightly to Review Division jurisdiction to show improper refusals"
         ],
-        portableStrategy: "When they try to slice your history into separate claims, insist on overall disability adjudication."
+        portableStrategy: "When the Board/Review tries to narrow the issue, insist they address the overall disability picture rather than isolated incidents."
+      },
+      {
+        caseNumber: "2004-02912",
+        year: "2004",
+        title: "No apportionment when causes operate together",
+        description: "Medical Review Panel found non-work causes didn’t independently produce a portion of disability; they acted together with the work injury, so WCAT said no apportionment under s.5(1).",
+        strategyMoves: [
+          "Attack apportionment by showing non-work factors were not independent causes",
+          "Demonstrate work and non-work factors operated together to create one indivisible disability",
+          "Anchor arguments in s.5(1) and policy against splitting inseparable causes"
+        ],
+        portableStrategy: "When apportionment is raised, force medical witnesses to answer whether any disability portion would exist without the work injury; if not, argue apportionment is improper."
+      },
+      {
+        caseNumber: "A2101129",
+        year: "2021",
+        title: "Repeated minor incidents = compensable injury",
+        description: "Aggravation of a pre-existing condition from a series of incidents over time treated as a personal injury under s.134(1) even without one dramatic incident.",
+        strategyMoves: [
+          "Frame micro-traumas as one cumulative personal injury under s.134(1)",
+          "Use detailed chronology and symptom progression to link minor events",
+          "Identify the point when cumulative effects became disabling"
+        ],
+        portableStrategy: "Build incident diaries of repeated twinges or pulls leading up to the day it finally went, and frame it as cumulative injury—not just degeneration."
       },
       {
         caseNumber: "2011-01618",
         year: "2011",
-        title: "Reopening where degenerative condition worsens",
-        description: "Claim for permanent aggravation reopened when degenerative condition worsened over time.",
+        title: "Reopening where a degenerative condition worsens",
+        description: "Explains how a claim that accepted a permanent aggravation of a degenerative condition can be reopened when that condition significantly worsens.",
         strategyMoves: [
-          "Tie new evidence to the same condition already accepted",
-          "Compare before/after imaging and function",
-          "Argue significant change in same condition"
+          "Tie new imaging/clinical changes to the earlier accepted aggravation, not a new disease",
+          "Use before/after comparisons of imaging and function",
+          "Show significant change in the same condition to trigger s.96.2 reopening"
         ],
-        portableStrategy: "Centre reopening on worsening of the same condition, not a new diagnosis."
+        portableStrategy: "Centre reopening arguments on significant change in the already accepted degenerative condition rather than introducing a novel diagnosis."
       }
     ]
   },
-
   {
-    title: "Mental Disorder, Bullying & Late Filing",
+    title: "Mental disorder, bullying/harassment & late applications",
     cases: [
+      {
+        caseNumber: "A1900037",
+        year: "2019",
+        title: "Mental disorder from series of stressors; refusal to accommodate",
+        description: "Sets out the subjective + objective test for mental-disorder claims and recognizes refusal to accommodate (by denying the condition) as a significant workplace stressor.",
+        strategyMoves: [
+          "Meet the two-part mental-disorder test head-on (subjective reaction + objective significant stressor)",
+          "Reframe refusal to accommodate as a harmful stressor, not a neutral employment decision",
+          "Describe ongoing targeted invalidation and its impact"
+        ],
+        portableStrategy: "When employers stonewall accommodation requests, document the pattern and argue it falls outside the s.5.1(1)(c) exclusion as an abusive stressor."
+      },
       {
         caseNumber: "2015-01712",
         year: "2015",
-        title: "Employment decisions not always excluded",
-        description: "Clarifies s.5.1(1)(c) exclusion; unreasonable treatment can still be compensable.",
+        title: "Employment-related decisions not always excluded",
+        description: "Clarifies the s.5.1(1)(c) exclusion is not absolute; if the employment decision is too remote in the causation chain, entitlement may still exist.",
         strategyMoves: [
-          "Attack overbroad 'management decision' exclusion",
-          "Map chain of causation to show proximate stressors",
-          "Differentiate neutral decisions vs. abusive conduct"
+          "Attack overbroad use of the 'employment decision' exclusion",
+          "Emphasize proximate damaging stressors and context, not just the decision label",
+          "Distinguish neutral decisions from patterns of unreasonable conduct"
         ],
-        portableStrategy: "Show conduct crossed into harassment or unreasonable treatment; don’t let them hide behind 'employment decisions.'"
+        portableStrategy: "Break down specific behaviours to show why they cross into bullying/harassment or unreasonable treatment rather than neutral management decisions."
+      },
+      {
+        caseNumber: "2014-02791",
+        year: "2014",
+        title: "Bullying & harassment vs 'just rudeness'",
+        description: "Explains bullying/harassment must include abusive or threatening behaviour; mere rudeness or thoughtlessness doesn’t qualify.",
+        strategyMoves: [
+          "Define the threshold using OHS and Board guidance",
+          "Sort facts into real bullying/harassment events versus mere rudeness",
+          "Link the worker’s condition to the serious events"
+        ],
+        portableStrategy: "Curate evidence by highlighting repeated, targeted acts (threats, put-downs, undermining) and downplaying general rudeness."
+      },
+      {
+        caseNumber: "2014-01272",
+        year: "2014",
+        title: "Using OHS bullying & harassment guidelines",
+        description: "Applies WorkSafeBC’s OHS Guideline to interpret what qualifies as a significant workplace stressor, meeting both objective and subjective standards.",
+        strategyMoves: [
+          "Import OHS bullying/harassment standards into compensation analysis",
+          "Map facts to the guideline to show they meet the definition",
+          "Use guidelines to satisfy the objective stressor test"
+        ],
+        portableStrategy: "Always cite the WorkSafeBC bullying & harassment guideline and map your facts to its bullets to satisfy the objective test."
       },
       {
         caseNumber: "2014-01368",
         year: "2014",
-        title: "Late filing justified by the disorder itself",
-        description: "Mental disorder delayed application; WCAT accepted as 'special circumstances.'",
+        title: "Late application where the mental disorder delayed filing",
+        description: "Analyzes a late application where the mental disorder itself made timely filing impossible, accepting it as special circumstances.",
         strategyMoves: [
-          "Use psychiatric evidence showing incapacity to file",
-          "Show continuity of symptoms/treatment despite lateness"
+          "Use psychiatric evidence showing symptoms (avoidance, impaired executive function, depression) prevented timely filing",
+          "Show continuity of symptoms, treatment, and deterioration despite late paperwork"
         ],
-        portableStrategy: "Document how the mental disorder itself made timely filing impossible."
+        portableStrategy: "Don’t just say 'I was unwell' — have a doctor explain how the condition interfered with filing to justify late applications."
+      },
+      {
+        caseNumber: "A1701687",
+        year: "2017",
+        title: "Date of injury in mental-disorder claims",
+        description: "Explains how to determine the injury date (psychological reaction + connection to work) and assess special circumstances for late filing.",
+        strategyMoves: [
+          "Define the injury date as the point the worker had a psychological reaction and connected it to work",
+          "Use that definition to reset limitation periods when appropriate",
+          "Argue delays before that realization were reasonable given the condition"
+        ],
+        portableStrategy: "For long-running stress, use the moment you realized it was work-related as the injury date to gain breathing room on filing timelines."
       }
     ]
   },
-
   {
-    title: "Deadlines, Decisions & Do-Overs",
+    title: "What counts as a decision? Timelines & Board do-overs",
     cases: [
       {
         caseNumber: "2007-00430",
         year: "2007",
-        title: "Finding of fact vs. reviewable decision",
-        description: "Defines when a Board communication counts as a 'decision' triggering appeal rights.",
+        title: "Finding of fact vs reviewable decision",
+        description: "Three-person panel discusses whether a Board communication is just a finding of fact or an appealable decision that triggers timelines.",
         strategyMoves: [
-          "Show that the letter resolved a real issue (entitlement/rate)",
-          "Argue it triggers appeal rights and limitation periods"
+          "Show the communication finally resolved an issue (entitlement, rate, acceptance)",
+          "Once it’s a decision, assert appeal rights and applicable limitation periods"
         ],
-        portableStrategy: "If a letter decides something, treat it as appealable and act fast."
+        portableStrategy: "Whenever you get a vague letter, ask if it decided something; if yes, treat it as appealable and act on timelines."
       },
       {
-        caseNumber: "2006-02121",
+        caseNumber: "2007-00798",
+        year: "2007",
+        title: "Informational letter vs adjudicative decision",
+        description: "Clarifies when a letter implementing a WCAT decision is merely informational versus a new appealable decision.",
+        strategyMoves: [
+          "Analyze whether the letter changes rights or simply reports implementation",
+          "If it resolves entitlement, argue it’s a decision subject to review"
+        ],
+        portableStrategy: "Push WCAT to label communications as decisions when they resolve issues, even if framed as FYI."
+      },
+      {
+        caseNumber: "2009-00149",
+        year: "2009",
+        title: "Disclosure of file is NOT proper decision communication",
+        description: "Holds that simply disclosing a file is not an appropriate method of communicating a decision for timeline purposes.",
+        strategyMoves: [
+          "Differentiate disclosure from decision communication",
+          "Argue timelines don’t run until a decision is properly communicated"
+        ],
+        portableStrategy: "If you only received file materials, argue the decision wasn’t communicated and timelines haven’t started."
+      },
+      {
+        caseNumber: "2008-03461 / 2008-03567",
+        year: "2008",
+        title: "Oral vs written communication and when time limits start",
+        description: "Explains how oral decisions and staggered communications affect when clocks start on review/appeal deadlines.",
+        strategyMoves: [
+          "Pin down exact communication dates (oral vs written)",
+          "Argue limitation periods start when the decision is actually communicated"
+        ],
+        portableStrategy: "If you only got a phone call or piecemeal info, challenge any claim that the clock started earlier."
+      },
+      {
+        caseNumber: "2004-06708 / 2004-03907",
+        year: "2004",
+        title: "No communication = no 75-day limit running",
+        description: "Hold that if the Board fails to communicate a decision, it isn’t a decision for s.96(4) purposes, so reconsideration and appeal timelines aren’t triggered.",
+        strategyMoves: [
+          "Show the Board never communicated the decision",
+          "Use that to keep reconsideration or appeal rights alive"
+        ],
+        portableStrategy: "If you were never told, argue the 75-day clock never started and the Board can still reconsider (and you can still challenge)."
+      },
+      {
+        caseNumber: "2006-02121 / 2006-02669",
         year: "2006",
         title: "75-day limit on Board reconsideration",
-        description: "Board cannot reconsider a decision unless it issues a new decision within 75 days.",
+        description: "Says the Board cannot reconsider an original decision unless the reconsideration decision is communicated within 75 days; no endless do-overs.",
         strategyMoves: [
-          "Cite strict statutory deadlines",
-          "Reject late 'corrections' as ultra vires"
+          "Cite the strict 75-day statutory deadline",
+          "Reject late corrections as ultra vires"
         ],
-        portableStrategy: "The Board’s do-overs expire after 75 days — use this to block retroactive reversals."
+        portableStrategy: "Use the 75-day rule to block late Board reversals or corrections."
+      },
+      {
+        caseNumber: "2004-03983",
+        year: "2004",
+        title: "Second decision after 75 days is reviewable",
+        description: "If the Board issues a second decision more than 75 days after the first to correct an error, that second decision is reviewable.",
+        strategyMoves: [
+          "Treat late 'fix' decisions as new, reviewable decisions",
+          "Argue Board policy gaps don’t shield untimely corrections"
+        ],
+        portableStrategy: "When the Board issues a late second decision, appeal it as a fresh decision."
+      },
+      {
+        caseNumber: "2004-03709",
+        year: "2004",
+        title: "WCAT can cure some Review Division natural-justice breaches",
+        description: "WCAT can take jurisdiction over an issue the Board investigated but never clearly decided and may cure certain procedural unfairness from Review Division.",
+        strategyMoves: [
+          "Highlight issues the Board investigated but failed to decide",
+          "Invite WCAT to take jurisdiction and remedy Review Division unfairness"
+        ],
+        portableStrategy: "If Review Division missed an issue, ask WCAT to take it up and cure the procedural gap."
       }
     ]
   },
-
   {
-    title: "Parking Lots, Travelling Workers & Off-Route Cases",
+    title: "Challenging Board medical advisors & internal practice",
+    cases: [
+      {
+        caseNumber: "2006-03608",
+        year: "2006",
+        title: "Limits on Board Medical Advisors & internal guidelines",
+        description: "A Board Medical Advisor’s job is to provide medical expertise, not interpret/apply policy; the Board can’t rely on internal guidelines that override binding policy.",
+        strategyMoves: [
+          "Challenge medical advisors when they stray into policy interpretation",
+          "Point out conflicts between internal guidelines and binding Board policy",
+          "Scrutinize work simulations and their validity"
+        ],
+        portableStrategy: "If the Board ignores your specialist and leans on its own doctor, argue the advisor overstepped by making policy calls instead of giving medical evidence."
+      }
+    ]
+  },
+  {
+    title: "Reopenings & ‘new diagnoses’",
+    cases: [
+      {
+        caseNumber: "2004-06682",
+        year: "2004",
+        title: "New imaging clarifies same condition → reopening allowed",
+        description: "CT scan gave a new label, but WCAT held the underlying condition was the same, allowing reopening under s.96(2).",
+        strategyMoves: [
+          "Label new tests as clarifying, not transforming",
+          "Tie significant change to the originally accepted condition",
+          "Argue the CT/MRI didn’t create a new condition, just better detail"
+        ],
+        portableStrategy: "When new imaging emerges, argue it clarifies the accepted condition so reopening under s.96(2) applies."
+      },
+      {
+        caseNumber: "2004-06831",
+        year: "2004",
+        title: "Truly new diagnosis = new matter, not reopening",
+        description: "Explains that a new diagnosis is a new matter if the condition was never adjudicated, not a reopening of a previously decided matter.",
+        strategyMoves: [
+          "Ask whether the specific condition was previously decided",
+          "If not, frame it as a new matter requiring fresh adjudication"
+        ],
+        portableStrategy: "Use the decision tree: if the condition was decided before, seek reopening; if never decided, argue it’s a new matter."
+      },
+      {
+        caseNumber: "2004-04921 / 2004-04632",
+        year: "2004",
+        title: "What is a ‘matter previously decided’?",
+        description: "Clarify that reopening only applies to matters previously decided; brand-new treatment requests or unadjudicated conditions are new matters.",
+        strategyMoves: [
+          "Identify whether treatment/body part was previously adjudicated",
+          "Direct new matters to fresh adjudication rather than reopening"
+        ],
+        portableStrategy: "Map each request to whether it was already decided; if not, pursue it as a new matter rather than a reopening."
+      }
+    ]
+  },
+  {
+    title: "Parking lots, travelling workers & ‘off-route’ situations",
     cases: [
       {
         caseNumber: "2005-01035",
         year: "2005",
-        title: "Parking lot injury returning from lunch",
-        description: "Worker hit in employer’s lot returning from lunch; compensable under s.5(4).",
+        title: "Parking lot injury returning from lunch is compensable",
+        description: "Worker hit by a car in employer’s parking lot returning from lunch; WCAT applied s.5(4) presumption and found it compensable.",
         strategyMoves: [
-          "Prove employer control over lot",
-          "Show activity (returning to work) was work-related"
+          "Connect the parking lot to employer ownership/control",
+          "Show the worker was in the process of returning to work",
+          "Invoke s.5(4) presumption once course of employment is established"
         ],
-        portableStrategy: "Parking lot injuries are covered when employer controls the premises or requires access."
+        portableStrategy: "Treat employer-controlled parking lots as part of the work environment when returning to or leaving work."
+      },
+      {
+        caseNumber: "2007-02634",
+        year: "2007",
+        title: "Factors for parking-lot injuries",
+        description: "Sets out factors WCAT considers for parking-lot injuries and summarizes multiple earlier decisions.",
+        strategyMoves: [
+          "Systematize factors: lot ownership/control, whether commuting is integral, paid time/status, purpose of activity",
+          "Build a multi-point argument that the injury was in the course of employment"
+        ],
+        portableStrategy: "Turn the factors into a checklist to show the parking-lot injury stays within course of employment."
       },
       {
         caseNumber: "A1601379",
         year: "2016",
-        title: "Helping injured stranger still in course of employment",
-        description: "Nurse aiding an injured person on route home found to be within employment course.",
+        title: "Helping an injured stranger still in course of employment",
+        description: "Registered nurse stopped to help a stabbed person while returning from dropping off a co-worker; WCAT found no substantial deviation and maintained course of employment status.",
         strategyMoves: [
-          "Frame aid as a foreseeable extension of professional duty",
-          "Argue no substantial deviation from route"
+          "Frame the aid as part of the worker’s professional role, not a personal frolic",
+          "Show there was no substantial deviation from the route"
         ],
-        portableStrategy: "Acts consistent with professional duties (like helping others) remain compensable if not a major detour."
+        portableStrategy: "When actions align with your professional duties and don’t create a major detour, argue you remain in the course of employment."
+      },
+      {
+        caseNumber: "2006-02659",
+        year: "2006",
+        title: "Community health workers as travelling workers",
+        description: "Confirms workers whose jobs require moving between locations (like community health workers) are treated as travelling workers even if travel time isn’t paid.",
+        strategyMoves: [
+          "Characterize the worker as a travelling worker because movement between sites is essential",
+          "Use that status to argue injuries en route are presumptively work-related absent substantial personal deviation"
+        ],
+        portableStrategy: "Whenever work involves moving between clients/sites, push the travelling-worker label to keep en-route injuries covered."
       }
-    ]
-  }
-];
-}
     ]
   }
 ];
