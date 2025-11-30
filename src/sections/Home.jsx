@@ -66,35 +66,58 @@ const Home = ({ onNavigate }) => (
           </div>
         ))}
       </div>
-      <div className="mt-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 text-center">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">What This Site Actually Does For You</h2>
-        <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-          <div className="text-left">
-            <h3 className="font-bold text-xl mb-3 text-gray-800">This site will NOT:</h3>
-            <ul className="list-disc pl-5 space-y-2 text-gray-700">
-              <li>Magically win your case</li>
-              <li>Replace legal advice when you can get it</li>
-              <li>Talk you out of being angry (you're allowed to be)</li>
-            </ul>
+      <section className="mt-12">
+        <div className="mx-auto max-w-4xl rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 p-8 shadow-sm">
+          <h2 className="text-center text-2xl font-bold text-gray-900">
+            What This Site Actually Does For You
+          </h2>
+
+          <div className="mt-8 grid gap-8 md:grid-cols-2">
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-600">
+                This site will not:
+              </h3>
+              <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-800">
+                <li>Magically win your case</li>
+                <li>Replace legal advice when you can get it</li>
+                <li>Talk you out of being angry (you&apos;re allowed to be)</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
+                This site will:
+              </h3>
+              <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-800">
+                <li>Show you where the system is weak</li>
+                <li>Help you turn your story into evidence</li>
+                <li>
+                  Give you ready-made language and templates to hit WorkSafeBC,
+                  employers, and politicians in ways they can&apos;t just
+                  hand-wave away
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="text-left">
-            <h3 className="font-bold text-xl mb-3 text-gray-800">This site WILL:</h3>
-            <ul className="list-disc pl-5 space-y-2 text-gray-700">
-              <li>Show you where the system is weak</li>
-              <li>Help you turn your story into evidence</li>
-              <li>Give you ready-made language and templates to hit WorkSafeBC, employers, and politicians in ways they can't just hand-wave away</li>
-            </ul>
+
+          <div className="mt-10 border-t border-blue-100 pt-6 text-center">
+            <p className="text-sm font-medium text-gray-900">
+              Your next step, right now:
+            </p>
+            <ol className="mt-3 list-decimal list-inside text-left max-w-md mx-auto space-y-1 text-sm leading-relaxed text-gray-800">
+              <li>Pick the box that feels most like you</li>
+              <li>Click through to the tools it points to</li>
+              <li>Steal everything you find useful</li>
+              <li>Put it in writing and send it</li>
+            </ol>
+            <p className="mt-5 text-xs sm:text-sm leading-relaxed text-gray-700">
+              Every email, every log entry, every uploaded document is another
+              brick in a wall of proof. And institutions have a hard time
+              walking through walls.
+            </p>
           </div>
         </div>
-        <p className="mt-6 text-gray-700">Your next step, right now:</p>
-        <ol className="list-decimal pl-5 text-left max-w-lg mx-auto mt-4 space-y-2 text-gray-700">
-          <li>Pick the box that feels most like you</li>
-          <li>Click through to the tools it points to</li>
-          <li>Steal everything you find useful</li>
-          <li>Put it in writing and send it</li>
-        </ol>
-        <p className="mt-6 text-gray-700 font-medium">
-          Every email, every log entry, every uploaded document is another brick in a wall of proof. And institutions have a hard time walking through walls.
+      </section>
         </p>
       </div>
     </div>
