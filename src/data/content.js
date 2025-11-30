@@ -443,7 +443,175 @@ export const wcatCategories = [
           "Tie the significant change to the originally accepted condition"
         ],
         portableStrategy: "Use the decision tree – 'Did the Board already decide this specific condition or entitlement? If yes → reopening. If no → new matter.'"
+  {
+    title: "Acceptability & Causation",
+    cases: [
+      {
+        caseNumber: "2004-06686",
+        year: "2004",
+        title: "Injury with no clear diagnosis still compensable",
+        description: "Claim accepted as personal injury under s.5(1) despite no definitive diagnosis; WCAT focused on mechanism and medical evidence.",
+        strategyMoves: [
+          "Provide a coherent medical theory, not just symptoms",
+          "Get explicit medical opinion tying cause to work",
+          "Anchor your argument in mechanism rather than label"
+        ],
+        portableStrategy: "Even without a diagnosis, a well-documented mechanism + doctor’s causal link can ground acceptability under s.5(1)."
+      },
+      {
+        caseNumber: "2004-05173",
+        year: "2004",
+        title: "Injury during Functional Capacity Evaluation",
+        description: "Worker injured during FCE done as a condition for promotion; WCAT held it was in course of employment.",
+        strategyMoves: [
+          "Recharacterize the FCE as part of employment, not treatment",
+          "Use analogies to required inoculations or employer-mandated activities",
+          "Show wages, travel, and participation were employer-required"
+        ],
+        portableStrategy: "Frame employer-required assessments as work tasks, not medical treatment."
+      },
+      {
+        caseNumber: "2004-04737",
+        year: "2004",
+        title: "Teacher assaulted; physical + mental injury",
+        description: "WCAT found mental stress tied to physical assault compensable under s.5(1).",
+        strategyMoves: [
+          "Argue mixed physical/psych injuries under s.5(1)",
+          "Highlight multiple causation and material contribution",
+          "Use Board psychologist admissions as corroboration"
+        ],
+        portableStrategy: "If mental injury flows from a physical event, file under s.5(1) rather than s.5.1 for broader coverage."
+      },
+      {
+        caseNumber: "2007-02958",
+        year: "2007",
+        title: "Work-related heart attack",
+        description: "Heart attack arose in course of employment due to work stress/exertion despite underlying disease.",
+        strategyMoves: [
+          "Frame work as a trigger, not creator, of disease",
+          "Use expert evidence separating baseline vs. acute work factors",
+          "Prove material aggravation, not causation from scratch"
+        ],
+        portableStrategy: "For internal conditions, argue that work was the triggering or accelerating factor."
       }
+    ]
+  },
+
+  {
+    title: "Pre-existing & Degenerative Conditions",
+    cases: [
+      {
+        caseNumber: "2006-01779",
+        year: "2006",
+        title: "Cumulative effects & jurisdiction",
+        description: "Board must adjudicate cumulative effects of prior injuries, not isolate episodes.",
+        strategyMoves: [
+          "Frame injury as cumulative and indivisible",
+          "Force Review/WCAT to take jurisdiction over combined effects"
+        ],
+        portableStrategy: "When they try to slice your history into separate claims, insist on overall disability adjudication."
+      },
+      {
+        caseNumber: "2011-01618",
+        year: "2011",
+        title: "Reopening where degenerative condition worsens",
+        description: "Claim for permanent aggravation reopened when degenerative condition worsened over time.",
+        strategyMoves: [
+          "Tie new evidence to the same condition already accepted",
+          "Compare before/after imaging and function",
+          "Argue significant change in same condition"
+        ],
+        portableStrategy: "Centre reopening on worsening of the same condition, not a new diagnosis."
+      }
+    ]
+  },
+
+  {
+    title: "Mental Disorder, Bullying & Late Filing",
+    cases: [
+      {
+        caseNumber: "2015-01712",
+        year: "2015",
+        title: "Employment decisions not always excluded",
+        description: "Clarifies s.5.1(1)(c) exclusion; unreasonable treatment can still be compensable.",
+        strategyMoves: [
+          "Attack overbroad 'management decision' exclusion",
+          "Map chain of causation to show proximate stressors",
+          "Differentiate neutral decisions vs. abusive conduct"
+        ],
+        portableStrategy: "Show conduct crossed into harassment or unreasonable treatment; don’t let them hide behind 'employment decisions.'"
+      },
+      {
+        caseNumber: "2014-01368",
+        year: "2014",
+        title: "Late filing justified by the disorder itself",
+        description: "Mental disorder delayed application; WCAT accepted as 'special circumstances.'",
+        strategyMoves: [
+          "Use psychiatric evidence showing incapacity to file",
+          "Show continuity of symptoms/treatment despite lateness"
+        ],
+        portableStrategy: "Document how the mental disorder itself made timely filing impossible."
+      }
+    ]
+  },
+
+  {
+    title: "Deadlines, Decisions & Do-Overs",
+    cases: [
+      {
+        caseNumber: "2007-00430",
+        year: "2007",
+        title: "Finding of fact vs. reviewable decision",
+        description: "Defines when a Board communication counts as a 'decision' triggering appeal rights.",
+        strategyMoves: [
+          "Show that the letter resolved a real issue (entitlement/rate)",
+          "Argue it triggers appeal rights and limitation periods"
+        ],
+        portableStrategy: "If a letter decides something, treat it as appealable and act fast."
+      },
+      {
+        caseNumber: "2006-02121",
+        year: "2006",
+        title: "75-day limit on Board reconsideration",
+        description: "Board cannot reconsider a decision unless it issues a new decision within 75 days.",
+        strategyMoves: [
+          "Cite strict statutory deadlines",
+          "Reject late 'corrections' as ultra vires"
+        ],
+        portableStrategy: "The Board’s do-overs expire after 75 days — use this to block retroactive reversals."
+      }
+    ]
+  },
+
+  {
+    title: "Parking Lots, Travelling Workers & Off-Route Cases",
+    cases: [
+      {
+        caseNumber: "2005-01035",
+        year: "2005",
+        title: "Parking lot injury returning from lunch",
+        description: "Worker hit in employer’s lot returning from lunch; compensable under s.5(4).",
+        strategyMoves: [
+          "Prove employer control over lot",
+          "Show activity (returning to work) was work-related"
+        ],
+        portableStrategy: "Parking lot injuries are covered when employer controls the premises or requires access."
+      },
+      {
+        caseNumber: "A1601379",
+        year: "2016",
+        title: "Helping injured stranger still in course of employment",
+        description: "Nurse aiding an injured person on route home found to be within employment course.",
+        strategyMoves: [
+          "Frame aid as a foreseeable extension of professional duty",
+          "Argue no substantial deviation from route"
+        ],
+        portableStrategy: "Acts consistent with professional duties (like helping others) remain compensable if not a major detour."
+      }
+    ]
+  }
+];
+}
     ]
   }
 ];
