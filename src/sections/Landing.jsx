@@ -2,6 +2,15 @@ import React, { useState } from 'react';
 import { Shield } from 'lucide-react';
 import StoryForm from '../components/StoryForm';
 
+const Landing = ({ onStart, onNavigate }) => (
+  <div className="max-w-4xl mx-auto px-4 py-12">
+    <div className="text-center mb-12">
+      <Shield className="w-16 h-16 text-red-600 mx-auto mb-6" />
+      <h1 className="text-4xl font-bold text-gray-900 mb-6">The Worker’s Toolkit</h1>
+      <p className="text-xl text-gray-700 mb-8">
+        Evidence, strategy, and leverage for injured workers in B.C. getting stonewalled by WorkSafeBC.
+      </p>
+    </div>
 const Landing = ({ onStart }) => {
   const [showStoryForm, setShowStoryForm] = useState(false);
 
@@ -49,6 +58,15 @@ const Landing = ({ onStart }) => {
         </button>
       </div>
 
+    <div className="border-t pt-8">
+      <h3 className="font-bold mb-4">Want to help build this?</h3>
+      <p className="mb-4">Share your anonymous story to help expose patterns.</p>
+      <button
+        className="bg-gray-800 text-white px-6 py-2 rounded"
+        onClick={() => onNavigate && onNavigate('tellYourStory')}
+      >
+        Upload Your Story (Secure)
+      </button>
       <div className="border-t pt-8">
         <h3 className="font-bold mb-2">Want to help build this?</h3>
         <p className="mb-4">Share your anonymous story to help expose patterns.</p>
