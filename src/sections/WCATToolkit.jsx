@@ -35,6 +35,58 @@ const WCATToolkit = () => {
     console.log('WCAT categories loaded:', categories.length, 'cases:', totalCases);
   }, [totalCases]);
 
+  const allBodyParts = useMemo(() => {
+    const values = new Set();
+    categories.forEach((category) => {
+      category.cases?.forEach((c) => {
+        if (c.bodyPart) values.add(c.bodyPart);
+      });
+    });
+    return Array.from(values).sort();
+  }, []);
+
+  const allIssueTags = useMemo(() => {
+    const tags = new Set();
+    categories.forEach((category) => {
+      category.cases?.forEach((c) => deriveTagFamilies(c.issueTags).forEach((family) => tags.add(family)));
+    });
+    return Array.from(tags).sort();
+  }, []);
+
+  const filteredCategories = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase();
+    const normalizedTag = selectedTag?.trim().toLowerCase();
+
+    return categories
+      .map((category) => {
+        const filteredCases = category.cases?.filter((caseItem) => {
+          const caseFamilies = deriveTagFamilies(caseItem.issueTags);
+          const matchesTag =
+            !normalizedTag || caseFamilies.some((family) => family.toLowerCase().includes(normalizedTag));
+          const matchesBody = !selectedBodyPart || caseItem.bodyPart === selectedBodyPart;
+          const haystack = [
+            caseItem.shortLabel,
+            caseItem.title,
+            caseItem.whenToUse,
+            caseItem.facts,
+            caseItem.description,
+          ]
+            .filter(Boolean)
+            .join(' ')
+            .toLowerCase();
+          const matchesQuery = !normalizedQuery || haystack.includes(normalizedQuery);
+          return matchesTag && matchesBody && matchesQuery;
+        });
+        return { ...category, cases: filteredCases };
+      })
+      .filter((category) => category.cases?.length);
+  }, [query, selectedBodyPart, selectedTag]);
+
+  const filteredTotalCases = useMemo(
+    () => filteredCategories.reduce((sum, category) => sum + (category.cases?.length || 0), 0),
+    [filteredCategories],
+  );
+
   return (
     <div className="max-w-6xl mx-auto">
       <BeforeYouDoAnything />
