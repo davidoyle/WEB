@@ -1,65 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { BookOpen, ChevronDown, ChevronRight } from 'lucide-react';
+import { useEffect, useMemo } from 'react';
+import { BookOpen } from 'lucide-react';
 import BeforeYouDoAnything from '../components/BeforeYouDoAnything';
 import { wcatCategories } from '../data/content';
 
 const categories = Array.isArray(wcatCategories) ? wcatCategories : [];
-
-const CaseCard = ({ wcatCase, defaultOpen = false }) => {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
-
-  const headerLabel = wcatCase.shortLabel || wcatCase.caseNumber || wcatCase.title;
-  const headerCitation = wcatCase.citation || wcatCase.year;
-  const summary = wcatCase.summary || wcatCase.description;
-  const panelCare = wcatCase.panelCare || wcatCase.strategyMoves;
-  const useItWhen = wcatCase.useItWhen || wcatCase.portableStrategy;
-
-  return (
-    <article className="border border-gray-200 rounded-lg bg-white shadow-sm">
-      <button
-        type="button"
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between px-4 py-3 text-left"
-      >
-        <div>
-          <h3 className="font-semibold text-gray-900">{headerLabel}</h3>
-          {headerCitation && <p className="text-xs text-gray-500 mt-0.5">{headerCitation}</p>}
-        </div>
-        <span className="ml-4 flex-shrink-0">
-          {isOpen ? (
-            <ChevronDown className="w-5 h-5 text-gray-500" />
-          ) : (
-            <ChevronRight className="w-5 h-5 text-gray-500" />
-          )}
-        </span>
-      </button>
-
-      {isOpen && (
-        <div className="px-4 pb-4">
-          {summary && <p className="text-gray-700 mb-3">{summary}</p>}
-
-          {panelCare && panelCare.length > 0 && (
-            <div className="mb-3">
-              <p className="text-sm font-semibold text-gray-800 mb-1">What the panel cared about:</p>
-              <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
-                {panelCare.map((point, i) => (
-                  <li key={i}>{point}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {useItWhen && (
-            <p className="text-sm text-gray-800">
-              <span className="font-semibold">Use this when: </span>
-              {useItWhen}
-            </p>
-          )}
-        </div>
-      )}
-    </article>
-  );
-};
 
 const WCATToolkit = () => {
   const totalCases = useMemo(
@@ -92,13 +36,28 @@ const WCATToolkit = () => {
               </div>
               <h2 className="text-2xl font-bold text-gray-900">{category.title}</h2>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-6">
               {category.cases?.map((caseItem, caseIndex) => (
-                <CaseCard
-                  key={caseItem.caseNumber ?? caseIndex}
-                  wcatCase={caseItem}
-                  defaultOpen={caseIndex === 0}
-                />
+                <div key={caseItem.caseNumber ?? caseIndex} className="border-l-4 border-indigo-500 pl-4">
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
+                    <h3 className="text-xl font-bold text-gray-900">{caseItem.caseNumber}</h3>
+                    <span className="text-sm text-gray-500 mt-1 md:mt-0">{caseItem.year}</span>
+                  </div>
+                  <h4 className="font-semibold text-gray-800 mb-2">{caseItem.title}</h4>
+                  <p className="text-gray-700 mb-4">{caseItem.description}</p>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h5 className="font-semibold text-indigo-800 mb-2">Key Strategy Moves:</h5>
+                    <ul className="list-disc pl-5 space-y-1 text-gray-700">
+                      {caseItem.strategyMoves?.map((move, moveIndex) => (
+                        <li key={moveIndex}>{move}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="bg-blue-50 p-4 rounded-lg mt-4">
+                    <h5 className="font-semibold text-blue-800 mb-2">Portable Strategy for Workers:</h5>
+                    <p className="text-blue-700">{caseItem.portableStrategy}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
