@@ -1,6 +1,12 @@
 import { ExternalLink, MapPin } from 'lucide-react';
 import BeforeYouDoAnything from '../components/BeforeYouDoAnything';
-import { screwedSituations } from '../data/content';
+import { screwedSituations, wcatCategories } from '../data/content';
+
+const wcatCaseLookup = Object.fromEntries(
+  (wcatCategories || []).flatMap((category) =>
+    (category.cases || []).map((caseItem) => [caseItem.id || caseItem.caseNumber, caseItem]),
+  ),
+);
 
 const Home = ({ onNavigate }) => (
   <div className="max-w-4xl mx-auto">
@@ -63,6 +69,35 @@ const Home = ({ onNavigate }) => (
                 ))}
               </ul>
             </div>
+            {situation.relatedWCATCaseIds?.length ? (
+              <div className="mt-4 bg-white border border-gray-200 rounded-lg p-4">
+                <h4 className="font-semibold text-gray-900 mb-2">Recommended WCAT decisions</h4>
+                <ul className="space-y-2">
+                  {situation.relatedWCATCaseIds.map((caseId) => {
+                    const wcatCase = wcatCaseLookup[caseId];
+                    return (
+                      <li
+                        key={caseId}
+                        className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 bg-gray-50 border border-gray-200 rounded-md p-3"
+                      >
+                        <div>
+                          <p className="text-sm font-semibold text-gray-900">
+                            {wcatCase?.shortLabel || wcatCase?.title || caseId}
+                          </p>
+                          <p className="text-xs text-gray-600">{wcatCase?.citation || wcatCase?.caseNumber}</p>
+                        </div>
+                        <a
+                          className="text-sm font-semibold text-blue-600 hover:underline"
+                          href={`/wcat#${caseId}`}
+                        >
+                          View in Armory
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ) : null}
           </div>
         ))}
       </div>
