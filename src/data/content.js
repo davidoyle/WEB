@@ -443,6 +443,9 @@ export const wcatCategories = [
           "Tie the significant change to the originally accepted condition"
         ],
         portableStrategy: "Use the decision tree – 'Did the Board already decide this specific condition or entitlement? If yes → reopening. If no → new matter.'"
+      }
+    ]
+  },
   {
     title: "Acceptability & Causation",
     cases: [
@@ -608,10 +611,6 @@ export const wcatCategories = [
         ],
         portableStrategy: "Acts consistent with professional duties (like helping others) remain compensable if not a major detour."
       }
-    ]
-  }
-];
-}
     ]
   }
 ];
