@@ -5,6 +5,11 @@ import { wcatCategories } from '../data/content';
 
 const categories = Array.isArray(wcatCategories) ? wcatCategories : [];
 
+const getCaseId = (caseItem, fallback) =>
+  caseItem?.id ||
+  caseItem?.caseNumber?.toLowerCase().replace(/[^a-z0-9]+/g, '-') ||
+  fallback?.toString();
+
 const WCATToolkit = () => {
   const [expandedCases, setExpandedCases] = useState(() =>
     categories.map((category) => (category.cases?.length ? 0 : -1)),
@@ -37,11 +42,57 @@ const WCATToolkit = () => {
         <h1 className="text-3xl font-bold text-gray-900 mb-4">WCAT Precedent Armory</h1>
         <p className="text-gray-600">Real cases where workers won. Steal their reasoning, structure, and language.</p>
         <p className="text-sm text-gray-500 mt-2">
-          Showing {categories.length} categories with {totalCases} precedent examples pulled directly from the data library.
+          Showing {filteredTotalCases} of {totalCases} cases across {filteredCategories.length} categories.
         </p>
       </div>
+
+      <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 sm:p-6 mb-8">
+        <div className="grid gap-4 md:grid-cols-3">
+          <label className="flex flex-col text-sm font-semibold text-gray-700">
+            Search by keywords
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search cases"
+              className="mt-1 rounded-lg border border-gray-300 px-3 py-2 text-gray-800 focus:border-indigo-500 focus:outline-none"
+            />
+          </label>
+          <label className="flex flex-col text-sm font-semibold text-gray-700">
+            Filter by body part
+            <select
+              value={selectedBodyPart || ''}
+              onChange={(e) => setSelectedBodyPart(e.target.value || null)}
+              className="mt-1 rounded-lg border border-gray-300 px-3 py-2 text-gray-800 focus:border-indigo-500 focus:outline-none"
+            >
+              <option value="">All body parts</option>
+              {allBodyParts.map((part) => (
+                <option key={part} value={part}>
+                  {part}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="flex flex-col text-sm font-semibold text-gray-700">
+            Filter by tag
+            <select
+              value={selectedTag || ''}
+              onChange={(e) => setSelectedTag(e.target.value || null)}
+              className="mt-1 rounded-lg border border-gray-300 px-3 py-2 text-gray-800 focus:border-indigo-500 focus:outline-none"
+            >
+              <option value="">All tags</option>
+              {allIssueTags.map((tag) => (
+                <option key={tag} value={tag}>
+                  {tag}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+      </div>
+
       <div className="space-y-8">
-        {categories.map((category, index) => (
+        {filteredCategories.map((category, index) => (
           <div key={category.title ?? index} className="bg-white rounded-xl shadow-md p-6 border border-gray-200">
             <div className="flex items-center mb-6">
               <div className="bg-indigo-100 p-3 rounded-lg mr-4">
