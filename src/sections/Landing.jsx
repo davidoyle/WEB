@@ -1,12 +1,29 @@
 import Link from 'next/link'
 
 const LandingSection = () => (
-  <section className="section-shell" id="landing">
-    <div className="max-w-3xl mx-auto text-center px-4">
+  <section id="landing">
+    <div className="max-w-3xl mx-auto px-4 py-20 text-center">
+      <div className="flex justify-center mb-6">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="48"
+          height="48"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-shield w-16 h-16 text-red-600"
+        >
+          <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+        </svg>
+      </div>
       <p className="text-sm font-semibold uppercase tracking-wide text-red-700">Worker&apos;s Toolkit</p>
-      <h1 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
+      <h1 className="text-5xl font-bold mb-3 text-gray-900">Worker&apos;s Toolkit</h1>
+      <p className="mt-2 text-2xl font-semibold text-gray-900">
         A survival interface for injured workers in B.C. being delayed, ignored, or quietly cut off.
-      </h1>
+      </p>
 
       <p className="mt-6 text-lg text-gray-800">
         This isn&apos;t a therapy site. It&apos;s a map, a weapons locker, and a receipts folder for workers who are being slow-rolled,
