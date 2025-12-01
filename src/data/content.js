@@ -16,7 +16,8 @@ export const screwedSituations = [
     nextMoves: [
       { text: "Evidence & Documentation Center", section: "documentation" },
       { text: "Tactical Strategy/Pressure Points (Quick Scan)", section: "pressure" }
-    ]
+    ],
+    relatedWCATCaseIds: ["wcat-2003-00254", "wcat-2004-05173"]
   },
   {
     title: "I got a bullshit decision letter or they cut my benefits",
@@ -35,7 +36,8 @@ export const screwedSituations = [
       { text: "Tactical Strategy/ Pressure Points", section: "pressure" },
       { text: "Email & Letter Templates", section: "templates" },
       { text: "Legal Precedent Armory (Starter WCAT Cases)", section: "wcat" }
-    ]
+    ],
+    relatedWCATCaseIds: ["wcat-2006-03608", "wcat-2007-02958"]
   },
   {
     title: "WorkSafeBC / my employer / my MLA is ignoring me or gaslighting me",
@@ -54,7 +56,8 @@ export const screwedSituations = [
       { text: "Tactical Strategy/Pressure Points – Oversight Section", section: "pressure" },
       { text: "Email & Letter Templates – Oversight & Escalation", section: "templates" },
       { text: "Evidence & Documentation Center", section: "documentation" }
-    ]
+    ],
+    relatedWCATCaseIds: ["wcat-2009-00149", "wcat-2004-06708-2004-03907"]
   },
   {
     title: "I'm already in Review / WCAT / appeal-land",
@@ -73,7 +76,8 @@ export const screwedSituations = [
       { text: "Legal Precedent Armory – WCAT Toolkit", section: "wcat" },
       { text: "Evidence & Documentation Center", section: "documentation" },
       { text: "Tactical Strategy/Pressure Points", section: "pressure" }
-    ]
+    ],
+    relatedWCATCaseIds: ["wcat-a1900037", "wcat-2006-01779"]
   }
 ];
 
@@ -230,55 +234,250 @@ export const pressurePoints = [
 
 export const emailTemplates = [
   {
-    title: "Email to the Minister of Labour",
-    to: "To: [Minister's email] Cc: [Your MLA + MLA office email] (optional)",
+    title: "To the Minister of Labour",
+    to: "To: [Minister’s email] Cc: [Your MLA + MLA office email] (optional)",
     content: `Dear Minister [Last Name],
-My name is [Your Full Name], a [your age]-year-old [your job title] living in [your city/community]. I am writing regarding the handling of my WorkSafeBC claim ([Claim Number]) and to respectfully request your office's oversight.
+My name is [Your Full Name], a [your age]-year-old [your job title] living in [your city /
+community]. I am writing regarding the handling of my WorkSafeBC claim ([Claim Number]) and
+to respectfully request your office’s oversight.
 [IF you have already contacted your MLA – keep this paragraph]
-[MLA [MLA Name], MLA for [Riding], has been assisting me since [month/year] and their office has already contacted WorkSafeBC on my behalf. Despite this, key issues remain unresolved and I appear to have reached an impasse within the existing process.]
-[IF you have NOT contacted your MLA – you can use this paragraph instead, or delete it entirely]
-[I understand that MLAs and the Minister cannot personally adjudicate individual claims, but I am concerned that the way my claim is being handled may indicate a breakdown in the normal oversight and accountability processes.]
+[MLA [MLA Name], MLA for [Riding], has been assisting me since [month/year] and their office
+has already contacted WorkSafeBC on my behalf. Despite this, key issues remain unresolved
+and I appear to have reached an impasse within the existing process.]
+[IF you have NOT contacted your MLA – you can use this paragraph instead, or delete it
+entirely]
+[I understand that MLAs and the Minister cannot personally adjudicate individual claims, but I
+am concerned that the way my claim is being handled may indicate a breakdown in the normal
+oversight and accountability processes.]
 I have attached a short briefing note that summarizes:
-- the sequence of events in my claim;
-- the specific decisions that have been made that conflict with the medical evidence;
-- the impacts on my ability to work and support my family; and
-- how attempts at resolution through my case manager and the Board's internal review channels have stalled.
-I am requesting your office to:
-1) Review the summary to determine whether the handling of my claim suggests a broader issue that requires oversight; and
-2) Confirm what steps, if any, your office will take to ensure that WorkSafeBC is applying its policies fairly and accurately in my case.
-Thank you for your time and attention. I appreciate any direction or intervention your office can provide to ensure my case receives fair and evidence-based consideration.
+- The timeline of my injury and claim
+- The decisions made so far
+- New medical or factual evidence that has not been fully addressed
+- Specific questions that remain unanswered by WorkSafeBC
+In particular, my main concerns are:
+- [Example: Termination of wage-loss benefits despite ongoing medical restrictions]
+- [Example: Medical evidence from my treating providers has not been addressed in decisions]
+- [Example: Delays or refusals to approve reasonable diagnostic tests (such as an MRI)]
+- [Example: Lack of clear written reasons answering key questions I have raised]
+I am not asking you to decide my claim. Rather, I am asking for your help to ensure that:
+- New and relevant evidence is properly considered
+- My questions receive clear, written answers
+- The processes set out in the Workers Compensation Act and WorkSafeBC policy are properly
+followed in my case
+If it would assist your office, I can provide copies of:
+- Key medical reports (for example, specialist reports, GP forms, diagnostic requisitions)
+- Correspondence with WorkSafeBC and/or the Review Division
+- Any prior decisions or reasons I have received
+I would also appreciate the opportunity to brief a member of your staff by phone or video
+conference at your convenience.
+My specific requests are:
+1. [Example: A written confirmation from WorkSafeBC of the current status of my claim and any
+planned reassessment or review.]
+2. [Example: A written response to the unanswered questions listed in my briefing note,
+including how new medical evidence has been considered.]
+3. [Optional: Example: If appropriate, a management-level review to determine whether the
+handling of my claim has been consistent with legislation, policy, and basic fairness.]
+I know your time is extremely limited, and I am grateful for any attention you or your staff are
+able to give this. If you would like any additional information or documentation, I can provide it
+within [24–48] hours.
+Thank you for your time and for your service to injured workers in British Columbia.
 Sincerely,
 [Your Full Name]
-[City/Community]`
+[Your phone number]
+[Your email address]
+[Optional: Your home city / riding]`
   },
   {
-    title: "MLA Escalation – Broken Promises",
-    to: "To: [MLA email] Cc: [MLA office email]",
+    title: "To your MLA",
+    to: "Subject: WorkSafeBC claim [Claim Number] – request for assistance and oversight",
     content: `Dear [MLA Name],
-I appreciate your office's prior assistance with my WorkSafeBC claim (Claim #[Claim Number]). You wrote on [date] that your office would [quote promise made]. As of today, [specific action] has not occurred. This has left me without [benefits/treatment/income/safety at work], while my medical providers still consider me unfit for [work/regular duties].
-I am requesting:
-1) Confirmation whether your office contacted WorkSafeBC as promised.
-2) If not, an explanation and timeline for when this will occur.
-3) If yes, any response from WorkSafeBC so I can address it in my Review/WCAT submissions.
-I am attaching a short summary of key dates and documents so your office has an accurate record. Thank you for helping ensure accountability in this process.
+My name is [Your Full Name]. I live in [your neighbourhood / city] in the riding of [Riding Name].
+I am writing to ask for your help and oversight regarding the handling of my WorkSafeBC claim
+([Claim Number]).
+On [date of injury], I was injured while working as a [job title, e.g., “warehouse worker,” “care
+aide,” “concrete cutter”]. Since then, I have been dealing with WorkSafeBC about [very short
+summary: e.g., wage-loss benefits, medical treatment, return to work].
+At this point, I am struggling with the following issues:
+- [Example: My wage-loss benefits were stopped even though my doctor still has me on
+restrictions.]
+- [Example: Medical reports from my doctor/physiotherapist do not appear to have been
+properly considered or explained in the decision.]
+- [Example: My employer has not cooperated with return-to-work or modified duties, and I am
+not sure what is being done about it.]
+- [Example: I have asked clear questions in writing but received no real answers, only repeated
+form letters.]
+I understand that you cannot personally decide my claim, and I am not asking you to override
+WorkSafeBC. I am asking for your help to:
+- Make sure my concerns and evidence are being taken seriously, and
+- Ensure that WorkSafeBC is following its own rules and obligations in my case.
+If your office is able to assist, I would be grateful if you could:
+1. Review a short summary of my situation and the key decisions so far; and
+2. Ask WorkSafeBC, through the appropriate channels, to provide clear, written answers to the
+main questions I have raised.
+I can provide:
+- Copies of recent decision letters from WorkSafeBC
+- Key medical reports (for example, my doctor’s current restrictions)
+- A short timeline of what has happened so far
+If someone from your office could speak with me by phone or email, I would appreciate the
+chance to explain my situation in a bit more detail.
+Thank you for taking the time to read this and for the work you do on behalf of people in our
+community.
 Sincerely,
 [Your Full Name]
-[City/Community]`
+[Your phone number]
+[Your email address]
+[Optional: Your home address or at least city/postal code so they can confirm you’re in the
+riding]`
   },
   {
-    title: "Employer Return-to-Work Pushback",
-    to: "To: [Employer/HR contact] Cc: [Case manager], [Union rep if any]",
-    content: `Hello [Name],
-I am writing regarding my return to work following my injury on [date]. My treating provider has outlined restrictions: [list restrictions]. I have tried to cooperate with proposed duties, but the current plan does not align with these restrictions and appears unsafe.
-Could you please:
-1) Provide a written description of the duties you propose, including weight limits, postures, repetition, and pace; and
-2) Confirm how these duties accommodate my restrictions.
-I have copied WorkSafeBC so they are aware of the challenges in returning to safe work. I want to return, but not at the expense of worsening my injury.
-Thank you,
-[Your Name]
-[Claim #]`
+    title: "Email to the Entire Legislature",
+    to: "Subject: Formal report to all Members – systemic concerns regarding [Agency Name]",
+    content: `Dear Honourable Members,
+I am writing to you as a citizen providing a formal report on what I believe to be an operational
+failure of [Agency Name]. My case (File/Claim #[File or Claim Number]) is offered as a case
+study in how legislation, policy, and principles of administrative justice can be undermined in
+practice.
+The attached file contains [brief description: e.g., “a complete email thread between myself, my
+elected representative’s office, and [Agency Name]” / “a summary of decisions and
+correspondence to date”]. It serves as real-time, documented evidence of the systemic issues
+outlined below.
+1. [Heading for Issue Area #1 – e.g., “Evidence Handling and Decision-Making”]
+• [Bullet 1 – short, factual description of what happened in this theme]
+• [Bullet 2 – another key fact or pattern]
+• [Bullet 3 – how this behaviour conflicts with law/policy/fairness, in your view]
+2. [Heading for Issue Area #2 – e.g., “Procedural Fairness and Process”]
+• [Bullet 1 – arbitrary/contradictory decisions, lack of investigation, etc.]
+• [Bullet 2 – failures to follow their own procedures or timelines]
+• [Bullet 3 – examples of non-answers or ignored questions]
+3. [Heading for Issue Area #3 – e.g., “Oversight and Transparency”]
+• [Bullet 1 – inaccurate or incomplete information given to an elected office, if applicable]
+• [Bullet 2 – how advocacy through an MLA/MP/etc. was neutralized or redirected into a “void”]
+• [Bullet 3 – problems with access to records, FOI, internal notes, or audit logs, if relevant]
+The Implications for All [Residents/Workers/Constituents] & for This Legislature
+If [Agency Name] can:
+• [Short line summarizing Issue Area #1 – e.g., “Disregard or minimize treating/primary
+evidence”],
+• [Short line summarizing Issue Area #2 – e.g., “Make contradictory decisions without
+investigation or explanation”],
+• [Short line summarizing Issue Area #3 – e.g., “Provide inaccurate or non-responsive
+information to elected offices”],
+• [Optional extra line – e.g., “Restrict oversight using internal ‘scope’ rules that it controls
+itself”],
+then no [worker/constituent] is secure, and the mechanisms of democratic accountability are
+weakened.
+This is not a dispute over [single outcome or diagnosis].
+It is a demonstration that the system’s checks and balances are failing in practice.
+The attached material is not just my story; it is a preview of what any Member may encounter
+when attempting to oversee this agency on behalf of their constituents.
+I am available to provide any further documentation that may assist. My complete file is
+available to any Member who wishes to verify this report.
+Respectfully,
+[Your Full Name]
+[City / Community]
+File/Claim #[File or Claim Number]
+[Phone Number]
+[Email Address]`
+  },
+  {
+    title: "Email to the Speaker",
+    to: "Subject: For the Speaker’s attention – concerns regarding oversight and [Agency Name]",
+    content: `Dear Honourable Speaker [Last Name],
+I am writing to you in your capacity as Speaker of the [Name of Legislature], to report issues I
+have encountered in how [Agency Name] interacts with Members’ offices and, by extension,
+with the Legislature’s oversight function.
+My case (File/Claim #[File or Claim Number]) is offered as a case study in systemic patterns,
+not as a request for adjudication of my individual matter.
+1. [Heading #1 – e.g., “Information Provided to Members”]
+• [Brief factual example of incomplete or incorrect information given to an MLA/MP office]
+• [Explanation that the Member relied on this information to decide how to proceed]
+• [Short line on how this undermines their ability to scrutinize the agency]
+2. [Heading #2 – e.g., “Neutralization of Oversight Efforts”]
+• [Example of specific, substantive questions raised through a Member’s office]
+• [Description of generic, non-responsive, or “out of scope” replies from the agency]
+• [Short line on how this channels oversight into narrow, agency-controlled pathways]
+3. [Heading #3 – e.g., “Implications for the Legislature”]
+• [Short statement about how these practices affect all Members’ ability to assist constituents]
+• [Short statement about risk to the Legislature’s scrutiny and accountability role]
+• [Optional: link to any particular committee/mandate if you know it, or leave general]
+Taken together, these patterns suggest that [Agency Name] can, in practice:
+• Provide incomplete or inaccurate information to Members’ offices;
+• Limit or avoid meaningful responses to oversight questions; and
+• Shape the scope of Member involvement through internal rules that it controls.
+This raises concerns not only for my own situation, but for the institution’s ability to hold public
+bodies to account.
+I respectfully request that your office:
+• Consider whether the issues described here may warrant attention through any appropriate
+parliamentary mechanism (such as referral to a committee or other process you deem suitable);
+and
+• Consider ways to ensure that Members are able to obtain accurate, complete information
+from [Agency Name] when carrying out their representative and oversight duties.
+I have attached a short summary and relevant correspondence between myself, my
+representative’s office, and [Agency Name]. I am willing to provide my complete file and any
+additional documentation that may assist.
+Thank you for your consideration and for your role in safeguarding the integrity of the
+Legislature.
+Respectfully,
+[Your Full Name]
+[City / Community]
+File/Claim #[File or Claim Number]
+[Phone Number]
+[Email Address]`
+  },
+  {
+    title: "Email to the Premier",
+    to: "Subject: Request for attention – systemic concerns regarding [Agency Name] and oversight",
+    content: `Dear Premier [Last Name],
+My name is [Your Full Name], and I live in [City / Community]. I am writing to bring to your
+attention systemic concerns about how [Agency Name] is operating and how it responds to
+oversight from elected representatives.
+I am not asking you to decide my individual file. I am asking you, as head of government, to
+ensure that public bodies under your government’s responsibility are acting lawfully, fairly, and
+in line with your stated commitments to [e.g., fairness, accountability, worker protection, etc.].
+Using my case (File/Claim #[File or Claim Number]) as an example, I have observed three main
+areas of concern:
+1. [Heading #1 – e.g., “Evidence and Decision-Making”]
+• [Brief description of how decisions appear inconsistent with treating/primary evidence]
+• [Example of internal opinions being preferred without clear reasoning]
+• [Note that requests for explanation produced generic or incomplete responses]
+2. [Heading #2 – e.g., “Procedural Fairness and Duties”]
+• [Example of contradictory decisions, unclear processes, missed timelines, etc.]
+• [Description of how duties owed by other parties (e.g., employers, service providers) do not
+seem to be enforced]
+• [Short line on limited opportunity to respond to new information or errors]
+3. [Heading #3 – e.g., “Oversight and Communication with Elected Offices”]
+• [Example of incomplete or inaccurate information being given to a representative’s office]
+• [Example of substantive questions being labelled “out of scope” or answered in a non-
+responsive way]
+• [Short line about how this neutralizes the representative’s ability to assist and to scrutinize]
+If [Agency Name] can:
+• Minimize or ignore treating/primary evidence,
+• Make contradictory or poorly explained decisions,
+• Fail to enforce duties owed under its governing framework, and
+• Provide non-responsive or inaccurate information to Members’ offices without effective
+correction,
+then both individual citizens and the broader system of democratic accountability are at risk.
+My requests to your office are:
+1. That you ensure the responsible Minister and ministry are made aware of these documented
+concerns and review them;
+2. That you seek assurances that [Agency Name] will:
+• Improve how it handles evidence, explains decisions, and enforces duties; and
+• Review how it communicates with Members’ offices and responds to oversight questions;
+and
+3. That you consider whether any broader review, directive, or other response is needed to
+align [Agency Name]’s practices with your government’s commitments.
+I have attached a short summary and key correspondence (including communications with my
+representative’s office and [Agency Name]). I am prepared to provide my complete file and any
+further documentation your staff may require.
+Thank you for your time and for your service to [Jurisdiction].
+Respectfully,
+[Your Full Name]
+[City / Community]
+File/Claim #[File or Claim Number]
+[Phone Number]
+[Email Address]`
   }
 ];
+
 
 export const documentationPowerPoints = [
   {
@@ -331,10 +530,31 @@ export const wcatCategories = [
     title: "Is my injury covered? – Acceptability & causation",
     cases: [
       {
+        id: "wcat-2004-06686",
+        citation: "WCAT-2004-06686",
         caseNumber: "2004-06686",
-        year: "2004",
-        title: "Injury with no clear diagnosis still compensable",
-        description: "Shows how a claim can be accepted as a personal injury under s.5(1) even without a definitive medical diagnosis by focusing on mechanism and evidence.",
+        year: 2004,
+        bodyPart: "general",
+        issueTags: ["acceptability", "causation", "no-clear-diagnosis"],
+        shortLabel: "Injury with no clear diagnosis still compensable",
+        whenToUse: "Use when the Board questions acceptability because the diagnosis is messy or evolving.",
+        facts:
+          "Shows how a claim can be accepted as a personal injury under s.5(1) even without a definitive medical diagnosis by focusing on mechanism and evidence.",
+        panelCaredAbout: [
+          "Consistency between mechanism of injury and medical observations",
+          "Presence of a physician opinion tying the condition to work",
+          "Reasoned explanation even without a perfect diagnostic label"
+        ],
+        howToUse: [
+          "Don’t rely on 'it happened at work and I felt awful' — build a coherent medical theory of the condition",
+          "Get a doctor to explicitly tie cause to work, not just document symptoms",
+          "Focus arguments on mechanism and evidence rather than a perfect label"
+        ],
+        phrasesToSteal: [
+          "The absence of a definitive diagnostic label does not defeat acceptability when the mechanism and evidence align.",
+          "Weight is given to medical opinions that actually address causation, not just symptom lists."
+        ],
+        decisionLink: null,
         strategyMoves: [
           "Don’t rely on 'it happened at work and I felt awful' — build a coherent medical theory of the condition",
           "Get a doctor to explicitly tie cause to work, not just document symptoms",
@@ -343,8 +563,17 @@ export const wcatCategories = [
         portableStrategy: "Even without a clean diagnosis, combine a clear mechanism with a medical opinion linking work to causation to ground acceptability under s.5(1)."
       },
       {
+        id: "wcat-2004-05173",
+        citation: "WCAT-2004-05173",
         caseNumber: "2004-05173",
-        year: "2004",
+        year: 2004,
+        bodyPart: "general",
+        issueTags: ["course-of-employment", "assessment-injury", "acceptability"],
+        phrasesToSteal: [
+          "Attendance at an employer-required FCE was part of employment, making the injury compensable.",
+          "Work-related testing that is required for advancement attracts coverage even when done off-site."
+        ],
+        decisionLink: null,
         title: "Injury during Functional Capacity Evaluation (FCE)",
         description: "Worker injured during an employer-required FCE for a promotion; WCAT held it occurred in the course of employment and was compensable.",
         strategyMoves: [
@@ -355,8 +584,17 @@ export const wcatCategories = [
         portableStrategy: "Always frame tests or assessments required for employment or promotion as work tasks, not medical treatment."
       },
       {
+        id: "wcat-2004-04737",
+        citation: "WCAT-2004-04737",
         caseNumber: "2004-04737",
-        year: "2004",
+        year: 2004,
+        bodyPart: "psych",
+        issueTags: ["mental-health", "consequential-injury", "acceptability"],
+        phrasesToSteal: [
+          "Consequential psychological injuries flowing from a physical assault were accepted under s.5(1).",
+          "WCAT preferred a mixed physical/psych framing over the narrower mental-disorder route."
+        ],
+        decisionLink: null,
         title: "Teacher assaulted; physical + mental injury",
         description: "Teacher assaulted by a student developed acute stress; WCAT compensated the psychological injury under s.5(1) as consequential to the physical injury.",
         strategyMoves: [
@@ -367,8 +605,17 @@ export const wcatCategories = [
         portableStrategy: "When mental health issues flow from a physical injury, argue them under s.5(1) as consequential injuries for broader coverage."
       },
       {
+        id: "wcat-2003-00254",
+        citation: "WCAT-2003-00254",
         caseNumber: "2003-00254",
-        year: "2003",
+        year: 2003,
+        bodyPart: "general",
+        issueTags: ["presumption", "course-of-employment", "environmental-risk"],
+        phrasesToSteal: [
+          "Applying the s.5(4) presumption, the sting was compensable because the job increased exposure to that risk.",
+          "The work activity created greater-than-normal exposure, satisfying course of employment."
+        ],
+        decisionLink: null,
         title: "Wasp sting at work",
         description: "Worker stung grabbing wood; WCAT applied the s.5(4) presumption and found it compensable because the work activity exposed the worker to that risk.",
         strategyMoves: [
@@ -378,8 +625,17 @@ export const wcatCategories = [
         portableStrategy: "For 'freak event' injuries, lead with where/while the worker was working and how duties created a higher-than-normal exposure to the risk."
       },
       {
+        id: "wcat-2007-02958",
+        citation: "WCAT-2007-02958",
         caseNumber: "2007-02958",
-        year: "2007",
+        year: 2007,
+        bodyPart: "cardiac",
+        issueTags: ["natural-progression", "causation", "internal-condition"],
+        phrasesToSteal: [
+          "Work factors were a significant trigger of the cardiac event despite pre-existing disease.",
+          "Material contribution analysis applied to internal conditions, not just traumatic injuries."
+        ],
+        decisionLink: null,
         title: "Work-related heart attack (natural causes vs work causes)",
         description: "Detailed analysis of whether a heart attack arose out of and in the course of employment, weighing pre-existing disease against work factors.",
         strategyMoves: [
@@ -395,8 +651,17 @@ export const wcatCategories = [
     title: "Pre-existing conditions, degenerative findings & cumulative trauma",
     cases: [
       {
+        id: "wcat-2006-01779",
+        citation: "WCAT-2006-01779",
         caseNumber: "2006-01779",
-        year: "2006",
+        year: 2006,
+        bodyPart: "back",
+        issueTags: ["cumulative-trauma", "jurisdiction", "pre-existing"],
+        phrasesToSteal: [
+          "The panel required the Board to consider cumulative effects rather than slicing injuries into isolated events.",
+          "Decision-makers cannot ignore relevant court direction when determining entitlement."
+        ],
+        decisionLink: null,
         title: "Cumulative effects & Board jurisdiction",
         description: "Confirms the Board must adjudicate entitlement based on cumulative effects of prior injuries, not just single incidents, and can’t ignore relevant court cases.",
         strategyMoves: [
@@ -406,8 +671,17 @@ export const wcatCategories = [
         portableStrategy: "When the Board/Review tries to narrow the issue, insist they address the overall disability picture rather than isolated incidents."
       },
       {
+        id: "wcat-2004-02912",
+        citation: "WCAT-2004-02912",
         caseNumber: "2004-02912",
-        year: "2004",
+        year: 2004,
+        bodyPart: "back",
+        issueTags: ["apportionment", "cumulative-trauma", "pre-existing"],
+        phrasesToSteal: [
+          "Non-work factors were not independent causes, so no portion could be apportioned away.",
+          "Where causes operate together to create one disability, apportionment is improper."
+        ],
+        decisionLink: null,
         title: "No apportionment when causes operate together",
         description: "Medical Review Panel found non-work causes didn’t independently produce a portion of disability; they acted together with the work injury, so WCAT said no apportionment under s.5(1).",
         strategyMoves: [
@@ -418,8 +692,17 @@ export const wcatCategories = [
         portableStrategy: "When apportionment is raised, force medical witnesses to answer whether any disability portion would exist without the work injury; if not, argue apportionment is improper."
       },
       {
+        id: "wcat-a2101129",
+        citation: "WCAT-A2101129",
         caseNumber: "A2101129",
-        year: "2021",
+        year: 2021,
+        bodyPart: "back",
+        issueTags: ["cumulative-trauma", "pre-existing", "aggravation"],
+        phrasesToSteal: [
+          "A series of minor events can be treated as one compensable personal injury under s.134(1).",
+          "Chronology of repeated strains showed aggravation of a pre-existing condition."
+        ],
+        decisionLink: null,
         title: "Repeated minor incidents = compensable injury",
         description: "Aggravation of a pre-existing condition from a series of incidents over time treated as a personal injury under s.134(1) even without one dramatic incident.",
         strategyMoves: [
@@ -431,7 +714,16 @@ export const wcatCategories = [
       },
       {
         caseNumber: "2011-01618",
-        year: "2011",
+        id: "wcat-2011-01618",
+        citation: "WCAT-2011-01618",
+        year: 2011,
+        bodyPart: "back",
+        issueTags: ["degenerative", "reopening", "significant-change"],
+        phrasesToSteal: [
+          "A significant worsening of the previously accepted degenerative condition justified reopening.",
+          "Reopening focused on change within the same condition, not a brand-new diagnosis."
+        ],
+        decisionLink: null,
         title: "Reopening where a degenerative condition worsens",
         description: "Explains how a claim that accepted a permanent aggravation of a degenerative condition can be reopened when that condition significantly worsens.",
         strategyMoves: [
@@ -447,8 +739,17 @@ export const wcatCategories = [
     title: "Mental disorder, bullying/harassment & late applications",
     cases: [
       {
+        id: "wcat-a1900037",
+        citation: "WCAT-A1900037",
         caseNumber: "A1900037",
-        year: "2019",
+        year: 2019,
+        bodyPart: "psych",
+        issueTags: ["mental-health", "accommodation", "significant-stressor"],
+        phrasesToSteal: [
+          "Refusal to accommodate the disability was treated as a significant workplace stressor.",
+          "Met both subjective and objective parts of the mental-disorder test."
+        ],
+        decisionLink: null,
         title: "Mental disorder from series of stressors; refusal to accommodate",
         description: "Sets out the subjective + objective test for mental-disorder claims and recognizes refusal to accommodate (by denying the condition) as a significant workplace stressor.",
         strategyMoves: [
@@ -459,8 +760,17 @@ export const wcatCategories = [
         portableStrategy: "When employers stonewall accommodation requests, document the pattern and argue it falls outside the s.5.1(1)(c) exclusion as an abusive stressor."
       },
       {
+        id: "wcat-2015-01712",
+        citation: "WCAT-2015-01712",
         caseNumber: "2015-01712",
-        year: "2015",
+        year: 2015,
+        bodyPart: "psych",
+        issueTags: ["mental-health", "employment-decision", "causation"],
+        phrasesToSteal: [
+          "The s.5.1(1)(c) exclusion is not absolute when employment decisions are too remote from the injury.",
+          "Focus on the proximate harmful stressors rather than the neutral label of the decision."
+        ],
+        decisionLink: null,
         title: "Employment-related decisions not always excluded",
         description: "Clarifies the s.5.1(1)(c) exclusion is not absolute; if the employment decision is too remote in the causation chain, entitlement may still exist.",
         strategyMoves: [
@@ -472,7 +782,16 @@ export const wcatCategories = [
       },
       {
         caseNumber: "2014-02791",
-        year: "2014",
+        id: "wcat-2014-02791",
+        citation: "WCAT-2014-02791",
+        year: 2014,
+        bodyPart: "psych",
+        issueTags: ["bullying", "mental-health", "significant-stressor"],
+        phrasesToSteal: [
+          "Bullying and harassment requires abusive or threatening conduct, not just rudeness.",
+          "The worker’s psychological injury tracked the targeted acts, not everyday friction."
+        ],
+        decisionLink: null,
         title: "Bullying & harassment vs 'just rudeness'",
         description: "Explains bullying/harassment must include abusive or threatening behaviour; mere rudeness or thoughtlessness doesn’t qualify.",
         strategyMoves: [
@@ -484,7 +803,16 @@ export const wcatCategories = [
       },
       {
         caseNumber: "2014-01272",
-        year: "2014",
+        id: "wcat-2014-01272",
+        citation: "WCAT-2014-01272",
+        year: 2014,
+        bodyPart: "psych",
+        issueTags: ["bullying", "guidelines", "mental-health"],
+        phrasesToSteal: [
+          "WorkSafeBC’s bullying and harassment guideline was used to satisfy the objective stressor test.",
+          "Mapping facts to the guideline showed the conduct met the significant stressor threshold."
+        ],
+        decisionLink: null,
         title: "Using OHS bullying & harassment guidelines",
         description: "Applies WorkSafeBC’s OHS Guideline to interpret what qualifies as a significant workplace stressor, meeting both objective and subjective standards.",
         strategyMoves: [
@@ -496,7 +824,16 @@ export const wcatCategories = [
       },
       {
         caseNumber: "2014-01368",
-        year: "2014",
+        id: "wcat-2014-01368",
+        citation: "WCAT-2014-01368",
+        year: 2014,
+        bodyPart: "psych",
+        issueTags: ["late-filing", "mental-health", "special-circumstances"],
+        phrasesToSteal: [
+          "Psychiatric symptoms that impaired filing were special circumstances excusing lateness.",
+          "Continuity of symptoms and treatment supported the late application."
+        ],
+        decisionLink: null,
         title: "Late application where the mental disorder delayed filing",
         description: "Analyzes a late application where the mental disorder itself made timely filing impossible, accepting it as special circumstances.",
         strategyMoves: [
@@ -507,7 +844,16 @@ export const wcatCategories = [
       },
       {
         caseNumber: "A1701687",
-        year: "2017",
+        id: "wcat-a1701687",
+        citation: "WCAT-A1701687",
+        year: 2017,
+        bodyPart: "psych",
+        issueTags: ["mental-health", "injury-date", "late-filing"],
+        phrasesToSteal: [
+          "Injury date is when the worker both reacted psychologically and connected it to work.",
+          "That timing can reset limitation periods when delays before realization were reasonable."
+        ],
+        decisionLink: null,
         title: "Date of injury in mental-disorder claims",
         description: "Explains how to determine the injury date (psychological reaction + connection to work) and assess special circumstances for late filing.",
         strategyMoves: [
@@ -524,7 +870,16 @@ export const wcatCategories = [
     cases: [
       {
         caseNumber: "2007-00430",
-        year: "2007",
+        id: "wcat-2007-00430",
+        citation: "WCAT-2007-00430",
+        year: 2007,
+        bodyPart: "general",
+        issueTags: ["timelines", "decision-status", "communication"],
+        phrasesToSteal: [
+          "A communication that resolves entitlement is a decision that triggers appeal timelines.",
+          "Distinguish findings of fact from appealable decisions when asserting rights."
+        ],
+        decisionLink: null,
         title: "Finding of fact vs reviewable decision",
         description: "Three-person panel discusses whether a Board communication is just a finding of fact or an appealable decision that triggers timelines.",
         strategyMoves: [
@@ -535,7 +890,16 @@ export const wcatCategories = [
       },
       {
         caseNumber: "2007-00798",
-        year: "2007",
+        id: "wcat-2007-00798",
+        citation: "WCAT-2007-00798",
+        year: 2007,
+        bodyPart: "general",
+        issueTags: ["timelines", "decision-status", "communication"],
+        phrasesToSteal: [
+          "Implementation letters can still be appealable if they resolve entitlement.",
+          "Analyze whether the letter changes rights rather than assuming it is informational."
+        ],
+        decisionLink: null,
         title: "Informational letter vs adjudicative decision",
         description: "Clarifies when a letter implementing a WCAT decision is merely informational versus a new appealable decision.",
         strategyMoves: [
@@ -546,7 +910,15 @@ export const wcatCategories = [
       },
       {
         caseNumber: "2009-00149",
-        year: "2009",
+        id: "wcat-2009-00149",
+        citation: "WCAT-2009-00149",
+        year: 2009,
+        bodyPart: "general",
+        issueTags: ["communication", "timelines", "appeal-rights"],
+        phrasesToSteal: [
+          "Simply disclosing file materials is not proper decision communication for limitation purposes.",
+          "Timelines do not run until an actual decision is communicated."],
+        decisionLink: null,
         title: "Disclosure of file is NOT proper decision communication",
         description: "Holds that simply disclosing a file is not an appropriate method of communicating a decision for timeline purposes.",
         strategyMoves: [
@@ -557,7 +929,16 @@ export const wcatCategories = [
       },
       {
         caseNumber: "2008-03461 / 2008-03567",
-        year: "2008",
+        id: "wcat-2008-03461-2008-03567",
+        citation: "WCAT-2008-03461 / 2008-03567",
+        year: 2008,
+        bodyPart: "general",
+        issueTags: ["timelines", "communication", "oral-decisions"],
+        phrasesToSteal: [
+          "Oral and written communications can start clocks at different times — pin down the actual communication date.",
+          "Staggered communication does not advance limitation periods before the decision is conveyed."
+        ],
+        decisionLink: null,
         title: "Oral vs written communication and when time limits start",
         description: "Explains how oral decisions and staggered communications affect when clocks start on review/appeal deadlines.",
         strategyMoves: [
@@ -568,7 +949,16 @@ export const wcatCategories = [
       },
       {
         caseNumber: "2004-06708 / 2004-03907",
-        year: "2004",
+        id: "wcat-2004-06708-2004-03907",
+        citation: "WCAT-2004-06708 / 2004-03907",
+        year: 2004,
+        bodyPart: "general",
+        issueTags: ["communication", "timelines", "reconsideration"],
+        phrasesToSteal: [
+          "No communication means the s.96(4) 75-day limit never started.",
+          "Failure to communicate keeps reconsideration and appeal rights alive."
+        ],
+        decisionLink: null,
         title: "No communication = no 75-day limit running",
         description: "Hold that if the Board fails to communicate a decision, it isn’t a decision for s.96(4) purposes, so reconsideration and appeal timelines aren’t triggered.",
         strategyMoves: [
@@ -579,7 +969,16 @@ export const wcatCategories = [
       },
       {
         caseNumber: "2006-02121 / 2006-02669",
-        year: "2006",
+        id: "wcat-2006-02121-2006-02669",
+        citation: "WCAT-2006-02121 / 2006-02669",
+        year: 2006,
+        bodyPart: "general",
+        issueTags: ["reconsideration", "timelines", "communication"],
+        phrasesToSteal: [
+          "Reconsideration must be communicated within 75 days or it is out of time.",
+          "The Board doesn’t get endless do-overs beyond the statutory limit."
+        ],
+        decisionLink: null,
         title: "75-day limit on Board reconsideration",
         description: "Says the Board cannot reconsider an original decision unless the reconsideration decision is communicated within 75 days; no endless do-overs.",
         strategyMoves: [
@@ -590,7 +989,15 @@ export const wcatCategories = [
       },
       {
         caseNumber: "2004-03983",
-        year: "2004",
+        id: "wcat-2004-03983",
+        citation: "WCAT-2004-03983",
+        year: 2004,
+        bodyPart: "general",
+        issueTags: ["reconsideration", "timelines", "appeal-rights"],
+        phrasesToSteal: [
+          "A second decision issued after 75 days is a fresh, reviewable decision.",
+          "Late corrections can be appealed as new decisions."],
+        decisionLink: null,
         title: "Second decision after 75 days is reviewable",
         description: "If the Board issues a second decision more than 75 days after the first to correct an error, that second decision is reviewable.",
         strategyMoves: [
@@ -601,7 +1008,16 @@ export const wcatCategories = [
       },
       {
         caseNumber: "2004-03709",
-        year: "2004",
+        id: "wcat-2004-03709",
+        citation: "WCAT-2004-03709",
+        year: 2004,
+        bodyPart: "general",
+        issueTags: ["natural-justice", "jurisdiction", "procedural-fairness"],
+        phrasesToSteal: [
+          "WCAT may take jurisdiction when the Board investigated but failed to decide an issue.",
+          "Tribunal can cure certain Review Division procedural unfairness."
+        ],
+        decisionLink: null,
         title: "WCAT can cure some Review Division natural-justice breaches",
         description: "WCAT can take jurisdiction over an issue the Board investigated but never clearly decided and may cure certain procedural unfairness from Review Division.",
         strategyMoves: [
@@ -617,7 +1033,16 @@ export const wcatCategories = [
     cases: [
       {
         caseNumber: "2006-03608",
-        year: "2006",
+        id: "wcat-2006-03608",
+        citation: "WCAT-2006-03608",
+        year: 2006,
+        bodyPart: "general",
+        issueTags: ["board-medical-advisor", "policy", "weight-of-evidence"],
+        phrasesToSteal: [
+          "Board medical advisors provide medical input, not policy interpretation.",
+          "Internal guidelines cannot override binding Board policy when weighing opinions."
+        ],
+        decisionLink: null,
         title: "Limits on Board Medical Advisors & internal guidelines",
         description: "A Board Medical Advisor’s job is to provide medical expertise, not interpret/apply policy; the Board can’t rely on internal guidelines that override binding policy.",
         strategyMoves: [
@@ -634,7 +1059,16 @@ export const wcatCategories = [
     cases: [
       {
         caseNumber: "2004-06682",
-        year: "2004",
+        id: "wcat-2004-06682",
+        citation: "WCAT-2004-06682",
+        year: 2004,
+        bodyPart: "spine",
+        issueTags: ["reopening", "imaging", "significant-change"],
+        phrasesToSteal: [
+          "New imaging clarified the same condition rather than creating a new one, supporting reopening.",
+          "Significant change was tied back to the originally accepted condition."
+        ],
+        decisionLink: null,
         title: "New imaging clarifies same condition → reopening allowed",
         description: "CT scan gave a new label, but WCAT held the underlying condition was the same, allowing reopening under s.96(2).",
         strategyMoves: [
@@ -646,7 +1080,16 @@ export const wcatCategories = [
       },
       {
         caseNumber: "2004-06831",
-        year: "2004",
+        id: "wcat-2004-06831",
+        citation: "WCAT-2004-06831",
+        year: 2004,
+        bodyPart: "general",
+        issueTags: ["new-matter", "diagnosis", "reopening"],
+        phrasesToSteal: [
+          "A brand-new diagnosis that was never adjudicated is a new matter, not a reopening.",
+          "Identify whether the specific condition was decided before choosing the path forward."
+        ],
+        decisionLink: null,
         title: "Truly new diagnosis = new matter, not reopening",
         description: "Explains that a new diagnosis is a new matter if the condition was never adjudicated, not a reopening of a previously decided matter.",
         strategyMoves: [
@@ -657,7 +1100,16 @@ export const wcatCategories = [
       },
       {
         caseNumber: "2004-04921 / 2004-04632",
-        year: "2004",
+        id: "wcat-2004-04921-2004-04632",
+        citation: "WCAT-2004-04921 / 2004-04632",
+        year: 2004,
+        bodyPart: "general",
+        issueTags: ["reopening", "new-matter", "treatment-requests"],
+        phrasesToSteal: [
+          "Reopening applies only to matters previously decided; new treatments are new matters.",
+          "Map each request to whether it was ever adjudicated to pick the right path."
+        ],
+        decisionLink: null,
         title: "What is a ‘matter previously decided’?",
         description: "Clarify that reopening only applies to matters previously decided; brand-new treatment requests or unadjudicated conditions are new matters.",
         strategyMoves: [
@@ -673,7 +1125,16 @@ export const wcatCategories = [
     cases: [
       {
         caseNumber: "2005-01035",
-        year: "2005",
+        id: "wcat-2005-01035",
+        citation: "WCAT-2005-01035",
+        year: 2005,
+        bodyPart: "general",
+        issueTags: ["parking-lot", "course-of-employment", "presumption"],
+        phrasesToSteal: [
+          "Injuries in employer-controlled parking lots can attract the s.5(4) presumption.",
+          "Returning from lunch kept the worker in the course of employment."
+        ],
+        decisionLink: null,
         title: "Parking lot injury returning from lunch is compensable",
         description: "Worker hit by a car in employer’s parking lot returning from lunch; WCAT applied s.5(4) presumption and found it compensable.",
         strategyMoves: [
@@ -685,7 +1146,16 @@ export const wcatCategories = [
       },
       {
         caseNumber: "2007-02634",
-        year: "2007",
+        id: "wcat-2007-02634",
+        citation: "WCAT-2007-02634",
+        year: 2007,
+        bodyPart: "general",
+        issueTags: ["parking-lot", "course-of-employment", "factors"],
+        phrasesToSteal: [
+          "Parking-lot coverage depends on ownership/control, purpose of activity, and commuting status.",
+          "Use a factor checklist to show the injury remained in the course of employment."
+        ],
+        decisionLink: null,
         title: "Factors for parking-lot injuries",
         description: "Sets out factors WCAT considers for parking-lot injuries and summarizes multiple earlier decisions.",
         strategyMoves: [
@@ -696,7 +1166,16 @@ export const wcatCategories = [
       },
       {
         caseNumber: "A1601379",
-        year: "2016",
+        id: "wcat-a1601379",
+        citation: "WCAT-A1601379",
+        year: 2016,
+        bodyPart: "general",
+        issueTags: ["course-of-employment", "good-samaritan", "travelling-worker"],
+        phrasesToSteal: [
+          "Stopping briefly to render aid was not a substantial deviation from the course of employment.",
+          "Professional duties aligned with helping, keeping travelling worker status intact."
+        ],
+        decisionLink: null,
         title: "Helping an injured stranger still in course of employment",
         description: "Registered nurse stopped to help a stabbed person while returning from dropping off a co-worker; WCAT found no substantial deviation and maintained course of employment status.",
         strategyMoves: [
@@ -707,7 +1186,16 @@ export const wcatCategories = [
       },
       {
         caseNumber: "2006-02659",
-        year: "2006",
+        id: "wcat-2006-02659",
+        citation: "WCAT-2006-02659",
+        year: 2006,
+        bodyPart: "general",
+        issueTags: ["travelling-worker", "course-of-employment", "commuting"],
+        phrasesToSteal: [
+          "Workers moving between sites are travelling workers even without paid travel time.",
+          "Injuries en route stay in the course of employment absent a substantial personal deviation."
+        ],
+        decisionLink: null,
         title: "Community health workers as travelling workers",
         description: "Confirms workers whose jobs require moving between locations (like community health workers) are treated as travelling workers even if travel time isn’t paid.",
         strategyMoves: [
