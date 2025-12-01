@@ -1,6 +1,6 @@
 import { Shield } from 'lucide-react';
 
-const Landing = ({ onStart }) => (
+const Landing = ({ onStart, onNavigate }) => (
   <div className="max-w-4xl mx-auto px-4 py-12">
     <div className="text-center mb-12">
       <Shield className="w-16 h-16 text-red-600 mx-auto mb-6" />
@@ -47,7 +47,12 @@ const Landing = ({ onStart }) => (
     <div className="border-t pt-8">
       <h3 className="font-bold mb-4">Want to help build this?</h3>
       <p className="mb-4">Share your anonymous story to help expose patterns.</p>
-      <button className="bg-gray-800 text-white px-6 py-2 rounded">Upload Your Story (Secure)</button>
+      <button
+        className="bg-gray-800 text-white px-6 py-2 rounded"
+        onClick={() => onNavigate && onNavigate('tellYourStory')}
+      >
+        Upload Your Story (Secure)
+      </button>
     </div>
   </div>
 );
