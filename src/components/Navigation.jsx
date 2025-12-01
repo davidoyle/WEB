@@ -3,14 +3,14 @@ import Link from 'next/link'
 import { BookOpen, Clock, FileText, Home, Mail, Menu, Shield, Target, X } from 'lucide-react'
 
 const navLinks = [
-  { href: '/#landing', label: 'Home', Icon: Home },
-  { href: '/#start-here', label: 'Start Here', Icon: Target },
-  { href: '/#first-30', label: 'First 30 Minutes', Icon: Clock },
-  { href: '/#documentation', label: 'Docs', Icon: FileText },
-  { href: '/#pressure', label: 'Pressure', Icon: Target },
-  { href: '/#templates', label: 'Email Templates', Icon: Mail },
-  { href: '/#why-silent', label: 'Why Silent', Icon: FileText },
-  { href: '/#how-to-use', label: 'How To Use', Icon: BookOpen },
+  { href: '/', label: 'Home', Icon: Home },
+  { href: '/start-here', label: 'Start Here', Icon: Target },
+  { href: '/first-30-minutes', label: 'First 30 Minutes', Icon: Clock },
+  { href: '/documentation', label: 'Docs', Icon: FileText },
+  { href: '/pressure-points', label: 'Pressure', Icon: Target },
+  { href: '/templates', label: 'Email Templates', Icon: Mail },
+  { href: '/why-silent', label: 'Why Silent', Icon: FileText },
+  { href: '/how-to-use', label: 'How To Use', Icon: BookOpen },
   { href: '/wcat', label: 'WCAT Armory', Icon: BookOpen },
   { href: '/stories', label: 'Tell Your Story', Icon: Mail },
 ]

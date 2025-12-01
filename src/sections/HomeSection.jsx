@@ -9,11 +9,11 @@ const wcatCaseLookup = Object.fromEntries(
 )
 
 const moveTargets = {
-  documentation: '#documentation',
-  pressure: '#pressure',
-  templates: '#templates',
+  documentation: '/documentation',
+  pressure: '/pressure-points',
+  templates: '/templates',
   wcat: '/wcat',
-  howtouse: '#how-to-use',
+  howtouse: '/how-to-use',
 }
 
 const HomeSection = () => (
@@ -66,7 +66,7 @@ const HomeSection = () => (
               <h4 className="mb-2 font-semibold text-gray-900">Your next moves:</h4>
               <ul className="space-y-1">
                 {situation.nextMoves.map((move, i) => {
-                  const href = moveTargets[move.section] || '#start-here'
+                  const href = moveTargets[move.section] || '/start-here'
                   return (
                     <li key={i} className="flex items-center text-blue-600 hover:underline">
                       <ExternalLink className="mr-2 h-4 w-4" />

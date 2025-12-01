@@ -27,7 +27,7 @@ const LandingSection = () => (
 
     <div className="mt-10 flex flex-col items-center gap-4">
       <Link
-        href="#start-here"
+        href="/start-here"
         className="w-full md:w-auto rounded-lg bg-red-600 px-8 py-3 font-semibold text-white shadow-sm transition hover:bg-red-700"
       >
         Start with the map
