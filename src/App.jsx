@@ -11,6 +11,7 @@ import WhySilent from './sections/WhySilent';
 import Engagement from './sections/Engagement';
 import WCATToolkit from './sections/WCATToolkit';
 import HowToUse from './sections/HowToUse';
+import TellYourStory from './sections/TellYourStory.jsx';
 
 const App = () => {
   const [activeSection, setActiveSection] = useState('landing');
@@ -24,7 +25,7 @@ const App = () => {
   const renderContent = () => {
     switch (activeSection) {
       case 'landing':
-        return <Landing onStart={() => handleNavigate('home')} />;
+        return <Landing onStart={() => handleNavigate('home')} onNavigate={handleNavigate} />;
       case 'home':
         return <Home onNavigate={handleNavigate} />;
       case 'first30':
@@ -45,6 +46,8 @@ const App = () => {
         return <WCATToolkit />;
       case 'howtouse':
         return <HowToUse />;
+      case 'tellYourStory':
+        return <TellYourStory onNavigate={handleNavigate} />;
       default:
         return <Landing onStart={() => handleNavigate('home')} />;
     }
