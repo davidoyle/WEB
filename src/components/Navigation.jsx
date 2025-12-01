@@ -12,7 +12,7 @@ const navLinks = [
   { href: '/why-silent', label: 'Why Silent', Icon: FileText },
   { href: '/how-to-use', label: 'How To Use', Icon: BookOpen },
   { href: '/wcat', label: 'WCAT Armory', Icon: BookOpen },
-  { href: '/stories', label: 'Tell Your Story', Icon: Mail },
+  { href: '/tell-your-story', label: 'Tell Your Story', Icon: Mail },
 ]
 
 const Navigation = () => {
