@@ -1,7 +1,8 @@
-import { Shield } from 'lucide-react';
+import Link from 'next/link'
+import { Shield } from 'lucide-react'
 
-const Landing = ({ onStart, onNavigate }) => (
-  <section className="max-w-4xl mx-auto px-4 py-12">
+const LandingSection = () => (
+  <section className="section-shell" id="landing">
     <div className="text-center mb-12">
       <Shield className="w-16 h-16 text-red-600 mx-auto mb-6" />
       <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -25,23 +26,21 @@ const Landing = ({ onStart, onNavigate }) => (
     </div>
 
     <div className="mt-10 flex flex-col items-center gap-4">
-      <button
-        type="button"
-        onClick={onStart}
-        className="w-full md:w-auto bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded-lg shadow-sm transition"
+      <Link
+        href="#start-here"
+        className="w-full md:w-auto rounded-lg bg-red-600 px-8 py-3 font-semibold text-white shadow-sm transition hover:bg-red-700"
       >
         Start with the map
-      </button>
+      </Link>
 
-      <button
-        type="button"
-        onClick={() => onNavigate && onNavigate('tellYourStory')}
-        className="w-full md:w-auto border border-gray-800 text-gray-900 px-8 py-3 rounded-lg hover:bg-gray-900 hover:text-white transition"
+      <Link
+        href="/stories"
+        className="w-full md:w-auto rounded-lg border border-gray-800 px-8 py-3 text-gray-900 transition hover:bg-gray-900 hover:text-white"
       >
         Tell your story (anonymous)
-      </button>
+      </Link>
     </div>
   </section>
 );
 
-export default Landing;
+export default LandingSection

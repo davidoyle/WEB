@@ -1,19 +1,19 @@
-import BeforeYouDoAnything from '../components/BeforeYouDoAnything';
-import { first30MinutesSteps } from '../data/content';
+import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection'
+import { first30MinutesSteps } from '../data/content'
 
-const First30Minutes = () => (
-  <div className="max-w-4xl mx-auto">
-    <BeforeYouDoAnything />
-    <div className="text-center mb-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-4">The First 30 Minutes After WorkSafeBC Bullshit</h1>
-      <p className="text-gray-600">You just opened a letter or portal message and your stomach dropped. Don't let this moment disappear.</p>
+const First30MinutesSection = () => (
+  <div className="section-shell" id="first-30">
+    <BeforeYouDoAnythingSection />
+    <div className="mb-8 text-center">
+      <h1 className="section-title">The First 30 Minutes After WorkSafeBC Bullshit</h1>
+      <p className="section-lead">You just opened a letter or portal message and your stomach dropped. Don't let this moment disappear.</p>
     </div>
     <div className="space-y-6">
       {first30MinutesSteps.map((step, index) => (
-        <div key={index} className="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500">
+        <div key={index} className="card border-l-4 border-blue-500">
           <div className="flex items-start">
-            <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-              <span className="text-blue-800 font-bold text-lg">{index + 1}</span>
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100">
+              <span className="text-lg font-bold text-blue-800">{index + 1}</span>
             </div>
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
@@ -44,6 +44,6 @@ const First30Minutes = () => (
       ))}
     </div>
   </div>
-);
+)
 
-export default First30Minutes;
+export default First30MinutesSection

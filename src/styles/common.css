@@ -1,0 +1,35 @@
+.section-shell {
+  @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
+}
+
+.section-title {
+  @apply mb-4 text-3xl font-bold text-gray-900;
+}
+
+.section-lead {
+  @apply mx-auto max-w-3xl text-gray-600;
+}
+
+.card {
+  @apply rounded-xl border border-gray-200 bg-white p-6 shadow-md;
+}
+
+.callout {
+  @apply mb-8 rounded-r-lg border-l-4 border-red-500 bg-gradient-to-r from-red-50 to-orange-50 p-6;
+}
+
+.nav-link {
+  @apply rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white;
+}
+
+.filter-panel {
+  @apply mb-8 rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:p-6;
+}
+
+.filter-label {
+  @apply flex flex-col text-sm font-semibold text-gray-700;
+}
+
+.filter-input {
+  @apply mt-1 rounded-lg border border-gray-300 px-3 py-2 text-gray-800 focus:border-indigo-500 focus:outline-none;
+}
