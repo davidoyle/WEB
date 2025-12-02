@@ -30,7 +30,7 @@ const Landing = ({ onStart, onNavigate }) => (
         onClick={onStart}
         className="w-full md:w-auto bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded-lg shadow-sm transition"
       >
-        Start with the map
+        Start Here, Where Are You Getting Screwed? 
       </button>
 
       <button
