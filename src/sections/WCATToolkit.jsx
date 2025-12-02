@@ -4,16 +4,6 @@ import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection'
 import { wcatCases } from '../wcat'
 
 const deriveTagFamilies = (tags) => {
-  if (!Array.isArray(tags)) return []
-
-  const normalized = tags
-    .map((tag) => (typeof tag === 'string' ? tag.trim() : String(tag ?? '').trim()))
-    .filter(Boolean)
-
-  return Array.from(new Set(normalized))
-}
-
-const deriveTagFamilies = (tags) => {
   if (!Array.isArray(tags)) return [];
 
   const normalized = tags
