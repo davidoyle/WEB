@@ -59,10 +59,22 @@ const StoryForm = ({ onSuccess }) => {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      let data
+      const contentType = response.headers.get('content-type') || ''
 
-      if (!data.ok) {
-        throw new Error(data.error || 'Submission failed');
+      try {
+        if (contentType.includes('application/json')) {
+          data = await response.json()
+        } else {
+          const text = await response.text()
+          throw new Error(text || 'Unexpected response from server.')
+        }
+      } catch (parseError) {
+        throw new Error('Unexpected response from server.')
+      }
+
+      if (!response.ok || !data?.ok) {
+        throw new Error(data?.error || 'Submission failed')
       }
 
       setStatus('success');

@@ -1,5 +1,5 @@
 import { Resend } from 'resend'
-import { supabase } from '../../lib/supabaseClient'
+import { getSupabaseClient } from '../../lib/supabaseClient'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 const notifyEmail = process.env.NOTIFY_EMAIL || 'dxddoyle@gmail.com'
@@ -9,11 +9,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ ok: false, error: 'Method not allowed' })
   }
 
-  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY) {
-    return res.status(500).json({ ok: false, error: 'Supabase environment variables are missing.' })
-  }
-
   try {
+    const supabase = getSupabaseClient()
+
     const {
       name,
       phone,
@@ -70,6 +68,9 @@ ${story}
     return res.status(200).json({ ok: true })
   } catch (err) {
     console.error('Error in /api/story:', err)
+    if (err.message === 'Supabase environment variables are missing.') {
+      return res.status(500).json({ ok: false, error: err.message })
+    }
     return res.status(500).json({ ok: false, error: 'Server error' })
   }
 }
