@@ -53,23 +53,25 @@ const StoryForm = ({ onSuccess }) => {
     setStatus('loading');
 
     try {
-      const response = await fetch('/api/submit-story', {
+      const response = await fetch('/api/story', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to submit your story. Please try again.');
+      const data = await response.json();
+
+      if (!data.ok) {
+        throw new Error(data.error || 'Submission failed');
       }
 
       setStatus('success');
-      setStatusMessage('Thank you for sharing your story. We appreciate your trust.');
+      setStatusMessage('Thank you. Your story has been submitted.');
       setFormData(initialFormState);
       if (onSuccess) onSuccess();
     } catch (error) {
       setStatus('error');
-      setStatusMessage(error.message || 'Something went wrong. Please try again.');
+      setStatusMessage(error.message || 'Something went wrong');
     }
   };
 

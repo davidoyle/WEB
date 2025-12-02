@@ -26,7 +26,8 @@ const ISSUE_OPTIONS = [
 const TellYourStory = ({ onNavigate }) => {
   const [form, setForm] = useState(initialForm);
   const [status, setStatus] = useState('idle');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -52,30 +53,31 @@ const TellYourStory = ({ onNavigate }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
-    setErrorMessage('');
+    setError(null);
+    setSuccess(null);
 
     try {
-      const res = await fetch('/api/submit-story', {
+      const response = await fetch('/api/story', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
 
-      const data = await res.json().catch(() => ({}));
+      const data = await response.json();
 
-      if (!res.ok || data?.ok === false) {
-        throw new Error(data?.error || 'Request failed');
+      if (!data.ok) {
+        throw new Error(data.error || 'Submission failed');
       }
 
       setStatus('success');
+      setSuccess('Thank you. Your story has been submitted.');
       setForm(initialForm);
       if (typeof window !== 'undefined') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     } catch (err) {
-      console.error(err);
       setStatus('error');
-      setErrorMessage(err.message || 'Something went wrong while submitting your story.');
+      setError(err.message || 'Something went wrong');
     }
   };
 
@@ -92,14 +94,14 @@ const TellYourStory = ({ onNavigate }) => {
         witnesses — will be redacted. You can also choose to keep your story fully private. This is completely free.
       </p>
 
-      {status === 'success' && (
+      {success && (
         <div className="mb-6 rounded-lg border border-green-200 bg-green-50 p-4 text-green-800">
-          Thank you. Your story has been submitted. We&apos;ll review it and be in touch if we can.
+          {success}
         </div>
       )}
       {status === 'error' && (
         <div className="mb-6 rounded-lg border border-red-200 bg-red-50 p-4 text-red-800">
-          {errorMessage || 'Something went wrong while submitting your story. Please try again later.'}
+          {error || 'Something went wrong while submitting your story. Please try again later.'}
         </div>
       )}
 
