@@ -44,8 +44,7 @@ const StoryForm = ({ onSuccess }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
     setStatusMessage('');
 
     if (!validate()) return;
@@ -88,7 +87,13 @@ const StoryForm = ({ onSuccess }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow space-y-4">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit();
+      }}
+      className="bg-white p-6 rounded-lg shadow space-y-4"
+    >
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-700">
           Name*
