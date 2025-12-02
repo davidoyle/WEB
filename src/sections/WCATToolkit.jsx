@@ -3,7 +3,7 @@ import { BookOpen, ChevronDown } from 'lucide-react'
 import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection'
 import { wcatCases } from '../wcat'
 
-const normalizeIssueTags = (tags) => {
+const deriveTagFamilies = (tags) => {
   if (!Array.isArray(tags)) return []
 
   const normalized = tags
@@ -12,6 +12,16 @@ const normalizeIssueTags = (tags) => {
 
   return Array.from(new Set(normalized))
 }
+
+const deriveTagFamilies = (tags) => {
+  if (!Array.isArray(tags)) return [];
+
+  const normalized = tags
+    .map((tag) => (typeof tag === 'string' ? tag.trim() : String(tag ?? '').trim()))
+    .filter(Boolean);
+
+  return Array.from(new Set(normalized));
+};
 
 const getCaseId = (caseItem, fallback) =>
   caseItem?.id || caseItem?.caseNumber?.toLowerCase().replace(/[^a-z0-9]+/g, '-') || fallback?.toString()
@@ -31,14 +41,10 @@ const WCATToolkit = () => {
   const categories = useMemo(() => groupCategories(cases), [cases])
   const [expandedCases, setExpandedCases] = useState(() =>
     categories.map((category) => (category.cases?.length ? 0 : -1)),
-  )
-  const [query, setQuery] = useState('')
-  const [selectedBodyPart, setSelectedBodyPart] = useState(null)
-  const [selectedTag, setSelectedTag] = useState(null)
-
-  useEffect(() => {
-    setExpandedCases(categories.map((category) => (category.cases?.length ? 0 : -1)))
-  }, [categories])
+  );
+  const [query, setQuery] = useState('');
+  const [selectedBodyPart, setSelectedBodyPart] = useState(null);
+  const [selectedTag, setSelectedTag] = useState(null);
 
   const totalCases = useMemo(
     () => categories.reduce((sum, category) => sum + (category.cases?.length || 0), 0),
@@ -73,7 +79,7 @@ const WCATToolkit = () => {
   const allIssueTags = useMemo(() => {
     const tags = new Set()
     categories.forEach((category) => {
-      category.cases?.forEach((c) => normalizeIssueTags(c.issueTags).forEach((family) => tags.add(family)))
+      category.cases?.forEach((c) => deriveTagFamilies(c.issueTags).forEach((family) => tags.add(family)))
     })
     return Array.from(tags).sort()
   }, [categories])
@@ -85,7 +91,7 @@ const WCATToolkit = () => {
     return categories
       .map((category) => {
         const filteredCases = category.cases?.filter((caseItem) => {
-          const caseFamilies = normalizeIssueTags(caseItem.issueTags)
+          const caseFamilies = deriveTagFamilies(caseItem.issueTags)
           const matchesTag = !normalizedTag || caseFamilies.some((family) => family.toLowerCase().includes(normalizedTag))
           const matchesBody = !selectedBodyPart || caseItem.bodyPart === selectedBodyPart
           const haystack = [caseItem.shortLabel, caseItem.title, caseItem.whenToUse, caseItem.facts, caseItem.description]
