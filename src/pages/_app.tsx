@@ -9,10 +9,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   const [todos, setTodos] = useState<Todo[]>([]);
 
   useEffect(() => {
-    if (!supabase) return;
+    const client = supabase;
+    if (!client) return;
 
     const getTodos = async () => {
-      const { data, error } = await supabase.from("todos").select();
+      const { data, error } = await client.from("todos").select();
 
       if (error) {
         console.error("Error fetching todos", error);
