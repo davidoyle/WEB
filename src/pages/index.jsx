@@ -1,7 +1,6 @@
-import Head from 'next/head';
-import dynamic from 'next/dynamic';
-
-const App = dynamic(() => import('../App'), { ssr: false });
+import Head from 'next/head'
+import Navigation from '../components/Navigation'
+import LandingSection from '../sections/Landing'
 
 export default function HomePage() {
   return (
@@ -10,7 +9,10 @@ export default function HomePage() {
         <title>Worker&apos;s Toolkit</title>
         <meta name="description" content="Rapid response toolkit for workers handling urgent situations." />
       </Head>
-      <App />
+      <Navigation />
+      <main className="space-y-16 pb-16">
+        <LandingSection />
+      </main>
     </>
-  );
+  )
 }
