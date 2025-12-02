@@ -1,11 +1,11 @@
-import BeforeYouDoAnything from '../components/BeforeYouDoAnything';
+import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection'
 
 const HowToUse = () => (
-  <div className="max-w-4xl mx-auto">
-    <BeforeYouDoAnything />
-    <div className="text-center mb-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-4">How To Use This Toolkit</h1>
-      <p className="text-gray-600">So You Don't Drown in It</p>
+  <div className="section-shell" id="how-to-use">
+    <BeforeYouDoAnythingSection />
+    <div className="mb-8 text-center">
+      <h1 className="section-title">How To Use This Toolkit</h1>
+      <p className="section-lead">So You Don't Drown in It</p>
     </div>
     <div className="space-y-8">
       <div className="bg-blue-50 rounded-xl p-6 border border-blue-200">
@@ -15,7 +15,7 @@ const HowToUse = () => (
         </p>
       </div>
       <div className="space-y-6">
-        <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-green-500">
+        <div className="card border-l-4 border-green-500">
           <h3 className="text-xl font-bold text-gray-900 mb-3">Step 1 – Find Yourself On the Map</h3>
           <p className="text-gray-700 mb-4">Start with: Start Here: Where Are You Getting Screwed? Pick the box that matches you:</p>
           <ul className="list-disc pl-5 space-y-1 text-gray-700">
@@ -26,7 +26,7 @@ const HowToUse = () => (
           </ul>
           <p className="text-gray-700 mt-2">That page will point you to 2–3 tools, not the whole arsenal.</p>
         </div>
-        <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-green-500">
+        <div className="card border-l-4 border-green-500">
           <h3 className="text-xl font-bold text-gray-900 mb-3">Step 2 – Don't Try to Learn Everything</h3>
           <p className="text-gray-700">You do not need:</p>
           <ul className="list-disc pl-5 space-y-2 text-gray-700 mb-4">
@@ -42,7 +42,7 @@ const HowToUse = () => (
           </ul>
           <p className="text-gray-700 mt-2 italic">Think of this toolkit as a menu, not homework.</p>
         </div>
-        <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-green-500">
+        <div className="card border-l-4 border-green-500">
           <h3 className="text-xl font-bold text-gray-900 mb-3">Step 3 – Move in This Order (Most of the Time)</h3>
           <ol className="list-decimal pl-5 space-y-2 text-gray-700">
             <li>
@@ -75,7 +75,7 @@ const HowToUse = () => (
             </li>
           </ol>
         </div>
-        <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-green-500">
+        <div className="card border-l-4 border-green-500">
           <h3 className="text-xl font-bold text-gray-900 mb-3">Step 4 – Use Small Chunks of Time</h3>
           <p className="text-gray-700 mb-3">
             You don't have to sit down for three hours and "do your case". You can:
@@ -89,7 +89,7 @@ const HowToUse = () => (
             Every small chunk you do here makes the next step easier and builds a record future-you will thank you for.
           </p>
         </div>
-        <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-green-500">
+        <div className="card border-l-4 border-green-500">
           <h3 className="text-xl font-bold text-gray-900 mb-3">Step 5 – Remember What This Site Is (and Isn't)</h3>
           <p className="text-gray-700"><strong>This toolkit is:</strong></p>
           <ul className="list-disc pl-5 space-y-1 text-gray-700 mb-4">

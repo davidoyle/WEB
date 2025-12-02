@@ -1,13 +1,13 @@
-import { CheckCircle, FileText } from 'lucide-react';
-import BeforeYouDoAnything from '../components/BeforeYouDoAnything';
-import { documentationBuckets } from '../data/content';
+import { CheckCircle, FileText } from 'lucide-react'
+import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection'
+import { documentationBuckets } from '../data/content'
 
-const Documentation = () => (
-  <div className="max-w-6xl mx-auto">
-    <BeforeYouDoAnything />
-    <div className="text-center mb-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-4">Evidence & Documentation Center</h1>
-      <p className="text-gray-600">"If it isn't documented, they'll swear it never happened."</p>
+const DocumentationSection = () => (
+  <div className="section-shell" id="documentation">
+    <BeforeYouDoAnythingSection />
+    <div className="mb-8 text-center">
+      <h1 className="section-title">Evidence & Documentation Center</h1>
+      <p className="section-lead">"If it isn't documented, they'll swear it never happened."</p>
     </div>
     <div className="space-y-8">
       <div className="bg-blue-50 rounded-xl p-6 border border-blue-200">
@@ -20,7 +20,7 @@ const Documentation = () => (
       </div>
       <div className="grid md:grid-cols-2 gap-8 mb-12">
         {documentationBuckets.map((bucket, index) => (
-          <div key={index} className="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+          <div key={index} className="card">
             <div className="flex items-center mb-4">
               <div className="bg-purple-100 p-3 rounded-lg mr-4">
                 <FileText className="w-6 h-6 text-purple-600" />
@@ -47,7 +47,7 @@ const Documentation = () => (
         </ol>
       </div>
       <div className="grid md:grid-cols-2 gap-8">
-        <div className="bg-white rounded-xl shadow-md p-6">
+        <div className="card">
           <h3 className="text-xl font-bold text-gray-900 mb-4">Call Log Template</h3>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
@@ -70,7 +70,7 @@ const Documentation = () => (
             </table>
           </div>
         </div>
-        <div className="bg-white rounded-xl shadow-md p-6">
+        <div className="card">
           <h3 className="text-xl font-bold text-gray-900 mb-4">File Naming Convention</h3>
           <div className="space-y-2">
             <div className="bg-green-50 p-3 rounded">
@@ -90,6 +90,6 @@ const Documentation = () => (
       </div>
     </div>
   </div>
-);
+)
 
-export default Documentation;
+export default DocumentationSection

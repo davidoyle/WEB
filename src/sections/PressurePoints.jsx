@@ -1,16 +1,16 @@
-import BeforeYouDoAnything from '../components/BeforeYouDoAnything';
-import { pressurePoints } from '../data/content';
+import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection'
+import { pressurePoints } from '../data/content'
 
 const PressurePoints = () => (
-  <div className="max-w-4xl mx-auto">
-    <BeforeYouDoAnything />
-    <div className="text-center mb-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-4">Tactical Strategy: Pressure Points</h1>
-      <p className="text-gray-600">Pick the pattern that matches what's happening to you and hit back with their own rules.</p>
+  <div className="section-shell" id="pressure">
+    <BeforeYouDoAnythingSection />
+    <div className="mb-8 text-center">
+      <h1 className="section-title">Tactical Strategy: Pressure Points</h1>
+      <p className="section-lead">Pick the pattern that matches what's happening to you and hit back with their own rules.</p>
     </div>
     <div className="space-y-6">
       {pressurePoints.map((point, index) => (
-        <div key={index} className="bg-white rounded-xl shadow-md p-6 border-l-4 border-indigo-500">
+        <div key={index} className="card border-l-4 border-indigo-500">
           <h2 className="text-xl font-bold text-gray-900 mb-2">{point.title}</h2>
           <p className="text-gray-700 mb-4">{point.description}</p>
           {point.whatYoureEntitled && (

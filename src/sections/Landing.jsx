@@ -157,4 +157,4 @@ const Landing = ({ onNavigate }) => (
   </div>
 );
 
-export default Landing;
+export default LandingSection
