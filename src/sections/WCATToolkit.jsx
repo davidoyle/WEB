@@ -13,6 +13,16 @@ const deriveTagFamilies = (tags) => {
   return Array.from(new Set(normalized))
 }
 
+const deriveTagFamilies = (tags) => {
+  if (!Array.isArray(tags)) return [];
+
+  const normalized = tags
+    .map((tag) => (typeof tag === 'string' ? tag.trim() : String(tag ?? '').trim()))
+    .filter(Boolean);
+
+  return Array.from(new Set(normalized));
+};
+
 const getCaseId = (caseItem, fallback) =>
   caseItem?.id || caseItem?.caseNumber?.toLowerCase().replace(/[^a-z0-9]+/g, '-') || fallback?.toString()
 
@@ -31,14 +41,10 @@ const WCATToolkit = () => {
   const categories = useMemo(() => groupCategories(cases), [cases])
   const [expandedCases, setExpandedCases] = useState(() =>
     categories.map((category) => (category.cases?.length ? 0 : -1)),
-  )
-  const [query, setQuery] = useState('')
-  const [selectedBodyPart, setSelectedBodyPart] = useState(null)
-  const [selectedTag, setSelectedTag] = useState(null)
-
-  useEffect(() => {
-    setExpandedCases(categories.map((category) => (category.cases?.length ? 0 : -1)))
-  }, [categories])
+  );
+  const [query, setQuery] = useState('');
+  const [selectedBodyPart, setSelectedBodyPart] = useState(null);
+  const [selectedTag, setSelectedTag] = useState(null);
 
   const totalCases = useMemo(
     () => categories.reduce((sum, category) => sum + (category.cases?.length || 0), 0),
