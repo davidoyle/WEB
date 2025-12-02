@@ -1,7 +1,7 @@
 import { Resend } from 'resend'
 import { getSupabaseClient } from '../../lib/supabaseClient'
 
-export const runtime = 'nodejs'
+export const runtime = 'edge'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 const notifyEmail = process.env.NOTIFY_EMAIL || 'dxddoyle@gmail.com'
