@@ -46,7 +46,6 @@ export default async function handler(req, res) {
     })
 
     if (insertError) {
-      console.error('SUPABASE ERROR:', insertError)
       return res.status(500).json({ ok: false, error: insertError.message })
     }
 
