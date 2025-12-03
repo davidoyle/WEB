@@ -1,6 +1,6 @@
 import { Resend } from 'resend'
-// Keep this relative path in sync with src/lib/supabaseClient.js after moving the route under src/pages/api.
-import { getSupabaseClient } from '../../lib/supabaseClient'
+import { logError, logRequest, logResponse } from '../../lib/apiLogger'
+import { getSupabaseServerClient } from '../../lib/supabaseServer'
 
 export const runtime = 'nodejs'
 
@@ -8,12 +8,21 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 const notifyEmail = process.env.NOTIFY_EMAIL || 'dxddoyle@gmail.com'
 
 export default async function handler(req, res) {
+  const requestId = logRequest(req)
+
   if (req.method !== 'POST') {
+    logResponse(requestId, 405, { error: 'Method not allowed' })
     return res.status(405).json({ ok: false, error: 'Method not allowed' })
   }
 
+  const contentType = req.headers['content-type'] || ''
+  if (!contentType.includes('application/json')) {
+    logResponse(requestId, 400, { error: 'Invalid content type' })
+    return res.status(400).json({ ok: false, error: 'Content-Type must be application/json' })
+  }
+
   try {
-    const supabase = getSupabaseClient()
+    const supabase = getSupabaseServerClient()
 
     const {
       name,
@@ -28,6 +37,7 @@ export default async function handler(req, res) {
     } = req.body || {}
 
     if (!name || !email || !story || !consent) {
+      logResponse(requestId, 400, { error: 'Missing required fields' })
       return res.status(400).json({
         ok: false,
         error: 'Missing required fields: name, email, story, or consent.',
@@ -47,6 +57,7 @@ export default async function handler(req, res) {
     })
 
     if (insertError) {
+      logError(requestId, insertError, { step: 'insert_story' })
       return res.status(500).json({ ok: false, error: insertError.message })
     }
 
@@ -70,12 +81,11 @@ ${story}
       `,
     })
 
+    logResponse(requestId, 200, { ok: true })
     return res.status(200).json({ ok: true })
   } catch (err) {
-    console.error('Error in /api/story:', err)
-    if (err.message === 'Supabase environment variables are missing.') {
-      return res.status(500).json({ ok: false, error: err.message })
-    }
-    return res.status(500).json({ ok: false, error: err.message })
+    logError(requestId, err)
+    const message = err?.message || 'Internal server error'
+    return res.status(500).json({ ok: false, error: message })
   }
 }
