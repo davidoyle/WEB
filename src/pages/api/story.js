@@ -1,4 +1,5 @@
 import { Resend } from 'resend'
+// Keep this relative path in sync with src/lib/supabaseClient.js after moving the route under src/pages/api.
 import { getSupabaseClient } from '../../lib/supabaseClient'
 
 export const runtime = 'edge'
