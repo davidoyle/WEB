@@ -26,7 +26,8 @@ const ISSUE_OPTIONS = [
 const TellYourStory = ({ onNavigate }) => {
   const [form, setForm] = useState(initialForm);
   const [status, setStatus] = useState('idle');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -49,33 +50,45 @@ const TellYourStory = ({ onNavigate }) => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setStatus('loading');
-    setErrorMessage('');
+    setError(null);
+    setSuccess(null);
 
     try {
-      const res = await fetch('/api/submit-story', {
+      const response = await fetch('/api/story', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
 
-      const data = await res.json().catch(() => ({}));
+      let data
+      const contentType = response.headers.get('content-type') || ''
 
-      if (!res.ok || data?.ok === false) {
-        throw new Error(data?.error || 'Request failed');
+      try {
+        if (contentType.includes('application/json')) {
+          data = await response.json()
+        } else {
+          const text = await response.text()
+          throw new Error(text || 'Unexpected response from server.')
+        }
+      } catch (parseError) {
+        throw new Error('Unexpected response from server.')
+      }
+
+      if (!response.ok || !data?.ok) {
+        throw new Error(data?.error || 'Submission failed')
       }
 
       setStatus('success');
+      setSuccess('Thank you. Your story has been submitted.');
       setForm(initialForm);
       if (typeof window !== 'undefined') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     } catch (err) {
-      console.error(err);
       setStatus('error');
-      setErrorMessage(err.message || 'Something went wrong while submitting your story.');
+      setError(err.message || 'Something went wrong');
     }
   };
 
@@ -92,18 +105,24 @@ const TellYourStory = ({ onNavigate }) => {
         witnesses — will be redacted. You can also choose to keep your story fully private. This is completely free.
       </p>
 
-      {status === 'success' && (
+      {success && (
         <div className="mb-6 rounded-lg border border-green-200 bg-green-50 p-4 text-green-800">
-          Thank you. Your story has been submitted. We&apos;ll review it and be in touch if we can.
+          {success}
         </div>
       )}
       {status === 'error' && (
         <div className="mb-6 rounded-lg border border-red-200 bg-red-50 p-4 text-red-800">
-          {errorMessage || 'Something went wrong while submitting your story. Please try again later.'}
+          {error || 'Something went wrong while submitting your story. Please try again later.'}
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+        className="space-y-6"
+      >
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div>
             <label className="block text-sm font-medium text-gray-700" htmlFor="name">

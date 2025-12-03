@@ -44,8 +44,7 @@ const StoryForm = ({ onSuccess }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
     setStatusMessage('');
 
     if (!validate()) return;
@@ -53,28 +52,48 @@ const StoryForm = ({ onSuccess }) => {
     setStatus('loading');
 
     try {
-      const response = await fetch('/api/submit-story', {
+      const response = await fetch('/api/story', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to submit your story. Please try again.');
+      let data
+      const contentType = response.headers.get('content-type') || ''
+
+      try {
+        if (contentType.includes('application/json')) {
+          data = await response.json()
+        } else {
+          const text = await response.text()
+          throw new Error(text || 'Unexpected response from server.')
+        }
+      } catch (parseError) {
+        throw new Error('Unexpected response from server.')
+      }
+
+      if (!response.ok || !data?.ok) {
+        throw new Error(data?.error || 'Submission failed')
       }
 
       setStatus('success');
-      setStatusMessage('Thank you for sharing your story. We appreciate your trust.');
+      setStatusMessage('Thank you. Your story has been submitted.');
       setFormData(initialFormState);
       if (onSuccess) onSuccess();
     } catch (error) {
       setStatus('error');
-      setStatusMessage(error.message || 'Something went wrong. Please try again.');
+      setStatusMessage(error.message || 'Something went wrong');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow space-y-4">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit();
+      }}
+      className="bg-white p-6 rounded-lg shadow space-y-4"
+    >
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-700">
           Name*
