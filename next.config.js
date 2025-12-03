@@ -2,7 +2,8 @@
 const nextConfig = {
   reactStrictMode: false,
   eslint: {
-    ignoreDuringBuilds: true, // prevents Cloudflare ESLint crashes
+    // Allow production builds to proceed even if lint warnings are present.
+    ignoreDuringBuilds: true,
   },
 };
 

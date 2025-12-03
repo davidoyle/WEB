@@ -1,5 +1,5 @@
 import { Resend } from 'resend'
-import { getSupabaseClient } from '../../lib/supabaseClient'
+import { getSupabaseClient } from '../../src/lib/supabaseClient'
 
 export const runtime = 'edge'
 
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
     }
 
     const { error: insertError } = await supabase.from('stories').insert({
-      name,
+      full_name: name,
       phone,
       email,
       postal_code: postalCode,
@@ -45,7 +45,10 @@ export default async function handler(req, res) {
       consent: !!consent,
     })
 
-    if (insertError) throw insertError
+    if (insertError) {
+      console.error('SUPABASE ERROR:', insertError)
+      return res.status(500).json({ ok: false, error: insertError.message })
+    }
 
     await resend.emails.send({
       from: 'WorkersToolkit <onboarding@resend.dev>',
@@ -73,6 +76,6 @@ ${story}
     if (err.message === 'Supabase environment variables are missing.') {
       return res.status(500).json({ ok: false, error: err.message })
     }
-    return res.status(500).json({ ok: false, error: 'Server error' })
+    return res.status(500).json({ ok: false, error: err.message })
   }
 }
