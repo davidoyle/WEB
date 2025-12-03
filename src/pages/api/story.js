@@ -1,5 +1,5 @@
 import { Resend } from 'resend'
-import { getSupabaseClient } from '../../../lib/supabaseClient'
+import { getSupabaseClient } from '../../lib/supabaseClient'
 
 export const runtime = 'edge'
 
