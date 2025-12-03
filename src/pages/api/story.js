@@ -75,6 +75,6 @@ ${story}
     if (err.message === 'Supabase environment variables are missing.') {
       return res.status(500).json({ ok: false, error: err.message })
     }
-    return res.status(500).json({ ok: false, error: 'Server error' })
+    return res.status(500).json({ ok: false, error: err.message })
   }
 }

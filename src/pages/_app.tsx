@@ -43,6 +43,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Component {...pageProps} />
+      {/*
       <div>
         {stories.map((story, index) => (
           <li key={String(story.id ?? index)}>
@@ -53,6 +54,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           </li>
         ))}
       </div>
+      */}
     </>
   );
 }
