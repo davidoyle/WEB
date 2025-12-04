@@ -4,17 +4,14 @@
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
   "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs18.x"
+    "api/**/*.{js,ts}": {
+      "runtime": "nodejs20.x"
     },
-    "api/**/*.ts": {
-      "runtime": "nodejs18.x"
+    "pages/api/**/*.{js,ts}": {
+      "runtime": "nodejs20.x"
     },
-    "src/pages/api/**/*.js": {
-      "runtime": "nodejs18.x"
-    },
-    "src/pages/api/**/*.ts": {
-      "runtime": "nodejs18.x"
+    "src/pages/api/**/*.{js,ts}": {
+      "runtime": "nodejs20.x"
     }
   }
 }
