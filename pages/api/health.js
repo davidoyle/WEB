@@ -1,4 +1,4 @@
-import { logRequest, logResponse } from '../../lib/apiLogger'
+import { logRequest, logResponse } from '@/lib/apiLogger'
 
 export const runtime = 'nodejs'
 
