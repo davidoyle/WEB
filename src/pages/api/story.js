@@ -1,6 +1,6 @@
 import { Resend } from 'resend'
-import { logError, logRequest, logResponse } from '../../lib/apiLogger'
-import { getSupabaseServerClient } from '../../lib/supabaseServer'
+import { logError, logRequest, logResponse } from '@/lib/apiLogger'
+import { getSupabaseServerClient } from '@/lib/supabaseServer'
 
 export const runtime = 'nodejs'
 
