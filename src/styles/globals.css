@@ -5,5 +5,9 @@
 @import './common.css';
 
 body {
-  @apply bg-gray-50 text-gray-900;
+  @apply bg-gray-50 text-gray-900 text-base md:text-lg;
+}
+
+a, button {
+  @apply focus:outline-none;
 }
