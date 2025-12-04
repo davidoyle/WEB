@@ -5,13 +5,13 @@
   "devCommand": "npm run dev",
   "functions": {
     "api/**/*.{js,ts}": {
-      "runtime": "nodejs20.x"
+      "runtime": "nodejs18.x"
     },
     "pages/api/**/*.{js,ts}": {
-      "runtime": "nodejs20.x"
+      "runtime": "nodejs18.x"
     },
     "src/pages/api/**/*.{js,ts}": {
-      "runtime": "nodejs20.x"
+      "runtime": "nodejs18.x"
     }
   }
 }
