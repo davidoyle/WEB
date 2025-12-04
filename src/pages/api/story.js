@@ -67,7 +67,8 @@ export default async function handler(req, res) {
         incident_month_year: incidentMonthYear,
         issue_tags: issueTags || [],
         story,
-        public_permission: publicPermission,
+        public_permission:
+          publicPermission === true || publicPermission === 'public',
         consent: !!consent,
       })
       .select()
