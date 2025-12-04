@@ -3,7 +3,6 @@ import { createClient } from '@supabase/supabase-js';
 import { Resend } from 'resend';
 import { logError, logRequest, logResponse } from '@/lib/apiLogger';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const notifyEmail = process.env.NOTIFY_EMAIL || 'dxddoyle@gmail.com';
 
 function safeLog(logger, ...args) {
@@ -19,8 +18,15 @@ function safeLog(logger, ...args) {
 export default async function handler(req, res) {
   const requestId = safeLog(logRequest, req) || 'n/a';
 
-  // Only allow POST
+  // Allow preflight quickly and gate other methods
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Allow', 'POST');
+    safeLog(logResponse, requestId, 200, { info: 'preflight' });
+    return res.status(200).end();
+  }
+
   if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST');
     safeLog(logResponse, requestId, 405, { error: 'Method not allowed' });
     return res
       .status(405)
@@ -56,6 +62,15 @@ export default async function handler(req, res) {
       persistSession: false,
     },
   });
+
+  let resend = null;
+  if (process.env.RESEND_API_KEY) {
+    try {
+      resend = new Resend(process.env.RESEND_API_KEY);
+    } catch (initError) {
+      safeLog(logError, requestId, initError, { step: 'init_resend' });
+    }
+  }
 
   try {
     const {
@@ -108,12 +123,13 @@ export default async function handler(req, res) {
       });
     }
 
-    try {
-      await resend.emails.send({
-        from: 'WorkersToolkit <onboarding@resend.dev>',
-        to: notifyEmail,
-        subject: 'New Story Submitted',
-        text: `
+    if (resend) {
+      try {
+        await resend.emails.send({
+          from: 'WorkersToolkit <onboarding@resend.dev>',
+          to: notifyEmail,
+          subject: 'New Story Submitted',
+          text: `
 New Story Submitted
 -------------------
 Name: ${name}
@@ -126,10 +142,11 @@ Public Permission: ${publicPermission || 'N/A'}
 
 Story:
 ${story}
-        `,
-      });
-    } catch (emailError) {
-      safeLog(logError, requestId, emailError, { step: 'send_email' });
+          `,
+        });
+      } catch (emailError) {
+        safeLog(logError, requestId, emailError, { step: 'send_email' });
+      }
     }
 
     safeLog(logResponse, requestId, 200, { storyId: data?.id ?? null });
