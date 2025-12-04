@@ -1,9 +1,7 @@
-import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection'
 import { engagementPoints } from '../data/content'
 
 const Engagement = () => (
   <div className="section-shell" id="engagement">
-    <BeforeYouDoAnythingSection />
     <div className="mb-8 text-center">
       <h1 className="section-title">What Happens When You Engage</h1>
       <p className="section-lead">Not engaging is a strategy. But it has costs.</p>

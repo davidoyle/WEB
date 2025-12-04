@@ -1,9 +1,7 @@
-import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection'
 import { documentationPowerPoints } from '../data/content'
 
 const WhyDocumentation = () => (
   <div className="section-shell" id="why-documentation">
-    <BeforeYouDoAnythingSection />
     <div className="mb-8 text-center">
       <h1 className="section-title">Why Documentation is Power</h1>
       <p className="section-lead">It's not busywork. It's leverage.</p>

@@ -1,7 +1,9 @@
 export const screwedSituations = [
   {
+    id: "fresh-claim",
     title: "I just got hurt / just opened a claim",
     description: "You're early in. Maybe you're still getting paid, maybe not. Things are confusing but not openly hostile yet.",
+    gentleDescription: "You are early in. You might still be getting paid. Things feel confusing but not openly hostile yet.",
     indicators: [
       "You were injured at work recently",
       "You've reported it (or you're about to)",
@@ -20,8 +22,11 @@ export const screwedSituations = [
     relatedWCATCaseIds: ["wcat-2003-00254", "wcat-2004-05173"]
   },
   {
+    id: "bad-decision",
     title: "I got a bullshit decision letter or they cut my benefits",
     description: "This is where most people land here. You've just been told something like: 'Your condition has resolved' while your knee/back/brain is very clearly not 'resolved.'",
+    gentleDescription:
+      "You received a decision that doesn't match your reality. Maybe it says your condition has resolved while your knee/back/brain is not.",
     indicators: [
       "A decision letter that doesn't match your reality",
       "Medical evidence that seems ignored or twisted",
@@ -40,8 +45,11 @@ export const screwedSituations = [
     relatedWCATCaseIds: ["wcat-2006-03608", "wcat-2007-02958"]
   },
   {
+    id: "ignored",
     title: "WorkSafeBC / my employer / my MLA is ignoring me or gaslighting me",
     description: "You've been trying to do it 'the polite way,' and now you're getting copy-paste form letters, 'Our records show you haven't...' when you clearly have, and vague replies that dodge every specific question.",
+    gentleDescription:
+      "You have tried the polite route and now get form letters, 'Our records show you haven't...' when you clearly have, and vague replies that dodge your questions.",
     indicators: [
       "You feel like you're shouting into a void",
       "Nobody answers the exact thing you asked",
@@ -60,8 +68,11 @@ export const screwedSituations = [
     relatedWCATCaseIds: ["wcat-2009-00149", "wcat-2004-06708-2004-03907"]
   },
   {
+    id: "appeal-stage",
     title: "I'm already in Review / WCAT / appeal-land",
     description: "You're past the 'WTF just happened' stage. You've filed (or are about to file) a Review, WCAT appeal, human rights complaint, or you're building your written submission.",
+    gentleDescription:
+      "You're past the shock stage. You've filed (or are about to file) a Review, WCAT appeal, human rights complaint, or you're drafting your written submission.",
     indicators: [
       "You've got a stack of letters and reports",
       "You know WorkSafeBC is wrong, but you're not sure how to prove it in tribunal language",

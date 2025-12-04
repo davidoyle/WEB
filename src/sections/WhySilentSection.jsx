@@ -1,9 +1,7 @@
-import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection'
 import { whySilentPoints } from '../data/content'
 
 const WhySilentSection = () => (
   <div className="section-shell" id="why-silent">
-    <BeforeYouDoAnythingSection />
     <div className="mb-8 text-center">
       <h1 className="section-title">Why People Stay Silent</h1>
       <p className="section-lead">Silence is rational. It's also exactly what the system counts on.</p>
