@@ -6,7 +6,6 @@ const Landing = ({ onStart, onNavigate }) => {
   const heroText = tone === 'gentle'
     ? 'Evidence, strategy, and templates to keep your WorkSafeBC claim on track.'
     : 'Evidence, strategy, and leverage for injured workers in B.C. getting stonewalled by WorkSafeBC.'
-  const ctaText = tone === 'gentle' ? 'Let’s figure out where you are.' : 'Start here. Where are you getting screwed?'
 
   return (
     <section className="mx-auto max-w-4xl px-4 py-12">
@@ -42,7 +41,7 @@ const Landing = ({ onStart, onNavigate }) => {
             onClick={onStart}
             className="w-full rounded-lg bg-red-600 px-8 py-3 text-center font-semibold text-white shadow-sm transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 md:w-auto"
           >
-            {ctaText}
+            Start Here, Where Are You Getting Screwed?
           </button>
 
           <button
