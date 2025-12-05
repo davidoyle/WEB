@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
 const ToneContext = createContext({
-  tone: 'strong',
+  tone: 'gentle',
   setTone: () => {},
   toggleTone: () => {},
 })
@@ -9,7 +9,7 @@ const ToneContext = createContext({
 const storageKey = 'wt-tone'
 
 export const ToneProvider = ({ children }) => {
-  const [tone, setTone] = useState('strong')
+  const [tone, setTone] = useState('gentle')
 
   useEffect(() => {
     if (typeof window === 'undefined') return

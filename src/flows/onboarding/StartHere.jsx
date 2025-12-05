@@ -81,7 +81,8 @@ const StartHere = () => {
     router.replace({ pathname: '/start-here' }, undefined, { shallow: true })
   }
 
-  const heroText = tone === 'gentle' ? 'Let’s figure out where you are.' : 'Where are you getting screwed?'
+  const heroText =
+    tone === 'gentle' ? 'Let’s figure out where you are.' : 'Start here. Where are you getting screwed?'
 
   return (
     <div className="min-h-screen bg-gray-50">
