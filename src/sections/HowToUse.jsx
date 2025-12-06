@@ -1,8 +1,5 @@
-import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection'
-
 const HowToUse = () => (
   <div className="section-shell" id="how-to-use">
-    <BeforeYouDoAnythingSection />
     <div className="mb-8 text-center">
       <h1 className="section-title">How To Use This Toolkit</h1>
       <p className="section-lead">So You Don't Drown in It</p>

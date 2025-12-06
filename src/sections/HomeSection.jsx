@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { ExternalLink, MapPin } from 'lucide-react'
 import { screwedSituations } from '../data/content'
 import { wcatCases } from '../wcat'
-import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection'
 
 const wcatCaseLookup = Object.fromEntries(
   (wcatCases || []).map((caseItem) => [caseItem.id || caseItem.caseNumber, caseItem]),
@@ -18,7 +17,6 @@ const moveTargets = {
 
 const HomeSection = () => (
   <div className="section-shell" id="start-here">
-    <BeforeYouDoAnythingSection />
     <div className="mb-12 text-center">
       <h1 className="section-title">Start Here: Where Are You Getting Screwed?</h1>
       <p className="section-lead">
