@@ -13,18 +13,10 @@ export const ToneProvider = ({ children }) => {
 
   useEffect(() => {
     if (typeof window === 'undefined') return
-    const stored = window.localStorage.getItem(storageKey)
-    if (stored === 'gentle' || stored === 'strong') {
-      setTone(stored)
-    }
+    window.localStorage.setItem(storageKey, 'strong')
   }, [])
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return
-    window.localStorage.setItem(storageKey, tone)
-  }, [tone])
-
-  const toggleTone = () => setTone((prev) => (prev === 'gentle' ? 'strong' : 'gentle'))
+  const toggleTone = () => setTone('strong')
 
   const value = useMemo(() => ({ tone, setTone, toggleTone }), [tone])
 
