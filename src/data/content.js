@@ -505,18 +505,122 @@ export const documentationPowerPoints = [
   }
 ];
 
-export const whySilentPoints = [
+export const whySilenceFeelsSaferCards = [
   {
     title: "The System is Designed to Exhaust You",
-    description: "Letters are full of: Half-explanations, Policy references with no context, 'If you disagree, you may request...' with 3 different pathways in tiny print. When you're confused enough, silence feels easier than: Admitting you don't understand, Taking a wrong step and being told 'you should have done X instead'"
+    description:
+      "Letters are full of: Half-explanations, Policy references with no context, 'If you disagree, you may request...' with 3 different pathways in tiny print. When you're confused enough, silence feels easier than: Admitting you don't understand, Taking a wrong step and being told 'you should have done X instead'",
+    icon: "⚙️"
   },
   {
     title: "You Get Trained to Think You're the Problem",
-    description: "When professionals with titles treat you like you're unreasonable, you start to self-censor. You start to think: maybe I AM making too big a deal, maybe this IS how it's supposed to go. It's not."
+    description:
+      "When professionals with titles treat you like you're unreasonable, you start to self-censor. You start to think: maybe I AM making too big a deal, maybe this IS how it's supposed to go. It's not.",
+    icon: "🧠"
   },
   {
     title: "They Count on You Not Asking",
-    description: "If you don't ask for: What evidence they relied on, Why they preferred one medical opinion over another, What the actual plan is for your return to work, They get to make decisions in the dark."
+    description:
+      "If you don't ask for: What evidence they relied on, Why they preferred one medical opinion over another, What the actual plan is for your return to work, They get to make decisions in the dark.",
+    icon: "🕵️"
+  }
+];
+
+export const silenceCostLists = {
+  theyGain: [
+    "Control of the timeline, paperwork, and 'expert' opinions without challenge",
+    "Clean statistics that read as 'accepted, no objection, no harm detected'",
+    "Cover to repeat the same delays, denials, and behavioural labels on the next worker"
+  ],
+  youLose: [
+    "A recorded story that shows what actually happened to you",
+    "Evidence that your doctor and support network can point to later",
+    "A place in the pattern that forces oversight, tribunal attention, and policy change"
+  ]
+};
+
+export const speakingImpactFlow = [
+  {
+    title: "Evidence",
+    description: "Your written questions and documents become proof, not a rant."
+  },
+  {
+    title: "Pattern",
+    description: "Dozens of similar records expose the same delays, denials, and labels."
+  },
+  {
+    title: "Oversight",
+    description: "Patterns trigger attention from MLAs, tribunals, and media because they can't be dismissed as one-off."
+  },
+  {
+    title: "Policy Change",
+    description: "When the pattern is undeniable, procedures and laws get forced to shift."
+  }
+];
+
+export const reassuranceChecklist = [
+  "You choose what to share and when",
+  "Your evidence stays yours—no surprise releases",
+  "You can stay anonymous in public-facing spaces",
+  "You can pause, delete, or edit your record at any time"
+];
+
+export const socialProofConfig = {
+  target: 50,
+  current: 2,
+  quote: "When I finally wrote it down, I stopped feeling like I imagined it. — Injured worker, BC"
+};
+
+export const whySilentPoints = [
+  {
+    title: "The System is Designed to Exhaust You",
+    description:
+      "Letters are full of: Half-explanations, Policy references with no context, 'If you disagree, you may request...' with 3 different pathways in tiny print. When you're confused enough, silence feels easier than: Admitting you don't understand, Taking a wrong step and being told 'you should have done X instead'"
+  },
+  {
+    title: "You Get Trained to Think You're the Problem",
+    description:
+      "When professionals with titles treat you like you're unreasonable, you start to self-censor. You start to think: maybe I AM making too big a deal, maybe this IS how it's supposed to go. It's not."
+  },
+  {
+    title: "They Count on You Not Asking",
+    description:
+      "If you don't ask for: What evidence they relied on, Why they preferred one medical opinion over another, What the actual plan is for your return to work, They get to make decisions in the dark."
+  },
+  {
+    title: "Your Voice is the One Thing They Can’t Control",
+    description:
+      "WorkSafeBC controls:\n- the timeline\n- the paperwork\n- the “expert” opinions\n\nBut they cannot control:\n- your story\n- your evidence\n- your right to be heard\n\nThat is their vulnerability."
+  },
+  {
+    title: "Every Silence is Counted as Compliance",
+    description:
+      "When you don’t push back, the system records:\n- “accepted”\n- no objection\n- no harm detected\n\nThat becomes:\n- statistics presented to government\n- justification for harmful policies\n- “proof” nothing is wrong\n\nYour silence becomes their evidence."
+  },
+  {
+    title: "One Voice Alone Gets Ignored — Many Voices Force Change",
+    description:
+      "They can isolate one worker. They cannot ignore a pattern.\n\nWhen dozens report:\n- the same delays\n- the same denials\n- the same “behavioural” labels\n\nIt becomes undeniable. And legally actionable."
+  },
+  {
+    title: "You’re Not Asking for a Favour — You’re Exposing a Breach",
+    description:
+      "When you speak, you are not:\n- complaining\n- begging\n- whining\n\nYou are reporting:\n- state-caused harm\n- medical neglect\n- Charter violations\n- policy abuse\n\nThat is evidence — and it matters."
+  },
+  {
+    title: "They Want You Tired. They Fear You Organized.",
+    description:
+      "WorkSafeBC cannot defeat every worker. So they try to exhaust each of us separately.\n\nOur answer:\nStand together and they lose their strategy."
+  },
+  {
+    title: "The Real Reason to Speak Up",
+    description:
+      "Your story is part of the case that ends this.\n\nNot a rant.\nNot a plea.\nA record of systemic injustice.\n\nAnd once enough stories are recorded:\n- tribunals change\n- laws change\n- the entire system shifts\n\nBecause it has to."
+  },
+  {
+    title: "The System Isn’t Ready for You to Speak",
+    description:
+      "That’s why speaking matters.\n\nYour voice is not a risk.\nYour voice is leverage.\n\nSay what they don’t want on record — and watch what happens."
   }
 ];
 
