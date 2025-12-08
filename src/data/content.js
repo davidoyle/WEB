@@ -188,58 +188,186 @@ export const documentationBuckets = [
 
 export const pressurePoints = [
   {
-    title: "Evidence & Reasons",
-    description: "Anytime WorkSafeBC ignores your doctor or physio, leans only on a 'Board doctor' you've never met, declares your injury 'resolved' while your reports say otherwise, or refuses to explain why they believed one piece of evidence and ignored another.",
-    whatYoureEntitled: [
-      "Have relevant evidence considered",
-      "Know what evidence they relied on",
-      "Know why they preferred one opinion over another"
+    id: 'delays',
+    title: 'Delays That Create Harm',
+    label: 'Delayed decisions',
+    icon: '⏳',
+    summary: 'When “processing” becomes a tactic to deny care.',
+    examples: [
+      'Stalled decisions for months',
+      '“Awaiting medical opinion” with no timeline',
+      'MRI or specialist referrals not actioned',
+      'You can’t work… but they are still “reviewing”'
+    ],
+    rights: [
+      'Decisions in a reasonable timeframe',
+      'Timely medical treatment',
+      'Reasons when there is delay'
     ],
     phrases: [
-      "\"What evidence did you rely on to decide that my condition is resolved?\"",
-      "\"How did you resolve the difference between your medical advisor's opinion and my treating doctor's opinion?\"",
-      "\"Can you please list the medical reports you considered, and explain the weight you gave to each?\""
-    ]
+      '“Please provide the specific date a decision will be made.”',
+      '“What exact information is missing that is causing this delay?”',
+      '“If no update is provided by [date], I will consider this an unreasonable delay and escalate.”'
+    ],
+    whyItMatters: 'Delays are predictable harm. Every day stalled = evidence of systemic negligence.'
   },
   {
-    title: "Return-to-Work & Employer Cooperation",
-    description: "You're injured and want/need to go back to work, but your employer is ignoring your restrictions, not offering modified duties, showing hostility, or WorkSafeBC is doing nothing while your RTW falls apart.",
+    id: 'evidence-ignored',
+    title: 'Evidence Ignored',
+    label: 'Evidence ignored',
+    icon: '⚖️',
+    summary: "Anytime WorkSafeBC leans on a board doctor you've never met, declares your injury 'resolved' while your providers say otherwise, or refuses to explain why one piece of evidence beat another.",
+    examples: [
+      'Treating provider reports left out of the decision',
+      'Only a file review is cited as “most persuasive”',
+      'No explanation for why one medical opinion wins over another'
+    ],
+    rights: [
+      'Have relevant evidence considered',
+      'Know what evidence they relied on',
+      'Know why they preferred one opinion over another'
+    ],
     phrases: [
-      "\"What specific steps have been taken to work with my employer on a return-to-work plan?\"",
-      "\"Has my employer been reminded of their duty to cooperate in returning me to work?\"",
-      "\"Can I see the documented return-to-work plan you've agreed on with my employer?\""
-    ]
+      '“What evidence did you rely on to decide that my condition is resolved?”',
+      '“How did you resolve the difference between your medical advisor’s opinion and my treating doctor’s opinion?”',
+      '“Can you please list the medical reports you considered, and explain the weight you gave to each?”'
+    ],
+    whyItMatters: 'If they ignore evidence, you lose treatment, wage loss, and credibility.'
   },
   {
-    title: "Retaliation / Prohibited Action",
-    description: "Examples: You report an injury and suddenly your hours are cut, you complain about safety and your job disappears, you file a claim and your boss starts icing you out or threatening you.",
+    id: 'medical-mischaracterization',
+    title: 'Medical Mischaracterization (Factual Errors)',
+    label: 'Medical inaccuracies',
+    icon: '📋',
+    summary: 'When the paperwork tells a different story than your body.',
+    examples: [
+      '“Full recovery” despite injury still active',
+      'Statements that contradict MRI / physio findings',
+      'Symptoms minimized or omitted',
+      'Copy-pasted conclusions with no exam'
+    ],
+    rights: [
+      'Accurate medical descriptions',
+      'Transparent reasoning for medical claims',
+      'Corrections on the record'
+    ],
     phrases: [
-      "\"I believe I am experiencing retaliation related to my injury/claim. Has this been logged as a prohibited action complaint? If so, what is the complaint number?\"",
-      "\"If it has not been logged, please confirm how I can file a prohibited action complaint and whether your office will do so based on the information I've already provided.\""
-    ]
+      '“There is a factual inaccuracy in your summary: ___. Please correct the record.”',
+      '“What medical findings support the conclusion that ___ has resolved?”',
+      '“What basis was used to downplay symptoms in ___?”'
+    ],
+    whyItMatters: 'If they rewrite your reality → they deny the future.'
   },
   {
-    title: "\"Your Records Are Wrong\"",
-    description: "You hear lines like: 'Our records show you haven't contacted [office],' 'Our records don't show that you raised that complaint,' 'There is no record of that email/call.' But you have screenshots, emails, voicemails, call logs.",
+    id: 'narrow-scope',
+    title: 'Narrow Claim Scope (Cherry-Picking What Counts)',
+    label: 'Narrow claim scope',
+    icon: '🎯',
+    summary: 'When they accept only one part of the injury so they can deny the rest.',
+    examples: [
+      'Knee accepted — hip and back ignored',
+      'PTSD not accepted because physical injury “not severe enough”',
+      'Only one diagnosis accepted despite multiple providers'
+    ],
+    rights: [
+      'Full assessment of all caused conditions',
+      'Inclusion of complications and secondary effects',
+      'Reasons when anything is excluded'
+    ],
     phrases: [
-      "\"Your records appear to be incorrect. On [date], [office/person] contacted me/I contacted them. Attached is [screenshot/voicemail/email] showing this. Please: 1. Confirm that your records will be corrected; and 2. Explain how this discrepancy occurred.\""
-    ]
+      '“Why were [body parts/conditions] excluded from the accepted injury?”',
+      '“Will you be updating the claim scope to include ___? If not, please provide medical/legal rationale.”'
+    ],
+    whyItMatters: 'Scope = treatment = benefits = future stability.'
   },
   {
-    title: "\"We Don't Do Oversight\"",
-    description: "When MLAs or Minister offices refuse to exercise their oversight responsibilities and hide behind 'we can't interfere with WorkSafeBC.'",
+    id: 'return-to-work',
+    title: 'Return-to-Work Failure',
+    label: 'Return-to-work failure',
+    icon: '👷',
+    summary: "You're injured and want/need to go back to work, but your employer is ignoring your restrictions, not offering modified duties, showing hostility, or WorkSafeBC is doing nothing while your RTW falls apart.",
+    examples: [
+      'No modified duties despite written restrictions',
+      'Hostility or pressure to quit after reporting an injury',
+      'Radio silence on who is coordinating RTW'
+    ],
+    rights: [
+      'A coordinated plan that respects medical restrictions',
+      'Employer cooperation duties enforced',
+      'Clear steps documented and shared with you'
+    ],
     phrases: [
-      "\"I am not asking you to personally adjudicate my claim. I am reporting behaviour by WorkSafeBC that appears systemic.\"",
-      "\"This is not only a constituency service issue; it is an oversight issue. I am asking whether you will exercise your oversight role over a provincial agency.\""
-    ]
+      '“What specific steps have been taken to work with my employer on a return-to-work plan?”',
+      '“Has my employer been reminded of their duty to cooperate in returning me to work?”',
+      '“Can I see the documented return-to-work plan you’ve agreed on with my employer?”'
+    ],
+    whyItMatters: 'RTW chaos drains income, health, and credibility if left unchecked.'
   },
   {
-    title: "Broken Promises & 'Legitimate Expectations'",
-    description: "When officials promise specific actions but never follow through, creating reasonable expectations that aren't met.",
+    id: 'wrong-records',
+    title: 'Wrong Records',
+    label: 'Wrong records',
+    icon: '📁',
+    summary: "You hear lines like: 'Our records show you haven't contacted us' or 'There is no record of that email/call,' while you have screenshots, emails, and call logs.",
+    examples: [
+      'Calls or emails erased from the file',
+      'Complaints not logged despite receipts',
+      'Medical updates “missing” after you sent them'
+    ],
+    rights: [
+      'Accurate file records',
+      'Corrections when errors are shown',
+      'An explanation for discrepancies'
+    ],
     phrases: [
-      "\"On [date], your office wrote that [quote the promise]. That created a clear expectation that this process would go ahead. Could you please confirm whether this action was completed, and if not, explain when and why the decision was changed?\"",
-      "\"I would like to record your position accurately regarding your oversight responsibilities.\""
-    ]
+      '“Your records appear to be incorrect. On [date], [office/person] contacted me/I contacted them. Attached is [screenshot/voicemail/email] showing this. Please: 1. Confirm that your records will be corrected; and 2. Explain how this discrepancy occurred.”'
+    ],
+    whyItMatters: 'Bad records erase your timeline and undercut every appeal that follows.'
+  },
+  {
+    id: 'retaliation',
+    title: 'Employer Retaliation',
+    label: 'Employer retaliation',
+    icon: '🛡️',
+    summary: 'When reporting your injury triggers punishment instead of safety.',
+    examples: [
+      'Hours cut or shifts changed after you report',
+      'Safety complaints followed by threats or isolation',
+      'Fired or “laid off” right after filing a claim'
+    ],
+    rights: [
+      'Protection from prohibited action',
+      'Investigation of retaliation complaints',
+      'A complaint number and updates when filed'
+    ],
+    phrases: [
+      '“I believe I am experiencing retaliation related to my injury/claim. Has this been logged as a prohibited action complaint? If so, what is the complaint number?”',
+      '“If it has not been logged, please confirm how I can file a prohibited action complaint and whether your office will do so based on the information I’ve already provided.”'
+    ],
+    whyItMatters: 'Unchecked retaliation scares workers silent and kills claims.'
+  },
+  {
+    id: 'oversight-refusal',
+    title: 'Oversight Refusal',
+    label: 'Oversight refusal',
+    icon: '🏛️',
+    summary: "When MLAs or Minister offices hide behind 'we can't interfere with WorkSafeBC' instead of using their oversight role — and when promised actions quietly disappear.",
+    examples: [
+      '“We can’t intervene” replies with no follow-up',
+      'Escalations promised but never actioned',
+      'Patterned issues framed as “individual complaints” only'
+    ],
+    rights: [
+      'Oversight offices that log and review systemic issues',
+      'Clear answers on what was escalated',
+      'Transparency when promised actions change'
+    ],
+    phrases: [
+      '“I am not asking you to personally adjudicate my claim. I am reporting behaviour by WorkSafeBC that appears systemic.”',
+      '“This is not only a constituency service issue; it is an oversight issue. I am asking whether you will exercise your oversight role over a provincial agency.”',
+      '“On [date], your office wrote that [quote the promise]. Could you please confirm whether this action was completed, and if not, explain when and why the decision was changed?”'
+    ],
+    whyItMatters: 'Oversight pressure exposes patterns — and broken promises prove accountability gaps.'
   }
 ];
 
