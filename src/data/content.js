@@ -507,132 +507,54 @@ export const documentationPowerPoints = [
 
 export const whySilentPoints = [
   {
+    title: "The System is Designed to Exhaust You",
+    description:
+      "Letters are full of: Half-explanations, Policy references with no context, 'If you disagree, you may request...' with 3 different pathways in tiny print. When you're confused enough, silence feels easier than: Admitting you don't understand, Taking a wrong step and being told 'you should have done X instead'"
+  },
+  {
+    title: "You Get Trained to Think You're the Problem",
+    description:
+      "When professionals with titles treat you like you're unreasonable, you start to self-censor. You start to think: maybe I AM making too big a deal, maybe this IS how it's supposed to go. It's not."
+  },
+  {
+    title: "They Count on You Not Asking",
+    description:
+      "If you don't ask for: What evidence they relied on, Why they preferred one medical opinion over another, What the actual plan is for your return to work, They get to make decisions in the dark."
+  },
+  {
     title: "Your Voice is the One Thing They Can’t Control",
-    sections: [
-      {
-        type: "list",
-        heading: "WorkSafeBC controls:",
-        items: ["the timeline", "the paperwork", "the “expert” opinions"]
-      },
-      {
-        type: "list",
-        heading: "But they cannot control:",
-        items: ["your story", "your evidence", "your right to be heard"]
-      },
-      {
-        type: "text",
-        content: "That is their vulnerability."
-      }
-    ]
+    description:
+      "WorkSafeBC controls:\n- the timeline\n- the paperwork\n- the “expert” opinions\n\nBut they cannot control:\n- your story\n- your evidence\n- your right to be heard\n\nThat is their vulnerability."
   },
   {
     title: "Every Silence is Counted as Compliance",
-    sections: [
-      {
-        type: "list",
-        heading: "When you don’t push back, the system records:",
-        items: ['“accepted”', 'no objection', 'no harm detected']
-      },
-      {
-        type: "list",
-        heading: "That becomes:",
-        items: [
-          "statistics presented to government",
-          "justification for harmful policies",
-          "“proof” nothing is wrong"
-        ]
-      },
-      {
-        type: "text",
-        content: "Your silence becomes their evidence."
-      }
-    ]
+    description:
+      "When you don’t push back, the system records:\n- “accepted”\n- no objection\n- no harm detected\n\nThat becomes:\n- statistics presented to government\n- justification for harmful policies\n- “proof” nothing is wrong\n\nYour silence becomes their evidence."
   },
   {
     title: "One Voice Alone Gets Ignored — Many Voices Force Change",
-    sections: [
-      {
-        type: "text",
-        content: "They can isolate one worker. They cannot ignore a pattern."
-      },
-      {
-        type: "list",
-        heading: "When dozens report:",
-        items: ["the same delays", "the same denials", "the same “behavioural” labels"]
-      },
-      {
-        type: "text",
-        content: "It becomes undeniable. And legally actionable."
-      }
-    ]
+    description:
+      "They can isolate one worker. They cannot ignore a pattern.\n\nWhen dozens report:\n- the same delays\n- the same denials\n- the same “behavioural” labels\n\nIt becomes undeniable. And legally actionable."
   },
   {
     title: "You’re Not Asking for a Favour — You’re Exposing a Breach",
-    sections: [
-      {
-        type: "list",
-        heading: "When you speak, you are not:",
-        items: ["complaining", "begging", "whining"]
-      },
-      {
-        type: "list",
-        heading: "You are reporting:",
-        items: ["state-caused harm", "medical neglect", "Charter violations", "policy abuse"]
-      },
-      {
-        type: "text",
-        content: "That is evidence — and it matters."
-      }
-    ]
+    description:
+      "When you speak, you are not:\n- complaining\n- begging\n- whining\n\nYou are reporting:\n- state-caused harm\n- medical neglect\n- Charter violations\n- policy abuse\n\nThat is evidence — and it matters."
   },
   {
     title: "They Want You Tired. They Fear You Organized.",
-    sections: [
-      {
-        type: "text",
-        content: "WorkSafeBC cannot defeat every worker. So they try to exhaust each of us separately."
-      },
-      {
-        type: "text",
-        content: "Our answer: Stand together and they lose their strategy."
-      }
-    ]
+    description:
+      "WorkSafeBC cannot defeat every worker. So they try to exhaust each of us separately.\n\nOur answer:\nStand together and they lose their strategy."
   },
   {
     title: "The Real Reason to Speak Up",
-    sections: [
-      {
-        type: "list",
-        heading: "Your story is part of the case that ends this. Not a rant. Not a plea. A record of systemic injustice.",
-        items: [
-          "tribunals change",
-          "laws change",
-          "the entire system shifts"
-        ],
-        note: "And once enough stories are recorded:"
-      },
-      {
-        type: "text",
-        content: "Because it has to."
-      }
-    ]
+    description:
+      "Your story is part of the case that ends this.\n\nNot a rant.\nNot a plea.\nA record of systemic injustice.\n\nAnd once enough stories are recorded:\n- tribunals change\n- laws change\n- the entire system shifts\n\nBecause it has to."
   },
   {
     title: "The System Isn’t Ready for You to Speak",
-    sections: [
-      {
-        type: "text",
-        content: "That’s why speaking matters."
-      },
-      {
-        type: "text",
-        content: "Your voice is not a risk. Your voice is leverage."
-      },
-      {
-        type: "text",
-        content: "Say what they don’t want on record — and watch what happens."
-      }
-    ]
+    description:
+      "That’s why speaking matters.\n\nYour voice is not a risk.\nYour voice is leverage.\n\nSay what they don’t want on record — and watch what happens."
   }
 ];
 
