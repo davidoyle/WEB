@@ -13,11 +13,13 @@ import { supabase } from '../../utils/supabase'
 
 const WhySilentSection = () => {
   const supabaseAvailable = Boolean(supabase)
+  const baselineStories = socialProofConfig.current
   const [storyCounts, setStoryCounts] = useState({
-    current: socialProofConfig.current,
+    current: baselineStories,
     target: socialProofConfig.target
   })
   const [loadingStories, setLoadingStories] = useState(supabaseAvailable)
+  const [usedLiveCount, setUsedLiveCount] = useState(false)
 
   useEffect(() => {
     let isActive = true
@@ -30,7 +32,9 @@ const WhySilentSection = () => {
         setLoadingStories(false)
         return
       }
-      setStoryCounts((prev) => ({ ...prev, current: count }))
+      const safeCount = Math.max(count, baselineStories)
+      setStoryCounts((prev) => ({ ...prev, current: safeCount }))
+      setUsedLiveCount(true)
       setLoadingStories(false)
     }
 
@@ -39,7 +43,7 @@ const WhySilentSection = () => {
     return () => {
       isActive = false
     }
-  }, [])
+  }, [baselineStories])
 
   const filledSlots = Math.min(storyCounts.current, storyCounts.target)
   const slots = Array.from({ length: storyCounts.target }, (_, index) => index < filledSlots)
@@ -173,7 +177,7 @@ const WhySilentSection = () => {
               <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">of {storyCounts.target} stories logged</p>
               <p className="mt-4 max-w-md text-gray-800">{socialProofConfig.quote}</p>
               {loadingStories ? <p className="mt-2 text-sm text-gray-600">Updating live count…</p> : null}
-              {!supabaseAvailable ? (
+              {!supabaseAvailable || !usedLiveCount ? (
                 <p className="mt-2 text-sm text-gray-600">
                   Showing confirmed submissions while the Supabase connection is finalized. Add your Supabase URL and anon key to enable live totals.
                 </p>
