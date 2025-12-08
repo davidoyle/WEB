@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { BookOpen, Home, Menu, MoreVertical, Target, X } from 'lucide-react'
@@ -12,6 +14,7 @@ const primaryLinks = [
 const resourceLinks = [
   { href: '/first-30-minutes', label: 'First 30 Minutes' },
   { href: '/documentation', label: 'Docs' },
+  { href: '/resources', label: 'Resources' },
   { href: '/pressure-points', label: 'Pressure Points' },
   { href: '/templates', label: 'Email Templates' },
   { href: '/why-silent', label: 'Why Silent' },
