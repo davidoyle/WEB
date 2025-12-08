@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 import {
   reassuranceChecklist,
@@ -8,10 +9,39 @@ import {
   whySilenceFeelsSaferCards,
   whySilentPoints
 } from '../data/content'
+import { supabase } from '../../utils/supabase'
 
 const WhySilentSection = () => {
-  const filledSlots = Math.min(socialProofConfig.current, socialProofConfig.target)
-  const slots = Array.from({ length: socialProofConfig.target }, (_, index) => index < filledSlots)
+  const [storyCounts, setStoryCounts] = useState({
+    current: socialProofConfig.current,
+    target: socialProofConfig.target
+  })
+  const [loadingStories, setLoadingStories] = useState(Boolean(supabase))
+
+  useEffect(() => {
+    let isActive = true
+
+    const fetchStoryCount = async () => {
+      if (!supabase) return
+      const { count, error } = await supabase.from('stories').select('id', { count: 'exact', head: true })
+      if (!isActive) return
+      if (error || count === null) {
+        setLoadingStories(false)
+        return
+      }
+      setStoryCounts((prev) => ({ ...prev, current: count }))
+      setLoadingStories(false)
+    }
+
+    fetchStoryCount()
+
+    return () => {
+      isActive = false
+    }
+  }, [])
+
+  const filledSlots = Math.min(storyCounts.current, storyCounts.target)
+  const slots = Array.from({ length: storyCounts.target }, (_, index) => index < filledSlots)
 
   return (
     <div id="why-silent" className="scroll-smooth">
@@ -42,7 +72,6 @@ const WhySilentSection = () => {
       <section id="why-silence-feels-safer" className="bg-gray-100 py-16">
         <div className="section-shell">
           <div className="mb-10 text-center">
-            <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">Section 2</p>
             <h2 className="section-title">Why Silence Feels Safer</h2>
             <p className="section-lead">You're not imagining it. The system is built to make quiet compliance look like the only rational choice.</p>
           </div>
@@ -63,7 +92,6 @@ const WhySilentSection = () => {
       <section className="bg-white py-16">
         <div className="section-shell">
           <div className="mb-10 text-center">
-            <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">Section 3</p>
             <h2 className="section-title">What Silence Costs</h2>
             <p className="section-lead">Silence protects their process and erases your evidence. Speaking up rewrites the record.</p>
           </div>
@@ -91,9 +119,8 @@ const WhySilentSection = () => {
       <section className="bg-gray-50 py-16">
         <div className="section-shell">
           <div className="mb-10 text-center">
-            <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">Section 4</p>
-            <h2 className="section-title">Why Speaking Changes Everything</h2>
-            <p className="section-lead">Your story is the central node. Each time you record it, it connects to a bigger system response.</p>
+            <h2 className="section-title">Your Story Forces Change</h2>
+            <p className="section-lead">Each time you record it, it connects to a bigger system response.</p>
           </div>
           <div className="flex flex-col items-center gap-8">
             <div className="flex items-center justify-center rounded-full bg-white px-8 py-6 text-lg font-bold text-gray-900 shadow-md">
@@ -114,9 +141,8 @@ const WhySilentSection = () => {
       <section className="bg-white py-16">
         <div className="section-shell">
           <div className="mb-10 text-center">
-            <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">Section 5</p>
-            <h2 className="section-title">Safety &amp; Control Reassurance</h2>
-            <p className="section-lead">You stay in control of your record. No surprises, no forced disclosures.</p>
+            <h2 className="section-title">You Stay in Control</h2>
+            <p className="section-lead">Your record moves at your pace—no surprises, no forced disclosures.</p>
           </div>
           <div className="card bg-gradient-to-r from-green-50 to-blue-50">
             <ul className="space-y-4 text-gray-800">
@@ -137,15 +163,15 @@ const WhySilentSection = () => {
       <section className="bg-gray-50 py-16">
         <div className="section-shell">
           <div className="mb-10 text-center">
-            <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">Section 6</p>
-            <h2 className="section-title">The First 50 — Social Proof</h2>
-            <p className="section-lead">You're not alone. Every record fills a slot. When the first 50 are in, the pattern is undeniable.</p>
+            <h2 className="section-title">Every Story Fills the Grid</h2>
+            <p className="section-lead">You're not alone. Each record makes the pattern harder to ignore.</p>
           </div>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <div className="text-5xl font-bold text-gray-900">{filledSlots}</div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">of {socialProofConfig.target} stories logged</p>
+              <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">of {storyCounts.target} stories logged</p>
               <p className="mt-4 max-w-md text-gray-800">{socialProofConfig.quote}</p>
+              {loadingStories ? <p className="mt-2 text-sm text-gray-600">Updating live count…</p> : null}
             </div>
             <div className="w-full max-w-3xl">
               <div className="grid grid-cols-5 gap-2 sm:grid-cols-10" aria-label="Signups grid">
@@ -163,12 +189,14 @@ const WhySilentSection = () => {
         </div>
       </section>
 
-      <section className="bg-white py-16">
+      {/*
+        Original long-form reasons preserved for reference only. Keeping the section hidden so content stays accessible internally without showing on the public page.
+      */}
+      <section className="bg-white py-16 hidden">
         <div className="section-shell">
           <div className="mb-10 text-center">
-            <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">Full list</p>
             <h2 className="section-title">Why People Stay Silent — and Why It Matters</h2>
-            <p className="section-lead">The detailed reasons remain here, exactly as written, so nothing gets lost.</p>
+            <p className="section-lead">Full original wording below is intentionally hidden from public view.</p>
           </div>
           <div className="space-y-6">
             {whySilentPoints.map((point, index) => (

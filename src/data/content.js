@@ -567,7 +567,7 @@ export const reassuranceChecklist = [
 
 export const socialProofConfig = {
   target: 50,
-  current: 18,
+  current: 0,
   quote: "When I finally wrote it down, I stopped feeling like I imagined it. — Injured worker, BC"
 };
 
