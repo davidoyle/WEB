@@ -505,6 +505,72 @@ export const documentationPowerPoints = [
   }
 ];
 
+export const whySilenceFeelsSaferCards = [
+  {
+    title: "The System is Designed to Exhaust You",
+    description:
+      "Letters are full of: Half-explanations, Policy references with no context, 'If you disagree, you may request...' with 3 different pathways in tiny print. When you're confused enough, silence feels easier than: Admitting you don't understand, Taking a wrong step and being told 'you should have done X instead'",
+    icon: "⚙️"
+  },
+  {
+    title: "You Get Trained to Think You're the Problem",
+    description:
+      "When professionals with titles treat you like you're unreasonable, you start to self-censor. You start to think: maybe I AM making too big a deal, maybe this IS how it's supposed to go. It's not.",
+    icon: "🧠"
+  },
+  {
+    title: "They Count on You Not Asking",
+    description:
+      "If you don't ask for: What evidence they relied on, Why they preferred one medical opinion over another, What the actual plan is for your return to work, They get to make decisions in the dark.",
+    icon: "🕵️"
+  }
+];
+
+export const silenceCostLists = {
+  theyGain: [
+    "Control of the timeline, paperwork, and 'expert' opinions without challenge",
+    "Clean statistics that read as 'accepted, no objection, no harm detected'",
+    "Cover to repeat the same delays, denials, and behavioural labels on the next worker"
+  ],
+  youLose: [
+    "A recorded story that shows what actually happened to you",
+    "Evidence that your doctor and support network can point to later",
+    "A place in the pattern that forces oversight, tribunal attention, and policy change"
+  ]
+};
+
+export const speakingImpactFlow = [
+  {
+    title: "Evidence",
+    description: "Your written questions and documents become proof, not a rant."
+  },
+  {
+    title: "Pattern",
+    description: "Dozens of similar records expose the same delays, denials, and labels."
+  },
+  {
+    title: "Oversight",
+    description: "Patterns trigger attention from MLAs, tribunals, and media because they can't be dismissed as one-off."
+  },
+  {
+    title: "Policy Change",
+    description: "When the pattern is undeniable, procedures and laws get forced to shift."
+  }
+];
+
+export const reassuranceChecklist = [
+  "You choose what to share and when",
+  "Your evidence stays yours—no surprise releases",
+  "You can stay anonymous in public-facing spaces",
+  "You can pause, delete, or edit your record at any time"
+];
+
+export const socialProofConfig = {
+  target: 50,
+  current: 18,
+  quote: "When I finally wrote it down, I stopped feeling like I imagined it. — Injured worker, BC"
+};
+
 export const whySilentPoints = [
   {
     title: "The System is Designed to Exhaust You",
