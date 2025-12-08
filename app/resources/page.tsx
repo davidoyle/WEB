@@ -23,7 +23,9 @@ export default function ResourcesPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-10 space-y-10">
       <header className="space-y-4">
-        <h1 className="text-3xl font-bold tracking-tight">Advocacy Tools</h1>
+        <h1 className="text-3xl font-bold tracking-tight">
+          Advocacy Resources
+        </h1>
         <p className="text-gray-700 text-lg">
           Download actionable documents designed to help you advocate for your
           rights and push for badly needed reforms to WorkSafeBC.
