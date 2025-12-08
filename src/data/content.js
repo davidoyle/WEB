@@ -695,8 +695,8 @@ export const reassuranceChecklist = [
 
 export const socialProofConfig = {
   target: 50,
-  current: 0,
-  quote: "When I finally wrote it down, I stopped feeling like I imagined it. — Injured worker, BC"
+  current: 2,
+  quote: "Sometimes the truth takes a minute to be exposed... but sometimes the truth is right in front of us."
 };
 
 export const whySilentPoints = [
