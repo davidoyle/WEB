@@ -507,16 +507,132 @@ export const documentationPowerPoints = [
 
 export const whySilentPoints = [
   {
-    title: "The System is Designed to Exhaust You",
-    description: "Letters are full of: Half-explanations, Policy references with no context, 'If you disagree, you may request...' with 3 different pathways in tiny print. When you're confused enough, silence feels easier than: Admitting you don't understand, Taking a wrong step and being told 'you should have done X instead'"
+    title: "Your Voice is the One Thing They Can’t Control",
+    sections: [
+      {
+        type: "list",
+        heading: "WorkSafeBC controls:",
+        items: ["the timeline", "the paperwork", "the “expert” opinions"]
+      },
+      {
+        type: "list",
+        heading: "But they cannot control:",
+        items: ["your story", "your evidence", "your right to be heard"]
+      },
+      {
+        type: "text",
+        content: "That is their vulnerability."
+      }
+    ]
   },
   {
-    title: "You Get Trained to Think You're the Problem",
-    description: "When professionals with titles treat you like you're unreasonable, you start to self-censor. You start to think: maybe I AM making too big a deal, maybe this IS how it's supposed to go. It's not."
+    title: "Every Silence is Counted as Compliance",
+    sections: [
+      {
+        type: "list",
+        heading: "When you don’t push back, the system records:",
+        items: ['“accepted”', 'no objection', 'no harm detected']
+      },
+      {
+        type: "list",
+        heading: "That becomes:",
+        items: [
+          "statistics presented to government",
+          "justification for harmful policies",
+          "“proof” nothing is wrong"
+        ]
+      },
+      {
+        type: "text",
+        content: "Your silence becomes their evidence."
+      }
+    ]
   },
   {
-    title: "They Count on You Not Asking",
-    description: "If you don't ask for: What evidence they relied on, Why they preferred one medical opinion over another, What the actual plan is for your return to work, They get to make decisions in the dark."
+    title: "One Voice Alone Gets Ignored — Many Voices Force Change",
+    sections: [
+      {
+        type: "text",
+        content: "They can isolate one worker. They cannot ignore a pattern."
+      },
+      {
+        type: "list",
+        heading: "When dozens report:",
+        items: ["the same delays", "the same denials", "the same “behavioural” labels"]
+      },
+      {
+        type: "text",
+        content: "It becomes undeniable. And legally actionable."
+      }
+    ]
+  },
+  {
+    title: "You’re Not Asking for a Favour — You’re Exposing a Breach",
+    sections: [
+      {
+        type: "list",
+        heading: "When you speak, you are not:",
+        items: ["complaining", "begging", "whining"]
+      },
+      {
+        type: "list",
+        heading: "You are reporting:",
+        items: ["state-caused harm", "medical neglect", "Charter violations", "policy abuse"]
+      },
+      {
+        type: "text",
+        content: "That is evidence — and it matters."
+      }
+    ]
+  },
+  {
+    title: "They Want You Tired. They Fear You Organized.",
+    sections: [
+      {
+        type: "text",
+        content: "WorkSafeBC cannot defeat every worker. So they try to exhaust each of us separately."
+      },
+      {
+        type: "text",
+        content: "Our answer: Stand together and they lose their strategy."
+      }
+    ]
+  },
+  {
+    title: "The Real Reason to Speak Up",
+    sections: [
+      {
+        type: "list",
+        heading: "Your story is part of the case that ends this. Not a rant. Not a plea. A record of systemic injustice.",
+        items: [
+          "tribunals change",
+          "laws change",
+          "the entire system shifts"
+        ],
+        note: "And once enough stories are recorded:"
+      },
+      {
+        type: "text",
+        content: "Because it has to."
+      }
+    ]
+  },
+  {
+    title: "The System Isn’t Ready for You to Speak",
+    sections: [
+      {
+        type: "text",
+        content: "That’s why speaking matters."
+      },
+      {
+        type: "text",
+        content: "Your voice is not a risk. Your voice is leverage."
+      },
+      {
+        type: "text",
+        content: "Say what they don’t want on record — and watch what happens."
+      }
+    ]
   }
 ];
 
