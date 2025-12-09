@@ -9,7 +9,7 @@ import {
 } from '../data/content'
 
 const WhySilentSection = () => {
-  const currentStories = Math.max(2, socialProofConfig.current || 0)
+  const currentStories = Math.max(2, socialProofConfig.current || 2)
   const filledSlots = Math.min(currentStories, socialProofConfig.target)
   const slots = Array.from({ length: socialProofConfig.target }, (_, index) => index < filledSlots)
 
@@ -139,9 +139,9 @@ const WhySilentSection = () => {
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <div className="text-5xl font-bold text-gray-900">{filledSlots}</div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">of {socialProofConfig.target} stories logged</p>
+              <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">of {storyCounts.target} stories logged</p>
               <p className="mt-4 max-w-md text-gray-800">{socialProofConfig.quote}</p>
-              <p className="mt-2 text-sm text-gray-600">Manual count for now; we'll add live updates as more stories come in.</p>
+              {loadingStories ? <p className="mt-2 text-sm text-gray-600">Updating live count…</p> : null}
             </div>
             <div className="w-full max-w-3xl">
               <div className="grid grid-cols-5 gap-2 sm:grid-cols-10" aria-label="Signups grid">
