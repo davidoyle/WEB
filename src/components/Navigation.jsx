@@ -17,7 +17,7 @@ const resourceLinks = [
   { href: '/resources', label: 'Resources' },
   { href: '/pressure-points', label: 'Pressure Points' },
   { href: '/templates', label: 'Email Templates' },
-  { href: '/why-silent', label: 'Why Silent' },
+  { href: '/why-silent', label: 'The Cost of Silence' },
   { href: '/how-to-use', label: 'How To Use' },
   { href: '/wcat', label: 'WCAT Armory' },
   { href: '/tell-your-story', label: 'Tell Your Story' },
