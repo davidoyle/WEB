@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 
 import {
   reassuranceChecklist,
@@ -9,39 +8,10 @@ import {
   whySilenceFeelsSaferCards,
   whySilentPoints
 } from '../data/content'
-import { supabase } from '../../utils/supabase'
 
 const WhySilentSection = () => {
-  const [storyCounts, setStoryCounts] = useState({
-    current: socialProofConfig.current,
-    target: socialProofConfig.target
-  })
-  const [loadingStories, setLoadingStories] = useState(Boolean(supabase))
-
-  useEffect(() => {
-    let isActive = true
-
-    const fetchStoryCount = async () => {
-      if (!supabase) return
-      const { count, error } = await supabase.from('stories').select('id', { count: 'exact', head: true })
-      if (!isActive) return
-      if (error || count === null) {
-        setLoadingStories(false)
-        return
-      }
-      setStoryCounts((prev) => ({ ...prev, current: count }))
-      setLoadingStories(false)
-    }
-
-    fetchStoryCount()
-
-    return () => {
-      isActive = false
-    }
-  }, [])
-
-  const filledSlots = Math.min(storyCounts.current, storyCounts.target)
-  const slots = Array.from({ length: storyCounts.target }, (_, index) => index < filledSlots)
+  const filledSlots = Math.min(socialProofConfig.current, socialProofConfig.target)
+  const slots = Array.from({ length: socialProofConfig.target }, (_, index) => index < filledSlots)
 
   return (
     <div id="why-silent" className="scroll-smooth">
@@ -169,9 +139,8 @@ const WhySilentSection = () => {
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <div className="text-5xl font-bold text-gray-900">{filledSlots}</div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">of {storyCounts.target} stories logged</p>
+              <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">of {socialProofConfig.target} stories logged</p>
               <p className="mt-4 max-w-md text-gray-800">{socialProofConfig.quote}</p>
-              {loadingStories ? <p className="mt-2 text-sm text-gray-600">Updating live count…</p> : null}
             </div>
             <div className="w-full max-w-3xl">
               <div className="grid grid-cols-5 gap-2 sm:grid-cols-10" aria-label="Signups grid">
