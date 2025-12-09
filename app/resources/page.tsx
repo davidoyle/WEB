@@ -17,6 +17,13 @@ const docs = [
     description:
       "A concise guide to contacting your MLA, raising concerns effectively, and demanding action on WorkSafeBC oversight failures.",
   },
+  {
+    title: "Public-Facing Template – Ready to Post and Share",
+    file: "public-facing-template.pdf",
+    event: "download_public_facing_template",
+    description:
+      "A ready-to-post public awareness and pressure template that any supporter can share, broad enough for universal use and structured for tagging MLAs, MPs, and media.",
+  },
 ];
 
 export default function ResourcesPage() {
