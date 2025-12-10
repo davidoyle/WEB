@@ -7,7 +7,7 @@ const Landing = ({ onStart, onNavigate }) => {
 
   return (
     <>
-      <section className="mx-auto max-w-4xl px-4 py-12">
+      <section className="mx-auto flex min-h-screen max-w-4xl flex-col px-4 py-12">
         <div className="mb-12 text-center">
           <Shield className="mx-auto mb-6 h-16 w-16 text-blue-600" aria-hidden="true" />
           <h1 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">Worker&apos;s Toolkit</h1>
@@ -48,6 +48,49 @@ const Landing = ({ onStart, onNavigate }) => {
             >
               Tell Your Story (Anonymous, Safe)
             </button>
+          </div>
+
+          <div className="mt-12 space-y-10 border-t border-gray-200 pt-8 text-sm text-gray-700">
+            <div className="space-y-3">
+              <h3 className="text-base font-semibold text-gray-900">Who’s building this</h3>
+              <p>
+                Worker’s Toolkit was started in 2025 by an injured worker in B.C. and is being built with a small team of workers and allies.
+              </p>
+              <p className="font-semibold text-gray-900">We are:</p>
+              <ul className="list-inside list-disc space-y-2">
+                <li>
+                  <span className="font-semibold">Independent</span> – not funded by WorkSafeBC, employers, or government.
+                </li>
+                <li>
+                  <span className="font-semibold">Worker-first</span> – everything here is built to help injured workers understand the system and push back.
+                </li>
+                <li>
+                  <span className="font-semibold">Evidence-obsessed</span> – the toolkit is shaped by real claim files, FOI records, and legal decisions.
+                </li>
+              </ul>
+              <p>
+                The goal is simple: give workers enough structure, language, and evidence tools that they’re not facing this system alone.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <h3 className="text-base font-semibold text-gray-900">Featured tools you can use right now</h3>
+              <p>Concrete tools you can download and start using immediately.</p>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/resources" className="font-semibold text-blue-700 hover:underline">
+                    MLA pressure letter (PDF)
+                  </Link>
+                  <p className="text-gray-700">A ready-to-edit letter you can send to your MLA when WorkSafeBC isn’t doing its job.</p>
+                </li>
+                <li>
+                  <Link href="/resources" className="font-semibold text-blue-700 hover:underline">
+                    Call-to-action handout (PDF)
+                  </Link>
+                  <p className="text-gray-700">A one-pager you can share with family, friends, and allies so they understand what’s happening and how to help.</p>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>

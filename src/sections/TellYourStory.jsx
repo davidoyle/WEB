@@ -105,6 +105,24 @@ const TellYourStory = ({ onNavigate }) => {
         witnesses — will be redacted. You can also choose to keep your story fully private. This is completely free.
       </p>
 
+      <div className="mb-6 grid gap-4 md:grid-cols-2">
+        <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+          <h2 className="text-lg font-semibold text-gray-900">What we are</h2>
+          <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-gray-800">
+            <li>A worker-led project trying to document what’s actually happening in the B.C. compensation system.</li>
+            <li>A toolkit to help injured workers organize their evidence and push back.</li>
+          </ul>
+        </div>
+        <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+          <h2 className="text-lg font-semibold text-gray-900">What we’re not</h2>
+          <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-gray-800">
+            <li>We are not WorkSafeBC.</li>
+            <li>We are not your employer or your union.</li>
+            <li>We are not a law firm and we don’t sell or trade your data.</li>
+          </ul>
+        </div>
+      </div>
+
       {success && (
         <div className="mb-6 rounded-lg border border-green-200 bg-green-50 p-4 text-green-800">
           {success}
@@ -123,16 +141,23 @@ const TellYourStory = ({ onNavigate }) => {
         }}
         className="space-y-6"
       >
+        <div className="rounded-md border border-blue-100 bg-blue-50 p-4 text-sm text-gray-800">
+          <p className="font-semibold text-gray-900">How we use this</p>
+          <ul className="mt-2 list-inside list-disc space-y-1">
+            <li>Your story will never be shared with WorkSafeBC, your employer, or any third party without your explicit permission.</li>
+            <li>You can tell your story without using your real name or email.</li>
+            <li>We use these stories to understand patterns, improve the toolkit, and show decision-makers what’s really happening.</li>
+          </ul>
+        </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div>
             <label className="block text-sm font-medium text-gray-700" htmlFor="name">
-              Name<span className="text-red-600">*</span>
+              Name (optional – you can use an alias)
             </label>
             <input
               id="name"
               name="name"
               type="text"
-              required
               className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
               value={form.name}
               onChange={handleChange}
@@ -153,13 +178,12 @@ const TellYourStory = ({ onNavigate }) => {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700" htmlFor="email">
-              Email<span className="text-red-600">*</span>
+              Email (optional – only if you want a reply)
             </label>
             <input
               id="email"
               name="email"
               type="email"
-              required
               className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
               value={form.email}
               onChange={handleChange}
