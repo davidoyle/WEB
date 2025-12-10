@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useMemo, useRef, useState } from 'react'
 
 import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection'
@@ -159,24 +160,24 @@ const PressurePoints = () => {
           <p className="text-sm text-gray-700">Pick the templates you need and drop them into your next message.</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <a
+          <Link
             href="/templates"
             className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700"
           >
             Email Templates
-          </a>
-          <a
+          </Link>
+          <Link
             href="/documentation"
             className="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:border-indigo-500"
           >
             FOI Tools
-          </a>
-          <a
+          </Link>
+          <Link
             href="/wcat"
             className="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:border-indigo-500"
           >
             WCAT Precedent Armory
-          </a>
+          </Link>
         </div>
       </div>
     </div>

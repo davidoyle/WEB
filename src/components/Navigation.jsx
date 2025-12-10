@@ -21,6 +21,7 @@ const resourceLinks = [
   { href: '/how-to-use', label: 'How To Use' },
   { href: '/wcat', label: 'WCAT Armory' },
   { href: '/tell-your-story', label: 'Tell Your Story' },
+  { href: '/about', label: "About Worker's Toolkit" },
 ]
 
 const Navigation = () => {

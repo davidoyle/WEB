@@ -27,8 +27,10 @@ const groupCategories = (cases) => {
 }
 
 const WCATToolkit = () => {
-  const cases = Array.isArray(wcatCases) ? wcatCases : []
-  const categories = useMemo(() => groupCategories(cases), [cases])
+  const categories = useMemo(
+    () => groupCategories(Array.isArray(wcatCases) ? wcatCases : []),
+    [],
+  )
   const [expandedCases, setExpandedCases] = useState(() =>
     categories.map((category) => (category.cases?.length ? 0 : -1)),
   );

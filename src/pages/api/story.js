@@ -85,20 +85,20 @@ export default async function handler(req, res) {
       consent,
     } = req.body || {};
 
-    if (!name || !email || !story || !consent) {
+    if (!incidentMonthYear || !story || !consent) {
       safeLog(logResponse, requestId, 400, { error: 'Missing required fields' });
       return res.status(400).json({
         ok: false,
-        error: 'Missing required fields: name, email, story, or consent.',
+        error: 'Missing required fields: month/year of incident or decision, story, and consent.',
       });
     }
 
     const { data, error: insertError } = await supabase
       .from('stories')
       .insert({
-        full_name: name,
+        full_name: name || null,
         phone,
-        email,
+        email: email || null,
         postal_code: postalCode,
         incident_month_year: incidentMonthYear,
         issue_tags: issueTags || [],
