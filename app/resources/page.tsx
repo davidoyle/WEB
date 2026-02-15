@@ -1,6 +1,9 @@
 'use client';
 
+import { ArrowRight } from 'lucide-react';
 import { track } from '@vercel/analytics';
+import Button from '@/components/ui/Button';
+import Card from '@/components/ui/Card';
 
 const docs = [
   {
@@ -28,36 +31,40 @@ const docs = [
 
 export default function ResourcesPage() {
   return (
-    <main className="max-w-4xl mx-auto px-4 py-10 space-y-10">
-      <header className="space-y-4">
-        <h1 className="text-3xl font-bold tracking-tight">Advocacy Resources</h1>
-        <p className="text-gray-700 text-lg">
+    <main className="space-y-12 py-12">
+      <header className="space-y-4 text-center">
+        <h1 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+          Advocacy Resources
+        </h1>
+        <p className="mx-auto max-w-3xl text-lg text-muted">
           Download actionable documents designed to help you advocate for your rights and push for
           badly needed reforms to WorkSafeBC.
         </p>
       </header>
 
+      <hr className="my-8 border-border" />
+
       <section className="grid gap-6 md:grid-cols-2">
         {docs.map(doc => (
-          <article
+          <Card
+            as="article"
             key={doc.file}
-            className="border rounded-xl p-6 space-y-4 shadow-sm transition hover:shadow-md bg-white"
+            className="space-y-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
           >
-            <div className="space-y-1">
-              <h2 className="text-xl font-semibold">{doc.title}</h2>
-              <p className="text-sm text-gray-600 leading-relaxed">{doc.description}</p>
+            <div className="space-y-2">
+              <h2 className="text-xl font-semibold tracking-tight text-foreground">{doc.title}</h2>
+              <p className="text-sm leading-relaxed text-muted">{doc.description}</p>
             </div>
 
-            <button
+            <Button
               onClick={() => {
                 track(doc.event);
                 window.location.href = `/api/download/${doc.file}`;
               }}
-              className="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 focus:ring-2 focus:ring-blue-400 focus:outline-none"
             >
-              Download PDF
-            </button>
-          </article>
+              Download PDF <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+            </Button>
+          </Card>
         ))}
       </section>
     </main>

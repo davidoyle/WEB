@@ -3,7 +3,7 @@ import Navigation from '../components/Navigation';
 import TellYourStory from '../sections/TellYourStory';
 
 const TellYourStoryPage = () => (
-  <div className="min-h-screen bg-gray-50">
+  <div className="min-h-screen">
     <Head>
       <title>Tell Your Story</title>
       <meta

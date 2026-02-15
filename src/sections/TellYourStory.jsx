@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Button from '../components/ui/Button';
+import Card from '../components/ui/Card';
 
 const initialForm = {
   name: '',
@@ -22,6 +24,9 @@ const ISSUE_OPTIONS = [
   'Decision letters missing or hard to access',
   'Other',
 ];
+
+const inputClassName =
+  'mt-1 w-full rounded-lg border border-border bg-card px-3 py-2 shadow-sm placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/30';
 
 const TellYourStory = ({ onNavigate }) => {
   const [form, setForm] = useState(initialForm);
@@ -93,39 +98,41 @@ const TellYourStory = ({ onNavigate }) => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto py-10">
-      <h1 className="text-3xl font-bold mb-4">Tell Your Story (Secure)</h1>
-      <p className="text-gray-700 mb-4">
+    <div className="mx-auto max-w-3xl space-y-6 py-12">
+      <h1 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+        Tell Your Story (Secure)
+      </h1>
+      <p className="text-muted">
         This form lets you share what happened in your WorkSafeBC claim. We use these stories to
         spot patterns and build better tools for workers. We can’t promise your case will be taken
         on or that the system won’t stonewall you, but we
         <span className="font-semibold"> will</span> treat your information with care.
       </p>
-      <p className="text-gray-700 mb-6">
+      <p className="text-muted">
         If we share any part of your story publicly, all individual names — medical advisors, claims
         managers, employers, and witnesses — will be redacted. You can also choose to keep your
         story fully private. This is completely free.
       </p>
 
-      <div className="mb-6 grid gap-4 md:grid-cols-2">
-        <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
-          <h2 className="text-lg font-semibold text-gray-900">What we are</h2>
-          <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-gray-800">
+      <div className="grid gap-4 md:grid-cols-2">
+        <Card className="p-4">
+          <h2 className="text-lg font-semibold text-foreground">What we are</h2>
+          <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-foreground">
             <li>
               A worker-led project trying to document what’s actually happening in the B.C.
               compensation system.
             </li>
             <li>A toolkit to help injured workers organize their evidence and push back.</li>
           </ul>
-        </div>
-        <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
-          <h2 className="text-lg font-semibold text-gray-900">What we’re not</h2>
-          <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-gray-800">
+        </Card>
+        <Card className="p-4">
+          <h2 className="text-lg font-semibold text-foreground">What we’re not</h2>
+          <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-foreground">
             <li>We are not WorkSafeBC.</li>
             <li>We are not your employer or your union.</li>
             <li>We are not a law firm and we don’t sell or trade your data.</li>
           </ul>
-        </div>
+        </Card>
       </div>
 
       {success && (
@@ -139,6 +146,8 @@ const TellYourStory = ({ onNavigate }) => {
         </div>
       )}
 
+      <hr className="my-8 border-border" />
+
       <form
         onSubmit={e => {
           e.preventDefault();
@@ -146,8 +155,8 @@ const TellYourStory = ({ onNavigate }) => {
         }}
         className="space-y-6"
       >
-        <div className="rounded-md border border-blue-100 bg-blue-50 p-4 text-sm text-gray-800">
-          <p className="font-semibold text-gray-900">How we use this</p>
+        <div className="rounded-lg border border-primary/20 bg-blue-50 p-4 text-sm text-foreground">
+          <p className="font-semibold text-foreground">How we use this</p>
           <ul className="mt-2 list-inside list-disc space-y-1">
             <li>
               Your story will never be shared with WorkSafeBC, your employer, or any third party
@@ -169,7 +178,7 @@ const TellYourStory = ({ onNavigate }) => {
               id="name"
               name="name"
               type="text"
-              className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+              className={inputClassName}
               value={form.name}
               onChange={handleChange}
             />
@@ -182,7 +191,7 @@ const TellYourStory = ({ onNavigate }) => {
               id="phone"
               name="phone"
               type="text"
-              className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+              className={inputClassName}
               value={form.phone}
               onChange={handleChange}
             />
@@ -195,7 +204,7 @@ const TellYourStory = ({ onNavigate }) => {
               id="email"
               name="email"
               type="email"
-              className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+              className={inputClassName}
               value={form.email}
               onChange={handleChange}
             />
@@ -208,7 +217,7 @@ const TellYourStory = ({ onNavigate }) => {
               id="postalCode"
               name="postalCode"
               type="text"
-              className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+              className={inputClassName}
               value={form.postalCode}
               onChange={handleChange}
             />
@@ -223,7 +232,7 @@ const TellYourStory = ({ onNavigate }) => {
               type="text"
               required
               placeholder="e.g., March 2024"
-              className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+              className={inputClassName}
               value={form.incidentMonthYear}
               onChange={handleChange}
             />
@@ -239,7 +248,7 @@ const TellYourStory = ({ onNavigate }) => {
               <label key={option} className="flex items-center space-x-2 text-sm text-gray-700">
                 <input
                   type="checkbox"
-                  className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
+                  className="h-4 w-4 rounded border-border text-primary focus:ring-primary"
                   checked={form.issueTags.includes(option)}
                   onChange={() => handleIssueToggle(option)}
                 />
@@ -258,7 +267,7 @@ const TellYourStory = ({ onNavigate }) => {
             name="story"
             required
             rows={6}
-            className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+            className={inputClassName}
             value={form.story}
             onChange={handleChange}
           />
@@ -277,7 +286,7 @@ const TellYourStory = ({ onNavigate }) => {
                 value="public"
                 checked={form.publicPermission === 'public'}
                 onChange={handleChange}
-                className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-500"
+                className="h-4 w-4 border-border text-primary focus:ring-primary"
               />
               <span>You may share my story publicly, with all names redacted</span>
             </label>
@@ -289,14 +298,14 @@ const TellYourStory = ({ onNavigate }) => {
                 value="private"
                 checked={form.publicPermission === 'private'}
                 onChange={handleChange}
-                className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-500"
+                className="h-4 w-4 border-border text-primary focus:ring-primary"
               />
               <span>Do not share my story publicly; use it only for pattern tracking</span>
             </label>
           </div>
         </div>
 
-        <div className="rounded-md border border-gray-200 bg-gray-50 p-4 text-sm text-gray-700">
+        <div className="rounded-lg border border-border bg-slate-50 p-4 text-sm text-muted">
           This is not legal advice. Submitting does not guarantee representation or a specific
           outcome. Institutions may still stonewall or delay. We will redact individual names if any
           part of your story is shared publicly.
@@ -310,7 +319,7 @@ const TellYourStory = ({ onNavigate }) => {
             required
             checked={form.consent}
             onChange={handleChange}
-            className="mt-1 h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
+            className="mt-1 h-4 w-4 rounded border-border text-primary focus:ring-primary"
           />
           <label className="text-sm text-gray-800" htmlFor="consent">
             I understand this is not legal advice and that you can’t guarantee an outcome. I consent
@@ -319,15 +328,9 @@ const TellYourStory = ({ onNavigate }) => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <button
-            type="submit"
-            disabled={status === 'loading'}
-            className={`rounded-md bg-gray-900 px-6 py-3 text-white shadow-sm transition hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 ${
-              status === 'loading' ? 'cursor-not-allowed opacity-75' : ''
-            }`}
-          >
+          <Button type="submit" disabled={status === 'loading'} className="px-6 py-3">
             {status === 'loading' ? 'Submitting…' : 'Submit securely'}
-          </button>
+          </Button>
           <button
             type="button"
             className="text-sm text-blue-600 underline"

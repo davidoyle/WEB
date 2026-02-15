@@ -13,10 +13,18 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <ToneProvider>
           <Navigation />
-          {children}
+          <main className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">{children}</main>
         </ToneProvider>
         <Analytics />
       </body>

@@ -4,11 +4,19 @@
 
 @import './common.css';
 
-body {
-  @apply bg-gray-50 text-gray-900 text-base md:text-lg;
-}
+@layer base {
+  body {
+    @apply bg-background font-sans text-base text-foreground antialiased md:text-lg;
+  }
 
-a,
-button {
-  @apply focus:outline-none;
+  a {
+    @apply text-primary transition-colors duration-200 hover:text-primary-dark;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    @apply focus:outline-none;
+  }
 }
