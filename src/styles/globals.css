@@ -2,15 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@import './common.css';
 
 @layer base {
   body {
-    @apply bg-background font-sans text-base text-foreground antialiased md:text-lg;
+    @apply bg-background text-base text-foreground antialiased md:text-lg;
   }
 
   a {
-    @apply text-primary transition-colors duration-200 hover:text-primary-dark;
+    @apply text-accent transition-colors duration-200 hover:opacity-80;
   }
 
   button,

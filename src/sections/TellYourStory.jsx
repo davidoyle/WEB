@@ -26,7 +26,7 @@ const ISSUE_OPTIONS = [
 ];
 
 const inputClassName =
-  'mt-1 w-full rounded-lg border border-border bg-card px-3 py-2 shadow-sm placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/30';
+  'mt-1 w-full rounded-lg border border-muted bg-background px-3 py-2 text-foreground shadow-sm placeholder:text-muted focus:border-accent focus:ring-2 focus:ring-accent/40';
 
 const TellYourStory = ({ onNavigate }) => {
   const [form, setForm] = useState(initialForm);
@@ -146,7 +146,7 @@ const TellYourStory = ({ onNavigate }) => {
         </div>
       )}
 
-      <hr className="my-8 border-border" />
+      <hr className="my-8 border-muted" />
 
       <form
         onSubmit={e => {
@@ -155,7 +155,7 @@ const TellYourStory = ({ onNavigate }) => {
         }}
         className="space-y-6"
       >
-        <div className="rounded-lg border border-primary/20 bg-blue-50 p-4 text-sm text-foreground">
+        <div className="rounded-lg border border-muted bg-background/80 p-4 text-sm text-foreground">
           <p className="font-semibold text-foreground">How we use this</p>
           <ul className="mt-2 list-inside list-disc space-y-1">
             <li>
@@ -171,7 +171,7 @@ const TellYourStory = ({ onNavigate }) => {
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div>
-            <label className="block text-sm font-medium text-gray-700" htmlFor="name">
+            <label className="block text-sm font-medium text-foreground" htmlFor="name">
               Name (optional – you can use an alias)
             </label>
             <input
@@ -184,7 +184,7 @@ const TellYourStory = ({ onNavigate }) => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700" htmlFor="phone">
+            <label className="block text-sm font-medium text-foreground" htmlFor="phone">
               Phone (optional)
             </label>
             <input
@@ -197,7 +197,7 @@ const TellYourStory = ({ onNavigate }) => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700" htmlFor="email">
+            <label className="block text-sm font-medium text-foreground" htmlFor="email">
               Email (optional – only if you want a reply)
             </label>
             <input
@@ -210,7 +210,7 @@ const TellYourStory = ({ onNavigate }) => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700" htmlFor="postalCode">
+            <label className="block text-sm font-medium text-foreground" htmlFor="postalCode">
               Postal code (optional)
             </label>
             <input
@@ -223,7 +223,10 @@ const TellYourStory = ({ onNavigate }) => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700" htmlFor="incidentMonthYear">
+            <label
+              className="block text-sm font-medium text-foreground"
+              htmlFor="incidentMonthYear"
+            >
               Month/Year of incident or decision<span className="text-red-600">*</span>
             </label>
             <input
@@ -240,15 +243,15 @@ const TellYourStory = ({ onNavigate }) => {
         </div>
 
         <div>
-          <span className="block text-sm font-medium text-gray-700">
+          <span className="block text-sm font-medium text-foreground">
             Issue tags (check all that apply)
           </span>
           <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
             {ISSUE_OPTIONS.map(option => (
-              <label key={option} className="flex items-center space-x-2 text-sm text-gray-700">
+              <label key={option} className="flex items-center space-x-2 text-sm text-foreground">
                 <input
                   type="checkbox"
-                  className="h-4 w-4 rounded border-border text-primary focus:ring-primary"
+                  className="h-4 w-4 rounded border-muted text-accent focus:ring-accent"
                   checked={form.issueTags.includes(option)}
                   onChange={() => handleIssueToggle(option)}
                 />
@@ -259,7 +262,7 @@ const TellYourStory = ({ onNavigate }) => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700" htmlFor="story">
+          <label className="block text-sm font-medium text-foreground" htmlFor="story">
             Tell us what happened<span className="text-red-600">*</span>
           </label>
           <textarea
@@ -274,11 +277,11 @@ const TellYourStory = ({ onNavigate }) => {
         </div>
 
         <div>
-          <span className="block text-sm font-medium text-gray-700">
+          <span className="block text-sm font-medium text-foreground">
             Can we share your story publicly?
           </span>
           <div className="mt-2 space-y-2">
-            <label className="flex items-center space-x-3 text-sm text-gray-700" htmlFor="public">
+            <label className="flex items-center space-x-3 text-sm text-foreground" htmlFor="public">
               <input
                 id="public"
                 type="radio"
@@ -286,11 +289,14 @@ const TellYourStory = ({ onNavigate }) => {
                 value="public"
                 checked={form.publicPermission === 'public'}
                 onChange={handleChange}
-                className="h-4 w-4 border-border text-primary focus:ring-primary"
+                className="h-4 w-4 border-muted text-accent focus:ring-accent"
               />
               <span>You may share my story publicly, with all names redacted</span>
             </label>
-            <label className="flex items-center space-x-3 text-sm text-gray-700" htmlFor="private">
+            <label
+              className="flex items-center space-x-3 text-sm text-foreground"
+              htmlFor="private"
+            >
               <input
                 id="private"
                 type="radio"
@@ -298,14 +304,14 @@ const TellYourStory = ({ onNavigate }) => {
                 value="private"
                 checked={form.publicPermission === 'private'}
                 onChange={handleChange}
-                className="h-4 w-4 border-border text-primary focus:ring-primary"
+                className="h-4 w-4 border-muted text-accent focus:ring-accent"
               />
               <span>Do not share my story publicly; use it only for pattern tracking</span>
             </label>
           </div>
         </div>
 
-        <div className="rounded-lg border border-border bg-slate-50 p-4 text-sm text-muted">
+        <div className="rounded-lg border border-muted bg-background/70 p-4 text-sm text-muted">
           This is not legal advice. Submitting does not guarantee representation or a specific
           outcome. Institutions may still stonewall or delay. We will redact individual names if any
           part of your story is shared publicly.
@@ -319,21 +325,25 @@ const TellYourStory = ({ onNavigate }) => {
             required
             checked={form.consent}
             onChange={handleChange}
-            className="mt-1 h-4 w-4 rounded border-border text-primary focus:ring-primary"
+            className="mt-1 h-4 w-4 rounded border-muted text-accent focus:ring-accent"
           />
-          <label className="text-sm text-gray-800" htmlFor="consent">
+          <label className="text-sm text-foreground" htmlFor="consent">
             I understand this is not legal advice and that you can’t guarantee an outcome. I consent
             to you storing and reviewing this information.
           </label>
         </div>
 
         <div className="flex items-center space-x-4">
-          <Button type="submit" disabled={status === 'loading'} className="px-6 py-3">
+          <Button
+            type="submit"
+            disabled={status === 'loading'}
+            className="bg-accent px-6 py-3 text-background hover:bg-yellow-600"
+          >
             {status === 'loading' ? 'Submitting…' : 'Submit securely'}
           </Button>
           <button
             type="button"
-            className="text-sm text-blue-600 underline"
+            className="text-sm text-accent underline"
             onClick={() => onNavigate('home')}
           >
             ← Back to home

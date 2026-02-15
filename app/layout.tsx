@@ -1,8 +1,5 @@
-import '@/styles/globals.css';
+import './globals.css';
 
-import { Analytics } from '@vercel/analytics/react';
-import Navigation from '@/components/Navigation';
-import { ToneProvider } from '@/context/ToneContext';
 import { ReactNode } from 'react';
 
 export const metadata = {
@@ -21,12 +18,40 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           rel="stylesheet"
         />
       </head>
-      <body>
-        <ToneProvider>
-          <Navigation />
-          <main className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">{children}</main>
-        </ToneProvider>
-        <Analytics />
+      <body className="bg-background text-foreground">
+        <header className="fixed left-0 right-0 top-0 z-50 bg-background/80 backdrop-blur-md">
+          <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+            <div className="text-2xl font-bold uppercase">Workers Toolkit</div>
+            <ul className="flex gap-6 text-muted">
+              <li>
+                <a className="transition-colors hover:text-accent" href="/how-to-use">
+                  How to use
+                </a>
+              </li>
+              <li>
+                <a className="transition-colors hover:text-accent" href="/stories">
+                  Stories
+                </a>
+              </li>
+              <li>
+                <a className="transition-colors hover:text-accent" href="/tools">
+                  Tools
+                </a>
+              </li>
+              <li>
+                <a className="transition-colors hover:text-accent" href="/precedents">
+                  Precedents
+                </a>
+              </li>
+              <li>
+                <a className="transition-colors hover:text-accent" href="/submit">
+                  Submit
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <main className="pt-20">{children}</main>
       </body>
     </html>
   );
