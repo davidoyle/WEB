@@ -31,7 +31,7 @@ const docs = [
 
 export default function ResourcesPage() {
   return (
-    <main className="space-y-12 py-12">
+    <section className="space-y-12 py-12">
       <header className="space-y-4 text-center">
         <h1 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
           Advocacy Resources
@@ -67,6 +67,6 @@ export default function ResourcesPage() {
           </Card>
         ))}
       </section>
-    </main>
+    </section>
   );
 }
