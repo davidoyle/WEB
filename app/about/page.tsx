@@ -1,25 +1,17 @@
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: "About Worker's Toolkit",
-  description:
-    'Worker-led toolkit focused on WorkSafeBC, built to give injured workers structure, evidence, and language.',
-};
-
 export default function AboutPage() {
   return (
-    <div className="space-y-8 py-10">
-      <header className="space-y-3">
-        <p className="text-sm uppercase tracking-wide text-gray-600">About Worker&apos;s Toolkit</p>
-        <h1 className="text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
-          Who we are and why this exists
-        </h1>
-        <p className="max-w-3xl text-lg text-gray-700">
-          Worker&apos;s Toolkit is a worker-led project focused on WorkSafeBC. Everything here is
-          built to give injured workers the structure, evidence, and language to navigate a system
-          that too often ignores them.
-        </p>
-      </header>
-    </div>
+    <section className="space-y-10">
+      <h1 className="text-4xl font-semibold leading-tight tracking-tight md:text-5xl">
+        About Workers Toolkit
+      </h1>
+      <p className="mx-auto max-w-prose text-lg leading-relaxed text-gray-700">
+        Worker&apos;s Toolkit is a worker-led project focused on WorkSafeBC. Everything here is
+        built to give injured workers structure, evidence, and language to navigate a system that
+        too often ignores them.
+      </p>
+      <p className="mx-auto max-w-prose text-lg leading-relaxed text-gray-700">
+        This is a grassroots project. It is not funded by WorkSafeBC, employers, or government.
+      </p>
+    </section>
   );
 }
