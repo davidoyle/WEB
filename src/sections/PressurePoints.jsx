@@ -1,54 +1,56 @@
-import Link from 'next/link'
-import { useMemo, useRef, useState } from 'react'
+import Link from 'next/link';
+import { useMemo, useRef, useState } from 'react';
 
-import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection'
-import { pressurePoints } from '../data/content'
+import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection';
+import { pressurePoints } from '../data/content';
 
 const PressurePoints = () => {
-  const [openPoints, setOpenPoints] = useState([])
-  const cardRefs = useRef({})
+  const [openPoints, setOpenPoints] = useState([]);
+  const cardRefs = useRef({});
 
-  const isOpen = (id) => openPoints.includes(id)
+  const isOpen = id => openPoints.includes(id);
 
-  const handleToggle = (id) => {
-    setOpenPoints((prev) => {
-      const alreadyOpen = prev.includes(id)
-      const updated = alreadyOpen ? prev.filter((item) => item !== id) : [...prev, id]
+  const handleToggle = id => {
+    setOpenPoints(prev => {
+      const alreadyOpen = prev.includes(id);
+      const updated = alreadyOpen ? prev.filter(item => item !== id) : [...prev, id];
 
       setTimeout(() => {
-        const element = cardRefs.current[id]
+        const element = cardRefs.current[id];
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 50)
+      }, 50);
 
-      return updated
-    })
-  }
+      return updated;
+    });
+  };
 
   const gridItems = useMemo(
     () =>
-      pressurePoints.map((point) => ({
+      pressurePoints.map(point => ({
         id: point.id,
         icon: point.icon,
         label: point.label,
-        title: point.title
+        title: point.title,
       })),
     []
-  )
+  );
 
   return (
     <div className="section-shell" id="pressure">
       <BeforeYouDoAnythingSection />
       <div className="mb-10 text-center">
         <h1 className="section-title">Tactical Strategy: Pressure Points</h1>
-        <p className="section-lead">Pick the pattern that matches your experience — and push back with their rules.</p>
+        <p className="section-lead">
+          Pick the pattern that matches your experience — and push back with their rules.
+        </p>
       </div>
 
       <div className="mb-8">
         <h2 className="text-lg font-semibold text-gray-900 mb-3 text-center">Pattern Selector</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {gridItems.map((item) => (
+          {gridItems.map(item => (
             <button
               key={item.id}
               type="button"
@@ -66,18 +68,20 @@ const PressurePoints = () => {
                   <p className="text-xs text-gray-600">{item.title}</p>
                 </div>
               </div>
-              <span className="text-sm text-indigo-600">{isOpen(item.id) ? 'Selected' : 'Tap to open'}</span>
+              <span className="text-sm text-indigo-600">
+                {isOpen(item.id) ? 'Selected' : 'Tap to open'}
+              </span>
             </button>
           ))}
         </div>
       </div>
 
       <div className="space-y-4">
-        {pressurePoints.map((point) => (
+        {pressurePoints.map(point => (
           <div
             key={point.id}
-            ref={(el) => {
-              cardRefs.current[point.id] = el
+            ref={el => {
+              cardRefs.current[point.id] = el;
             }}
             className={`overflow-hidden rounded-xl border bg-white shadow-sm transition ${
               isOpen(point.id) ? 'border-indigo-500' : 'border-gray-200'
@@ -115,7 +119,9 @@ const PressurePoints = () => {
                     </ul>
                   </div>
                   <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
-                    <h3 className="text-sm font-semibold text-gray-900 mb-2">Your rights to cite</h3>
+                    <h3 className="text-sm font-semibold text-gray-900 mb-2">
+                      Your rights to cite
+                    </h3>
                     <ul className="list-disc pl-5 space-y-1 text-gray-700">
                       {point.rights.map((right, index) => (
                         <li key={index}>{right}</li>
@@ -125,10 +131,15 @@ const PressurePoints = () => {
                 </div>
 
                 <div className="mt-4 bg-white rounded-lg border border-indigo-100 p-4 shadow-sm">
-                  <h3 className="text-sm font-semibold text-indigo-800 mb-2">Power questions to send</h3>
+                  <h3 className="text-sm font-semibold text-indigo-800 mb-2">
+                    Power questions to send
+                  </h3>
                   <ul className="list-disc pl-5 space-y-2 text-gray-800">
                     {point.phrases.map((phrase, index) => (
-                      <li key={index} className="bg-indigo-50 border border-indigo-100 rounded p-3 text-sm md:text-base">
+                      <li
+                        key={index}
+                        className="bg-indigo-50 border border-indigo-100 rounded p-3 text-sm md:text-base"
+                      >
                         {phrase}
                       </li>
                     ))}
@@ -141,7 +152,10 @@ const PressurePoints = () => {
                 </div>
 
                 <div className="mt-3 text-right">
-                  <a className="text-sm font-semibold text-indigo-600 hover:text-indigo-700" href="#pressure-cta">
+                  <a
+                    className="text-sm font-semibold text-indigo-600 hover:text-indigo-700"
+                    href="#pressure-cta"
+                  >
                     Jump to templates for this issue →
                   </a>
                 </div>
@@ -156,8 +170,12 @@ const PressurePoints = () => {
         className="mt-8 flex flex-col gap-3 rounded-xl border border-gray-200 bg-white px-6 py-4 shadow-sm md:flex-row md:items-center md:justify-between"
       >
         <div>
-          <p className="text-base font-semibold text-gray-900">Use these questions directly in FOIs, emails, MLA escalations, and WCAT appeals.</p>
-          <p className="text-sm text-gray-700">Pick the templates you need and drop them into your next message.</p>
+          <p className="text-base font-semibold text-gray-900">
+            Use these questions directly in FOIs, emails, MLA escalations, and WCAT appeals.
+          </p>
+          <p className="text-sm text-gray-700">
+            Pick the templates you need and drop them into your next message.
+          </p>
         </div>
         <div className="flex flex-wrap gap-2">
           <Link
@@ -181,7 +199,7 @@ const PressurePoints = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PressurePoints
+export default PressurePoints;

@@ -8,6 +8,7 @@ body {
   @apply bg-gray-50 text-gray-900 text-base md:text-lg;
 }
 
-a, button {
+a,
+button {
   @apply focus:outline-none;
 }

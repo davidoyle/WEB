@@ -1,20 +1,20 @@
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-import Navigation from '../components/Navigation'
-import LandingSection from '../sections/Landing'
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import Navigation from '../components/Navigation';
+import LandingSection from '../sections/Landing';
 
 export default function HomePage() {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleStart = () => {
-    router.push('/start-here')
-  }
+    router.push('/start-here');
+  };
 
-  const handleNavigate = (target) => {
+  const handleNavigate = target => {
     if (target === 'tellYourStory') {
-      router.push('/tell-your-story')
+      router.push('/tell-your-story');
     }
-  }
+  };
 
   return (
     <>
@@ -30,5 +30,5 @@ export default function HomePage() {
         <LandingSection onStart={handleStart} onNavigate={handleNavigate} />
       </main>
     </>
-  )
+  );
 }

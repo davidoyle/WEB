@@ -1,8 +1,8 @@
-import { Sparkles } from 'lucide-react'
-import { useTone } from '../context/ToneContext'
+import { Sparkles } from 'lucide-react';
+import { useTone } from '../context/ToneContext';
 
 const ToneToggle = () => {
-  const { tone } = useTone()
+  const { tone } = useTone();
 
   // Temporarily hide tone toggle; keep code for when we re-enable it.
   // return (
@@ -18,7 +18,7 @@ const ToneToggle = () => {
   //   </button>
   // )
 
-  return null
-}
+  return null;
+};
 
-export default ToneToggle
+export default ToneToggle;

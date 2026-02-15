@@ -1,4 +1,4 @@
-import { AlertTriangle } from 'lucide-react'
+import { AlertTriangle } from 'lucide-react';
 
 const BeforeYouDoAnythingSection = () => (
   <div className="callout">
@@ -14,18 +14,21 @@ const BeforeYouDoAnythingSection = () => (
         <p className="mt-3 font-semibold">Do this first:</p>
         <ol className="list-decimal space-y-1 pl-5 text-red-700">
           <li>Save a copy of whatever they sent (photo, screenshot, PDF).</li>
-          <li>Write the date, what they decided, and how it hits you (lost income, treatment, job).</li>
           <li>
-            Take 10 minutes on this site to figure out what kind of bullshit it is – ignored evidence, contradictory decisions,
-            retaliation, "our records show," etc.
+            Write the date, what they decided, and how it hits you (lost income, treatment, job).
+          </li>
+          <li>
+            Take 10 minutes on this site to figure out what kind of bullshit it is – ignored
+            evidence, contradictory decisions, retaliation, "our records show," etc.
           </li>
         </ol>
         <p className="mt-3 text-red-700">
-          You&apos;re not overreacting. You&apos;re buying yourself time to respond with strategy, not just pain.
+          You&apos;re not overreacting. You&apos;re buying yourself time to respond with strategy,
+          not just pain.
         </p>
       </div>
     </div>
   </div>
-)
+);
 
-export default BeforeYouDoAnythingSection
+export default BeforeYouDoAnythingSection;

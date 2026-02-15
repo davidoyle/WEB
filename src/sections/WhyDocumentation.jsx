@@ -1,4 +1,4 @@
-import { documentationPowerPoints } from '../data/content'
+import { documentationPowerPoints } from '../data/content';
 
 const WhyDocumentation = () => (
   <div className="section-shell" id="why-documentation">

@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import { MessageSquare } from 'lucide-react'
-import FeedbackModal from './FeedbackModal'
+import { useState } from 'react';
+import { MessageSquare } from 'lucide-react';
+import FeedbackModal from './FeedbackModal';
 
 const FeedbackButton = () => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="fixed bottom-6 right-4 z-40 flex flex-col items-end gap-2">
@@ -18,7 +18,7 @@ const FeedbackButton = () => {
       </button>
       <FeedbackModal isOpen={open} onClose={() => setOpen(false)} />
     </div>
-  )
-}
+  );
+};
 
-export default FeedbackButton
+export default FeedbackButton;

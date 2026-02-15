@@ -29,23 +29,23 @@ const TellYourStory = ({ onNavigate }) => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value, type, checked } = e.target;
     if (name === 'consent') {
-      setForm((prev) => ({ ...prev, consent: checked }));
+      setForm(prev => ({ ...prev, consent: checked }));
     } else if (name === 'publicPermission') {
-      setForm((prev) => ({ ...prev, publicPermission: value }));
+      setForm(prev => ({ ...prev, publicPermission: value }));
     } else {
-      setForm((prev) => ({ ...prev, [name]: value }));
+      setForm(prev => ({ ...prev, [name]: value }));
     }
   };
 
-  const handleIssueToggle = (option) => {
-    setForm((prev) => {
+  const handleIssueToggle = option => {
+    setForm(prev => {
       const exists = prev.issueTags.includes(option);
       return {
         ...prev,
-        issueTags: exists ? prev.issueTags.filter((o) => o !== option) : [...prev.issueTags, option],
+        issueTags: exists ? prev.issueTags.filter(o => o !== option) : [...prev.issueTags, option],
       };
     });
   };
@@ -62,22 +62,22 @@ const TellYourStory = ({ onNavigate }) => {
         body: JSON.stringify(form),
       });
 
-      let data
-      const contentType = response.headers.get('content-type') || ''
+      let data;
+      const contentType = response.headers.get('content-type') || '';
 
       try {
         if (contentType.includes('application/json')) {
-          data = await response.json()
+          data = await response.json();
         } else {
-          const text = await response.text()
-          throw new Error(text || 'Unexpected response from server.')
+          const text = await response.text();
+          throw new Error(text || 'Unexpected response from server.');
         }
       } catch (parseError) {
-        throw new Error('Unexpected response from server.')
+        throw new Error('Unexpected response from server.');
       }
 
       if (!response.ok || !data?.ok) {
-        throw new Error(data?.error || 'Submission failed')
+        throw new Error(data?.error || 'Submission failed');
       }
 
       setStatus('success');
@@ -96,20 +96,25 @@ const TellYourStory = ({ onNavigate }) => {
     <div className="max-w-3xl mx-auto py-10">
       <h1 className="text-3xl font-bold mb-4">Tell Your Story (Secure)</h1>
       <p className="text-gray-700 mb-4">
-        This form lets you share what happened in your WorkSafeBC claim. We use these stories to spot patterns and build better
-        tools for workers. We can’t promise your case will be taken on or that the system won’t stonewall you, but we
+        This form lets you share what happened in your WorkSafeBC claim. We use these stories to
+        spot patterns and build better tools for workers. We can’t promise your case will be taken
+        on or that the system won’t stonewall you, but we
         <span className="font-semibold"> will</span> treat your information with care.
       </p>
       <p className="text-gray-700 mb-6">
-        If we share any part of your story publicly, all individual names — medical advisors, claims managers, employers, and
-        witnesses — will be redacted. You can also choose to keep your story fully private. This is completely free.
+        If we share any part of your story publicly, all individual names — medical advisors, claims
+        managers, employers, and witnesses — will be redacted. You can also choose to keep your
+        story fully private. This is completely free.
       </p>
 
       <div className="mb-6 grid gap-4 md:grid-cols-2">
         <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
           <h2 className="text-lg font-semibold text-gray-900">What we are</h2>
           <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-gray-800">
-            <li>A worker-led project trying to document what’s actually happening in the B.C. compensation system.</li>
+            <li>
+              A worker-led project trying to document what’s actually happening in the B.C.
+              compensation system.
+            </li>
             <li>A toolkit to help injured workers organize their evidence and push back.</li>
           </ul>
         </div>
@@ -135,7 +140,7 @@ const TellYourStory = ({ onNavigate }) => {
       )}
 
       <form
-        onSubmit={(e) => {
+        onSubmit={e => {
           e.preventDefault();
           handleSubmit();
         }}
@@ -144,9 +149,15 @@ const TellYourStory = ({ onNavigate }) => {
         <div className="rounded-md border border-blue-100 bg-blue-50 p-4 text-sm text-gray-800">
           <p className="font-semibold text-gray-900">How we use this</p>
           <ul className="mt-2 list-inside list-disc space-y-1">
-            <li>Your story will never be shared with WorkSafeBC, your employer, or any third party without your explicit permission.</li>
+            <li>
+              Your story will never be shared with WorkSafeBC, your employer, or any third party
+              without your explicit permission.
+            </li>
             <li>You can tell your story without using your real name or email.</li>
-            <li>We use these stories to understand patterns, improve the toolkit, and show decision-makers what’s really happening.</li>
+            <li>
+              We use these stories to understand patterns, improve the toolkit, and show
+              decision-makers what’s really happening.
+            </li>
           </ul>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -220,9 +231,11 @@ const TellYourStory = ({ onNavigate }) => {
         </div>
 
         <div>
-          <span className="block text-sm font-medium text-gray-700">Issue tags (check all that apply)</span>
+          <span className="block text-sm font-medium text-gray-700">
+            Issue tags (check all that apply)
+          </span>
           <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
-            {ISSUE_OPTIONS.map((option) => (
+            {ISSUE_OPTIONS.map(option => (
               <label key={option} className="flex items-center space-x-2 text-sm text-gray-700">
                 <input
                   type="checkbox"
@@ -252,7 +265,9 @@ const TellYourStory = ({ onNavigate }) => {
         </div>
 
         <div>
-          <span className="block text-sm font-medium text-gray-700">Can we share your story publicly?</span>
+          <span className="block text-sm font-medium text-gray-700">
+            Can we share your story publicly?
+          </span>
           <div className="mt-2 space-y-2">
             <label className="flex items-center space-x-3 text-sm text-gray-700" htmlFor="public">
               <input
@@ -282,8 +297,9 @@ const TellYourStory = ({ onNavigate }) => {
         </div>
 
         <div className="rounded-md border border-gray-200 bg-gray-50 p-4 text-sm text-gray-700">
-          This is not legal advice. Submitting does not guarantee representation or a specific outcome. Institutions may still
-          stonewall or delay. We will redact individual names if any part of your story is shared publicly.
+          This is not legal advice. Submitting does not guarantee representation or a specific
+          outcome. Institutions may still stonewall or delay. We will redact individual names if any
+          part of your story is shared publicly.
         </div>
 
         <div className="flex items-start space-x-3">
@@ -297,8 +313,8 @@ const TellYourStory = ({ onNavigate }) => {
             className="mt-1 h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
           />
           <label className="text-sm text-gray-800" htmlFor="consent">
-            I understand this is not legal advice and that you can’t guarantee an outcome. I consent to you storing and reviewing
-            this information.
+            I understand this is not legal advice and that you can’t guarantee an outcome. I consent
+            to you storing and reviewing this information.
           </label>
         </div>
 

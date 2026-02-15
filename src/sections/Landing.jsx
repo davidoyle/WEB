@@ -1,16 +1,20 @@
-import Link from 'next/link'
-import { Shield, ShieldCheck } from 'lucide-react'
+import Link from 'next/link';
+import { Shield, ShieldCheck } from 'lucide-react';
 
 const Landing = ({ onStart, onNavigate }) => {
-  const subtitle = 'Clear steps, strong records, and real leverage when WorkSafeBC isn’t listening.'
-  const bodyCopy = 'If you’re injured and getting the runaround, you’re not alone and you’re not crazy. This toolkit helps you understand what’s happening, track what’s been done to you, and build the kind of record that actually changes decisions.'
+  const subtitle =
+    'Clear steps, strong records, and real leverage when WorkSafeBC isn’t listening.';
+  const bodyCopy =
+    'If you’re injured and getting the runaround, you’re not alone and you’re not crazy. This toolkit helps you understand what’s happening, track what’s been done to you, and build the kind of record that actually changes decisions.';
 
   return (
     <>
       <section className="mx-auto flex min-h-screen max-w-4xl flex-col px-4 py-12">
         <div className="mb-12 text-center">
           <Shield className="mx-auto mb-6 h-16 w-16 text-blue-600" aria-hidden="true" />
-          <h1 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">Worker&apos;s Toolkit</h1>
+          <h1 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
+            Worker&apos;s Toolkit
+          </h1>
           <p className="mx-auto max-w-2xl text-lg text-gray-700">{subtitle}</p>
         </div>
 
@@ -19,7 +23,10 @@ const Landing = ({ onStart, onNavigate }) => {
 
           <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
             <div className="mb-4 flex items-center">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-700" aria-hidden="true">
+              <span
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-700"
+                aria-hidden="true"
+              >
                 <ShieldCheck className="h-6 w-6" />
               </span>
               <h3 className="ml-3 text-lg font-semibold text-gray-900">What You Can Do Here</h3>
@@ -54,40 +61,53 @@ const Landing = ({ onStart, onNavigate }) => {
             <div className="space-y-3">
               <h3 className="text-base font-semibold text-gray-900">Who’s building this</h3>
               <p>
-                Worker’s Toolkit was started in 2025 by an injured worker in B.C. and is being built with a small team of workers and allies.
+                Worker’s Toolkit was started in 2025 by an injured worker in B.C. and is being built
+                with a small team of workers and allies.
               </p>
               <p className="font-semibold text-gray-900">We are:</p>
               <ul className="list-inside list-disc space-y-2">
                 <li>
-                  <span className="font-semibold">Independent</span> – not funded by WorkSafeBC, employers, or government.
+                  <span className="font-semibold">Independent</span> – not funded by WorkSafeBC,
+                  employers, or government.
                 </li>
                 <li>
-                  <span className="font-semibold">Worker-first</span> – everything here is built to help injured workers understand the system and push back.
+                  <span className="font-semibold">Worker-first</span> – everything here is built to
+                  help injured workers understand the system and push back.
                 </li>
                 <li>
-                  <span className="font-semibold">Evidence-obsessed</span> – the toolkit is shaped by real claim files, FOI records, and legal decisions.
+                  <span className="font-semibold">Evidence-obsessed</span> – the toolkit is shaped
+                  by real claim files, FOI records, and legal decisions.
                 </li>
               </ul>
               <p>
-                The goal is simple: give workers enough structure, language, and evidence tools that they’re not facing this system alone.
+                The goal is simple: give workers enough structure, language, and evidence tools that
+                they’re not facing this system alone.
               </p>
             </div>
 
             <div className="space-y-3">
-              <h3 className="text-base font-semibold text-gray-900">Featured tools you can use right now</h3>
+              <h3 className="text-base font-semibold text-gray-900">
+                Featured tools you can use right now
+              </h3>
               <p>Concrete tools you can download and start using immediately.</p>
               <ul className="space-y-3">
                 <li>
                   <Link href="/resources" className="font-semibold text-blue-700 hover:underline">
                     MLA pressure letter (PDF)
                   </Link>
-                  <p className="text-gray-700">A ready-to-edit letter you can send to your MLA when WorkSafeBC isn’t doing its job.</p>
+                  <p className="text-gray-700">
+                    A ready-to-edit letter you can send to your MLA when WorkSafeBC isn’t doing its
+                    job.
+                  </p>
                 </li>
                 <li>
                   <Link href="/resources" className="font-semibold text-blue-700 hover:underline">
                     Call-to-action handout (PDF)
                   </Link>
-                  <p className="text-gray-700">A one-pager you can share with family, friends, and allies so they understand what’s happening and how to help.</p>
+                  <p className="text-gray-700">
+                    A one-pager you can share with family, friends, and allies so they understand
+                    what’s happening and how to help.
+                  </p>
                 </li>
               </ul>
             </div>
@@ -105,7 +125,7 @@ const Landing = ({ onStart, onNavigate }) => {
         </Link>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Landing
+export default Landing;

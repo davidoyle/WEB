@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
 import {
   reassuranceChecklist,
@@ -6,21 +6,24 @@ import {
   socialProofConfig,
   speakingImpactFlow,
   whySilenceFeelsSaferCards,
-  whySilentPoints
-} from '../data/content'
+  whySilentPoints,
+} from '../data/content';
 
 const WhySilentSection = () => {
-  const filledSlots = Math.min(socialProofConfig.current, socialProofConfig.target)
-  const slots = Array.from({ length: socialProofConfig.target }, (_, index) => index < filledSlots)
+  const filledSlots = Math.min(socialProofConfig.current, socialProofConfig.target);
+  const slots = Array.from({ length: socialProofConfig.target }, (_, index) => index < filledSlots);
 
   return (
     <div id="why-silent" className="scroll-smooth">
       <section className="bg-white">
         <div className="section-shell min-h-[60vh] py-16 flex flex-col items-center justify-center text-center">
-          <p className="text-sm font-semibold uppercase tracking-wide text-red-600">Why people stay silent</p>
+          <p className="text-sm font-semibold uppercase tracking-wide text-red-600">
+            Why people stay silent
+          </p>
           <h1 className="mt-3 text-4xl font-bold text-gray-900 sm:text-5xl">The Cost of Silence</h1>
           <p className="mt-4 max-w-3xl text-lg text-gray-700">
-            WorkSafeBC counts on exhaustion and confusion. This page shows why silence feels safer, what it costs, and how your story shifts the system.
+            WorkSafeBC counts on exhaustion and confusion. This page shows why silence feels safer,
+            what it costs, and how your story shifts the system.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
             <a
@@ -43,12 +46,18 @@ const WhySilentSection = () => {
         <div className="section-shell">
           <div className="mb-10 text-center">
             <h2 className="section-title">Why Silence Feels Safer</h2>
-            <p className="section-lead">You're not imagining it. The system is built to make quiet compliance look like the only rational choice.</p>
+            <p className="section-lead">
+              You're not imagining it. The system is built to make quiet compliance look like the
+              only rational choice.
+            </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {whySilenceFeelsSaferCards.map((card, index) => (
               <div key={index} className="card h-full">
-                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-red-50 text-2xl" aria-hidden="true">
+                <div
+                  className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-red-50 text-2xl"
+                  aria-hidden="true"
+                >
                   {card.icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">{card.title}</h3>
@@ -63,7 +72,10 @@ const WhySilentSection = () => {
         <div className="section-shell">
           <div className="mb-10 text-center">
             <h2 className="section-title">What Silence Costs</h2>
-            <p className="section-lead">Silence protects their process and erases your evidence. Speaking up rewrites the record.</p>
+            <p className="section-lead">
+              Silence protects their process and erases your evidence. Speaking up rewrites the
+              record.
+            </p>
           </div>
           <div className="grid gap-8 lg:grid-cols-2">
             <div className="card border-l-4 border-amber-500 bg-amber-50">
@@ -90,7 +102,9 @@ const WhySilentSection = () => {
         <div className="section-shell">
           <div className="mb-10 text-center">
             <h2 className="section-title">Your Story Forces Change</h2>
-            <p className="section-lead">Each time you record it, it connects to a bigger system response.</p>
+            <p className="section-lead">
+              Each time you record it, it connects to a bigger system response.
+            </p>
           </div>
           <div className="flex flex-col items-center gap-8">
             <div className="flex items-center justify-center rounded-full bg-white px-8 py-6 text-lg font-bold text-gray-900 shadow-md">
@@ -112,20 +126,27 @@ const WhySilentSection = () => {
         <div className="section-shell">
           <div className="mb-10 text-center">
             <h2 className="section-title">You Stay in Control</h2>
-            <p className="section-lead">Your record moves at your pace—no surprises, no forced disclosures.</p>
+            <p className="section-lead">
+              Your record moves at your pace—no surprises, no forced disclosures.
+            </p>
           </div>
           <div className="card bg-gradient-to-r from-green-50 to-blue-50">
             <ul className="space-y-4 text-gray-800">
               {reassuranceChecklist.map((item, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <span className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-green-700" aria-hidden="true">
+                  <span
+                    className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-green-700"
+                    aria-hidden="true"
+                  >
                     ✓
                   </span>
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-sm text-gray-700">Privacy policy and data handling details are available before you submit anything.</p>
+            <p className="mt-6 text-sm text-gray-700">
+              Privacy policy and data handling details are available before you submit anything.
+            </p>
           </div>
         </div>
       </section>
@@ -134,12 +155,16 @@ const WhySilentSection = () => {
         <div className="section-shell">
           <div className="mb-10 text-center">
             <h2 className="section-title">Every Story Fills the Grid</h2>
-            <p className="section-lead">You're not alone. Each record makes the pattern harder to ignore.</p>
+            <p className="section-lead">
+              You're not alone. Each record makes the pattern harder to ignore.
+            </p>
           </div>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <div className="text-5xl font-bold text-gray-900">{filledSlots}</div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">of {socialProofConfig.target} stories logged</p>
+              <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">
+                of {socialProofConfig.target} stories logged
+              </p>
               <p className="mt-4 max-w-md text-gray-800">{socialProofConfig.quote}</p>
             </div>
             <div className="w-full max-w-3xl">
@@ -152,7 +177,10 @@ const WhySilentSection = () => {
                   />
                 ))}
               </div>
-              <p className="mt-3 text-sm text-gray-600">Each filled circle is a worker who spoke up. Anonymous spots stay anonymous by default.</p>
+              <p className="mt-3 text-sm text-gray-600">
+                Each filled circle is a worker who spoke up. Anonymous spots stay anonymous by
+                default.
+              </p>
             </div>
           </div>
         </div>
@@ -165,7 +193,9 @@ const WhySilentSection = () => {
         <div className="section-shell">
           <div className="mb-10 text-center">
             <h2 className="section-title">Why People Stay Silent — and Why It Matters</h2>
-            <p className="section-lead">Full original wording below is intentionally hidden from public view.</p>
+            <p className="section-lead">
+              Full original wording below is intentionally hidden from public view.
+            </p>
           </div>
           <div className="space-y-6">
             {whySilentPoints.map((point, index) => (
@@ -182,7 +212,10 @@ const WhySilentSection = () => {
         <div className="section-shell flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-2xl font-bold">Ready to add your story?</h2>
-            <p className="text-gray-200">Share your experience or see how others fought back. Either move pushes the pattern into the open.</p>
+            <p className="text-gray-200">
+              Share your experience or see how others fought back. Either move pushes the pattern
+              into the open.
+            </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link
@@ -201,7 +234,7 @@ const WhySilentSection = () => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default WhySilentSection
+export default WhySilentSection;
