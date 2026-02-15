@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 
 const AccordionItem = ({ id, title, content, isOpen, onToggle }) => (
   <div className="border-b border-gray-200" key={id}>
@@ -21,27 +21,30 @@ const AccordionItem = ({ id, title, content, isOpen, onToggle }) => (
       role="region"
       className={`overflow-hidden transition-all duration-300 ease-out ${isOpen ? 'max-h-screen' : 'max-h-0'}`}
     >
-      <div className="bg-gray-50 px-4 pb-4 text-sm leading-relaxed text-gray-800">
-        {content}
-      </div>
+      <div className="bg-gray-50 px-4 pb-4 text-sm leading-relaxed text-gray-800">{content}</div>
     </div>
   </div>
-)
+);
 
 const Accordion = ({ items = [] }) => {
-  const [openId, setOpenId] = useState(items[0]?.id)
+  const [openId, setOpenId] = useState(items[0]?.id);
 
-  const handleToggle = (id) => {
-    setOpenId((current) => (current === id ? null : id))
-  }
+  const handleToggle = id => {
+    setOpenId(current => (current === id ? null : id));
+  };
 
   return (
     <div className="rounded-xl border border-gray-200 bg-white shadow-sm" role="tablist">
-      {items.map((item) => (
-        <AccordionItem key={item.id} {...item} isOpen={openId === item.id} onToggle={handleToggle} />
+      {items.map(item => (
+        <AccordionItem
+          key={item.id}
+          {...item}
+          isOpen={openId === item.id}
+          onToggle={handleToggle}
+        />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Accordion
+export default Accordion;

@@ -1,4 +1,4 @@
-import { engagementPoints } from '../data/content'
+import { engagementPoints } from '../data/content';
 
 const Engagement = () => (
   <div className="section-shell" id="engagement">
@@ -15,6 +15,6 @@ const Engagement = () => (
       ))}
     </div>
   </div>
-)
+);
 
-export default Engagement
+export default Engagement;

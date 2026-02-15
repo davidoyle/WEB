@@ -1,6 +1,9 @@
-import { Download } from 'lucide-react'
+import { Download } from 'lucide-react';
 
-const ChecklistDownloadButton = ({ file = '/templates/start-here-checklist.pdf', label = 'Download checklist' }) => (
+const ChecklistDownloadButton = ({
+  file = '/templates/start-here-checklist.pdf',
+  label = 'Download checklist',
+}) => (
   <a
     href={file}
     download
@@ -8,6 +11,6 @@ const ChecklistDownloadButton = ({ file = '/templates/start-here-checklist.pdf',
   >
     <Download className="h-4 w-4" aria-hidden="true" /> {label}
   </a>
-)
+);
 
-export default ChecklistDownloadButton
+export default ChecklistDownloadButton;

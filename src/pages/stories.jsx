@@ -1,1 +1,1 @@
-export { default } from './tell-your-story'
+export { default } from './tell-your-story';

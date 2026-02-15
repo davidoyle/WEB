@@ -1,11 +1,11 @@
-import Link from 'next/link'
-import { ExternalLink, MapPin } from 'lucide-react'
-import { screwedSituations } from '../data/content'
-import { wcatCases } from '../wcat'
+import Link from 'next/link';
+import { ExternalLink, MapPin } from 'lucide-react';
+import { screwedSituations } from '../data/content';
+import { wcatCases } from '../wcat';
 
 const wcatCaseLookup = Object.fromEntries(
-  (wcatCases || []).map((caseItem) => [caseItem.id || caseItem.caseNumber, caseItem]),
-)
+  (wcatCases || []).map(caseItem => [caseItem.id || caseItem.caseNumber, caseItem])
+);
 
 const moveTargets = {
   documentation: '/documentation',
@@ -13,15 +13,15 @@ const moveTargets = {
   templates: '/templates',
   wcat: '/wcat',
   howtouse: '/how-to-use',
-}
+};
 
 const HomeSection = () => (
   <div className="section-shell" id="start-here">
     <div className="mb-12 text-center">
       <h1 className="section-title">Start Here: Where Are You Getting Screwed?</h1>
       <p className="section-lead">
-        This isn&apos;t a therapy site. It&apos;s a map, a weapons locker, and a receipts folder for injured workers in British
-        Columbia who are getting run in circles by WorkSafeBC.
+        This isn&apos;t a therapy site. It&apos;s a map, a weapons locker, and a receipts folder for
+        injured workers in British Columbia who are getting run in circles by WorkSafeBC.
       </p>
     </div>
     <div className="space-y-8">
@@ -64,13 +64,13 @@ const HomeSection = () => (
               <h4 className="mb-2 font-semibold text-gray-900">Your next moves:</h4>
               <ul className="space-y-1">
                 {situation.nextMoves.map((move, i) => {
-                  const href = moveTargets[move.section] || '/start-here'
+                  const href = moveTargets[move.section] || '/start-here';
                   return (
                     <li key={i} className="flex items-center text-blue-600 hover:underline">
                       <ExternalLink className="mr-2 h-4 w-4" />
                       <Link href={href}>{move.text}</Link>
                     </li>
-                  )
+                  );
                 })}
               </ul>
             </div>
@@ -78,22 +78,29 @@ const HomeSection = () => (
               <div className="card mt-4 border-gray-200 bg-white p-4 shadow-none">
                 <h4 className="mb-2 font-semibold text-gray-900">Recommended WCAT decisions</h4>
                 <ul className="space-y-2">
-                  {situation.relatedWCATCaseIds.map((caseId) => {
-                    const wcatCase = wcatCaseLookup[caseId]
+                  {situation.relatedWCATCaseIds.map(caseId => {
+                    const wcatCase = wcatCaseLookup[caseId];
                     return (
                       <li
                         key={caseId}
                         className="flex flex-col gap-2 rounded-md border border-gray-200 bg-gray-50 p-3 sm:flex-row sm:items-center sm:justify-between"
                       >
                         <div>
-                          <p className="text-sm font-semibold text-gray-900">{wcatCase?.shortLabel || wcatCase?.title || caseId}</p>
-                          <p className="text-xs text-gray-600">{wcatCase?.citation || wcatCase?.caseNumber}</p>
+                          <p className="text-sm font-semibold text-gray-900">
+                            {wcatCase?.shortLabel || wcatCase?.title || caseId}
+                          </p>
+                          <p className="text-xs text-gray-600">
+                            {wcatCase?.citation || wcatCase?.caseNumber}
+                          </p>
                         </div>
-                        <Link className="text-sm font-semibold text-blue-600 hover:underline" href={`/wcat#${caseId}`}>
+                        <Link
+                          className="text-sm font-semibold text-blue-600 hover:underline"
+                          href={`/wcat#${caseId}`}
+                        >
                           View in Armory
                         </Link>
                       </li>
-                    )
+                    );
                   })}
                 </ul>
               </div>
@@ -102,11 +109,15 @@ const HomeSection = () => (
         ))}
       </div>
       <section className="card bg-gradient-to-r from-blue-50 to-indigo-50 shadow-sm">
-        <h2 className="text-center text-2xl font-bold text-gray-900">What This Site Actually Does For You</h2>
+        <h2 className="text-center text-2xl font-bold text-gray-900">
+          What This Site Actually Does For You
+        </h2>
 
         <div className="mt-8 grid gap-8 md:grid-cols-2">
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-600">This site will not:</h3>
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-600">
+              This site will not:
+            </h3>
             <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-800">
               <li>Magically win your case</li>
               <li>Replace legal advice when you can get it</li>
@@ -114,7 +125,9 @@ const HomeSection = () => (
             </ul>
           </div>
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-600">This site will help you:</h3>
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-600">
+              This site will help you:
+            </h3>
             <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-800">
               <li>Build a record that survives Review and WCAT</li>
               <li>Translate rage into targeted, written questions</li>
@@ -126,6 +139,6 @@ const HomeSection = () => (
       </section>
     </div>
   </div>
-)
+);
 
-export default HomeSection
+export default HomeSection;

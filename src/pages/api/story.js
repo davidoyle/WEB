@@ -9,7 +9,6 @@ function safeLog(logger, ...args) {
   try {
     return logger(...args);
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.error('log_failed', err);
     return null;
   }
@@ -28,9 +27,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     safeLog(logResponse, requestId, 405, { error: 'Method not allowed' });
-    return res
-      .status(405)
-      .json({ ok: false, error: 'Method not allowed', method: req.method });
+    return res.status(405).json({ ok: false, error: 'Method not allowed', method: req.method });
   }
 
   const contentType = req.headers['content-type'] || '';
@@ -43,8 +40,7 @@ export default async function handler(req, res) {
   }
 
   // Pull Supabase env vars
-  const supabaseUrl =
-    process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY;
 
   if (!supabaseUrl || !supabaseServiceKey) {
@@ -103,8 +99,7 @@ export default async function handler(req, res) {
         incident_month_year: incidentMonthYear,
         issue_tags: issueTags || [],
         story,
-        public_permission:
-          publicPermission === true || publicPermission === 'public',
+        public_permission: publicPermission === true || publicPermission === 'public',
         consent: !!consent,
       })
       .select()

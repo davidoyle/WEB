@@ -1,12 +1,15 @@
-import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection'
-import { first30MinutesSteps } from '../data/content'
+import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection';
+import { first30MinutesSteps } from '../data/content';
 
 const First30MinutesSection = () => (
   <div className="section-shell" id="first-30">
     <BeforeYouDoAnythingSection />
     <div className="mb-8 text-center">
       <h1 className="section-title">The First 30 Minutes After WorkSafeBC Bullshit</h1>
-      <p className="section-lead">You just opened a letter or portal message and your stomach dropped. Don't let this moment disappear.</p>
+      <p className="section-lead">
+        You just opened a letter or portal message and your stomach dropped. Don't let this moment
+        disappear.
+      </p>
     </div>
     <div className="space-y-6">
       {first30MinutesSteps.map((step, index) => (
@@ -36,7 +39,9 @@ const First30MinutesSection = () => (
                 </ul>
               )}
               {step.template && (
-                <div className="bg-gray-50 rounded-lg p-3 font-mono text-sm text-gray-800 whitespace-pre-line">{step.template}</div>
+                <div className="bg-gray-50 rounded-lg p-3 font-mono text-sm text-gray-800 whitespace-pre-line">
+                  {step.template}
+                </div>
               )}
             </div>
           </div>
@@ -44,6 +49,6 @@ const First30MinutesSection = () => (
       ))}
     </div>
   </div>
-)
+);
 
-export default First30MinutesSection
+export default First30MinutesSection;

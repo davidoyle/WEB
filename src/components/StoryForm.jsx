@@ -14,17 +14,18 @@ const StoryForm = ({ onSuccess }) => {
   const [status, setStatus] = useState('idle');
   const [statusMessage, setStatusMessage] = useState('');
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     const { name, value, type, checked } = event.target;
-    setFormData((prev) => ({
+    setFormData(prev => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value,
     }));
-    setErrors((prev) => ({ ...prev, [name]: '' }));
+    setErrors(prev => ({ ...prev, [name]: '' }));
   };
 
   const hasRequiredFields = useMemo(
-    () => formData.name && formData.email && formData.province && formData.story && formData.consent,
+    () =>
+      formData.name && formData.email && formData.province && formData.story && formData.consent,
     [formData]
   );
 
@@ -58,22 +59,22 @@ const StoryForm = ({ onSuccess }) => {
         body: JSON.stringify(formData),
       });
 
-      let data
-      const contentType = response.headers.get('content-type') || ''
+      let data;
+      const contentType = response.headers.get('content-type') || '';
 
       try {
         if (contentType.includes('application/json')) {
-          data = await response.json()
+          data = await response.json();
         } else {
-          const text = await response.text()
-          throw new Error(text || 'Unexpected response from server.')
+          const text = await response.text();
+          throw new Error(text || 'Unexpected response from server.');
         }
       } catch (parseError) {
-        throw new Error('Unexpected response from server.')
+        throw new Error('Unexpected response from server.');
       }
 
       if (!response.ok || !data?.ok) {
-        throw new Error(data?.error || 'Submission failed')
+        throw new Error(data?.error || 'Submission failed');
       }
 
       setStatus('success');
@@ -88,7 +89,7 @@ const StoryForm = ({ onSuccess }) => {
 
   return (
     <form
-      onSubmit={(e) => {
+      onSubmit={e => {
         e.preventDefault();
         handleSubmit();
       }}

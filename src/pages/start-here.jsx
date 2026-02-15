@@ -1,5 +1,5 @@
-import StartHere from '../flows/onboarding/StartHere'
+import StartHere from '../flows/onboarding/StartHere';
 
-const StartHerePage = () => <StartHere />
+const StartHerePage = () => <StartHere />;
 
-export default StartHerePage
+export default StartHerePage;
