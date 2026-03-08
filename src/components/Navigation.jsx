@@ -14,6 +14,7 @@ const primaryLinks = [
 const resourceLinks = [
   { href: '/first-30-minutes', label: 'First 30 Minutes' },
   { href: '/documentation', label: 'Docs' },
+  { href: '/worksafebc-forms-guide', label: 'Forms Guide' },
   { href: '/resources', label: 'Resources' },
   { href: '/pressure-points', label: 'Pressure Points' },
   { href: '/templates', label: 'Email Templates' },

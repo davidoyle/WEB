@@ -787,3 +787,249 @@ export const engagementPoints = [
 ];
 
 // WCAT case data now lives in src/wcat
+
+export const formsGuideGeneralPitfalls = [
+  {
+    title: 'Delay Traps',
+    description:
+      'Report within days (ideally same shift) to employer and WorkSafeBC. Delays longer than a week often lead to credibility attacks or denials, even when injury worsens later.',
+    tip: 'Report minor issues too to create a trail. Use written forms over phone to avoid transcription errors.',
+  },
+  {
+    title: 'Documentation Gaps',
+    description:
+      'Incomplete details (no witnesses, vague symptoms) allow denials for lack of proof. Inconsistencies between forms can destroy credibility.',
+    tip: 'Log everything: dates, symptoms, and communications. Attach extras and keep copies of all submissions.',
+  },
+  {
+    title: 'Medical Evidence Weaknesses',
+    description:
+      'No immediate doctor visit or gaps in treatment can be used to assume recovery. Pre-existing issues are used to deny unless job aggravation is proven.',
+    tip: 'See a doctor same day, prep them with job details, and get specialist reports that address causation.',
+  },
+  {
+    title: 'Employer Interference',
+    description:
+      'Employers file key forms and may minimize incidents to avoid premium hikes. Disputes can trigger investigations that favor employer records.',
+    tip: 'Request employer reports and dispute inaccuracies in writing.',
+  },
+  {
+    title: 'Mental Health/Soft Tissue Bias',
+    description:
+      'These claims face higher denial rates and often require proof of a significant stressor beyond normal work stress.',
+    tip: 'Document incidents and harassment details, and obtain psychological reports linking harm to work.',
+  },
+  {
+    title: 'Appeal Neglect',
+    description:
+      'Many workers stop after an initial denial even though appeal outcomes improve with targeted evidence.',
+    tip: 'Appeal within 90 days to Review Division and 30 days to WCAT. Contact WAO for free help.',
+  },
+  {
+    title: 'Communication Snares',
+    description:
+      'Missed deadlines, emotional calls, or broad accusations can be used to attack credibility.',
+    tip: 'Stay factual, log calls, and read every decision carefully for hidden deadlines.',
+  },
+  {
+    title: 'Claim Suppression',
+    description:
+      'Employers or WorkSafeBC may discourage reporting or misclassify time-loss claims.',
+    tip: 'File independently and report retaliation through Form 57W1.',
+  },
+  {
+    title: 'No Legal/Advocacy Help',
+    description:
+      'Going alone often leads to weak evidence strategy and missed legal arguments.',
+    tip: 'Contact WAO or workers compensation lawyers early.',
+  },
+];
+
+export const worksafeFormsGuideEntries = [
+  {
+    form: '3B: Worker Supply and Services Claim — Voc Rehab Expense Reimbursement',
+    purpose: 'Claim reimbursement for vocational rehab supplies and services.',
+    traps: 'Vague receipts or unapproved items lead to denials; delays if not tied to accepted claim.',
+    tips: 'Itemize everything, get pre-approval, and attach proof of necessity from your doctor.',
+  },
+  {
+    form: '6: Application for Compensation and Report of Injury or Occupational Disease',
+    purpose: 'Worker’s main claim and report form (online/teleclaim/fax/mail).',
+    traps: 'Teleclaim errors or blanks/vague answers can be used to deny causation.',
+    tips: 'Use written submission, list all symptoms/witnesses, and keep fax or upload receipts.',
+  },
+  {
+    form: '6A: Worker\'s Report of Injury or Occupational Disease to Employer',
+    purpose: 'Initial report to employer before full claim.',
+    traps: 'Employer can ignore/downplay; no copy means no proof of notice.',
+    tips: 'Submit in writing, keep a copy, and match details with Form 6.',
+  },
+  {
+    form: '6/7: Independent Operator\'s Application for Compensation and Report',
+    purpose: 'Combined injury report and claim for independent operators.',
+    traps: 'Status disputes (worker vs independent) can trigger coverage denial.',
+    tips: 'Include contracts and proof of worker status if contested.',
+  },
+  {
+    form: '7: Employer\'s Report of Injury or Occupational Disease',
+    purpose: 'Employer report for medical treatment or missed work claims.',
+    traps: 'Employer may minimize incident or blame worker.',
+    tips: 'Request a copy and send written corrections to WorkSafeBC.',
+  },
+  {
+    form: '8/11: Physician\'s Report (8 initial, 11 progress)',
+    purpose: 'Doctor injury assessment and progress updates.',
+    traps: 'Weak causation language or missing restrictions can sink claim.',
+    tips: 'Give doctor job details and ask for clear diagnoses, limits, and causation statements.',
+  },
+  {
+    form: '8/11 Addendum: Practitioners Report/Additional Information',
+    purpose: 'Extra details supporting physician reports.',
+    traps: 'Missed opportunity if not used in complex cases.',
+    tips: 'Use addendum to address disputes and rebut file-review opinions.',
+  },
+  {
+    form: '9: Employer\'s Statement of Return To Work',
+    purpose: 'Employer report on return-to-work status.',
+    traps: 'Unsuitable duties can be used to cut benefits.',
+    tips: 'Dispute unsafe duties and get doctor notes confirming restrictions.',
+  },
+  {
+    form: '11H: Hospital Account',
+    purpose: 'Hospital billing linked to claim.',
+    traps: 'Delays can create treatment gaps interpreted as recovery.',
+    tips: 'Confirm hospital tied billing to claim and follow up quickly.',
+  },
+  {
+    form: '18E3: Application for Alternative Assessment Procedure for Interjurisdictional Trucking',
+    purpose: 'Assessment process for interjurisdictional trucking.',
+    traps: 'Misclassification can affect coverage.',
+    tips: 'Most workers will not use this; get advice if cross-border issues arise.',
+  },
+  {
+    form: '19D200: Vendor Application Form for Foot Care Services',
+    purpose: 'Provider vendor application.',
+    traps: 'Indirectly limits access if provider is not approved.',
+    tips: 'Use approved providers to avoid reimbursement refusal.',
+  },
+  {
+    form: '25M13: Request for Disclosure',
+    purpose: 'Request your claim file information.',
+    traps: 'Delay in file access hurts appeal prep.',
+    tips: 'File early and use disclosure to find contradictions and missing records.',
+  },
+  {
+    form: '30M33: Assurance of Compliance with WCB Regulation, Part 19',
+    purpose: 'Powerline safety compliance assurance.',
+    traps: 'Safety non-compliance can be used against workers.',
+    tips: 'Ensure it is filed and document violations.',
+  },
+  {
+    form: '52E40: Employer Incident Investigation Report',
+    purpose: 'Employer incident investigation report.',
+    traps: 'Worker-blaming narratives can suppress claims.',
+    tips: 'Push for joint investigation and challenge blame in writing.',
+  },
+  {
+    form: '55B23: First Aid Record',
+    purpose: 'Record first aid incidents at work.',
+    traps: 'No entry can erase proof for gradual or worsening injuries.',
+    tips: 'Insist on entry and keep a copy for your file.',
+  },
+  {
+    form: '57W1: Worker Prohibited Action Complaint',
+    purpose: 'Complaint for retaliation/prohibited employer action.',
+    traps: 'Weak evidence can lead to dismissal.',
+    tips: 'Collect emails, witness statements, and file promptly.',
+  },
+  {
+    form: '65D55: Vocational Rehabilitation Services Third Party Agreement Report Cover Sheet',
+    purpose: 'Cover sheet for vocational rehab third-party reports.',
+    traps: 'Incomplete packages cause bureaucratic delay.',
+    tips: 'Track attachments and submission proof carefully.',
+  },
+  {
+    form: '65W122: COVID-19 Initial Screening Questionnaire',
+    purpose: 'COVID claim screening form.',
+    traps: 'Vague exposure details can deny occupational disease link.',
+    tips: 'List contact dates and clearly tie exposure to work.',
+  },
+  {
+    form: '66W9: Designation or Change of Beneficiary for Retirement Benefits',
+    purpose: 'Set or change retirement benefit beneficiary.',
+    traps: 'Overlooked forms can leave family unprotected.',
+    tips: 'Update after injury and major life changes.',
+  },
+  {
+    form: '66W11: Voluntary Retirement Benefit Contribution',
+    purpose: 'Voluntary retirement contribution election.',
+    traps: 'Low awareness leads to lost potential benefit.',
+    tips: 'Calculate impacts with an adviser and file on time.',
+  },
+  {
+    form: '66W48: Retirement Date Questionnaire',
+    purpose: 'Establish retirement date for claim context.',
+    traps: 'Wrong date can reduce pension outcomes.',
+    tips: 'Provide accurate earnings and retirement records.',
+  },
+  {
+    form: '68W32: Activity Related Soft Tissue Disorder (ASTD) Pre-Site Questionnaire',
+    purpose: 'Assess repetitive strain factors before site visit.',
+    traps: 'Vague job task description can sink gradual injury claims.',
+    tips: 'Detail repetitions, posture, and ergonomic demands.',
+  },
+  {
+    form: '69D9: Hearing Aid Provider Serial Number Record',
+    purpose: 'Hearing loss claim support record.',
+    traps: 'Incomplete provider details delay equipment approval.',
+    tips: 'Confirm provider entries are complete and accurate.',
+  },
+  {
+    form: '69W1: Worker\'s Authorization for Release of Personal Information',
+    purpose: 'Authorize release of personal information.',
+    traps: 'Overbroad authorization can expose unrelated history.',
+    tips: 'Limit scope to relevant periods and review before signing.',
+  },
+  {
+    form: '83D18: Notification for Prosthetic Maintenance and Repair',
+    purpose: 'Notify WorkSafeBC about prosthetic maintenance/repair.',
+    traps: 'No pre-authorization can leave worker paying out-of-pocket.',
+    tips: 'Request approval in writing first.',
+  },
+  {
+    form: '83D19: Request for Pre-authorization for Prosthetic Services',
+    purpose: 'Pre-approval request for prosthetic services.',
+    traps: 'Denied if necessity is not clearly documented.',
+    tips: 'Tie request to accepted claim and medical evidence.',
+  },
+  {
+    form: '83D128: Generic Invoice - Medical and Health Care',
+    purpose: 'Provider invoice form for medical services.',
+    traps: 'Unapproved services can be denied.',
+    tips: 'Check provider billing method and keep invoice trail.',
+  },
+  {
+    form: '83D507: Community Care Facility Progress Report',
+    purpose: 'Progress reporting from care facilities.',
+    traps: 'Negative/incomplete reports can cut benefits.',
+    tips: 'Monitor report accuracy and challenge errors quickly.',
+  },
+  {
+    form: 'First Aid Assessment Worksheet',
+    purpose: 'Assess workplace first aid requirements.',
+    traps: 'Employer under-assessment can lead to poor incident response.',
+    tips: 'Report shortfalls and preserve records for safety disputes.',
+  },
+  {
+    form: 'Notice of Project Construction',
+    purpose: 'Construction project notification.',
+    traps: 'Missing notice can create compliance and coverage gaps.',
+    tips: 'Verify notice filing and report non-compliance.',
+  },
+  {
+    form: 'Notice of Project: Forestry, Aircraft, Diving',
+    purpose: 'Project notice for specified high-risk industries.',
+    traps: 'Missing notice increases denial risk in exposure disputes.',
+    tips: 'Confirm submission and use records as exposure evidence.',
+  },
+];
