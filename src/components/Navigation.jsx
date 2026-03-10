@@ -28,6 +28,7 @@ const resourceLinks = [
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const dropdownRef = useRef(null);
 
   const handleToggle = () => setIsMobileMenuOpen(prev => !prev);
@@ -39,22 +40,32 @@ const Navigation = () => {
         setIsDropdownOpen(false);
       }
     };
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 bg-gray-900 text-white" aria-label="Primary">
+    <nav
+      className={`sticky top-0 z-50 text-white transition-all duration-200 ${
+        isScrolled ? 'bg-primary/95 backdrop-blur-md' : 'bg-transparent'
+      }`}
+      aria-label="Primary"
+    >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-3">
           <span
-            className="flex h-9 w-9 items-center justify-center rounded-lg bg-red-600 text-lg font-bold"
+            className="eyebrow rounded-md border border-white/20 px-2 py-1 text-[11px] text-foreground"
             aria-label="Worker's Toolkit"
           >
-            WT
-          </span>
-          <span className="text-xl font-bold" aria-hidden="true">
-            Worker&apos;s Toolkit
+            WORKERS TOOLKIT
           </span>
         </div>
         <div className="hidden items-center space-x-4 md:flex">
@@ -67,7 +78,7 @@ const Navigation = () => {
             <button
               type="button"
               onClick={() => setIsDropdownOpen(prev => !prev)}
-              className="inline-flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+              className="nav-link inline-flex items-center"
               aria-haspopup="true"
               aria-expanded={isDropdownOpen}
             >
@@ -75,14 +86,14 @@ const Navigation = () => {
             </button>
             {isDropdownOpen ? (
               <div
-                className="absolute right-0 mt-2 w-56 rounded-md bg-white py-2 text-gray-900 shadow-lg"
+                className="absolute right-0 mt-2 w-56 rounded-2xl border border-white/20 bg-primary p-2 text-foreground shadow-card"
                 role="menu"
               >
                 {resourceLinks.map(link => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="block px-4 py-2 text-sm font-semibold hover:bg-gray-50"
+                    className="block rounded-xl px-4 py-2 text-sm font-semibold hover:bg-white/10"
                     role="menuitem"
                     onClick={() => setIsDropdownOpen(false)}
                   >
@@ -98,7 +109,7 @@ const Navigation = () => {
           <button
             type="button"
             onClick={handleToggle}
-            className="inline-flex items-center justify-center rounded-md p-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+            className="inline-flex items-center justify-center rounded-md p-2 text-gray-200 hover:bg-white/10 hover:text-white"
             aria-label="Toggle navigation menu"
           >
             {isMobileMenuOpen ? (
@@ -110,18 +121,18 @@ const Navigation = () => {
         </div>
       </div>
       {isMobileMenuOpen && (
-        <div className="space-y-1 bg-gray-800 px-2 pb-3 pt-2 md:hidden">
+        <div className="space-y-1 bg-primary/95 px-2 pb-3 pt-2 md:hidden">
           {primaryLinks.map(({ href, label, Icon }) => (
             <Link
               key={href}
               href={href}
               onClick={handleClose}
-              className="flex items-center rounded-md px-3 py-2 text-base font-medium text-gray-200 hover:bg-gray-700 hover:text-white"
+              className="flex items-center rounded-md px-3 py-2 text-base font-medium text-gray-100 hover:bg-white/10"
             >
               <Icon className="mr-2 h-4 w-4" aria-hidden="true" /> {label}
             </Link>
           ))}
-          <details className="rounded-md bg-gray-900/40 px-3 py-2 text-gray-100" open>
+          <details className="rounded-md bg-white/5 px-3 py-2 text-gray-100" open>
             <summary className="flex cursor-pointer items-center justify-between text-base font-semibold">
               <span>Tools &amp; Resources</span>
             </summary>
@@ -131,7 +142,7 @@ const Navigation = () => {
                   key={link.href}
                   href={link.href}
                   onClick={handleClose}
-                  className="block rounded-md px-3 py-2 text-sm font-medium text-gray-200 hover:bg-gray-700 hover:text-white"
+                  className="block rounded-md px-3 py-2 text-sm font-medium text-gray-200 hover:bg-white/10"
                 >
                   {link.label}
                 </Link>
