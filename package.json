@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint \"**/*.{ts,tsx}\" --report-unused-disable-directives --max-warnings 0",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "check-types": "tsc -p tsconfig.app.json --noEmit",
+    "lint:all": "eslint \"**/*.{js,jsx,ts,tsx}\" --report-unused-disable-directives --max-warnings 0"
   },
   "keywords": [],
   "author": "",
