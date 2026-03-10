@@ -1,21 +1,13 @@
-import Head from 'next/head';
-import Navigation from '../components/Navigation';
+import PageShell from '../components/PageShell';
 import HowToUse from '../sections/HowToUse';
 
 const HowToUsePage = () => (
-  <div className="min-h-screen bg-gray-50">
-    <Head>
-      <title>How To Use This Toolkit | Worker's Toolkit</title>
-      <meta
-        name="description"
-        content="Step-by-step instructions for using the Worker’s Toolkit effectively."
-      />
-    </Head>
-    <Navigation />
-    <main className="py-8">
-      <HowToUse />
-    </main>
-  </div>
+  <PageShell
+    title="How To Use This Toolkit | Worker's Toolkit"
+    description="Step-by-step instructions for using the Worker’s Toolkit effectively."
+  >
+    <HowToUse />
+  </PageShell>
 );
 
 export default HowToUsePage;
