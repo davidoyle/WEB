@@ -30,6 +30,7 @@ import casewcat200501035 from './cases/wcat-2005-01035.js';
 import casewcat200702634 from './cases/wcat-2007-02634.js';
 import casewcata1601379 from './cases/wcat-a1601379.js';
 import casewcat200602659 from './cases/wcat-2006-02659.js';
+import additionalWcatCases from './cases/wcat-armory-expansion-2026.js';
 
 const wcatCases = [
   casewcat200406686,
@@ -63,6 +64,7 @@ const wcatCases = [
   casewcat200702634,
   casewcata1601379,
   casewcat200602659,
+  ...additionalWcatCases,
 ];
 
 wcatCases.forEach(validateCase);
