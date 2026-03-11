@@ -116,7 +116,7 @@ const WCATToolkit = () => {
     <div className="section-shell">
       <BeforeYouDoAnythingSection />
       <div className="mb-8 text-center">
-        <h1 className="section-title">WCAT Precedent Armory</h1>
+        <h1 id="wcat-title" className="section-title">WCAT Precedent Armory</h1>
         <p className="text-gray-600">
           Real cases where workers won. Steal their reasoning, structure, and language.
         </p>
@@ -126,7 +126,7 @@ const WCATToolkit = () => {
         </p>
       </div>
 
-      <div className="filter-panel">
+      <div id="wcat-filters" className="filter-panel">
         <div className="grid gap-4 md:grid-cols-3">
           <label className="filter-label">
             Search by keywords
@@ -171,7 +171,7 @@ const WCATToolkit = () => {
         </div>
       </div>
 
-      <div className="space-y-8">
+      <div id="wcat-categories" className="space-y-8">
         {filteredCategories.map((category, index) => (
           <div key={category.title ?? index} className="card">
             <div className="mb-6 flex items-center">

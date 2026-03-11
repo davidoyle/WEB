@@ -5,7 +5,7 @@ const EmailTemplates = () => (
   <div className="section-shell" id="templates">
     <BeforeYouDoAnythingSection />
     <div className="mb-8 text-center">
-      <h1 className="section-title">Email & Letter Templates</h1>
+      <h1 id="templates-title" className="section-title">Email & Letter Templates</h1>
       <p className="section-lead">Plug in your facts, swap in your voice, keep the structure.</p>
     </div>
     <div className="space-y-6">

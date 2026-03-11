@@ -6,7 +6,7 @@ const DocumentationSection = () => (
   <div className="section-shell" id="documentation">
     <BeforeYouDoAnythingSection />
     <div className="mb-8 text-center">
-      <h1 className="section-title">Evidence & Documentation Center</h1>
+      <h1 id="docs-title" className="section-title">Evidence & Documentation Center</h1>
       <p className="section-lead">"If it isn't documented, they'll swear it never happened."</p>
     </div>
     <div className="space-y-8">
@@ -20,7 +20,7 @@ const DocumentationSection = () => (
           <li>A simple system you actually use</li>
         </ul>
       </div>
-      <div className="grid md:grid-cols-2 gap-8 mb-12">
+      <div id="docs-buckets" className="grid md:grid-cols-2 gap-8 mb-12">
         {documentationBuckets.map((bucket, index) => (
           <div key={index} className="card">
             <div className="flex items-center mb-4">
@@ -40,7 +40,7 @@ const DocumentationSection = () => (
           </div>
         ))}
       </div>
-      <div className="bg-blue-50 rounded-xl p-6 mb-8">
+      <div id="docs-quick-start" className="bg-blue-50 rounded-xl p-6 mb-8">
         <h3 className="text-xl font-bold text-blue-900 mb-4">
           Quick Start: Do These 3 Things Today
         </h3>
@@ -59,7 +59,7 @@ const DocumentationSection = () => (
           </li>
         </ol>
       </div>
-      <div className="grid md:grid-cols-2 gap-8">
+      <div id="docs-templates" className="grid md:grid-cols-2 gap-8">
         <div className="card">
           <h3 className="text-xl font-bold text-gray-900 mb-4">Call Log Template</h3>
           <div className="overflow-x-auto">
