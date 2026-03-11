@@ -7,6 +7,8 @@ import { Menu, X } from 'lucide-react';
 const mainLinks = [
   { href: '/', label: 'Home' },
   { href: '/pressure-points', label: 'Tactical Strategy' },
+  { href: '/worksafebc-forms-guide', label: 'Forms Guide' },
+  { href: '/resources', label: 'Resources' },
   { href: '/templates', label: 'Templates' },
   { href: '/wcat', label: 'WCAT Armory' },
   { href: '/documentation', label: 'Documentation' },
