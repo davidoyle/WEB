@@ -117,10 +117,10 @@ const WCATToolkit = () => {
       <BeforeYouDoAnythingSection />
       <div className="mb-8 text-center">
         <h1 id="wcat-title" className="section-title">WCAT Precedent Armory</h1>
-        <p className="text-gray-600">
+        <p className="text-foreground/90">
           Real cases where workers won. Steal their reasoning, structure, and language.
         </p>
-        <p className="mt-2 text-sm text-gray-500">
+        <p className="mt-2 text-sm text-foreground/70">
           Showing {filteredTotalCases} of {totalCases} cases across {filteredCategories.length}{' '}
           categories.
         </p>
@@ -178,7 +178,7 @@ const WCATToolkit = () => {
               <div className="mr-4 rounded-lg bg-indigo-100 p-3">
                 <BookOpen className="h-6 w-6 text-indigo-600" />
               </div>
-              <h2 className="text-2xl font-bold text-gray-900">{category.title}</h2>
+              <h2 className="text-2xl font-bold text-foreground">{category.title}</h2>
             </div>
             <div className="space-y-6">
               {category.cases?.map((caseItem, caseIndex) => {
@@ -198,39 +198,39 @@ const WCATToolkit = () => {
                     >
                       <div>
                         <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-start">
-                          <h3 className="text-xl font-bold text-gray-900">{caseItem.caseNumber}</h3>
-                          <span className="text-sm text-gray-500">{caseItem.year}</span>
+                          <h3 className="text-xl font-bold text-foreground">{caseItem.caseNumber}</h3>
+                          <span className="text-sm text-foreground/70">{caseItem.year}</span>
                         </div>
-                        <h4 className="font-semibold text-gray-800">
+                        <h4 className="font-semibold text-foreground/90">
                           {caseItem.title || caseItem.fullLabel}
                         </h4>
                       </div>
                       <ChevronDown
-                        className={`mt-1 h-5 w-5 text-gray-500 transition-transform duration-200 ${
+                        className={`mt-1 h-5 w-5 text-foreground/70 transition-transform duration-200 ${
                           isExpanded ? 'rotate-180' : ''
                         }`}
                       />
                     </button>
                     {isExpanded && (
                       <div className="space-y-4">
-                        <p className="text-gray-700">
+                        <p className="text-foreground/85">
                           {caseItem.description || caseItem.fullLabel}
                         </p>
-                        <div className="rounded-lg bg-gray-50 p-4">
-                          <h5 className="mb-2 font-semibold text-indigo-800">
+                        <div className="rounded-lg bg-white/5 p-4">
+                          <h5 className="mb-2 font-semibold text-indigo-200">
                             Key Strategy Moves:
                           </h5>
-                          <ul className="list-disc space-y-1 pl-5 text-gray-700">
+                          <ul className="list-disc space-y-1 pl-5 text-foreground/85">
                             {caseItem.strategyMoves?.map((move, moveIndex) => (
                               <li key={moveIndex}>{move}</li>
                             ))}
                           </ul>
                         </div>
-                        <div className="rounded-lg bg-blue-50 p-4">
-                          <h5 className="mb-2 font-semibold text-blue-800">
+                        <div className="rounded-lg bg-blue-500/10 p-4">
+                          <h5 className="mb-2 font-semibold text-blue-200">
                             Portable Strategy for Workers:
                           </h5>
-                          <p className="text-blue-700">
+                          <p className="text-blue-100">
                             {caseItem.portableStrategy || caseItem.howToUse?.join(' ')}
                           </p>
                         </div>
