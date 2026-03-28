@@ -40,11 +40,9 @@ const PressurePoints = () => {
   return (
     <div className="section-shell" id="pressure">
       <BeforeYouDoAnythingSection />
-      <div className="mb-10 text-center">
-        <h1 id="pressure-title" className="section-title">Tactical Strategy: Pressure Points</h1>
-        <p className="section-lead">
-          Pick the pattern that matches your experience — and push back with their rules.
-        </p>
+      <div className="mb-10">
+        <h1 id="pressure-title" className="section-title">Tactical Playbook</h1>
+        <p className="body-text italic">What they do. What you say. What they cannot do.</p>
       </div>
 
       <div id="pattern-selector" className="mb-8">
@@ -136,10 +134,7 @@ const PressurePoints = () => {
                   </h3>
                   <ul className="list-disc pl-5 space-y-2 text-gray-800">
                     {point.phrases.map((phrase, index) => (
-                      <li
-                        key={index}
-                        className="bg-indigo-50 border border-indigo-100 rounded p-3 text-sm md:text-base"
-                      >
+                      <li key={index} className="border-l-2 border-l-[var(--accent)] bg-[var(--bg-tertiary)] p-3 font-mono text-sm md:text-base">
                         {phrase}
                       </li>
                     ))}

@@ -144,8 +144,18 @@ ${story}
       }
     }
 
+    const { count: totalStories } = await supabase
+      .from('stories')
+      .select('*', { count: 'exact', head: true })
+      .eq('public_permission', true);
+
     safeLog(logResponse, requestId, 200, { storyId: data?.id ?? null });
-    return res.status(200).json({ ok: true, storyId: data?.id ?? null });
+    return res.status(200).json({
+      ok: true,
+      storyId: data?.id ?? null,
+      workerNumber: data?.worker_number ?? null,
+      totalStories: totalStories ?? null,
+    });
   } catch (err) {
     safeLog(logError, requestId, err);
     safeLog(logResponse, requestId, 500, { error: err?.message });

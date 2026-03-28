@@ -2,8 +2,6 @@ import Link from 'next/link';
 import { ExternalLink, ListCheck, RefreshCw } from 'lucide-react';
 import Accordion from '../../components/Accordion';
 import ChecklistDownloadButton from '../../components/ChecklistDownloadButton';
-import ToneToggle from '../../components/ToneToggle';
-import { useTone } from '../../context/ToneContext';
 
 const moveTargets = {
   documentation: '/documentation',
@@ -21,7 +19,6 @@ const templateBySection = {
 };
 
 const NextSteps = ({ situation, onReset }) => {
-  const { tone } = useTone();
   if (!situation) return null;
 
   const longSections = [
@@ -38,7 +35,7 @@ const NextSteps = ({ situation, onReset }) => {
     },
     {
       id: 'priorities',
-      title: tone === 'gentle' ? 'What to focus on first' : 'Your priorities right now',
+      title: 'Your priorities right now',
       content: (
         <ul className="list-disc space-y-2 pl-5">
           {situation.priorities.map(priority => (
@@ -51,40 +48,32 @@ const NextSteps = ({ situation, onReset }) => {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+      <div className="border border-[var(--border-default)] bg-[var(--bg-secondary)] p-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <p className="text-sm uppercase tracking-wide text-gray-600">You picked</p>
-            <h2 className="text-2xl font-bold text-gray-900">{situation.title}</h2>
-            <p className="text-gray-700">
-              {tone === 'gentle'
-                ? situation.gentleDescription || situation.description
-                : situation.description}
-            </p>
+            <p className="eyebrow">You picked</p>
+            <h2 className="headline-md !text-3xl">{situation.title}</h2>
+            <p className="text-[var(--text-secondary)]">{situation.description}</p>
           </div>
-          <div className="flex flex-col items-start gap-2 sm:items-end">
-            <ToneToggle />
-            <button
-              type="button"
-              onClick={onReset}
-              className="inline-flex items-center gap-2 rounded-full border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-800 shadow-sm transition hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-            >
-              <RefreshCw className="h-4 w-4" aria-hidden="true" /> Reset journey
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={onReset}
+            className="inline-flex items-center gap-2 border border-[var(--border-default)] px-3 py-2 font-mono text-xs uppercase tracking-wider text-[var(--text-secondary)] transition hover:border-[var(--border-accent)] hover:text-[var(--accent)]"
+          >
+            <RefreshCw className="h-4 w-4" aria-hidden="true" /> Reset journey
+          </button>
         </div>
       </div>
 
       <Accordion items={longSections} />
 
-      <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+      <div className="border border-[var(--border-default)] bg-[var(--bg-secondary)] p-6">
         <div className="mb-4 flex items-center gap-2">
-          <ListCheck className="h-5 w-5 text-red-600" aria-hidden="true" />
-          <h3 className="text-xl font-semibold text-gray-900">Your next moves</h3>
+          <ListCheck className="h-5 w-5 text-[var(--accent)]" aria-hidden="true" />
+          <h3 className="font-[var(--font-display)] text-2xl text-[var(--text-primary)]">Your next moves</h3>
         </div>
-        <p className="text-sm text-gray-700">
-          These links match what you selected. Save them, download the checklist, and move to
-          action.
+        <p className="text-sm text-[var(--text-secondary)]">
+          These links match what you selected. Save them, download the checklist, and move to action.
         </p>
         <ul className="mt-4 space-y-3">
           {situation.nextMoves.map(move => {
@@ -96,18 +85,18 @@ const NextSteps = ({ situation, onReset }) => {
             return (
               <li
                 key={move.text}
-                className="flex flex-col gap-1 rounded-lg bg-gray-50 p-4 sm:flex-row sm:items-center sm:justify-between"
+                className="flex flex-col gap-2 border border-[var(--border-default)] bg-[var(--bg-tertiary)] p-4 sm:flex-row sm:items-center sm:justify-between"
               >
                 <div className="flex items-start gap-3">
-                  <ExternalLink className="mt-1 h-4 w-4 text-blue-600" aria-hidden="true" />
+                  <ExternalLink className="mt-1 h-4 w-4 text-[var(--accent)]" aria-hidden="true" />
                   <div>
                     <Link
                       href={href}
-                      className="text-base font-semibold text-blue-700 underline-offset-4 hover:underline"
+                      className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] underline-offset-4 hover:underline"
                     >
                       {move.text}
                     </Link>
-                    {move.note ? <p className="text-sm text-gray-700">{move.note}</p> : null}
+                    {move.note ? <p className="text-sm text-[var(--text-secondary)]">{move.note}</p> : null}
                   </div>
                 </div>
                 <ChecklistDownloadButton file={file} label="Download checklist" />

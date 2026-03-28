@@ -4,6 +4,7 @@ import Navigation from './Navigation';
 import Breadcrumbs from './Breadcrumbs';
 import PageTOC from './PageTOC';
 import RelatedResources from './RelatedResources';
+import Footer from './Footer';
 
 const PageShell = ({ title, description, children, mainClassName = 'py-8', tocItems = [] }) => {
   const router = useRouter();
@@ -18,7 +19,7 @@ const PageShell = ({ title, description, children, mainClassName = 'py-8', tocIt
       <Breadcrumbs />
       <main className={mainClassName}>
         {tocItems.length ? (
-          <div className="grid gap-8 px-6 lg:grid-cols-[minmax(0,1fr)_260px] lg:px-[8vw]">
+          <div className="grid gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_240px] lg:px-8">
             <div>{children}</div>
             <PageTOC items={tocItems} />
           </div>
@@ -27,6 +28,7 @@ const PageShell = ({ title, description, children, mainClassName = 'py-8', tocIt
         )}
       </main>
       <RelatedResources route={router.pathname} />
+      <Footer />
     </div>
   );
 };

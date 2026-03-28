@@ -10,7 +10,7 @@ const FeedbackButton = () => {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-2 rounded-full bg-gray-900 px-4 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+        className="inline-flex items-center gap-2 border border-[var(--border-default)] bg-[var(--bg-elevated)] px-4 py-3 font-mono text-xs uppercase tracking-wider text-[var(--text-primary)] transition hover:border-[var(--border-accent)]"
         aria-label="Give feedback"
       >
         <MessageSquare className="h-4 w-4" aria-hidden="true" />

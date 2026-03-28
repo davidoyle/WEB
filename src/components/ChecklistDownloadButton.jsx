@@ -7,7 +7,7 @@ const ChecklistDownloadButton = ({
   <a
     href={file}
     download
-    className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-gray-200 transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+    className="inline-flex items-center gap-2 border border-[var(--border-default)] px-4 py-2 font-mono text-[0.72rem] uppercase tracking-wider text-[var(--text-secondary)] transition hover:border-[var(--border-accent)] hover:text-[var(--accent)]"
   >
     <Download className="h-4 w-4" aria-hidden="true" /> {label}
   </a>

@@ -3,18 +3,19 @@ import { useRouter } from 'next/router';
 
 const labelMap = {
   'start-here': 'Start Here',
-  'pressure-points': 'Tactical Strategy',
+  'pressure-points': 'Tactics',
   templates: 'Templates',
-  wcat: 'WCAT Armory',
+  wcat: 'WCAT',
   documentation: 'Documentation',
-  'tell-your-story': 'Tell Your Story',
+  'tell-your-story': 'The Record',
   resources: 'Resources',
   about: 'About',
   stories: 'Stories',
   'how-to-use': 'How To Use',
   'first-30-minutes': 'First 30 Minutes',
   'worksafebc-forms-guide': 'Forms Guide',
-  'why-silent': 'The Cost of Silence',
+  'why-silent': 'Why They Go Silent',
+  'for-institutions': 'For Institutions',
 };
 
 const Breadcrumbs = () => {
@@ -30,17 +31,17 @@ const Breadcrumbs = () => {
   });
 
   return (
-    <nav aria-label="Breadcrumb" className="section-shell py-3 text-sm text-muted">
-      <ol className="flex flex-wrap items-center gap-2">
+    <nav aria-label="Breadcrumb" className="section-shell py-3">
+      <ol className="flex flex-wrap items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.08em] text-[var(--text-muted)]">
         <li>
-          <Link href="/" className="hover:text-accent">
+          <Link href="/" className="hover:text-[var(--text-secondary)]">
             Home
           </Link>
         </li>
         {crumbs.map(crumb => (
           <li key={crumb.href} className="flex items-center gap-2">
-            <span aria-hidden="true">&gt;</span>
-            <Link href={crumb.href} className="hover:text-accent">
+            <span aria-hidden="true">•</span>
+            <Link href={crumb.href} className="hover:text-[var(--text-secondary)]">
               {crumb.label}
             </Link>
           </li>
