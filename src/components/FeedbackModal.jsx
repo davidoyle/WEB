@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { supabase } from '../../utils/supabase';
+import { getSupabaseClient } from '../lib/supabaseClient';
 
 const FeedbackModal = ({ isOpen, onClose }) => {
   const [feedback, setFeedback] = useState({ helpful: null, comment: '' });
@@ -8,6 +8,13 @@ const FeedbackModal = ({ isOpen, onClose }) => {
   const handleSubmit = async event => {
     event.preventDefault();
     if (!feedback.helpful) return;
+    let supabase;
+    try {
+      supabase = getSupabaseClient();
+    } catch {
+      setStatus({ saving: false, message: 'Feedback storage is offline right now.' });
+      return;
+    }
     if (!supabase) {
       setStatus({ saving: false, message: 'Feedback storage is offline right now.' });
       return;

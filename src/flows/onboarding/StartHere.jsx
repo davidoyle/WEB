@@ -64,8 +64,32 @@ const StartHere = () => {
     try {
       const supabase = getSupabaseClient();
       supabase.rpc('increment_toolkit_usage').then(() => {}).catch(() => {});
+      supabase
+        .from('tool_events')
+        .insert({
+          event_type: 'start_here_committed',
+          metadata: { situationId: selectedId },
+        })
+        .then(() => {})
+        .catch(() => {});
     } catch {
       // fail silently by design
+    }
+  };
+
+  const logChecklistComplete = (situationId, stepIndex) => {
+    try {
+      const supabase = getSupabaseClient();
+      supabase
+        .from('tool_events')
+        .insert({
+          event_type: 'checklist_completed',
+          metadata: { situationId, stepIndex },
+        })
+        .then(() => {})
+        .catch(() => {});
+    } catch {
+      // fail silently
     }
   };
 
@@ -81,6 +105,9 @@ const StartHere = () => {
       if (next !== prev) {
         setToast(true);
         setTimeout(() => setToast(false), 2000);
+        if (next === 4 && selectedId) {
+          logChecklistComplete(selectedId, 4);
+        }
       }
       return next;
     });

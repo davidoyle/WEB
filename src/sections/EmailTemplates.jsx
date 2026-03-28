@@ -2,6 +2,7 @@ import { useState } from 'react';
 import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection';
 import { emailTemplates } from '../data/content';
 import ChecklistDownloadButton from '../components/ChecklistDownloadButton';
+import { getSupabaseClient } from '../lib/supabaseClient';
 
 const EmailTemplates = () => {
   const [copiedIndex, setCopiedIndex] = useState(null);
@@ -14,6 +15,20 @@ const EmailTemplates = () => {
     } catch {
       setCopiedIndex(null);
     }
+  };
+
+  const logTemplateCopy = templateTitle => {
+    try {
+      const supabase = getSupabaseClient();
+      supabase
+        .from('tool_events')
+        .insert({
+          event_type: 'template_copied',
+          metadata: { templateTitle },
+        })
+        .then(() => {})
+        .catch(() => {});
+    } catch {}
   };
 
   return (
@@ -36,7 +51,10 @@ const EmailTemplates = () => {
               <div className="mb-3 flex justify-end">
                 <button
                   type="button"
-                  onClick={() => copyTemplate(template.content, index)}
+                  onClick={() => {
+                    copyTemplate(template.content, index);
+                    logTemplateCopy(template.title);
+                  }}
                   className="font-mono text-[0.7rem] uppercase tracking-wider text-[var(--accent)] hover:text-[var(--accent-hover)]"
                 >
                   {copiedIndex === index ? 'Copied' : 'Copy →'}

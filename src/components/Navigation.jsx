@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
@@ -20,6 +20,7 @@ const moreLinks = [
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSlim, setIsSlim] = useState(false);
+  const moreMenuRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setIsSlim(window.scrollY > 80);
@@ -42,13 +43,16 @@ const Navigation = () => {
                 {link.label}
               </Link>
             ))}
-            <details className="relative">
+            <details className="relative" ref={moreMenuRef}>
               <summary className="nav-link list-none cursor-pointer">More ▾</summary>
               <div className="absolute right-0 mt-2 min-w-48 border border-[var(--border-default)] bg-[var(--bg-secondary)] p-2">
                 {moreLinks.map(link => (
                   <Link
                     key={link.href}
                     href={link.href}
+                    onClick={() => {
+                      if (moreMenuRef.current) moreMenuRef.current.open = false;
+                    }}
                     className="block px-3 py-2 font-mono text-xs uppercase tracking-wider text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)] hover:text-[var(--text-primary)]"
                   >
                     {link.label}

@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { BookOpen, ChevronDown } from 'lucide-react';
 import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection';
 import { wcatCases } from '../wcat';
+import { getSupabaseClient } from '../lib/supabaseClient';
 
 const deriveTagFamilies = tags => {
   if (!Array.isArray(tags)) return [];
@@ -43,6 +44,24 @@ const WCATToolkit = () => {
   );
 
   const toggleCase = (categoryIndex, caseIndex) => {
+    const selectedCase = categories?.[categoryIndex]?.cases?.[caseIndex];
+    if (selectedCase) {
+      try {
+        const supabase = getSupabaseClient();
+        supabase
+          .from('tool_events')
+          .insert({
+            event_type: 'wcat_cited',
+            metadata: {
+              wcatId: selectedCase.id || null,
+              caseNumber: selectedCase.caseNumber || selectedCase.citation || null,
+            },
+          })
+          .then(() => {})
+          .catch(() => {});
+      } catch {}
+    }
+
     setExpandedCases(prev =>
       prev.map((expanded, idx) => {
         if (idx !== categoryIndex) return expanded;

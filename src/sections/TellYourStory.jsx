@@ -82,6 +82,7 @@ const TellYourStory = () => {
         const { data, error: loadError } = await supabase
           .from('stories')
           .select('id, postal_code, issue_tags, story, incident_month_year, created_at')
+          .eq('public_permission', true)
           .order('created_at', { ascending: false })
           .limit(100);
 
@@ -178,7 +179,26 @@ const TellYourStory = () => {
       }
 
       setStatus('success');
-      setSuccess({ id: data.storyId, claimType: inferClaimType(form.issueTags), region: form.postalCode || 'BC' });
+      setSuccess({
+        id: data.storyId,
+        workerNumber: data.workerNumber ?? null,
+        totalStories: data.totalStories ?? null,
+        claimType: inferClaimType(form.issueTags),
+        region: form.postalCode || 'BC',
+      });
+
+      try {
+        const supabase = getSupabaseClient();
+        supabase
+          .from('tool_events')
+          .insert({
+            event_type: 'story_submitted',
+            metadata: { claimType: inferClaimType(form.issueTags), region: form.postalCode || 'BC' },
+          })
+          .then(() => {})
+          .catch(() => {});
+      } catch {}
+
       setForm(initialForm);
       if (typeof window !== 'undefined') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -195,9 +215,13 @@ const TellYourStory = () => {
         <div className="mx-auto max-w-3xl space-y-6 border border-[var(--border-default)] bg-[var(--bg-secondary)] p-8">
           <p className="font-mono text-xs uppercase tracking-[0.1em] text-[var(--accent-confirm)]">Record added</p>
           <h1 className="headline-md !text-5xl">
-            Worker #{String(success.id || 0).padStart(4, '0')}. {success.region}. {success.claimType}.
+            Worker #{String(success.workerNumber || success.id || 0).padStart(4, '0')}. {success.region}.{' '}
+            {success.claimType}.
           </h1>
-          <p className="body-text">You are not alone in this. {filteredStories.length} other workers have documented similar experiences.</p>
+          <p className="body-text">
+            You are not alone in this. {success.totalStories ?? filteredStories.length} other workers
+            have documented similar experiences.
+          </p>
           <p className="founding-statement">{foundingStatement}</p>
           <Button onClick={() => setSuccess(null)}>
             Continue to your toolkit <span className="arrow-glyph">→</span>

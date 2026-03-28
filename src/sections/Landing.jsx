@@ -19,10 +19,11 @@ const Landing = () => {
       try {
         const supabase = getSupabaseClient();
         const [countRes, storiesRes, usageRes] = await Promise.all([
-          supabase.from('stories').select('*', { count: 'exact', head: true }),
+          supabase.from('stories').select('*', { count: 'exact', head: true }).eq('public_permission', true),
           supabase
             .from('stories')
             .select('id, postal_code, issue_tags, story, created_at')
+            .eq('public_permission', true)
             .order('created_at', { ascending: false })
             .limit(6),
           supabase.from('site_metrics').select('start_here_visits').eq('id', 1).single(),
@@ -72,8 +73,12 @@ const Landing = () => {
                   </>
                 ) : (
                   <>
-                    <p>{counterState.usage ?? '—'} workers have used this toolkit</p>
-                    <p>{counterState.stories ?? '—'} stories in the record</p>
+                    {counterState.usage !== null ? (
+                      <p>{counterState.usage} workers have used this toolkit</p>
+                    ) : null}
+                    {counterState.stories !== null && counterState.stories >= 10 ? (
+                      <p>{counterState.stories} stories in the record</p>
+                    ) : null}
                     <p>{wcatCases.length} WCAT precedents available</p>
                   </>
                 )}
