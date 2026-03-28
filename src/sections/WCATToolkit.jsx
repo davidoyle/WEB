@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { BookOpen, ChevronDown } from 'lucide-react';
 import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection';
 import { wcatCases } from '../wcat';
@@ -50,12 +50,6 @@ const WCATToolkit = () => {
       })
     );
   };
-
-  useEffect(() => {
-    // Helps ensure the rendered count matches the source data during manual verification.
-    // eslint-disable-next-line no-console
-    console.log('WCAT categories loaded:', categories.length, 'cases:', totalCases);
-  }, [categories.length, totalCases]);
 
   const allBodyParts = useMemo(() => {
     const values = new Set();
@@ -115,12 +109,18 @@ const WCATToolkit = () => {
   return (
     <div className="section-shell">
       <BeforeYouDoAnythingSection />
-      <div className="mb-8 text-center">
-        <h1 id="wcat-title" className="section-title">WCAT Precedent Armory</h1>
-        <p className="text-foreground/90">
-          Real cases where workers won. Steal their reasoning, structure, and language.
+      <div className="mb-8">
+        <p className="font-mono text-[0.75rem] uppercase tracking-[0.1em] text-[var(--text-muted)]">
+          WCAT precedent archive
         </p>
-        <p className="mt-2 text-sm text-foreground/70">
+        <h1 id="wcat-title" className="section-title mt-2">
+          WCAT Precedent Armory
+        </h1>
+        <p className="body-text italic">
+          “These are real decisions made by real adjudicators. They are binding precedent.
+          WorkSafeBC knows them. Now you do too.”
+        </p>
+        <p className="mt-2 font-mono text-[0.72rem] uppercase tracking-wider text-[var(--text-muted)]">
           Showing {filteredTotalCases} of {totalCases} cases across {filteredCategories.length}{' '}
           categories.
         </p>
@@ -134,7 +134,7 @@ const WCATToolkit = () => {
               type="text"
               value={query}
               onChange={e => setQuery(e.target.value)}
-              placeholder="Search cases"
+              placeholder="Search by keyword, injury type, or outcome..."
               className="filter-input"
             />
           </label>
@@ -186,11 +186,7 @@ const WCATToolkit = () => {
                 const caseId = getCaseId(caseItem, `${index}-${caseIndex}`);
 
                 return (
-                  <div
-                    key={caseItem.caseNumber ?? caseId}
-                    className="border-l-4 border-indigo-500 pl-4"
-                    id={caseId}
-                  >
+                    <div key={caseItem.caseNumber ?? caseId} className="border border-[var(--border-default)] bg-[var(--bg-tertiary)] p-4" id={caseId}>
                     <button
                       type="button"
                       onClick={() => toggleCase(index, caseIndex)}

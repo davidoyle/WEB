@@ -1,9 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { MapPin } from 'lucide-react';
-import { useTone } from '../../context/ToneContext';
 
 const SituationSelector = ({ situations, selectedId, onSelect }) => {
-  const { tone } = useTone();
   const buttonRefs = useRef([]);
   const [keyboardIndex, setKeyboardIndex] = useState(0);
 
@@ -13,9 +11,7 @@ const SituationSelector = ({ situations, selectedId, onSelect }) => {
   );
 
   useEffect(() => {
-    if (selectedIndex >= 0) {
-      setKeyboardIndex(selectedIndex);
-    }
+    if (selectedIndex >= 0) setKeyboardIndex(selectedIndex);
   }, [selectedIndex]);
 
   const handleKeyDown = event => {
@@ -49,10 +45,6 @@ const SituationSelector = ({ situations, selectedId, onSelect }) => {
     <div className="space-y-4">
       {situations.map((situation, index) => {
         const isSelected = situation.id === selectedId;
-        const description =
-          tone === 'gentle'
-            ? situation.gentleDescription || situation.description
-            : situation.description;
         const tabIndex = isSelected || (!selectedId && index === 0) ? 0 : -1;
         return (
           <button
@@ -60,7 +52,7 @@ const SituationSelector = ({ situations, selectedId, onSelect }) => {
             type="button"
             onKeyDown={handleKeyDown}
             onClick={() => onSelect(situation.id)}
-            className={`flex w-full flex-col rounded-xl border bg-white p-4 text-left shadow-sm transition focus:outline-none focus:ring-2 focus:ring-red-500 ${isSelected ? 'border-red-500 ring-2 ring-red-500' : 'border-gray-200 hover:border-gray-300'}`}
+            className={`flex min-h-[52px] w-full flex-col border bg-[var(--bg-secondary)] p-4 text-left transition focus:outline-none focus:ring-1 focus:ring-[var(--border-accent)] ${isSelected ? 'border-[var(--border-accent)]' : 'border-[var(--border-default)] hover:border-[var(--border-strong)]'}`}
             aria-pressed={isSelected}
             aria-label={`Situation: ${situation.title}`}
             tabIndex={tabIndex}
@@ -68,30 +60,23 @@ const SituationSelector = ({ situations, selectedId, onSelect }) => {
               buttonRefs.current[index] = el;
             }}
           >
-            <div className="flex items-start justify-between">
+            <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-3">
                 <span
-                  className={`flex h-10 w-10 items-center justify-center rounded-lg ${isSelected ? 'bg-red-100 text-red-700' : 'bg-gray-100 text-gray-700'}`}
+                  className={`flex h-10 w-10 items-center justify-center border ${isSelected ? 'border-[var(--border-accent)] text-[var(--accent)]' : 'border-[var(--border-default)] text-[var(--text-secondary)]'}`}
                 >
                   <MapPin className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <div>
-                  <p className="text-lg font-semibold text-gray-900">{situation.title}</p>
-                  <p className="text-sm text-gray-700">{description}</p>
+                  <p className="font-[var(--font-display)] text-xl text-[var(--text-primary)]">{situation.title}</p>
+                  <p className="text-sm text-[var(--text-secondary)]">{situation.description}</p>
                 </div>
               </div>
               <span
-                className={`ml-4 inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${isSelected ? 'bg-red-600 text-white' : 'bg-gray-200 text-gray-800'}`}
+                className={`inline-flex items-center border px-3 py-1 font-mono text-[0.66rem] uppercase tracking-wider ${isSelected ? 'border-[var(--border-accent)] text-[var(--accent)]' : 'border-[var(--border-default)] text-[var(--text-muted)]'}`}
               >
-                {isSelected ? 'Selected' : 'Pick this'}
+                {isSelected ? 'Selected' : 'Pick'}
               </span>
-            </div>
-            <div className="mt-3 flex flex-wrap gap-2 text-xs" aria-hidden="true">
-              {situation.indicators.slice(0, 3).map(indicator => (
-                <span key={indicator} className="rounded-full bg-gray-100 px-3 py-1 text-gray-700">
-                  {indicator}
-                </span>
-              ))}
             </div>
           </button>
         );

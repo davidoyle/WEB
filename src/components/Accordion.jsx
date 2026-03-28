@@ -1,27 +1,23 @@
 import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
 
 const AccordionItem = ({ id, title, content, isOpen, onToggle }) => (
-  <div className="border-b border-gray-200" key={id}>
+  <div className={`border-b border-[var(--border-default)] ${isOpen ? 'border-l-2 border-l-[var(--accent)]' : ''}`} key={id}>
     <button
       type="button"
       onClick={() => onToggle(id)}
-      className="flex w-full items-center justify-between px-4 py-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
+      className="flex w-full items-center justify-between px-4 py-3 text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-[var(--border-accent)]"
       aria-expanded={isOpen}
       aria-controls={`${id}-content`}
     >
-      <span className="text-base font-semibold text-gray-900">{title}</span>
-      <ChevronDown
-        aria-hidden="true"
-        className={`h-5 w-5 text-gray-600 transition-transform ${isOpen ? 'rotate-180' : ''}`}
-      />
+      <span className="font-[var(--font-display)] text-lg text-[var(--text-primary)]">{title}</span>
+      <span className="font-mono text-sm text-[var(--text-secondary)]">{isOpen ? '↓' : '→'}</span>
     </button>
     <div
       id={`${id}-content`}
       role="region"
-      className={`overflow-hidden transition-all duration-300 ease-out ${isOpen ? 'max-h-screen' : 'max-h-0'}`}
+      className={`overflow-hidden transition-all duration-200 ease-out ${isOpen ? 'max-h-screen' : 'max-h-0'}`}
     >
-      <div className="bg-gray-50 px-4 pb-4 text-sm leading-relaxed text-gray-800">{content}</div>
+      <div className="bg-[var(--bg-tertiary)] px-4 pb-4 text-[var(--text-secondary)]">{content}</div>
     </div>
   </div>
 );
@@ -34,7 +30,7 @@ const Accordion = ({ items = [] }) => {
   };
 
   return (
-    <div className="rounded-xl border border-gray-200 bg-white shadow-sm" role="tablist">
+    <div className="border border-[var(--border-default)] bg-[var(--bg-secondary)]" role="tablist">
       {items.map(item => (
         <AccordionItem
           key={item.id}

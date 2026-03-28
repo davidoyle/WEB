@@ -4,36 +4,35 @@ import { useRouter } from 'next/router';
 import Navigation from '../../components/Navigation';
 import ProgressBar from '../../components/ProgressBar';
 import FeedbackButton from '../../components/FeedbackButton';
-import ToneToggle from '../../components/ToneToggle';
+import Footer from '../../components/Footer';
 import { screwedSituations } from '../../data/content';
 import NextSteps from './NextSteps';
 import SituationSelector from './SituationSelector';
 import { clearProgress, loadProgress, saveProgress } from '../../utils/progressStorage';
-import { useTone } from '../../context/ToneContext';
+import { getSupabaseClient } from '../../lib/supabaseClient';
 
-const steps = ['Pick your situation', 'Confirm what matters', 'Move to action'];
+const steps = ['Pick your situation', 'Commit to documentation', 'Confirm what matters', 'Move to action'];
 
 const normalizeSituation = situations =>
   situations.map((situation, index) => ({
     ...situation,
     id: situation.id || `situation-${index}`,
-    gentleDescription:
-      situation.gentleDescription ||
-      situation.description?.replace("You're", 'You are').replace("You've", 'You have'),
   }));
 
 const StartHere = () => {
   const router = useRouter();
-  const { tone } = useTone();
   const normalizedSituations = useMemo(() => normalizeSituation(screwedSituations), []);
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedId, setSelectedId] = useState(null);
+  const [committed, setCommitted] = useState(false);
+  const [toast, setToast] = useState(false);
 
   useEffect(() => {
     const stored = loadProgress();
     if (stored?.situationId) {
       setSelectedId(stored.situationId);
       setCurrentStep(stored.step || 1);
+      setCommitted(Boolean(stored.committed));
     }
   }, []);
 
@@ -46,19 +45,29 @@ const StartHere = () => {
     }
     if (situationFromQuery) {
       setSelectedId(situationFromQuery);
+      setCurrentStep(prev => Math.max(prev, 2));
     }
   }, [router.isReady, router.query.step, router.query.situation]);
 
   useEffect(() => {
-    saveProgress({ step: currentStep, situationId: selectedId });
+    saveProgress({ step: currentStep, situationId: selectedId, committed });
     if (!router.isReady) return;
     const query = { ...router.query };
     if (currentStep) query.step = currentStep;
     if (selectedId) query.situation = selectedId;
     router.replace({ pathname: '/start-here', query }, undefined, { shallow: true });
-  }, [currentStep, selectedId, router]);
+  }, [currentStep, selectedId, committed, router]);
 
   const selectedSituation = normalizedSituations.find(s => s.id === selectedId);
+
+  const fireUsageCounter = () => {
+    try {
+      const supabase = getSupabaseClient();
+      supabase.rpc('increment_toolkit_usage').then(() => {}).catch(() => {});
+    } catch {
+      // fail silently by design
+    }
+  };
 
   const handleSelect = id => {
     setSelectedId(id);
@@ -67,7 +76,14 @@ const StartHere = () => {
 
   const handleNext = () => {
     if (!selectedId) return;
-    setCurrentStep(prev => Math.min(prev + 1, steps.length));
+    setCurrentStep(prev => {
+      const next = Math.min(prev + 1, steps.length);
+      if (next !== prev) {
+        setToast(true);
+        setTimeout(() => setToast(false), 2000);
+      }
+      return next;
+    });
   };
 
   const handleBack = () => {
@@ -77,96 +93,143 @@ const StartHere = () => {
   const handleReset = () => {
     setSelectedId(null);
     setCurrentStep(1);
+    setCommitted(false);
     clearProgress();
     router.replace({ pathname: '/start-here' }, undefined, { shallow: true });
   };
 
-  const heroText =
-    tone === 'gentle' ? 'Let’s figure out where you are.' : 'Where are you getting screwed?';
+  const showGate = selectedSituation && currentStep >= 2 && !committed;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <Head>
-        <title>Start Here | Worker's Toolkit</title>
+        <title>Start Here | Workers Toolkit</title>
         <meta
           name="description"
           content="Guided onboarding to match your situation and next steps."
         />
       </Head>
       <Navigation />
-      <main className="section-shell space-y-8 py-10" aria-labelledby="start-here-heading">
-        <header className="space-y-3">
-          <p className="text-sm font-semibold uppercase tracking-wide text-red-600">Start Here</p>
-          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-            <div>
-              <h1 id="start-here-heading" className="text-3xl font-bold text-gray-900 md:text-4xl">
-                {heroText}
-              </h1>
-              <p className="max-w-3xl text-gray-700">
-                Answer one question, see only what matters, and keep your progress saved locally.
-                Use the Back/Next buttons or your browser history—your spot is saved.
+      {showGate ? (
+        <main className="section-shell flex min-h-[calc(100vh-64px)] items-center py-10" aria-labelledby="commitment-gate">
+          <section className="mx-auto w-full max-w-3xl border border-[var(--border-strong)] bg-[var(--bg-secondary)] p-8">
+            <h1 id="commitment-gate" className="headline-md mb-4 !text-5xl">
+              Before we go further.
+            </h1>
+            <p className="body-text">
+              This toolkit works. But only if you document everything — every call, every letter,
+              every delay, every excuse they give you.
+            </p>
+            <p className="body-text mt-4">
+              The system counts on exhaustion. Documentation is how you outlast it. Are you ready to
+              start building your record?
+            </p>
+            <div className="mt-8 flex flex-col gap-3">
+              <button
+                type="button"
+                className="btn-primary w-full justify-center"
+                onClick={() => {
+                  setCommitted(true);
+                  setCurrentStep(3);
+                  fireUsageCounter();
+                }}
+              >
+                Yes. I&apos;m building my record <span className="arrow-glyph">→</span>
+              </button>
+              <button
+                type="button"
+                className="font-mono text-xs uppercase tracking-wider text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                onClick={() => router.push('/how-to-use')}
+              >
+                I need more time
+              </button>
+            </div>
+          </section>
+        </main>
+      ) : (
+        <main className="section-shell space-y-8 py-10" aria-labelledby="start-here-heading">
+          <header className="space-y-3">
+            <p className="eyebrow">Start Here</p>
+            <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              <div>
+                <h1 id="start-here-heading" className="headline-md !text-5xl">
+                  Where are you getting screwed?
+                </h1>
+                <p className="max-w-3xl text-[var(--text-secondary)]">
+                  Pick one situation, commit to building your record, and move with structure.
+                </p>
+              </div>
+            </div>
+            <ProgressBar currentStep={currentStep} steps={steps} />
+          </header>
+
+          <section
+            aria-label="Situation selector"
+            className="border border-[var(--border-default)] bg-[var(--bg-secondary)] p-6"
+          >
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <h2 className="font-[var(--font-display)] text-2xl text-[var(--text-primary)]">
+                Which situation matches you?
+              </h2>
+              <p className="text-sm text-[var(--text-secondary)]">
+                Use arrow keys to move, Enter/Space to select.
               </p>
             </div>
-            <ToneToggle />
-          </div>
-          <ProgressBar currentStep={currentStep} steps={steps} />
-        </header>
-
-        <section
-          aria-label="Situation selector"
-          className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
-        >
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="text-xl font-semibold text-gray-900">Which situation matches you?</h2>
-            <p className="text-sm text-gray-700">Use arrow keys to move, Enter/Space to select.</p>
-          </div>
-          <div className="mt-4">
-            <SituationSelector
-              situations={normalizedSituations}
-              selectedId={selectedId}
-              onSelect={handleSelect}
-            />
-          </div>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <button
-              type="button"
-              onClick={handleBack}
-              className="inline-flex items-center justify-center rounded-lg border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-800 shadow-sm transition hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-            >
-              Back
-            </button>
-            <div className="flex flex-wrap gap-3">
-              <button
-                type="button"
-                onClick={handleReset}
-                className="rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-800 transition hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-              >
-                Reset journey
-              </button>
-              <button
-                type="button"
-                onClick={handleNext}
-                disabled={!selectedId}
-                className="inline-flex items-center justify-center rounded-lg bg-red-600 px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-300"
-                aria-disabled={!selectedId}
-              >
-                Next
-              </button>
+            <div className="mt-4">
+              <SituationSelector
+                situations={normalizedSituations}
+                selectedId={selectedId}
+                onSelect={handleSelect}
+              />
             </div>
-          </div>
-        </section>
-
-        {selectedSituation && currentStep >= 2 ? (
-          <section
-            aria-label="Next steps"
-            className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
-          >
-            <NextSteps situation={selectedSituation} onReset={handleReset} />
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <button
+                type="button"
+                onClick={handleBack}
+                className="inline-flex items-center justify-center border border-[var(--border-default)] px-4 py-2 font-mono text-xs uppercase tracking-wider text-[var(--text-secondary)] transition hover:border-[var(--border-accent)]"
+              >
+                Back
+              </button>
+              <div className="flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  className="border border-[var(--border-default)] px-4 py-2 font-mono text-xs uppercase tracking-wider text-[var(--text-secondary)] transition hover:border-[var(--border-accent)]"
+                >
+                  Reset journey
+                </button>
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  disabled={!selectedId}
+                  className="btn-primary"
+                  aria-disabled={!selectedId}
+                >
+                  Next <span className="arrow-glyph">→</span>
+                </button>
+              </div>
+            </div>
           </section>
-        ) : null}
 
-        <FeedbackButton />
-      </main>
+          {selectedSituation && currentStep >= 3 ? (
+            <section
+              aria-label="Next steps"
+              className="border border-[var(--border-default)] bg-[var(--bg-secondary)] p-6"
+            >
+              <NextSteps situation={selectedSituation} onReset={handleReset} />
+            </section>
+          ) : null}
+
+          {toast ? (
+            <div className="fixed bottom-4 right-4 z-50 border border-[var(--border-default)] bg-[var(--bg-elevated)] px-4 py-3 font-mono text-xs uppercase tracking-wider text-[var(--text-primary)]">
+              Progress saved
+            </div>
+          ) : null}
+
+          <FeedbackButton />
+        </main>
+      )}
+      <Footer />
     </div>
   );
 };

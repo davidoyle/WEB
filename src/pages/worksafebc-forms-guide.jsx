@@ -1,11 +1,12 @@
 import Head from 'next/head';
 import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 import WorksafeFormsGuideSection from '../sections/WorksafeFormsGuideSection';
 
 const WorksafeFormsGuidePage = () => (
-  <div className="min-h-screen bg-gray-50">
+  <div className="min-h-screen bg-background">
     <Head>
-      <title>WorkSafeBC Forms Guide | Worker&apos;s Toolkit</title>
+      <title>WorkSafeBC Forms Guide | Workers Toolkit</title>
       <meta
         name="description"
         content="Exhaustive guide to WorkSafeBC forms, denial traps, and practical filing tips for workers in BC."
@@ -15,6 +16,7 @@ const WorksafeFormsGuidePage = () => (
     <main className="py-8">
       <WorksafeFormsGuideSection />
     </main>
+    <Footer />
   </div>
 );
 

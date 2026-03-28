@@ -7,33 +7,30 @@ const ProgressBar = ({ currentStep = 1, steps = [] }) => {
 
   return (
     <div className="w-full" aria-label="Onboarding progress">
-      <div className="mb-2 flex items-center justify-between text-sm font-semibold text-gray-700">
+      <div className="mb-2 flex items-center justify-between font-mono text-xs uppercase tracking-wider text-[var(--text-secondary)]">
         <span>
           Step {currentStep} of {totalSteps}
         </span>
-        <span className="text-gray-500">{steps[currentStep - 1]}</span>
+        <span>{steps[currentStep - 1]}</span>
       </div>
       <div
-        className="relative h-3 rounded-full bg-gray-200"
+        className="relative h-2 bg-[var(--bg-tertiary)]"
         role="progressbar"
         aria-valuemin={1}
         aria-valuemax={totalSteps}
         aria-valuenow={currentStep}
       >
-        <div
-          className="h-3 rounded-full bg-gradient-to-r from-red-500 to-amber-500 transition-all"
-          style={{ width: `${progressPercent}%` }}
-        />
+        <div className="h-2 bg-[var(--accent)] transition-all" style={{ width: `${progressPercent}%` }} />
       </div>
-      <ol className="mt-3 flex flex-wrap gap-2 text-xs text-gray-600" aria-label="Progress steps">
+      <ol className="mt-3 flex flex-wrap gap-2" aria-label="Progress steps">
         {steps.map((step, index) => {
           const isActive = index + 1 === currentStep;
           return (
             <li
               key={step}
-              className={`rounded-full px-3 py-1 ${isActive ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-700'}`}
+              className={`border px-3 py-1 font-mono text-[0.68rem] uppercase tracking-wider ${isActive ? 'border-[var(--border-accent)] bg-[var(--bg-secondary)] text-[var(--accent)]' : 'border-[var(--border-default)] text-[var(--text-muted)]'}`}
             >
-              {index + 1}. {step}
+              {String(index + 1).padStart(2, '0')} {step}
             </li>
           );
         })}

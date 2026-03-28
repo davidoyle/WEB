@@ -185,29 +185,6 @@ const WhySilentSection = () => {
           </div>
         </div>
       </section>
-
-      {/*
-        Original long-form reasons preserved for reference only. Keeping the section hidden so content stays accessible internally without showing on the public page.
-      */}
-      <section className="bg-white py-16 hidden">
-        <div className="section-shell">
-          <div className="mb-10 text-center">
-            <h2 className="section-title">Why People Stay Silent — and Why It Matters</h2>
-            <p className="section-lead">
-              Full original wording below is intentionally hidden from public view.
-            </p>
-          </div>
-          <div className="space-y-6">
-            {whySilentPoints.map((point, index) => (
-              <div key={index} className="card border-l-4 border-red-500">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{point.title}</h3>
-                <p className="text-gray-700 whitespace-pre-line">{point.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section id="action-section" className="bg-gray-900 py-12 text-white">
         <div className="section-shell flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
