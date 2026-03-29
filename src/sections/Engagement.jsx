@@ -8,9 +8,9 @@ const Engagement = () => (
     </div>
     <div className="space-y-6">
       {engagementPoints.map((point, index) => (
-        <div key={index} className="card border-l-4 border-blue-500">
-          <h2 className="text-xl font-bold text-gray-900 mb-2">{point.title}</h2>
-          <p className="text-gray-700">{point.description}</p>
+        <div key={index} className="card border-l-4 border-[var(--border-accent)]">
+          <h2 className="text-xl font-bold text-[var(--text-primary)] mb-2">{point.title}</h2>
+          <p className="text-[var(--text-secondary)]">{point.description}</p>
         </div>
       ))}
     </div>

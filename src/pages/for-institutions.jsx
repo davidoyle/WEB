@@ -89,6 +89,17 @@ const ForInstitutionsPage = () => {
           durable, independent reform instrument.
         </p>
       </section>
+
+      <section className="space-y-3 border border-[var(--border-accent)] bg-[var(--bg-secondary)] p-6">
+        <p className="eyebrow">The Pressure Record</p>
+        <p className="text-[var(--text-secondary)]">
+          This record does not sit still. View where it has been submitted, to whom, and what
+          pattern it documented.
+        </p>
+        <a href="/the-pressure" className="inline-flex font-mono text-xs uppercase tracking-wider text-[var(--accent)]">
+          View the pressure record →
+        </a>
+      </section>
     </div>
     </PageShell>
   );

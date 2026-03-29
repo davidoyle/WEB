@@ -11,7 +11,7 @@ import SituationSelector from './SituationSelector';
 import { clearProgress, loadProgress, saveProgress } from '../../utils/progressStorage';
 import { getSupabaseClient } from '../../lib/supabaseClient';
 
-const steps = ['Pick your situation', 'Commit to documentation', 'Confirm what matters', 'Move to action'];
+const steps = ['Pick your situation', 'Commit to documentation', 'Add your voice', 'Move to action'];
 
 const normalizeSituation = situations =>
   situations.map((situation, index) => ({
@@ -25,6 +25,10 @@ const StartHere = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedId, setSelectedId] = useState(null);
   const [committed, setCommitted] = useState(false);
+  const [declared, setDeclared] = useState(false);
+  const [declarationText, setDeclarationText] = useState('');
+  const [declarationError, setDeclarationError] = useState('');
+  const [declarationSaving, setDeclarationSaving] = useState(false);
   const [toast, setToast] = useState(false);
 
   useEffect(() => {
@@ -33,6 +37,7 @@ const StartHere = () => {
       setSelectedId(stored.situationId);
       setCurrentStep(stored.step || 1);
       setCommitted(Boolean(stored.committed));
+      setDeclared(Boolean(stored.declared));
     }
   }, []);
 
@@ -50,13 +55,13 @@ const StartHere = () => {
   }, [router.isReady, router.query.step, router.query.situation]);
 
   useEffect(() => {
-    saveProgress({ step: currentStep, situationId: selectedId, committed });
+    saveProgress({ step: currentStep, situationId: selectedId, committed, declared });
     if (!router.isReady) return;
     const query = { ...router.query };
     if (currentStep) query.step = currentStep;
     if (selectedId) query.situation = selectedId;
     router.replace({ pathname: '/start-here', query }, undefined, { shallow: true });
-  }, [currentStep, selectedId, committed, router]);
+  }, [currentStep, selectedId, committed, declared, router]);
 
   const selectedSituation = normalizedSituations.find(s => s.id === selectedId);
 
@@ -93,6 +98,45 @@ const StartHere = () => {
     }
   };
 
+  const proceedFromDeclaration = () => {
+    setDeclared(true);
+    setCurrentStep(3);
+    setDeclarationText('');
+    setDeclarationError('');
+  };
+
+  const handleDeclarationSubmit = async () => {
+    const trimmed = declarationText.trim();
+    if (!trimmed) {
+      setDeclarationError('Add one sentence, or skip for now.');
+      return;
+    }
+
+    setDeclarationSaving(true);
+    setDeclarationError('');
+
+    try {
+      const supabase = getSupabaseClient();
+      const { error } = await supabase.from('declarations').insert({ text: trimmed });
+      if (error) throw error;
+
+      supabase
+        .from('tool_events')
+        .insert({
+          event_type: 'declaration_added',
+          metadata: { situationId: selectedId },
+        })
+        .then(() => {})
+        .catch(() => {});
+
+      proceedFromDeclaration();
+    } catch {
+      setDeclarationError('Could not save right now. You can skip and keep moving.');
+    } finally {
+      setDeclarationSaving(false);
+    }
+  };
+
   const handleSelect = id => {
     setSelectedId(id);
     setCurrentStep(prev => (prev < 2 ? 2 : prev));
@@ -121,11 +165,15 @@ const StartHere = () => {
     setSelectedId(null);
     setCurrentStep(1);
     setCommitted(false);
+    setDeclared(false);
+    setDeclarationText('');
+    setDeclarationError('');
     clearProgress();
     router.replace({ pathname: '/start-here' }, undefined, { shallow: true });
   };
 
   const showGate = selectedSituation && currentStep >= 2 && !committed;
+  const showDeclaration = selectedSituation && committed && !declared && currentStep === 3;
 
   return (
     <div className="min-h-screen bg-background">
@@ -137,6 +185,7 @@ const StartHere = () => {
         />
       </Head>
       <Navigation />
+
       {showGate ? (
         <main className="section-shell flex min-h-[calc(100vh-64px)] items-center py-10" aria-labelledby="commitment-gate">
           <section className="mx-auto w-full max-w-3xl border border-[var(--border-strong)] bg-[var(--bg-secondary)] p-8">
@@ -169,6 +218,55 @@ const StartHere = () => {
                 onClick={() => router.push('/how-to-use')}
               >
                 I need more time
+              </button>
+            </div>
+          </section>
+        </main>
+      ) : showDeclaration ? (
+        <main className="section-shell flex min-h-[calc(100vh-64px)] items-center py-10" aria-labelledby="declaration-prompt">
+          <section className="mx-auto w-full max-w-3xl border border-[var(--border-strong)] bg-[var(--bg-secondary)] p-8">
+            <p className="eyebrow mb-3">One optional step</p>
+            <h1 id="declaration-prompt" className="headline-md !text-4xl">
+              Add your voice to the record.
+            </h1>
+            <p className="body-text mt-4">
+              One sentence. Anonymous. It takes 30 seconds and it stays. You can skip this — but
+              this is what changes things.
+            </p>
+            <label htmlFor="declaration" className="sr-only">
+              What WorkSafeBC did to me was
+            </label>
+            <input
+              id="declaration"
+              type="text"
+              value={declarationText}
+              onChange={event => {
+                setDeclarationText(event.target.value);
+                if (declarationError) setDeclarationError('');
+              }}
+              placeholder="What WorkSafeBC did to me was..."
+              className="mt-6 w-full border border-[var(--border-default)] bg-[var(--bg-tertiary)] px-4 py-3 font-mono text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)]"
+              maxLength={280}
+            />
+            {declarationError ? (
+              <p className="mt-3 text-sm text-[var(--accent-urgent)]">{declarationError}</p>
+            ) : null}
+            <div className="mt-8 flex flex-col gap-3">
+              <button
+                type="button"
+                className="btn-primary w-full justify-center"
+                onClick={handleDeclarationSubmit}
+                disabled={declarationSaving}
+              >
+                {declarationSaving ? 'Saving...' : 'Add this to the record'}{' '}
+                <span className="arrow-glyph">→</span>
+              </button>
+              <button
+                type="button"
+                className="font-mono text-xs uppercase tracking-wider text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                onClick={proceedFromDeclaration}
+              >
+                Skip for now
               </button>
             </div>
           </section>
