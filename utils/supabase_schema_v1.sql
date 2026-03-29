@@ -21,3 +21,10 @@ $$ LANGUAGE sql;
 INSERT INTO site_metrics (id, start_here_visits)
 VALUES (1, 0)
 ON CONFLICT DO NOTHING;
+
+
+CREATE TABLE IF NOT EXISTS declarations (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  text text NOT NULL,
+  created_at timestamptz DEFAULT now()
+);

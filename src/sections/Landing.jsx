@@ -11,6 +11,8 @@ const Landing = () => {
   const [selectedSituation, setSelectedSituation] = useState('');
   const [counterState, setCounterState] = useState({ loading: true, visible: true, usage: null, stories: null });
   const [recordItems, setRecordItems] = useState([]);
+  const [declarations, setDeclarations] = useState([]);
+  const [activeDeclaration, setActiveDeclaration] = useState(0);
 
   useEffect(() => {
     let active = true;
@@ -18,7 +20,7 @@ const Landing = () => {
     const load = async () => {
       try {
         const supabase = getSupabaseClient();
-        const [countRes, storiesRes, usageRes] = await Promise.all([
+        const [countRes, storiesRes, usageRes, declarationsRes] = await Promise.all([
           supabase.from('stories').select('*', { count: 'exact', head: true }).eq('public_permission', true),
           supabase
             .from('stories')
@@ -27,10 +29,11 @@ const Landing = () => {
             .order('created_at', { ascending: false })
             .limit(6),
           supabase.from('site_metrics').select('start_here_visits').eq('id', 1).single(),
+          supabase.from('declarations').select('id, text, created_at').order('created_at', { ascending: false }).limit(20),
         ]);
 
         if (!active) return;
-        if (countRes.error || storiesRes.error || usageRes.error) throw new Error('metrics unavailable');
+        if (countRes.error || storiesRes.error || usageRes.error || declarationsRes.error) throw new Error('metrics unavailable');
 
         setCounterState({
           loading: false,
@@ -39,6 +42,7 @@ const Landing = () => {
           stories: countRes.count ?? null,
         });
         setRecordItems(storiesRes.data || []);
+        setDeclarations((declarationsRes.data || []).filter(item => item.text));
       } catch {
         if (!active) return;
         setCounterState({ loading: false, visible: false, usage: null, stories: null });
@@ -50,6 +54,16 @@ const Landing = () => {
       active = false;
     };
   }, []);
+
+  useEffect(() => {
+    if (declarations.length < 3) return undefined;
+
+    const timer = window.setInterval(() => {
+      setActiveDeclaration(current => (current + 1) % declarations.length);
+    }, 5000);
+
+    return () => window.clearInterval(timer);
+  }, [declarations]);
 
   const situationOptions = useMemo(() => screwedSituations.slice(0, 5), []);
 
@@ -142,6 +156,18 @@ const Landing = () => {
           </div>
         </div>
       </section>
+
+      {declarations.length >= 3 ? (
+        <section className="border-b border-[var(--border-default)] bg-background py-12">
+          <div className="section-shell max-w-4xl">
+            <div className="border border-[var(--border-default)] bg-[var(--bg-secondary)] p-6 md:p-8">
+              <p className="font-mono text-lg leading-relaxed text-[var(--text-primary)]">
+                “{declarations[activeDeclaration]?.text}”
+              </p>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section className="border-b border-[var(--border-default)] bg-background py-16">
         <div className="section-shell max-w-3xl text-center">

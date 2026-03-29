@@ -35,7 +35,7 @@ Approximate layout (may not be exact, but follow existing patterns):
 - `src/data/content.js`
   - Central content/config objects:
     - `screwedSituations` – “Where are you getting screwed?” cards for the home page
-    - `wcatCategories` – categories + cases for the WCAT Precedent Armory
+    - WCAT data is managed in `src/wcat/` via `wcatCases`
     - Other structured content used across pages
 
 **Rule:** When adding or changing content that appears in multiple places (cards, lists, “armory” entries), prefer updating / extending the **data file** and then mapping over it in components.
@@ -79,8 +79,8 @@ UX patterns:
   - “Where are you getting screwed?” is the main entry point.
   - Cards should map from `screwedSituations` data, not be hard-coded one-offs.
 - WCAT Precedent Armory:
-  - Must be **data-driven** from `wcatCategories`.
-  - Each category and case should be rendered by mapping over the data (no duplicated JSX across files).
+  - Must be **data-driven** from `wcatCases` in `src/wcat/`.
+  - Categories and cases should be rendered by mapping over data (no duplicated JSX across files).
 
 When adding new UI, favor:
 
@@ -89,46 +89,23 @@ When adding new UI, favor:
 
 ---
 
-## 5. WCAT Precedent Armory specifics
+## 5. WCAT Precedent Armory
 
-The **WCAT Armory** is a core feature. Treat it carefully.
+WCAT case data lives in `src/wcat/` — **NOT** in `src/data/content.js`.
 
-Canonical data:
+The canonical data source is `src/wcat/index.js`, which exports `wcatCases` (an array).
+Individual case files live in `src/wcat/cases/*.js`.
+The expansion file is `src/wcat/cases/wcat-armory-expansion-2026.js`.
 
-- Use the export in the data file (e.g. `wcatCategories` from `src/data/content.js`) as the **single source of truth** for WCAT content.
+`WCATToolkit.jsx` imports `{ wcatCases }` from `../wcat` and groups cases by `category` using the `groupCategories()` function defined in that component.
 
-Each WCAT case should be represented roughly like:
+Do **NOT** add WCAT cases to `src/data/content.js`.
+Do **NOT** import `wcatCategories` — that export does not exist.
 
-```js
-{
-  citation: 'WCAT-YYYY-XXXXX',
-  shortLabel: 'One-line label for what this case is about',
-  summary: 'Plain-language 2–4 sentence summary of the facts and decision.',
-  panelCare: [
-    'Bullet points about what the WCAT panel focused on.',
-  ],
-  useItWhen: 'When a worker should consider citing this case in their own appeal.',
-  tags: ['psych', 'chronic-pain', 'premature-rtw'] // if tags exist
-}
-The Armory page should:
-
-Import wcatCategories once.
-
-Map over all categories and all cases to render them.
-
-Not:
-
-Use .slice() or filtering that hides entries unless explicitly needed.
-
-Render any outdated, static, hard-coded WCAT JSX from old versions.
-
-If you’re fixing a bug where “only the old WCAT content shows,” prioritize:
-
-Confirm the Armory route imports the correct data file.
-
-Ensure there’s exactly one export of wcatCategories.
-
-Remove or fully replace any old hand-coded WCAT layout in favor of the data-driven one.
+When adding new WCAT cases:
+1. Create `src/wcat/cases/wcat-[id].js` following the existing case file structure
+2. Import and add to the array in `src/wcat/index.js`
+3. Ensure the case object has all fields required by `src/wcat/schema.js`
 
 6. Change style & safety
 When making changes:

@@ -15,6 +15,7 @@ const moreLinks = [
   { href: '/resources', label: 'Resources' },
   { href: '/about', label: 'About' },
   { href: '/for-institutions', label: 'For Institutions' },
+  { href: '/the-pressure', label: 'The Pressure Record' },
 ];
 
 const Navigation = () => {

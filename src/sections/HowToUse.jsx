@@ -139,53 +139,40 @@ const HowToUse = () => {
   };
 
   return (
-    <div className="bg-gray-50" id="how-to-use">
-      <div
-        className="relative overflow-hidden bg-gradient-to-b from-sky-50 via-white to-emerald-50"
-        id="hero"
-      >
-        <div
-          className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(14,165,233,0.08)_0,_transparent_40%)]"
-          aria-hidden="true"
-        />
+    <div className="bg-background" id="how-to-use">
+      <section id="hero" className="border-b border-[var(--border-default)]">
         <div className="section-shell relative flex flex-col items-center space-y-6 py-14 text-center">
-          <div className="flex flex-wrap items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wide text-sky-700">
-            <span className="rounded-full bg-white/70 px-4 py-2 shadow-sm ring-1 ring-sky-100">
+          <div className="flex flex-wrap items-center justify-center gap-2 font-mono text-xs uppercase tracking-wider text-[var(--text-secondary)]">
+            <span className="border border-[var(--border-default)] bg-[var(--bg-secondary)] px-4 py-2">
               Movement onboarding edition
             </span>
-            <span className="rounded-full bg-white/70 px-4 py-2 shadow-sm ring-1 ring-emerald-100">
+            <span className="border border-[var(--border-default)] bg-[var(--bg-secondary)] px-4 py-2">
               Calm, guided steps
             </span>
           </div>
-          <h1 className="text-4xl font-black text-gray-900 md:text-5xl">How To Use This Toolkit</h1>
-          <p className="max-w-3xl text-lg text-gray-700 md:text-xl">
+          <h1 className="headline-md !text-5xl">How To Use This Toolkit</h1>
+          <p className="max-w-3xl text-lg text-[var(--text-secondary)] md:text-xl">
             This isn&apos;t paperwork. This is how we fight back. Pick your path, move in sequence,
             and keep your nervous system calm while you do it.
           </p>
           <div className="flex flex-col items-center gap-3">
-            <a
-              href="#step-1"
-              className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-emerald-200 transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
-            >
+            <a href="#step-1" className="btn-primary">
               Start Here: Find Your Situation
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </a>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-[var(--text-muted)]">
               Move one section at a time. The progress rail updates as you scroll.
             </p>
           </div>
         </div>
-      </div>
+      </section>
 
       <div className="section-shell relative py-12 lg:flex lg:gap-10">
         <aside className="hidden w-60 shrink-0 lg:block">
-          <div className="sticky top-28 space-y-2 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-gray-200">
-            <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Progress</p>
-            <div
-              className="h-px bg-gradient-to-r from-emerald-200 via-sky-200 to-emerald-200"
-              aria-hidden="true"
-            />
-            <ol className="space-y-2 text-sm text-gray-700">
+          <div className="sticky top-28 space-y-2 border border-[var(--border-default)] bg-[var(--bg-secondary)] p-4">
+            <p className="eyebrow !text-[var(--accent)]">Progress</p>
+            <div className="h-px bg-[var(--border-default)]" aria-hidden="true" />
+            <ol className="space-y-2 text-sm text-[var(--text-secondary)]">
               {sectionIds
                 .filter(id => id.startsWith('step'))
                 .map((id, index) => {
@@ -193,10 +180,10 @@ const HowToUse = () => {
                   return (
                     <li key={id} className="flex items-center gap-2">
                       <span
-                        className={`flex h-7 w-7 items-center justify-center rounded-full border text-xs font-semibold ${
+                        className={`flex h-7 w-7 items-center justify-center border text-xs font-semibold ${
                           isActive
-                            ? 'border-emerald-500 bg-emerald-50 text-emerald-700'
-                            : 'border-gray-200 bg-gray-50 text-gray-600'
+                            ? 'border-[var(--border-accent)] bg-[var(--bg-tertiary)] text-[var(--accent)]'
+                            : 'border-[var(--border-default)] bg-[var(--bg-primary)] text-[var(--text-muted)]'
                         }`}
                         aria-hidden="true"
                       >
@@ -204,7 +191,7 @@ const HowToUse = () => {
                       </span>
                       <a
                         href={`#${id}`}
-                        className={`transition hover:text-gray-900 ${isActive ? 'font-semibold text-gray-900' : ''}`}
+                        className={`transition hover:text-[var(--text-primary)] ${isActive ? 'font-semibold text-[var(--text-primary)]' : ''}`}
                       >
                         {`Step ${index + 1}`}
                       </a>
@@ -216,13 +203,11 @@ const HowToUse = () => {
         </aside>
 
         <div className="flex-1 space-y-10">
-          <section id="step-1" className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-gray-200">
+          <section id="step-1" className="card p-8">
             <div className="flex flex-col gap-4 text-center">
-              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">
-                Step 1
-              </p>
-              <h2 className="text-3xl font-bold text-gray-900">Find Yourself In the Fight</h2>
-              <p className="text-gray-700">
+              <p className="eyebrow !text-[var(--accent)]">Step 1</p>
+              <h2 className="text-3xl font-bold text-[var(--text-primary)]">Find Yourself In the Fight</h2>
+              <p className="text-[var(--text-secondary)]">
                 Pick the path that fits. Each card drops you directly into the right onboarding
                 flow.
               </p>
@@ -232,16 +217,16 @@ const HowToUse = () => {
                 <Link
                   key={id}
                   href={`/start-here?situation=${id}`}
-                  className="group relative block overflow-hidden rounded-2xl border border-gray-200 bg-gradient-to-br from-sky-50 via-white to-emerald-50 p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="group block border border-[var(--border-default)] bg-[var(--bg-tertiary)] p-5 transition hover:border-[var(--border-accent)]"
                 >
                   <div className="flex items-start gap-4">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-emerald-700 ring-1 ring-emerald-100">
+                    <span className="flex h-12 w-12 items-center justify-center border border-[var(--border-default)] bg-[var(--bg-secondary)] text-[var(--accent)]">
                       <Icon className="h-6 w-6" aria-hidden="true" />
                     </span>
                     <div className="space-y-1">
-                      <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
-                      <p className="text-sm text-gray-700">{description}</p>
-                      <span className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700">
+                      <h3 className="text-lg font-semibold text-[var(--text-primary)]">{title}</h3>
+                      <p className="text-sm text-[var(--text-secondary)]">{description}</p>
+                      <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[var(--accent)]">
                         Jump in
                         <ArrowRight
                           className="h-4 w-4 transition group-hover:translate-x-1"
@@ -255,39 +240,32 @@ const HowToUse = () => {
             </div>
           </section>
 
-          <section
-            id="step-2"
-            className="rounded-3xl bg-gradient-to-r from-sky-50 via-white to-emerald-50 p-8 shadow-sm ring-1 ring-emerald-100"
-          >
+          <section id="step-2" className="card p-8">
             <div className="flex flex-col gap-4 text-center">
-              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">
-                Step 2
-              </p>
-              <h2 className="text-3xl font-bold text-gray-900">
-                Don&apos;t Take On the Whole System
-              </h2>
-              <p className="text-gray-700">
+              <p className="eyebrow !text-[var(--accent)]">Step 2</p>
+              <h2 className="text-3xl font-bold text-[var(--text-primary)]">Don&apos;t Take On the Whole System</h2>
+              <p className="text-[var(--text-secondary)]">
                 Permission to go narrow. Drop what you don&apos;t need so the fight stays winnable.
               </p>
             </div>
             <div className="mt-8 grid gap-6 md:grid-cols-2">
-              <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-red-100">
+              <div className="border border-[var(--border-default)] bg-[var(--bg-tertiary)] p-6">
                 <div className="mb-3 flex items-center gap-2">
-                  <Sparkles className="h-5 w-5 text-red-500" aria-hidden="true" />
-                  <h3 className="text-xl font-bold text-gray-900">Don&apos;t</h3>
+                  <Sparkles className="h-5 w-5 text-[var(--accent-urgent)]" aria-hidden="true" />
+                  <h3 className="text-xl font-bold text-[var(--text-primary)]">Don&apos;t</h3>
                 </div>
-                <ul className="space-y-2 text-gray-700">
+                <ul className="space-y-2 text-[var(--text-secondary)]">
                   <li>Memorize the entire Workers Compensation Act.</li>
                   <li>Read every single template or WCAT case.</li>
                   <li>Stay up all night trying to master the whole system.</li>
                 </ul>
               </div>
-              <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-emerald-200">
+              <div className="border border-[var(--border-default)] bg-[var(--bg-tertiary)] p-6">
                 <div className="mb-3 flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-emerald-600" aria-hidden="true" />
-                  <h3 className="text-xl font-bold text-gray-900">Do</h3>
+                  <CheckCircle2 className="h-5 w-5 text-[var(--accent-confirm)]" aria-hidden="true" />
+                  <h3 className="text-xl font-bold text-[var(--text-primary)]">Do</h3>
                 </div>
-                <ul className="space-y-2 text-gray-700">
+                <ul className="space-y-2 text-[var(--text-secondary)]">
                   <li>Use only the pages tied to your situation.</li>
                   <li>Copy the phrasing that fits your facts.</li>
                   <li>Move one or two steps ahead, not ten.</li>
@@ -296,15 +274,11 @@ const HowToUse = () => {
             </div>
           </section>
 
-          <section id="step-3" className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-gray-200">
+          <section id="step-3" className="card p-8">
             <div className="flex flex-col gap-4 text-center">
-              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">
-                Step 3
-              </p>
-              <h2 className="text-3xl font-bold text-gray-900">
-                Your First Four Moves (Proven to Work)
-              </h2>
-              <p className="text-gray-700">
+              <p className="eyebrow !text-[var(--accent)]">Step 3</p>
+              <h2 className="text-3xl font-bold text-[var(--text-primary)]">Your First Four Moves (Proven to Work)</h2>
+              <p className="text-[var(--text-secondary)]">
                 Follow this sequence. Each card expands for the how-to when you need it.
               </p>
             </div>
@@ -312,10 +286,7 @@ const HowToUse = () => {
               {moveSequence.map((move, index) => {
                 const isOpen = openMoveId === move.id;
                 return (
-                  <div
-                    key={move.id}
-                    className="rounded-2xl border border-gray-200 bg-gradient-to-r from-white via-sky-50 to-white shadow-sm"
-                  >
+                  <div key={move.id} className="border border-[var(--border-default)] bg-[var(--bg-tertiary)]">
                     <button
                       type="button"
                       onClick={() => toggleMove(move.id)}
@@ -323,21 +294,21 @@ const HowToUse = () => {
                       aria-expanded={isOpen}
                     >
                       <div className="flex items-center gap-4">
-                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-600 text-base font-bold text-white shadow-sm">
+                        <span className="flex h-10 w-10 items-center justify-center border border-[var(--border-default)] bg-[var(--bg-secondary)] font-mono text-sm text-[var(--accent)]">
                           {index + 1}
                         </span>
                         <div>
-                          <h3 className="text-lg font-semibold text-gray-900">{move.title}</h3>
-                          <p className="text-sm text-gray-700">Tap to see how.</p>
+                          <h3 className="text-lg font-semibold text-[var(--text-primary)]">{move.title}</h3>
+                          <p className="text-sm text-[var(--text-secondary)]">Tap to see how.</p>
                         </div>
                       </div>
                       <ArrowRight
-                        className={`h-5 w-5 text-emerald-700 transition ${isOpen ? 'rotate-90' : 'group-hover:translate-x-1'}`}
+                        className={`h-5 w-5 text-[var(--accent)] transition ${isOpen ? 'rotate-90' : 'group-hover:translate-x-1'}`}
                         aria-hidden="true"
                       />
                     </button>
                     {isOpen ? (
-                      <div className="border-t border-gray-100 px-5 py-4 text-gray-800">
+                      <div className="border-t border-[var(--border-default)] px-5 py-4 text-[var(--text-secondary)]">
                         {move.detail}
                       </div>
                     ) : null}
@@ -347,41 +318,33 @@ const HowToUse = () => {
             </div>
           </section>
 
-          <section
-            id="step-4"
-            className="rounded-3xl bg-gradient-to-br from-emerald-50 via-white to-sky-50 p-8 shadow-sm ring-1 ring-emerald-100"
-          >
+          <section id="step-4" className="card p-8">
             <div className="flex flex-col gap-4 text-center">
-              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">
-                Step 4
-              </p>
-              <h2 className="text-3xl font-bold text-gray-900">Tiny Actions Win Wars</h2>
-              <p className="text-gray-700">Pick one micro-task. Done is better than heroic.</p>
+              <p className="eyebrow !text-[var(--accent)]">Step 4</p>
+              <h2 className="text-3xl font-bold text-[var(--text-primary)]">Tiny Actions Win Wars</h2>
+              <p className="text-[var(--text-secondary)]">Pick one micro-task. Done is better than heroic.</p>
             </div>
             <div className="mt-8 grid gap-4 md:grid-cols-3">
               {microTasks.map(task => {
                 const isDone = completedTasks.includes(task.id);
                 return (
-                  <div
-                    key={task.id}
-                    className="flex flex-col justify-between rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-200"
-                  >
+                  <div key={task.id} className="flex flex-col justify-between border border-[var(--border-default)] bg-[var(--bg-tertiary)] p-5">
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <h3 className="text-lg font-semibold text-gray-900">{task.title}</h3>
-                        <span className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
+                        <h3 className="text-lg font-semibold text-[var(--text-primary)]">{task.title}</h3>
+                        <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)]">
                           {task.time}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-700">{task.description}</p>
+                      <p className="text-sm text-[var(--text-secondary)]">{task.description}</p>
                     </div>
                     <button
                       type="button"
                       onClick={() => markTaskDone(task.id)}
-                      className={`mt-4 inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-semibold shadow-sm transition focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 ${
+                      className={`mt-4 inline-flex items-center justify-center gap-2 border px-4 py-2 font-mono text-xs uppercase tracking-wider transition ${
                         isDone
-                          ? 'bg-emerald-50 text-emerald-800 ring-1 ring-emerald-200'
-                          : 'bg-emerald-600 text-white hover:bg-emerald-700'
+                          ? 'border-[var(--border-default)] bg-[var(--bg-secondary)] text-[var(--accent-confirm)]'
+                          : 'border-[var(--border-accent)] text-[var(--accent)] hover:bg-[var(--bg-secondary)]'
                       }`}
                     >
                       {isDone ? (
@@ -397,48 +360,38 @@ const HowToUse = () => {
             </div>
           </section>
 
-          <section id="step-5" className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-gray-200">
+          <section id="step-5" className="card p-8">
             <div className="flex flex-col gap-4 text-center">
-              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">
-                Step 5
-              </p>
-              <h2 className="text-3xl font-bold text-gray-900">
-                You&apos;re Not Alone In This System
-              </h2>
-              <p className="text-gray-700">
-                Know what this toolkit gives you and what it doesn&apos;t replace. We fight
-                together.
+              <p className="eyebrow !text-[var(--accent)]">Step 5</p>
+              <h2 className="text-3xl font-bold text-[var(--text-primary)]">You&apos;re Not Alone In This System</h2>
+              <p className="text-[var(--text-secondary)]">
+                Know what this toolkit gives you and what it doesn&apos;t replace. We fight together.
               </p>
             </div>
             <div className="mt-8 grid gap-6 md:grid-cols-2">
-              <div className="rounded-2xl bg-gradient-to-br from-emerald-50 via-white to-sky-50 p-6 shadow-sm ring-1 ring-emerald-100">
+              <div className="border border-[var(--border-default)] bg-[var(--bg-tertiary)] p-6">
                 <div className="mb-3 flex items-center gap-2">
-                  <HeartHandshake className="h-5 w-5 text-emerald-600" aria-hidden="true" />
-                  <h3 className="text-xl font-bold text-gray-900">What This Toolkit Gives You</h3>
+                  <HeartHandshake className="h-5 w-5 text-[var(--accent-confirm)]" aria-hidden="true" />
+                  <h3 className="text-xl font-bold text-[var(--text-primary)]">What This Toolkit Gives You</h3>
                 </div>
-                <ul className="space-y-2 text-gray-700">
+                <ul className="space-y-2 text-[var(--text-secondary)]">
                   {boundaryLists.gives.map(item => (
                     <li key={item} className="flex items-start gap-2">
-                      <CheckCircle2
-                        className="mt-0.5 h-5 w-5 text-emerald-600"
-                        aria-hidden="true"
-                      />
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 text-[var(--accent-confirm)]" aria-hidden="true" />
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="rounded-2xl bg-gradient-to-br from-white via-sky-50 to-white p-6 shadow-sm ring-1 ring-gray-200">
+              <div className="border border-[var(--border-default)] bg-[var(--bg-tertiary)] p-6">
                 <div className="mb-3 flex items-center gap-2">
-                  <ShieldCheck className="h-5 w-5 text-sky-700" aria-hidden="true" />
-                  <h3 className="text-xl font-bold text-gray-900">
-                    What This Toolkit Doesn&apos;t Replace
-                  </h3>
+                  <ShieldCheck className="h-5 w-5 text-[var(--accent)]" aria-hidden="true" />
+                  <h3 className="text-xl font-bold text-[var(--text-primary)]">What This Toolkit Doesn&apos;t Replace</h3>
                 </div>
-                <ul className="space-y-2 text-gray-700">
+                <ul className="space-y-2 text-[var(--text-secondary)]">
                   {boundaryLists.not.map(item => (
                     <li key={item} className="flex items-start gap-2">
-                      <Sparkles className="mt-0.5 h-5 w-5 text-sky-600" aria-hidden="true" />
+                      <Sparkles className="mt-0.5 h-5 w-5 text-[var(--accent)]" aria-hidden="true" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -447,40 +400,26 @@ const HowToUse = () => {
             </div>
           </section>
 
-          <section
-            id="closing"
-            className="overflow-hidden rounded-3xl bg-gradient-to-r from-emerald-700 via-emerald-600 to-sky-700 p-10 text-white shadow-sm"
-          >
-            <div className="flex flex-col gap-4 text-center">
-              <h2 className="text-3xl font-bold">You Know Where You Are. Now Move the System.</h2>
-              <p className="text-lg text-emerald-50">
-                Your fight is personal. Our fight is collective. Move forward — we move with you.
-              </p>
-              <div className="mt-4 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-                <a
-                  href="#step-4"
-                  className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-base font-semibold text-emerald-800 shadow-lg shadow-emerald-300 transition hover:-translate-y-0.5 hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-emerald-700"
-                >
-                  Start My First Action
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </a>
-                <Link
-                  href="/stories"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 text-base font-semibold text-white transition hover:-translate-y-0.5 hover:border-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-emerald-700"
-                >
-                  See How Others Won
-                </Link>
-              </div>
+          <section id="closing" className="border border-[var(--border-default)] bg-[var(--bg-secondary)] p-10 text-center">
+            <h2 className="text-3xl font-bold text-[var(--text-primary)]">You Know Where You Are. Now Move the System.</h2>
+            <p className="mt-3 text-lg text-[var(--text-secondary)]">
+              Your fight is personal. Our fight is collective. Move forward — we move with you.
+            </p>
+            <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <a href="#step-4" className="btn-primary">
+                Start My First Action
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+              <Link href="/stories" className="btn-secondary">
+                See How Others Won
+              </Link>
             </div>
           </section>
         </div>
       </div>
 
       <div className="fixed inset-x-4 bottom-4 z-30 flex justify-center lg:hidden">
-        <a
-          href="#step-1"
-          className="flex w-full items-center justify-center gap-2 rounded-full bg-emerald-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-300 transition hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
-        >
+        <a href="#step-1" className="btn-primary w-full justify-center">
           Start Here: Find Your Situation
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </a>
