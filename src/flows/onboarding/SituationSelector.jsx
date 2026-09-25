@@ -52,7 +52,7 @@ const SituationSelector = ({ situations, selectedId, onSelect }) => {
             type="button"
             onKeyDown={handleKeyDown}
             onClick={() => onSelect(situation.id)}
-            className={`flex min-h-[52px] w-full flex-col border bg-[var(--bg-secondary)] p-4 text-left transition focus:outline-none focus:ring-1 focus:ring-[var(--border-accent)] ${isSelected ? 'border-[var(--border-accent)]' : 'border-[var(--border-default)] hover:border-[var(--border-strong)]'}`}
+            className={`flex min-h-[52px] w-full flex-col rounded-lg border bg-[var(--bg-secondary)] p-4 text-left transition focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-1 ${isSelected ? 'border-[var(--accent)] bg-blue-50/50' : 'border-[var(--border-default)] hover:border-[var(--border-strong)]'}`}
             aria-pressed={isSelected}
             aria-label={`Situation: ${situation.title}`}
             tabIndex={tabIndex}
@@ -63,7 +63,7 @@ const SituationSelector = ({ situations, selectedId, onSelect }) => {
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-3">
                 <span
-                  className={`flex h-10 w-10 items-center justify-center border ${isSelected ? 'border-[var(--border-accent)] text-[var(--accent)]' : 'border-[var(--border-default)] text-[var(--text-secondary)]'}`}
+                  className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md border ${isSelected ? 'border-[var(--accent)] bg-blue-50 text-[var(--accent)]' : 'border-[var(--border-default)] text-[var(--text-secondary)]'}`}
                 >
                   <MapPin className="h-5 w-5" aria-hidden="true" />
                 </span>
@@ -73,7 +73,7 @@ const SituationSelector = ({ situations, selectedId, onSelect }) => {
                 </div>
               </div>
               <span
-                className={`inline-flex items-center border px-3 py-1 font-mono text-[0.66rem] uppercase tracking-wider ${isSelected ? 'border-[var(--border-accent)] text-[var(--accent)]' : 'border-[var(--border-default)] text-[var(--text-muted)]'}`}
+                className={`inline-flex flex-shrink-0 items-center rounded-full px-3 py-1 text-[0.72rem] font-semibold ${isSelected ? 'bg-blue-100 text-[var(--accent)]' : 'bg-[var(--bg-tertiary)] text-[var(--text-muted)]'}`}
               >
                 {isSelected ? 'Selected' : 'Pick'}
               </span>

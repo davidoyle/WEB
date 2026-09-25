@@ -3,26 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #0c0c0a;
-  --bg-secondary: #161614;
-  --bg-tertiary: #1f1f1c;
-  --bg-elevated: #252521;
+  --bg-primary: #F7F4EF;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F0EDE7;
+  --bg-elevated: #FFFFFF;
 
-  --accent: #c8962a;
-  --accent-hover: #dba830;
-  --accent-urgent: #b03a2e;
-  --accent-confirm: #2e6b4f;
+  --accent: #2563EB;
+  --accent-hover: #1D4ED8;
+  --accent-urgent: #B91C1C;
+  --accent-confirm: #16A34A;
 
-  --text-primary: #edebe4;
-  --text-secondary: #a8a69f;
-  --text-muted: #6a6860;
+  --text-primary: #1A1A1A;
+  --text-secondary: #4B5563;
+  --text-muted: #9CA3AF;
 
-  --border-default: rgba(237, 235, 228, 0.08);
-  --border-strong: rgba(237, 235, 228, 0.15);
-  --border-accent: rgba(200, 150, 42, 0.4);
+  --border-default: rgba(0, 0, 0, 0.1);
+  --border-strong: rgba(0, 0, 0, 0.18);
+  --border-accent: rgba(37, 99, 235, 0.35);
 
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
 
   --space-1: 8px;
@@ -49,6 +49,8 @@
     background: var(--bg-primary);
     color: var(--text-primary);
     font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
   }
 
   h1,
@@ -59,6 +61,7 @@
   h6 {
     font-family: var(--font-display);
     color: var(--text-primary);
+    font-weight: 700;
   }
 
   a {
@@ -74,25 +77,25 @@
 
   .headline-xl {
     font-family: var(--font-display);
-    font-size: clamp(2.8rem, 6vw, 5rem);
-    line-height: 0.96;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    line-height: 1.1;
     font-weight: 700;
     color: var(--text-primary);
   }
 
   .headline-md {
     font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
-    line-height: 1.08;
-    font-weight: 600;
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    line-height: 1.15;
+    font-weight: 700;
     color: var(--text-primary);
   }
 
   .section-title {
     font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
-    line-height: 1.08;
-    font-weight: 600;
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
+    line-height: 1.2;
+    font-weight: 700;
     color: var(--text-primary);
   }
 
@@ -100,15 +103,16 @@
   .body-text {
     color: var(--text-secondary);
     font-family: var(--font-body);
-    font-size: 1.125rem;
-    line-height: 1.55;
+    font-size: 1.0625rem;
+    line-height: 1.65;
   }
 
   .eyebrow {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     color: var(--text-muted);
   }
 
@@ -116,8 +120,9 @@
   .card-light {
     background: var(--bg-secondary);
     border: 1px solid var(--border-default);
-    border-radius: 2px;
+    border-radius: 8px;
     padding: var(--space-3);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
 
   .btn-primary {
@@ -125,15 +130,16 @@
     align-items: center;
     gap: 8px;
     background: var(--accent);
-    color: #12110f;
+    color: #fff;
     border: 1px solid transparent;
-    border-radius: 2px;
-    padding: 12px 20px;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    font-weight: 500;
+    border-radius: 6px;
+    padding: 11px 20px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    transition: background 150ms ease;
   }
 
   .btn-primary:hover {
@@ -154,16 +160,22 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    border: 1px solid var(--border-accent);
+    border: 1.5px solid var(--border-accent);
     color: var(--accent);
     background: transparent;
-    border-radius: 2px;
-    padding: 12px 20px;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    font-weight: 500;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    transition: border-color 150ms ease, background 150ms ease;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(37, 99, 235, 0.05);
+    border-color: var(--accent);
   }
 
   .btn-dark {
@@ -171,13 +183,15 @@
   }
 
   .nav-link {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
     color: var(--text-secondary);
-    padding: 8px 10px;
-    border-radius: 2px;
+    padding: 7px 12px;
+    border-radius: 6px;
+    text-transform: none;
+    letter-spacing: 0;
+    transition: color 150ms ease, background 150ms ease;
   }
 
   .nav-link:hover {
@@ -186,38 +200,45 @@
   }
 
   .callout {
-    border-left: 6px solid var(--accent-urgent);
-    background: var(--bg-secondary);
+    border-left: 4px solid var(--accent-urgent);
+    background: #FEF2F2;
     padding: var(--space-3);
     margin-bottom: var(--space-4);
+    border-radius: 0 8px 8px 0;
   }
 
   .filter-panel {
     border: 1px solid var(--border-default);
     background: var(--bg-secondary);
     padding: var(--space-3);
-    border-radius: 2px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
 
   .filter-label {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
     color: var(--text-secondary);
   }
 
   .filter-input {
-    border: 1px solid var(--border-default);
-    background: var(--bg-tertiary);
-    border-radius: 2px;
+    border: 1.5px solid var(--border-default);
+    background: var(--bg-secondary);
+    border-radius: 6px;
     color: var(--text-primary);
-    padding: 10px 12px;
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
+    padding: 9px 12px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    transition: border-color 150ms ease;
+  }
+
+  .filter-input:focus {
+    outline: none;
+    border-color: var(--accent);
   }
 
   .thin-divider {
@@ -227,37 +248,37 @@
   }
 
   .founding-statement {
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
     color: var(--text-muted);
-    font-size: 0.76rem;
-    line-height: 1.6;
-    border-top: 1px solid var(--border-accent);
+    font-size: 0.875rem;
+    line-height: 1.65;
+    border-top: 1px solid var(--border-default);
     padding-top: var(--space-2);
   }
 
   .hero-reveal > * {
     opacity: 0;
-    transform: translateY(12px);
-    animation: hero-reveal 420ms ease-out forwards;
+    transform: translateY(10px);
+    animation: hero-reveal 380ms ease-out forwards;
   }
 
   .hero-reveal > *:nth-child(2) {
-    animation-delay: 120ms;
+    animation-delay: 80ms;
   }
 
   .hero-reveal > *:nth-child(3) {
-    animation-delay: 240ms;
+    animation-delay: 160ms;
   }
 
   .hero-reveal > *:nth-child(4) {
-    animation-delay: 360ms;
+    animation-delay: 240ms;
   }
 }
 
 @keyframes hero-reveal {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(10px);
   }
 
   to {

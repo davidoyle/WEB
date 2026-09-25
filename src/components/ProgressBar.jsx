@@ -7,7 +7,7 @@ const ProgressBar = ({ currentStep = 1, steps = [] }) => {
 
   return (
     <div className="w-full" aria-label="Onboarding progress">
-      <div className="mb-2 flex items-center justify-between font-mono text-xs uppercase tracking-wider text-[var(--text-secondary)]">
+      <div className="mb-2 flex items-center justify-between text-xs font-medium text-[var(--text-secondary)]">
         <span>
           Step {currentStep} of {totalSteps}
         </span>
@@ -28,9 +28,9 @@ const ProgressBar = ({ currentStep = 1, steps = [] }) => {
           return (
             <li
               key={step}
-              className={`border px-3 py-1 font-mono text-[0.68rem] uppercase tracking-wider ${isActive ? 'border-[var(--border-accent)] bg-[var(--bg-secondary)] text-[var(--accent)]' : 'border-[var(--border-default)] text-[var(--text-muted)]'}`}
+              className={`rounded-full border px-3 py-1 text-[0.72rem] font-medium ${isActive ? 'border-[var(--accent)] bg-blue-50 text-[var(--accent)]' : 'border-[var(--border-default)] text-[var(--text-muted)]'}`}
             >
-              {String(index + 1).padStart(2, '0')} {step}
+              {index + 1}. {step}
             </li>
           );
         })}

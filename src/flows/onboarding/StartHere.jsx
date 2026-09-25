@@ -188,8 +188,8 @@ const StartHere = () => {
 
       {showGate ? (
         <main className="section-shell flex min-h-[calc(100vh-64px)] items-center py-10" aria-labelledby="commitment-gate">
-          <section className="mx-auto w-full max-w-3xl border border-[var(--border-strong)] bg-[var(--bg-secondary)] p-8">
-            <h1 id="commitment-gate" className="headline-md mb-4 !text-5xl">
+          <section className="mx-auto w-full max-w-3xl rounded-xl border border-[var(--border-default)] bg-[var(--bg-secondary)] p-8 shadow-sm">
+            <h1 id="commitment-gate" className="headline-md mb-4">
               Before we go further.
             </h1>
             <p className="body-text">
@@ -224,9 +224,9 @@ const StartHere = () => {
         </main>
       ) : showDeclaration ? (
         <main className="section-shell flex min-h-[calc(100vh-64px)] items-center py-10" aria-labelledby="declaration-prompt">
-          <section className="mx-auto w-full max-w-3xl border border-[var(--border-strong)] bg-[var(--bg-secondary)] p-8">
+          <section className="mx-auto w-full max-w-3xl rounded-xl border border-[var(--border-default)] bg-[var(--bg-secondary)] p-8 shadow-sm">
             <p className="eyebrow mb-3">One optional step</p>
-            <h1 id="declaration-prompt" className="headline-md !text-4xl">
+            <h1 id="declaration-prompt" className="headline-md">
               Add your voice to the record.
             </h1>
             <p className="body-text mt-4">
@@ -245,7 +245,7 @@ const StartHere = () => {
                 if (declarationError) setDeclarationError('');
               }}
               placeholder="What WorkSafeBC did to me was..."
-              className="mt-6 w-full border border-[var(--border-default)] bg-[var(--bg-tertiary)] px-4 py-3 font-mono text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)]"
+              className="filter-input mt-6 w-full placeholder:text-[var(--text-muted)]"
               maxLength={280}
             />
             {declarationError ? (
@@ -277,7 +277,7 @@ const StartHere = () => {
             <p className="eyebrow">Start Here</p>
             <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
               <div>
-                <h1 id="start-here-heading" className="headline-md !text-5xl">
+                <h1 id="start-here-heading" className="headline-xl">
                   Where are you getting screwed?
                 </h1>
                 <p className="max-w-3xl text-[var(--text-secondary)]">
@@ -290,7 +290,7 @@ const StartHere = () => {
 
           <section
             aria-label="Situation selector"
-            className="border border-[var(--border-default)] bg-[var(--bg-secondary)] p-6"
+            className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-secondary)] p-6 shadow-sm"
           >
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <h2 className="font-[var(--font-display)] text-2xl text-[var(--text-primary)]">
@@ -311,7 +311,7 @@ const StartHere = () => {
               <button
                 type="button"
                 onClick={handleBack}
-                className="inline-flex items-center justify-center border border-[var(--border-default)] px-4 py-2 font-mono text-xs uppercase tracking-wider text-[var(--text-secondary)] transition hover:border-[var(--border-accent)]"
+                className="inline-flex items-center justify-center rounded-md border border-[var(--border-default)] px-4 py-2 text-sm font-medium text-[var(--text-secondary)] transition hover:border-[var(--border-strong)] hover:text-[var(--text-primary)]"
               >
                 Back
               </button>
@@ -319,7 +319,7 @@ const StartHere = () => {
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="border border-[var(--border-default)] px-4 py-2 font-mono text-xs uppercase tracking-wider text-[var(--text-secondary)] transition hover:border-[var(--border-accent)]"
+                  className="rounded-md border border-[var(--border-default)] px-4 py-2 text-sm font-medium text-[var(--text-secondary)] transition hover:border-[var(--border-strong)] hover:text-[var(--text-primary)]"
                 >
                   Reset journey
                 </button>
@@ -339,14 +339,14 @@ const StartHere = () => {
           {selectedSituation && currentStep >= 3 ? (
             <section
               aria-label="Next steps"
-              className="border border-[var(--border-default)] bg-[var(--bg-secondary)] p-6"
+              className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-secondary)] p-6 shadow-sm"
             >
               <NextSteps situation={selectedSituation} onReset={handleReset} />
             </section>
           ) : null}
 
           {toast ? (
-            <div className="fixed bottom-4 right-4 z-50 border border-[var(--border-default)] bg-[var(--bg-elevated)] px-4 py-3 font-mono text-xs uppercase tracking-wider text-[var(--text-primary)]">
+            <div className="fixed bottom-4 right-4 z-50 rounded-lg border border-[var(--border-default)] bg-[var(--bg-secondary)] px-4 py-3 text-sm font-medium text-[var(--text-primary)] shadow-lg">
               Progress saved
             </div>
           ) : null}

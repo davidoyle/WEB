@@ -48,7 +48,7 @@ const NextSteps = ({ situation, onReset }) => {
 
   return (
     <div className="space-y-6">
-      <div className="border border-[var(--border-default)] bg-[var(--bg-secondary)] p-6">
+      <div className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-secondary)] p-6 shadow-sm">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <p className="eyebrow">You picked</p>
@@ -58,7 +58,7 @@ const NextSteps = ({ situation, onReset }) => {
           <button
             type="button"
             onClick={onReset}
-            className="inline-flex items-center gap-2 border border-[var(--border-default)] px-3 py-2 font-mono text-xs uppercase tracking-wider text-[var(--text-secondary)] transition hover:border-[var(--border-accent)] hover:text-[var(--accent)]"
+            className="inline-flex items-center gap-2 rounded-md border border-[var(--border-default)] px-3 py-2 text-sm font-medium text-[var(--text-secondary)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
           >
             <RefreshCw className="h-4 w-4" aria-hidden="true" /> Reset journey
           </button>
@@ -67,7 +67,7 @@ const NextSteps = ({ situation, onReset }) => {
 
       <Accordion items={longSections} />
 
-      <div className="border border-[var(--border-default)] bg-[var(--bg-secondary)] p-6">
+      <div className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-secondary)] p-6 shadow-sm">
         <div className="mb-4 flex items-center gap-2">
           <ListCheck className="h-5 w-5 text-[var(--accent)]" aria-hidden="true" />
           <h3 className="font-[var(--font-display)] text-2xl text-[var(--text-primary)]">Your next moves</h3>
@@ -85,14 +85,14 @@ const NextSteps = ({ situation, onReset }) => {
             return (
               <li
                 key={move.text}
-                className="flex flex-col gap-2 border border-[var(--border-default)] bg-[var(--bg-tertiary)] p-4 sm:flex-row sm:items-center sm:justify-between"
+                className="flex flex-col gap-2 rounded-lg border border-[var(--border-default)] bg-[var(--bg-tertiary)] p-4 sm:flex-row sm:items-center sm:justify-between"
               >
                 <div className="flex items-start gap-3">
                   <ExternalLink className="mt-1 h-4 w-4 text-[var(--accent)]" aria-hidden="true" />
                   <div>
                     <Link
                       href={href}
-                      className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] underline-offset-4 hover:underline"
+                      className="text-sm font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
                     >
                       {move.text}
                     </Link>
