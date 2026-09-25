@@ -15,7 +15,7 @@ const moreLinks = [
   { href: '/resources', label: 'Resources' },
   { href: '/about', label: 'About' },
   { href: '/for-institutions', label: 'For Institutions' },
-  { href: '/the-pressure', label: 'The Pressure Record' },
+  { href: '/the-pressure', label: 'Pressure Record' },
 ];
 
 const Navigation = () => {
@@ -31,22 +31,22 @@ const Navigation = () => {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--border-default)] bg-background/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="eyebrow !text-[var(--text-primary)]">
-          WORKERS TOOLKIT
+    <header className="sticky top-0 z-50 border-b border-[var(--border-default)] bg-[var(--bg-secondary)]/95 backdrop-blur-sm">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="text-sm font-semibold text-[var(--text-primary)] tracking-tight">
+          Workers Toolkit
         </Link>
 
         {!isSlim ? (
-          <nav className="hidden items-center gap-2 md:flex" aria-label="Global">
+          <nav className="hidden items-center gap-1 md:flex" aria-label="Global">
             {mainLinks.map(link => (
               <Link key={link.href} href={link.href} className="nav-link">
                 {link.label}
               </Link>
             ))}
             <details className="relative" ref={moreMenuRef}>
-              <summary className="nav-link list-none cursor-pointer">More ▾</summary>
-              <div className="absolute right-0 mt-2 min-w-48 border border-[var(--border-default)] bg-[var(--bg-secondary)] p-2">
+              <summary className="nav-link list-none cursor-pointer select-none">More ▾</summary>
+              <div className="absolute right-0 mt-1 min-w-48 rounded-lg border border-[var(--border-default)] bg-[var(--bg-secondary)] p-1 shadow-md">
                 {moreLinks.map(link => (
                   <Link
                     key={link.href}
@@ -54,7 +54,7 @@ const Navigation = () => {
                     onClick={() => {
                       if (moreMenuRef.current) moreMenuRef.current.open = false;
                     }}
-                    className="block px-3 py-2 font-mono text-xs uppercase tracking-wider text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)] hover:text-[var(--text-primary)]"
+                    className="block rounded-md px-3 py-2 text-sm text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)] hover:text-[var(--text-primary)]"
                   >
                     {link.label}
                   </Link>
@@ -65,40 +65,40 @@ const Navigation = () => {
         ) : null}
 
         <div className="flex items-center gap-3">
-          <Link href="/start-here" className="btn-primary">
+          <Link href="/start-here" className="btn-primary text-sm">
             Start Here <span className="arrow-glyph">→</span>
           </Link>
           <button
             type="button"
             onClick={() => setIsOpen(prev => !prev)}
-            className="rounded-sm border border-[var(--border-default)] p-2 text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)] md:hidden"
+            className="rounded-md border border-[var(--border-default)] p-2 text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)] md:hidden"
             aria-label="Toggle navigation menu"
           >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
 
       {isOpen ? (
-        <div className="fixed inset-0 z-50 bg-[var(--bg-primary)] px-6 py-8 md:hidden">
-          <div className="mb-8 flex items-center justify-between">
-            <span className="eyebrow !text-[var(--text-primary)]">MENU</span>
+        <div className="fixed inset-0 z-50 bg-[var(--bg-secondary)] px-6 py-6 md:hidden">
+          <div className="mb-6 flex items-center justify-between">
+            <span className="text-sm font-semibold text-[var(--text-primary)]">Workers Toolkit</span>
             <button
               type="button"
-              className="rounded-sm border border-[var(--border-default)] p-2 text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]"
+              className="rounded-md border border-[var(--border-default)] p-2 text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]"
               onClick={() => setIsOpen(false)}
               aria-label="Close navigation menu"
             >
-              <X className="h-6 w-6" />
+              <X className="h-5 w-5" />
             </button>
           </div>
-          <nav className="flex flex-col gap-3" aria-label="Mobile global">
+          <nav className="flex flex-col gap-2" aria-label="Mobile global">
             {[...mainLinks, ...moreLinks].map(link => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="border border-[var(--border-default)] bg-[var(--bg-secondary)] px-4 py-3 font-mono text-xs uppercase tracking-wider text-[var(--text-primary)]"
+                className="rounded-md border border-[var(--border-default)] bg-[var(--bg-tertiary)] px-4 py-3 text-sm font-medium text-[var(--text-primary)] hover:bg-[var(--bg-primary)]"
               >
                 {link.label}
               </Link>

@@ -32,7 +32,7 @@ const Breadcrumbs = () => {
 
   return (
     <nav aria-label="Breadcrumb" className="section-shell py-3">
-      <ol className="flex flex-wrap items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.08em] text-[var(--text-muted)]">
+      <ol className="flex flex-wrap items-center gap-2 text-xs text-[var(--text-muted)]">
         <li>
           <Link href="/" className="hover:text-[var(--text-secondary)]">
             Home
