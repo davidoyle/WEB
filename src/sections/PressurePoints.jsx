@@ -1,200 +1,170 @@
 import Link from 'next/link';
-import { useMemo, useRef, useState } from 'react';
-
-import BeforeYouDoAnythingSection from './BeforeYouDoAnythingSection';
+import { useState } from 'react';
 import { pressurePoints } from '../data/content';
 
-const PressurePoints = () => {
-  const [openPoints, setOpenPoints] = useState([]);
-  const cardRefs = useRef({});
+const CopyButton = ({ text }) => {
+  const [copied, setCopied] = useState(false);
 
-  const isOpen = id => openPoints.includes(id);
-
-  const handleToggle = id => {
-    setOpenPoints(prev => {
-      const alreadyOpen = prev.includes(id);
-      const updated = alreadyOpen ? prev.filter(item => item !== id) : [...prev, id];
-
-      setTimeout(() => {
-        const element = cardRefs.current[id];
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 50);
-
-      return updated;
-    });
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // silently fail — clipboard may be blocked
+    }
   };
 
-  const gridItems = useMemo(
-    () =>
-      pressurePoints.map(point => ({
-        id: point.id,
-        icon: point.icon,
-        label: point.label,
-        title: point.title,
-      })),
-    []
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      className={`shrink-0 rounded-md px-3 py-1 text-xs font-semibold transition ${
+        copied
+          ? 'bg-[var(--accent-confirm)] text-white'
+          : 'border border-[var(--border-default)] text-[var(--text-muted)] hover:border-[var(--accent)] hover:text-[var(--accent)]'
+      }`}
+    >
+      {copied ? 'Copied' : 'Copy'}
+    </button>
   );
+};
+
+const PressureCard = ({ point }) => {
+  const [open, setOpen] = useState(false);
 
   return (
-    <div className="section-shell" id="pressure">
-      <BeforeYouDoAnythingSection />
-      <div className="mb-10">
-        <h1 id="pressure-title" className="section-title">Tactical Playbook</h1>
-        <p className="body-text italic">What they do. What you say. What they cannot do.</p>
-      </div>
-
-      <div id="pattern-selector" className="mb-8">
-        <h2 className="text-lg font-semibold text-gray-900 mb-3 text-center">Pattern Selector</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {gridItems.map(item => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => handleToggle(item.id)}
-              className={`flex items-center justify-between rounded-lg border bg-white px-4 py-3 text-left shadow-sm transition focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
-                isOpen(item.id) ? 'border-indigo-500 ring-1 ring-indigo-500' : 'border-gray-200'
-              }`}
-            >
-              <div className="flex items-center space-x-3">
-                <span className="text-2xl" aria-hidden>
-                  {item.icon}
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-gray-900">{item.label}</p>
-                  <p className="text-xs text-gray-600">{item.title}</p>
-                </div>
-              </div>
-              <span className="text-sm text-indigo-600">
-                {isOpen(item.id) ? 'Selected' : 'Tap to open'}
-              </span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div id="pressure-cards" className="space-y-4">
-        {pressurePoints.map(point => (
-          <div
-            key={point.id}
-            ref={el => {
-              cardRefs.current[point.id] = el;
-            }}
-            className={`overflow-hidden rounded-xl border bg-white shadow-sm transition ${
-              isOpen(point.id) ? 'border-indigo-500' : 'border-gray-200'
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => handleToggle(point.id)}
-              className="flex w-full items-center justify-between px-5 py-4 text-left"
-            >
-              <div className="flex items-center space-x-3">
-                <span className="text-2xl" aria-hidden>
-                  {point.icon}
-                </span>
-                <div>
-                  <p className="text-lg font-semibold text-gray-900">{point.title}</p>
-                  <p className="text-sm text-gray-700">If this is happening to you…</p>
-                </div>
-              </div>
-              <span className={`text-sm ${isOpen(point.id) ? 'text-indigo-600' : 'text-gray-500'}`}>
-                {isOpen(point.id) ? 'Hide' : 'Expand'}
-              </span>
-            </button>
-
-            {isOpen(point.id) && (
-              <div className="border-t border-gray-100 bg-gray-50 px-5 py-4">
-                <p className="mb-4 text-gray-800">{point.summary}</p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
-                    <h3 className="text-sm font-semibold text-gray-900 mb-2">Quick cues</h3>
-                    <ul className="list-disc pl-5 space-y-1 text-gray-700">
-                      {point.examples.map((example, index) => (
-                        <li key={index}>{example}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
-                    <h3 className="text-sm font-semibold text-gray-900 mb-2">
-                      Your rights to cite
-                    </h3>
-                    <ul className="list-disc pl-5 space-y-1 text-gray-700">
-                      {point.rights.map((right, index) => (
-                        <li key={index}>{right}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="mt-4 bg-white rounded-lg border border-indigo-100 p-4 shadow-sm">
-                  <h3 className="text-sm font-semibold text-indigo-800 mb-2">
-                    Power questions to send
-                  </h3>
-                  <ul className="list-disc pl-5 space-y-2 text-gray-800">
-                    {point.phrases.map((phrase, index) => (
-                      <li key={index} className="border-l-2 border-l-[var(--accent)] bg-[var(--bg-tertiary)] p-3 font-mono text-sm md:text-base">
-                        {phrase}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-4 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <p className="text-sm font-semibold text-gray-900">Why it matters</p>
-                  <p className="text-sm text-gray-700 md:text-right">{point.whyItMatters}</p>
-                </div>
-
-                <div className="mt-3 text-right">
-                  <a
-                    className="text-sm font-semibold text-indigo-600 hover:text-indigo-700"
-                    href="#pressure-cta"
-                  >
-                    Jump to templates for this issue →
-                  </a>
-                </div>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-
-      <div
-        id="pressure-cta"
-        className="mt-8 flex flex-col gap-3 rounded-xl border border-gray-200 bg-white px-6 py-4 shadow-sm md:flex-row md:items-center md:justify-between"
+    <div
+      id={`pressure-${point.id}`}
+      className={`overflow-hidden rounded-xl border transition-all ${
+        open
+          ? 'border-[var(--accent)] bg-[var(--bg-secondary)] shadow-sm'
+          : 'border-[var(--border-default)] bg-[var(--bg-secondary)] hover:border-[var(--border-strong)]'
+      }`}
+    >
+      <button
+        type="button"
+        onClick={() => setOpen(prev => !prev)}
+        className="flex w-full items-start justify-between gap-4 px-5 py-4 text-left"
+        aria-expanded={open}
       >
-        <div>
-          <p className="text-base font-semibold text-gray-900">
-            Use these questions directly in FOIs, emails, MLA escalations, and WCAT appeals.
-          </p>
-          <p className="text-sm text-gray-700">
-            Pick the templates you need and drop them into your next message.
+        <div className="min-w-0 space-y-1">
+          <p className="text-base font-semibold text-[var(--text-primary)] leading-snug">{point.title}</p>
+          <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{point.summary}</p>
+        </div>
+        <span
+          className={`mt-0.5 shrink-0 text-sm font-medium ${
+            open ? 'text-[var(--accent)]' : 'text-[var(--text-muted)]'
+          }`}
+        >
+          {open ? 'Close' : 'Tactics →'}
+        </span>
+      </button>
+
+      {open && (
+        <div className="border-t border-[var(--border-default)] px-5 py-5 space-y-6">
+
+          {/* Two-col: what it looks like + your rights */}
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="space-y-2">
+              <p className="text-xs font-semibold uppercase tracking-wide text-[var(--text-muted)]">
+                What this looks like
+              </p>
+              <ul className="space-y-1">
+                {point.examples.map(example => (
+                  <li key={example} className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--text-muted)]" aria-hidden="true" />
+                    {example}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="space-y-2">
+              <p className="text-xs font-semibold uppercase tracking-wide text-[var(--text-muted)]">
+                Your rights
+              </p>
+              <ul className="space-y-1">
+                {point.rights.map(right => (
+                  <li key={right} className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent-confirm)]" aria-hidden="true" />
+                    {right}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Questions to send */}
+          <div className="space-y-2">
+            <p className="text-xs font-semibold uppercase tracking-wide text-[var(--text-muted)]">
+              Questions to send in writing
+            </p>
+            <div className="space-y-2">
+              {point.phrases.map(phrase => (
+                <div
+                  key={phrase}
+                  className="flex items-start gap-3 rounded-lg border border-[var(--border-accent)] bg-blue-50/60 p-3"
+                >
+                  <p className="flex-1 font-mono text-sm leading-relaxed text-[var(--text-primary)]">
+                    {phrase}
+                  </p>
+                  <CopyButton text={phrase} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Why it matters */}
+          <p className="text-sm text-[var(--text-muted)] border-t border-[var(--border-default)] pt-4">
+            <span className="font-semibold text-[var(--text-secondary)]">Why it matters: </span>
+            {point.whyItMatters}
           </p>
         </div>
-        <div className="flex flex-wrap gap-2">
-          <Link
-            href="/templates"
-            className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700"
-          >
-            Email Templates
-          </Link>
-          <Link
-            href="/documentation"
-            className="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:border-indigo-500"
-          >
-            FOI Tools
-          </Link>
-          <Link
-            href="/wcat"
-            className="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:border-indigo-500"
-          >
-            WCAT Precedent Armory
-          </Link>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
+
+const PressurePoints = () => (
+  <div className="section-shell space-y-8 py-8" id="pressure">
+
+    {/* Header */}
+    <header className="max-w-2xl space-y-3">
+      <p className="eyebrow">Tactics</p>
+      <h1 className="headline-xl">When WorkSafeBC is running a play on you.</h1>
+      <p className="text-[var(--text-secondary)] leading-relaxed">
+        Eight patterns they use to delay, deny, and discredit. For each one: what it looks like, what your rights are, and exact questions to send in writing that they have to answer.
+      </p>
+    </header>
+
+    {/* Cards */}
+    <div className="space-y-3">
+      {pressurePoints.map(point => (
+        <PressureCard key={point.id} point={point} />
+      ))}
+    </div>
+
+    {/* CTA */}
+    <div className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-secondary)] px-6 py-5 shadow-sm">
+      <p className="text-sm font-semibold text-[var(--text-primary)]">
+        Use these questions in FOIs, emails, MLA escalations, and WCAT appeals.
+      </p>
+      <p className="mt-1 text-sm text-[var(--text-secondary)]">
+        Copy the question, drop it in your next written communication, and you have a record.
+      </p>
+      <div className="mt-4 flex flex-wrap gap-2">
+        <Link href="/templates" className="btn-primary">
+          Email Templates →
+        </Link>
+        <Link href="/wcat" className="btn-secondary">
+          WCAT Precedents
+        </Link>
+        <Link href="/documentation" className="btn-secondary">
+          Evidence Center
+        </Link>
+      </div>
+    </div>
+  </div>
+);
 
 export default PressurePoints;
