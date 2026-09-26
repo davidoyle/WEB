@@ -403,7 +403,7 @@ const HowToUse = () => {
           <section id="closing" className="border border-[var(--border-default)] bg-[var(--bg-secondary)] p-10 text-center">
             <h2 className="text-3xl font-bold text-[var(--text-primary)]">You Know Where You Are. Now Move the System.</h2>
             <p className="mt-3 text-lg text-[var(--text-secondary)]">
-              Your fight is personal. Our fight is collective. Move forward — we move with you.
+              Your fight is personal. Our fight is collective. Move forward. We move with you.
             </p>
             <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <a href="#step-4" className="btn-primary">

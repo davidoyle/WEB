@@ -17,7 +17,7 @@ const caseData = {
     'Reasoned explanation even without a perfect diagnostic label',
   ],
   howToUse: [
-    "Don’t rely on 'it happened at work and I felt awful' — build a coherent medical theory of the condition",
+    "Don’t rely on ‘it happened at work and I felt awful’. Build a coherent medical theory of the condition.",
     'Get a doctor to explicitly tie cause to work, not just document symptoms',
     'Focus arguments on mechanism and evidence rather than a perfect label',
   ],
@@ -27,7 +27,7 @@ const caseData = {
   ],
   decisionLink: null,
   strategyMoves: [
-    "Don’t rely on 'it happened at work and I felt awful' — build a coherent medical theory of the condition",
+    "Don’t rely on ‘it happened at work and I felt awful’. Build a coherent medical theory of the condition.",
     'Get a doctor to explicitly tie cause to work, not just document symptoms',
     'Focus arguments on mechanism and evidence rather than a perfect label',
   ],

@@ -70,11 +70,11 @@ const PressurePage = () => {
 
         <section className="grid gap-4 border border-[var(--border-default)] bg-[var(--bg-secondary)] p-6 md:grid-cols-3">
           <div>
-            <p className="font-mono text-3xl text-[var(--text-primary)]">{metrics.stories ?? '—'}</p>
+            <p className="font-mono text-3xl text-[var(--text-primary)]">{metrics.stories ?? '-'}</p>
             <p className="eyebrow mt-1">worker accounts in the record</p>
           </div>
           <div>
-            <p className="font-mono text-3xl text-[var(--text-primary)]">{metrics.events ?? '—'}</p>
+            <p className="font-mono text-3xl text-[var(--text-primary)]">{metrics.events ?? '-'}</p>
             <p className="eyebrow mt-1">tool events logged</p>
           </div>
           <div>

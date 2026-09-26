@@ -6,7 +6,7 @@ const caseData = {
   bodyPart: 'general',
   issueTags: ['timelines', 'communication', 'oral-decisions'],
   phrasesToSteal: [
-    'Oral and written communications can start clocks at different times — pin down the actual communication date.',
+    'Oral and written communications can start clocks at different times. Pin down the actual communication date.',
     'Staggered communication does not advance limitation periods before the decision is conveyed.',
   ],
   decisionLink: null,
@@ -23,7 +23,7 @@ const caseData = {
   shortLabel: 'Oral vs written communication and when time limits start',
   fullLabel: 'Oral vs written communication and when time limits start',
   keyPoints: [
-    'Oral and written communications can start clocks at different times — pin down the actual communication date.',
+    'Oral and written communications can start clocks at different times. Pin down the actual communication date.',
     'Staggered communication does not advance limitation periods before the decision is conveyed.',
   ],
   facts: [

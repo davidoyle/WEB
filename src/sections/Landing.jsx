@@ -84,7 +84,7 @@ const Landing = () => {
                 They&apos;re counting on you to give up.
               </h1>
               <p className="text-[var(--text-secondary)] text-[1.0625rem] leading-relaxed max-w-md">
-                This toolkit is built to help BC injured workers fight back — with strategy, templates, precedents, and a place to record what happened.
+                This toolkit is built to help BC injured workers fight back. It has strategy, templates, precedents, and a place to record what happened.
               </p>
 
               {counterState.visible ? (
