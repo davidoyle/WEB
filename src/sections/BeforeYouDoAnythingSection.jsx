@@ -16,7 +16,7 @@ const BeforeYouDoAnythingSection = () => (
       <li>Save a copy of whatever they sent (photo, screenshot, PDF).</li>
       <li>Write the date, what they decided, and how it hits you (lost income, treatment, job).</li>
       <li>
-        Take 10 minutes on this site to figure out what kind of problem it is — ignored evidence,
+        Take 10 minutes on this site to figure out what kind of problem it is: ignored evidence,
         contradictory decisions, retaliation, &ldquo;our records show,&rdquo; etc.
       </li>
     </ol>

@@ -19,7 +19,7 @@ const caseData = {
     'Argue material contribution, not creation of the disease',
   ],
   portableStrategy:
-    'For internal condition cases, argue work triggered or materially worsened an already vulnerable system — backed by cardiology/IME evidence.',
+    'For internal condition cases, argue work triggered or materially worsened an already vulnerable system. Back this with cardiology or IME evidence.',
   category: 'Is my injury covered? – Acceptability & causation',
   shortLabel: 'Work-related heart attack (natural causes vs work causes)',
   fullLabel: 'Work-related heart attack (natural causes vs work causes)',

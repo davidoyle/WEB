@@ -18,7 +18,7 @@ const caseData = {
     'Show continuity of symptoms, treatment, and deterioration despite late paperwork',
   ],
   portableStrategy:
-    "Don’t just say 'I was unwell' — have a doctor explain how the condition interfered with filing to justify late applications.",
+    "Don’t just say ‘I was unwell’. Have a doctor explain how the condition interfered with filing to justify late applications.",
   category: 'Mental disorder, bullying/harassment & late applications',
   shortLabel: 'Late application where the mental disorder delayed filing',
   fullLabel: 'Late application where the mental disorder delayed filing',

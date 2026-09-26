@@ -58,13 +58,10 @@ const ForInstitutionsPage = () => {
         Workers Toolkit maintains an independent archive of WorkSafeBC claim experiences, WCAT
         precedent analysis, and worker testimony in British Columbia.
       </p>
-      <ul className="space-y-2 text-[var(--text-secondary)]">
-        <li>— Worker-built and worker-led</li>
-        <li>— Independent of WorkSafeBC, any government body, and any insurer</li>
-        <li>
-          — Available to journalists, researchers, unions, and legal professionals for non-commercial
-          use
-        </li>
+      <ul className="list-disc pl-5 space-y-2 text-[var(--text-secondary)]">
+        <li>Worker-built and worker-led</li>
+        <li>Independent of WorkSafeBC, any government body, and any insurer</li>
+        <li>Available to journalists, researchers, unions, and legal professionals for non-commercial use</li>
       </ul>
 
       <section className="space-y-2 border border-[var(--border-default)] bg-[var(--bg-secondary)] p-6">

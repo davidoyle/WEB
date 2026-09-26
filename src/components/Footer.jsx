@@ -49,7 +49,7 @@ const Footer = () => (
       </div>
       <div className="mt-8 border-t border-[var(--border-default)] pt-6">
         <p className="text-xs text-[var(--text-muted)] max-w-2xl">
-          Built by one injured BC worker. Everything here — every tactic, every template, every precedent — was built to change what happens to thousands of workers every year in British Columbia.
+          Built by one injured BC worker. Every tactic, every template, every precedent was built to change what happens to thousands of workers every year in British Columbia.
         </p>
       </div>
     </div>

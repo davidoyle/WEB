@@ -273,7 +273,7 @@ export const pressurePoints = [
     icon: '🎯',
     summary: 'When they accept only one part of the injury so they can deny the rest.',
     examples: [
-      'Knee accepted — hip and back ignored',
+      'Knee accepted. Hip and back ignored.',
       'PTSD not accepted because physical injury “not severe enough”',
       'Only one diagnosis accepted despite multiple providers',
     ],
@@ -362,7 +362,7 @@ export const pressurePoints = [
     label: 'Oversight refusal',
     icon: '🏛️',
     summary:
-      "When MLAs or Minister offices hide behind 'we can't interfere with WorkSafeBC' instead of using their oversight role — and when promised actions quietly disappear.",
+      "When MLAs or Minister offices hide behind 'we can't interfere with WorkSafeBC' instead of using their oversight role. Promised actions quietly disappear.",
     examples: [
       '“We can’t intervene” replies with no follow-up',
       'Escalations promised but never actioned',
@@ -379,7 +379,7 @@ export const pressurePoints = [
       '“On [date], your office wrote that [quote the promise]. Could you please confirm whether this action was completed, and if not, explain when and why the decision was changed?”',
     ],
     whyItMatters:
-      'Oversight pressure exposes patterns — and broken promises prove accountability gaps.',
+      'Oversight pressure exposes patterns. Broken promises prove accountability gaps.',
   },
 ];
 
@@ -703,7 +703,7 @@ export const speakingImpactFlow = [
 
 export const reassuranceChecklist = [
   'You choose what to share and when',
-  'Your evidence stays yours—no surprise releases',
+  'Your evidence stays yours. No surprise releases.',
   'You can stay anonymous in public-facing spaces',
   'You can pause, delete, or edit your record at any time',
 ];
@@ -742,14 +742,14 @@ export const whySilentPoints = [
       'When you don’t push back, the system records:\n- “accepted”\n- no objection\n- no harm detected\n\nThat becomes:\n- statistics presented to government\n- justification for harmful policies\n- “proof” nothing is wrong\n\nYour silence becomes their evidence.',
   },
   {
-    title: 'One Voice Alone Gets Ignored — Many Voices Force Change',
+    title: 'One Voice Alone Gets Ignored. Many Voices Force Change.',
     description:
       'They can isolate one worker. They cannot ignore a pattern.\n\nWhen dozens report:\n- the same delays\n- the same denials\n- the same “behavioural” labels\n\nIt becomes undeniable. And legally actionable.',
   },
   {
-    title: 'You’re Not Asking for a Favour — You’re Exposing a Breach',
+    title: "You’re Not Asking for a Favour. You’re Exposing a Breach.",
     description:
-      'When you speak, you are not:\n- complaining\n- begging\n- whining\n\nYou are reporting:\n- state-caused harm\n- medical neglect\n- Charter violations\n- policy abuse\n\nThat is evidence — and it matters.',
+      'When you speak, you are not:\n- complaining\n- begging\n- whining\n\nYou are reporting:\n- state-caused harm\n- medical neglect\n- Charter violations\n- policy abuse\n\nThat is evidence. It matters.',
   },
   {
     title: 'They Want You Tired. They Fear You Organized.',
@@ -762,9 +762,9 @@ export const whySilentPoints = [
       'Your story is part of the case that ends this.\n\nNot a rant.\nNot a plea.\nA record of systemic injustice.\n\nAnd once enough stories are recorded:\n- tribunals change\n- laws change\n- the entire system shifts\n\nBecause it has to.',
   },
   {
-    title: 'The System Isn’t Ready for You to Speak',
+    title: "The System Isn’t Ready for You to Speak",
     description:
-      'That’s why speaking matters.\n\nYour voice is not a risk.\nYour voice is leverage.\n\nSay what they don’t want on record — and watch what happens.',
+      "That’s why speaking matters.\n\nYour voice is not a risk.\nYour voice is leverage.\n\nSay what they don’t want on record. Watch what happens.",
   },
 ];
 
@@ -847,7 +847,7 @@ export const formsGuideGeneralPitfalls = [
 
 export const worksafeFormsGuideEntries = [
   {
-    form: '3B: Worker Supply and Services Claim — Voc Rehab Expense Reimbursement',
+    form: '3B: Worker Supply and Services Claim - Voc Rehab Expense Reimbursement',
     purpose: 'Claim reimbursement for vocational rehab supplies and services.',
     traps: 'Vague receipts or unapproved items lead to denials; delays if not tied to accepted claim.',
     tips: 'Itemize everything, get pre-approval, and attach proof of necessity from your doctor.',

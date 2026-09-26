@@ -193,7 +193,7 @@ const StartHere = () => {
               Before we go further.
             </h1>
             <p className="body-text">
-              This toolkit works. But only if you document everything — every call, every letter,
+              This toolkit works. But only if you document everything: every call, every letter,
               every delay, every excuse they give you.
             </p>
             <p className="body-text mt-4">
@@ -230,7 +230,7 @@ const StartHere = () => {
               Add your voice to the record.
             </h1>
             <p className="body-text mt-4">
-              One sentence. Anonymous. It takes 30 seconds and it stays. You can skip this — but
+              One sentence. Anonymous. It takes 30 seconds and it stays. You can skip this. But
               this is what changes things.
             </p>
             <label htmlFor="declaration" className="sr-only">

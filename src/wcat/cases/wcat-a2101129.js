@@ -19,7 +19,7 @@ const caseData = {
     'Identify the point when cumulative effects became disabling',
   ],
   portableStrategy:
-    'Build incident diaries of repeated twinges or pulls leading up to the day it finally went, and frame it as cumulative injury—not just degeneration.',
+    'Build incident diaries of repeated twinges or pulls leading up to the day it finally went, and frame it as cumulative injury, not just degeneration.',
   category: 'Pre-existing conditions, degenerative findings & cumulative trauma',
   shortLabel: 'Repeated minor incidents = compensable injury',
   fullLabel: 'Repeated minor incidents = compensable injury',

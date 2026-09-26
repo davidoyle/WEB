@@ -40,7 +40,7 @@ const WorksafeFormsGuideSection = () => {
           <p className="text-[var(--text-secondary)]">
             The system relies on workers making mistakes, so arm yourself with knowledge from worker
             advocates, legal firms, and common complaints. Always consult free resources like the
-            Workers&apos; Advisers Office (WAO) early—don&apos;t wait for a denial.
+            Workers&apos; Advisers Office (WAO) early. Do not wait for a denial.
           </p>
         </div>
 

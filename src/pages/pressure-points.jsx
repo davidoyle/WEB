@@ -4,7 +4,7 @@ import PressurePoints from '../sections/PressurePoints';
 const PressurePointsPage = () => (
   <PageShell
     title="Tactics | Workers Toolkit"
-    description="Eight patterns WorkSafeBC uses to delay, deny, and discredit — and exact questions to push back with."
+    description="Eight patterns WorkSafeBC uses to delay, deny, and discredit. Exact questions to push back with."
     mainClassName=""
   >
     <PressurePoints />

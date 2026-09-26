@@ -5,7 +5,7 @@ import { getSupabaseClient } from '../lib/supabaseClient';
 import { wcatCases } from '../wcat';
 
 const foundingStatement =
-  'This is an independent record. It belongs to no government body, no insurer, no law firm. It exists because one injured worker built it, and because what happened to them happens to thousands of people every year in British Columbia. Everything here — every tactic, every template, every precedent, every story — was built to change that.';
+  'This is an independent record. It belongs to no government body, no insurer, no law firm. It exists because one injured worker built it, and because what happened to them happens to thousands of people every year in British Columbia. Every tactic, every template, every precedent, every story was built to change that.';
 
 const initialForm = {
   name: '',
@@ -322,7 +322,7 @@ const TellYourStory = () => {
         <div>
           <h2 className="headline-md !text-3xl">Your story is evidence.</h2>
           <p className="body-text mt-2">
-            Not of your pain — of a pattern. Every account submitted here becomes part of an
+            Not of your pain. Of a pattern. Every account submitted here becomes part of an
             independent record that cannot be dismissed as a single complaint. Anonymous. Secure.
             Permanent.
           </p>

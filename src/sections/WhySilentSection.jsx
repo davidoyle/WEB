@@ -148,7 +148,7 @@ const WhySilentSection = () => {
         <div className="section-shell">
           <div className="mb-10 text-center">
             <h2 className="section-title">You Stay in Control</h2>
-            <p className="section-lead">Your record moves at your pace—no surprises, no forced disclosures.</p>
+            <p className="section-lead">Your record moves at your pace. No surprises, no forced disclosures.</p>
           </div>
           <div className="card bg-[var(--bg-secondary)]">
             <ul className="space-y-4 text-[var(--text-secondary)]">
